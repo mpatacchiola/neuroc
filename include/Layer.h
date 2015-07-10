@@ -80,105 +80,40 @@ return nNeuronsVector.empty();
 * @return it returns the vector containing the double, in case of problems it returns an empty vector and print an error
 **/
 std::vector<T> Compute() {
-std::vector<T> output_vector;
-try {
- for (unsigned int i = 0; i < nNeuronsVector.size(); i++) output_vector.push_back(nNeuronsVector[i]->Compute());
+ std::vector<T> output_vector;
+ try {
+  for (unsigned int i = 0; i < nNeuronsVector.size(); i++) output_vector.push_back(nNeuronsVector[i]->Compute());
 
- return output_vector;
+  return output_vector;
 
-} catch(...) {
- std::cerr << "Layer error computing internal neurons" << std::endl;
- return output_vector;
-}
+ } catch(...) {
+  std::cerr << "Layer error computing internal neurons" << std::endl;
+  return output_vector;
+ }
 
 }
 
 /**
-* Compute the error for all the neurons of the layer and return a vector containing the values of these errors
+* Get the values of all the neurons inside the layer
 *
-* @return it returns the vector containing the double, in case of problems it returns an empty vector and print an error
-**/
-std::vector<T> ComputeError() {
-std::vector<T> output_vector;
-try {
-
-for (unsigned int i=0; i<nNeuronsVector.size(); i++) output_vector.push_back(nNeuronsVector[i]->ComputeError());
-
-return output_vector;
-
-} catch(...) {
-std::cerr << "Layer error computing internal neurons" << std::endl;
-return output_vector;
-}
-
-}
-
-/**
-* Compute the error for all the neurons of the layer and return a vector containing the values of these errors
-*
-* @return it returns the vector containing the double, in case of problems it returns an empty vector and print an error
-**/
-std::vector<T> ComputeError(std::vector<T> targetOutputVector){
-std::vector<T> output_vector;
-
-if(targetOutputVector.size() != nNeuronsVector.size()) {
-std::cerr << "Layer the size of the target vector is different from the size of the layer container." << std::endl;
-return output_vector;
-}
-
-try {
-
-for (unsigned int i=0; i<nNeuronsVector.size(); i++) output_vector.push_back( nNeuronsVector[i]->ComputeError() );
-
-return output_vector;
-
-} catch(...) {
-std::cerr << "Layer error computing internal neurons" << std::endl;
-return output_vector;
-}
-}
-
-/**
-* Update all the incoming connections of all the neuron inside the layer.
-* @param eta Real[0,1], tipycal 0.3; learing rate value
+* @param inputValues vector of doubles of the same size of the layer. Every double is given as input to the neurons inside the layer.
 * @return it returns true if it is all right, otherwise false
 **/
-bool UpdateIncomingConnections(T eta) {
-try {
-for(unsigned int i=0; i<nNeuronsVector.size(); i++)
-
-nNeuronsVector[i]->UpdateIncomingConnections(eta);
-
-return true;
-} catch(...) {
-std::cerr << "Layer error updating incoming connections" << std::endl;
-return false;
-}
-
-}
-
-/**
-* Update all the incoming connections of all the neuron inside the layer.
-* @param eta Real[0,1], tipycal 0.3; learing rate value
-* @param momentum Real[0,1], tipycal 0.9; momentum value
-* @return it returns true if it is all right, otherwise false
-**/
-bool UpdateIncomingConnections(T eta, T momentum) {
-
+std::vector<T> GetLayerValue(){
 try {
 
-for (unsigned int i=0; i<nNeuronsVector.size(); i++)
-nNeuronsVector[i]->UpdateIncomingConnections(eta, momentum);
+std::vector<T> outputVector(nNeuronsVector.size() + 1);
 
-return true;
+for(unsigned int i = 0; i < nNeuronsVector.size(); i++)
+outputVector.push_back(nNeuronsVector[i]->GetNeuronValue());
+
+return outputVector;
 
 } catch(...) {
-std::cerr << "Layer error updating incoming connections" << std::endl;
+std::cerr << "Layer error setting the value of the neurons" << std::endl;
 return false;
 }
-
 }
-
 
 /**
 * Set the values of all the neurons inside the layer
@@ -222,28 +157,44 @@ return true;
 }
 
 /**
-* Add connections between the neurons of the first layer and the neurons of the second layer
+* Set the values of all the Error associated with the neurons inside the layer
 *
-* @param layerToConnect pointer to the layer to connect
+* @param value vector of the same size of the layer.
 * @return it returns true if it is all right, otherwise false
 **/
-bool AddConnectionToLayer(std::shared_ptr< Layer<T> > spLayerToConnect) {
+bool SetLayerError(std::vector<T> value){
 try {
 
-for(unsigned int i=0; i<nNeuronsVector.size(); i++){
+if(value.size() != nNeuronsVector.size()) return false;
 
-for(unsigned int j=0; j<spLayerToConnect->nNeuronsVector.size(); j++){
-nNeuronsVector[i]->AddConnectionToNeuron(nNeuronsVector[i], spLayerToConnect->nNeuronsVector[j]);
-}
-
-}
+for(unsigned int i = 0; i < value.size(); i++)
+nNeuronsVector[i]->SetNeuronError(value[i]);
 
 return true;
 
 } catch(...) {
-std::cerr << "Layer error adding connection between layers" << std::endl;
+std::cerr << "Layer error setting the value of the neurons" << std::endl;
 return false;
 }
+}
+
+/**
+* Set the Error value of a specific neuron inside the layer
+*
+* @param index unsigned int, the index value of the neuron
+* @param neuronError double, it is the value to assign to the neuron
+* @return bool it returns true if it is all right, otherwise false
+**/
+bool SetNeuronError(unsigned int index, T neuronError){
+
+if(index > nNeuronsVector.size()-1) {
+std::cerr << "Layer the index value is out of range. " <<  std::endl;
+return false;
+}
+
+nNeuronsVector[index]->SetNeuronError(neuronError) ;
+
+return true;
 }
 
 /**
@@ -269,24 +220,6 @@ return false;
 }
 }
 
-/**
-* Add connections from the layer to the neuron
-*
-* @param neuronToConnect pointer to the neuron to connect
-* @return bool it returns true if it is all right, otherwise false
-**/
-bool AddConnectionToNeuron(std::shared_ptr< Neuron<T> > spNeuron){
-try {
-
-for(unsigned int i=0; i<nNeuronsVector.size(); i++) nNeuronsVector[i]->AddConnectionToNeuron(spNeuron);
-
-return true;
-} catch(...) {
-std::cerr << "Layer error adding connection with neuron" << std::endl;
-return false;
-}
-
-}
 
 /**
 * Add connections from the neuron to the layer
@@ -359,7 +292,7 @@ return false;
 * @param index int which identify the neuron inside the internal contaniner
 * @return it returns the pointer, if there is an error or the index is out of range it returns NULL
 **/
-std::shared_ptr< Neuron<T> > ReturnSmartPointerToNeuron(unsigned int index){
+std::shared_ptr< Neuron<T> > ReturnSharedPointerToNeuron(unsigned int index){
 try {
 
 if ( index > (nNeuronsVector.size()-1) ) return NULL;
@@ -369,8 +302,6 @@ else return nNeuronsVector[index];
 std::cerr << "Layer error returning the pointer to the neuron" << std::endl;
 return NULL;
 }
-
-
 }
 
 /**
@@ -381,6 +312,22 @@ return NULL;
 inline int ReturnNumberOfNeurons(){
 
 return nNeuronsVector.size();
+
+}
+
+/**
+* Returning a vector containing pointers to neurons connections
+*
+**/
+std::vector< std::shared_ptr<T> > ReturnConnectionsVector(){
+
+ std::vector< std::shared_ptr<T> > output_vector(nNeuronsVector.size() + 1);
+
+ for (unsigned int i=0; i<nNeuronsVector.size(); i++){
+  output_vector.insert(output_vector.end(), nNeuronsVector[i]->ReturnConnectionsVector().begin(), nNeuronsVector[i]->ReturnConnectionsVector().end() );
+ }
+
+ return output_vector;
 
 }
 
