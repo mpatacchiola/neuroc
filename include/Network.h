@@ -33,11 +33,23 @@ public:
 /**
 * Class constructor. It permits to create directly a multiple hidden layer network
 *
-* @param numberOfInputNeurons this is the number of neuron to insert into the input layer
-* @param numberOfOutputNeurons this is the number of neuron to insert into the output layer
+* @param list of integers representing the layers.
+* ex: {10, 5, 3, 1} Four Layers of Neurons
+* @param HasBias boolean that specified if the Hidden and Output Layers must have a Bias Unit
 */
-template<typename... Args>
-Network(unsigned int numberOfInputNeurons, Args... args,  unsigned int numberOfOutputNeurons) {
+Network(std::initializer_list<int> list)
+{
+
+  //Creating the Layers and pushing them inside the container
+  for ( auto it=list.begin(); it!=list.end(); ++it){
+    std::shared_ptr< Layer<T> > sp_temp_layer = std::make_shared< Layer<T> >(*it);
+    nLayersVector.push_back(sp_temp_layer);
+  }
+
+  //Reverse Cycle to connect the Layers
+  for (unsigned int i = nLayersVector.size()-1; i > 0; i--){
+    nLayersVector[i]->AddConnectionFromLayer(nLayersVector[i-1]);
+  }
 
 }
 
@@ -55,7 +67,7 @@ nLayersVector.reserve(2);
 std::shared_ptr< Layer<T> > sp_input_layer = std::make_shared< Layer<T> >(numberOfInputNeurons);
 std::shared_ptr< Layer<T> > sp_output_layer = std::make_shared< Layer<T> >(numberOfOutputNeurons);
 
-sp_input_layer->AddConnectionToLayer(sp_output_layer);
+sp_output_layer->AddConnectionFromLayer(sp_input_layer);
 
 nLayersVector.push_back(sp_input_layer);
 nLayersVector.push_back(sp_output_layer);
@@ -83,6 +95,7 @@ sp_output_layer->AddConnectionFromLayer(sp_hidden_layer);
 nLayersVector.push_back(sp_input_layer);
 nLayersVector.push_back(sp_hidden_layer);
 nLayersVector.push_back(sp_output_layer);
+
 }
 
 ~Network() {
@@ -95,11 +108,11 @@ nLayersVector.push_back(sp_output_layer);
 * @return it returns the vector containing the double, in case of problems it returns an empty vector and print an error
 **/
 std::vector<T> Compute(std::vector<T> InputVector) {
- std::vector<T> output_vector;
+ //std::vector<T> output_vector;
  try {
 
   //1- Set the values of the input layer
-  nLayersVector[0].SetLayerValue(InputVector);
+  nLayersVector[0]->SetLayerValue(InputVector);
 
   //2- Compute all the hidden Layer
   for (unsigned int i = 1; i < nLayersVector.size(); i++){
@@ -111,8 +124,40 @@ std::vector<T> Compute(std::vector<T> InputVector) {
 
  } catch(...) {
   std::cerr << "Layer error computing internal neurons" << std::endl;
-  return output_vector;
+  return NULL; //output_vector;
  }
+
+}
+
+/**
+* Add a Bias Unit in the hidden and output Layers of the network
+*
+* @return it returns true or false
+**/
+bool AddBiasNeuron(){
+try{
+ //It starts from 1 because the first Layer doesn't have Bias Input
+ for (unsigned int i=1; i<nLayersVector.size(); i++){
+  nLayersVector[i]->AddBiasNeuron();
+ }
+
+ return true;
+
+ } catch(...) {
+  std::cerr << "error adding Bias neuron to the Layer" << std::endl;
+  return false;
+ }
+
+}
+
+/**
+* It returns the number of layer contained inside the Newtork
+*
+* @return it returns the number of Layers
+**/
+inline int ReturnNumberOfLayers(){
+
+return nLayersVector.size();
 
 }
 
@@ -130,15 +175,25 @@ return nLayersVector[index];
 }
 
 /**
-* Returning a vector containing pointers to neurons connections
-*
+* Returning a vector containing smart-pointers to neurons connections
+* The vector start with the first incoming connection of the first neuron of the first layer
+* and it ends with the last incoming connection of the last neuron of the last layer
+* @return it returns a vector of smart-pointers to double or float
 **/
-std::vector< std::shared_ptr<T> > ReturnConnectionsVector(){
+std::vector<std::shared_ptr<T>> ReturnConnectionsVector(){
 
- std::vector< std::shared_ptr<T> > output_vector(nLayersVector.size() + 1);
+ std::vector< std::shared_ptr<T> > output_vector;
 
  for (unsigned int i=0; i<nLayersVector.size(); i++){
-  output_vector.insert(output_vector.end(), nLayersVector[i]->ReturnConnectionsVector().begin(), nLayersVector[i]->ReturnConnectionsVector().end() );
+
+  std::vector<std::shared_ptr<T>> vector_copy(nLayersVector[i]->ReturnConnectionsVector());
+  unsigned int single_layer_size = vector_copy.size();
+	
+  for (unsigned int j=0; j<single_layer_size; j++){
+   //output_vector.push_back( vector_copy[i]->ReturnConnectionsVector()[j] );
+   output_vector.push_back( vector_copy[j] );
+  }
+
  }
 
  return output_vector;
@@ -151,7 +206,7 @@ std::vector< std::shared_ptr<T> > ReturnConnectionsVector(){
 
 private:
 //std::vector< Layer<T> > nLayersVector;
-std::vector< std::shared_ptr< Layer<T> > > nLayersVector;
+std::vector< std::shared_ptr<Layer<T>> > nLayersVector;
 
 
 };

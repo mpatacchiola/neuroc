@@ -21,6 +21,8 @@
 *
 * \date $Date: 2015 $
 *
+* \todo RemoveBiasNeuron
+*
 * Contact:
 *
 * $Id:  $
@@ -44,6 +46,31 @@ std::shared_ptr< Neuron<T> > sp_neuron = std::make_shared< Neuron<T> >();
 nNeuronsVector.push_back(sp_neuron);  // ATTENTION: this is slower
 //nNeuronsVector[i] = sp_neuron;  // ATTENTION: this should be faster
 }
+}
+
+Layer(unsigned int numberOfNeurons, bool HasBias) {
+//ctor
+nNeuronsVector.reserve(numberOfNeurons);  // allocate space for this specific number of Neuron
+
+for (unsigned int i=0; i<numberOfNeurons; i++){
+//std::shared_ptr< Neuron<T> > sp_neuron (new Neuron<T>());
+std::shared_ptr< Neuron<T> > sp_neuron = std::make_shared< Neuron<T> >();
+nNeuronsVector.push_back(sp_neuron);  // ATTENTION: this is slower
+//nNeuronsVector[i] = sp_neuron;  // ATTENTION: this should be faster
+}
+
+if(HasBias == true){
+ std::shared_ptr<Neuron<T>> sp_temp_neuron (new Neuron<T>());
+ spBiasNeuron = sp_temp_neuron;
+ T neuron_value = 1;
+ spBiasNeuron->SetNeuronValue(neuron_value);
+
+ for (unsigned int i=0; i<nNeuronsVector.size(); i++){
+  nNeuronsVector[i]->AddConnectionFromNeuron(spBiasNeuron);
+ }
+
+}
+
 }
 
 ~Layer()
@@ -100,10 +127,9 @@ std::vector<T> Compute() {
 * @return it returns true if it is all right, otherwise false
 **/
 std::vector<T> GetLayerValue(){
-try {
 
 std::vector<T> outputVector(nNeuronsVector.size() + 1);
-
+try {
 for(unsigned int i = 0; i < nNeuronsVector.size(); i++)
 outputVector.push_back(nNeuronsVector[i]->GetNeuronValue());
 
@@ -111,7 +137,7 @@ return outputVector;
 
 } catch(...) {
 std::cerr << "Layer error setting the value of the neurons" << std::endl;
-return false;
+return outputVector;
 }
 }
 
@@ -195,6 +221,30 @@ return false;
 nNeuronsVector[index]->SetNeuronError(neuronError) ;
 
 return true;
+}
+
+/**
+* Add a Bias Neuron to the Layer
+*
+* @return it returns true if it is all right, otherwise false
+**/
+bool AddBiasNeuron(){
+try{
+ std::shared_ptr<Neuron<T>> sp_temp_neuron (new Neuron<T>());
+ spBiasNeuron = sp_temp_neuron;
+ T neuron_value = 1;
+ spBiasNeuron->SetNeuronValue(neuron_value);
+
+ for (unsigned int i=0; i<nNeuronsVector.size(); i++){
+  nNeuronsVector[i]->AddConnectionFromNeuron(spBiasNeuron);
+ }
+
+ return true;
+
+ } catch(...) {
+  std::cerr << "error adding Bias neuron to the Layer" << std::endl;
+  return false;
+ }
 }
 
 /**
@@ -321,10 +371,18 @@ return nNeuronsVector.size();
 **/
 std::vector< std::shared_ptr<T> > ReturnConnectionsVector(){
 
- std::vector< std::shared_ptr<T> > output_vector(nNeuronsVector.size() + 1);
+ std::vector< std::shared_ptr<T> > output_vector;
 
  for (unsigned int i=0; i<nNeuronsVector.size(); i++){
-  output_vector.insert(output_vector.end(), nNeuronsVector[i]->ReturnConnectionsVector().begin(), nNeuronsVector[i]->ReturnConnectionsVector().end() );
+
+  std::vector<std::shared_ptr<T>> vector_copy(nNeuronsVector[i]->ReturnConnectionsVector());
+  unsigned int neuron_vector_size = vector_copy.size();
+
+  for (unsigned int j=0; j<neuron_vector_size; j++){
+   //output_vector.push_back( nNeuronsVector[i]->ReturnConnectionsVector()[j] );
+   output_vector.push_back( vector_copy[j] );
+  }
+
  }
 
  return output_vector;
@@ -366,7 +424,10 @@ std::cerr << "Layer error printing informations" << std::endl;
 
 private:
 	std::vector< std::shared_ptr< Neuron<T> > > nNeuronsVector; /**< vector which contains the neurons of the layer */
+	std::shared_ptr<Neuron<T>> spBiasNeuron;
 
+//auto sp = std::shared_ptr<Example>(new Example(argument));
+   //auto msp = std::make_shared<Example>(argument);
 };
 
 

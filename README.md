@@ -13,6 +13,7 @@ To install the library you must have *make* and *g++* already installed on your 
 You can install them from a Unix system running the following commands from the terminal:
 
  `sudo apt-get install build-essential`
+
  `sudo apt-get install g++`
 
 
@@ -28,7 +29,7 @@ If you are using a Unix system you can install the library very easily:
 5. If everything is right you will find the shared and static libraries (libneuroc.so, libneuroc.a) inside the folder *bin/lib*
 6. Write `sudo make install` and press Enter
 7. The installation is complete, the libraries were copied inside the system folder and they are ready to be used
-8. To remove the library you have to write `make clean` in the terminal, it will delete all the files produced during the installation
+8. To remove the library you have to write `sudo make clean` in the terminal, it will delete all the files produced during the installation
 
 
 Using the library
@@ -37,10 +38,10 @@ Using the library
 After the installation neuroc was copied on your system, inside the folder */usr/local/lib* you can see the shared library libneuroc.so and the static library libneuroc.a. To use the shared library it is necessary to link it to your project. In g++ this is very easy, here is an example:
 
 ```
-g++ -std=c++11 -I/usr/local/lib -lneuroc -c /home/username/mycode.cpp
+g++ -Wall -std=c++11 -fPIC -I/usr/local/include/neuroc -L/usr/local/lib -Wl,--no-as-needed mycode.cpp -o mycode -lneuroc
 ```
 
-This command will compile the imaginary file mycode.cpp and will produce an executable file called a.out in your project directory.
+This command will compile the imaginary file mycode.cpp and will produce an executable file called mycode in your project directory.
 Using a similar command it is also possible to use the static version of the library:
 
 ```

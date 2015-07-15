@@ -193,15 +193,17 @@ return 0;
 * Returning a vector containing pointers to neurons connections
 *
 **/
-std::vector< std::shared_ptr<T> > ReturnConnectionsVector(){
+std::vector<std::shared_ptr<T>> ReturnConnectionsVector(){
 
- std::vector< std::shared_ptr<T> > output_vector(mIncomingVector.size() + 1);
+ std::vector<std::shared_ptr<T>> output_vector;
 
  for (unsigned int i = 0; i < mIncomingVector.size(); i++){
-  output_vector.push_back(mIncomingVector[i].spWeight);
+  std::shared_ptr<T> sp_connection_value = mIncomingVector[i].spWeight;
+  output_vector.push_back(sp_connection_value);
  }
 
  return output_vector;
+
 }
 
 /**
@@ -376,7 +378,7 @@ return mIsBias;
  private:
 /** This struct contain two std::shared_ptr, one to the neuron and another to the weight */
 struct mConnectionStruct{
-std::shared_ptr< Neuron<T> > wpNeuronReference;
+std::weak_ptr< Neuron<T> > wpNeuronReference;
 std::shared_ptr< T > spWeight;
 };
 
