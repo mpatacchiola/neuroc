@@ -6,21 +6,22 @@
 #include <memory>  // shared_ptr
 #include <vector>
 #include <iostream> //printing functions
+#include <fstream> //save in XML
 
 using namespace std;
 
 /**
 * \class Network
 *
-* \ingroup NeuralNetwork
-*
-* \brief
+* \brief This is the higest class and it permits to create Networks without declaring neurons or layers
 *
 * \author Massimiliano Patacchiola
 *
-* \version 0
+* \version 1.0
 *
 * \date 2015
+*
+* \todo LoadFromXML
 *
 * Contact:
 *
@@ -140,14 +141,12 @@ try{
  for (unsigned int i=1; i<nLayersVector.size(); i++){
   nLayersVector[i]->AddBiasNeuron();
  }
-
  return true;
 
  } catch(...) {
   std::cerr << "error adding Bias neuron to the Layer" << std::endl;
   return false;
  }
-
 }
 
 /**
@@ -156,9 +155,7 @@ try{
 * @return it returns the number of Layers
 **/
 inline int ReturnNumberOfLayers(){
-
-return nLayersVector.size();
-
+ return nLayersVector.size();
 }
 
 /**
@@ -193,14 +190,72 @@ std::vector<std::shared_ptr<T>> ReturnConnectionsVector(){
    //output_vector.push_back( vector_copy[i]->ReturnConnectionsVector()[j] );
    output_vector.push_back( vector_copy[j] );
   }
-
  }
-
  return output_vector;
-
 }
 
+/**
+* It returns the number of neuron contained inside the Network
+*
+* @return it returns the number of neurons
+**/
+inline unsigned int ReturnNumberOfNeurons(){
+ unsigned int total_number = 0;
+   for (unsigned int i = 0; i < nLayersVector.size(); i++) {
+   total_number += nLayersVector[i]->ReturnNumberOfNeurons();
+  }
+ return total_number;
+}
 
+/**
+* Print information about all the neurons contained inside the Layer
+*
+**/
+void Print(){
+ try{
+
+  for (unsigned int i = 0; i < nLayersVector.size(); i++) {
+   std::cout << "NETWORK Layer[" << i << "]" << std::endl;
+   nLayersVector[i]->Print();
+  }
+
+ }catch(...){
+ std::cerr << "Layer error printing informations" << std::endl;
+ }
+}
+
+/**
+* It saves the network as an XML file
+* @param path complete path, included the file name
+* @return it returns true in case of succes otherwise it returns false
+**/
+bool SaveAsXML(std::string path){
+ std::ofstream file_stream(path, std::fstream::app); 
+
+ if(!file_stream) {
+  std::cerr<<"Cannot open the output file."<<std::endl;
+  return false;
+ }
+
+  file_stream << "<network>" <<  '\n';
+  file_stream << "<neurons_number>" << ReturnNumberOfNeurons() <<"</neurons_number>" << std::endl;
+  file_stream.close();
+
+  for (unsigned int i = 0; i < nLayersVector.size(); i++) {
+   nLayersVector[i]->SaveAsXML(path); 
+  }
+
+ std::ofstream file_stream_close(path, std::fstream::app); 
+
+ if(!file_stream_close) {
+  std::cerr<<"Cannot open the output file."<< '\n';
+  return false;
+ }
+
+ file_stream_close << "</network>" << std::endl;
+ file_stream_close.close();
+ return true;
+}
 
 
 

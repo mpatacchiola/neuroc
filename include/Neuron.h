@@ -7,17 +7,18 @@
 #include <string>
 #include <random>
 #include <iostream>  // printing functions
+#include <fstream> //save in XML
 
 /**
- * Copyright 2015 <Massimiliano Patacchiola>
+ * Copyright 2015 Massimiliano Patacchiola
  *
  * \class Neuron
  *
- * \brief
+ * \brief This is the lowest class and it represents the Neuron object
  *
  * \author Massimiliano Patacchiola
  *
- * \version 0
+ * \version 1.0
  *
  * \date 2015
  *
@@ -28,7 +29,6 @@ template<typename T>
 class Neuron {
  public:
   enum activationFunction {SIGMOID, TANH};
-  enum activationFunction {INPUT, HIDDEN, OUTPUT, BIAS};
 
   Neuron() {
    // test it on: http://webcompiler.cloudapp.net/
@@ -53,7 +53,6 @@ class Neuron {
    * @return it returns the value of the neuron after the computation
   */
   T Compute() {
-   if (mIsBias== true) return mValue = 1;  // return always 1 if the neuros is a Bias Neuron
    mValuePrevious = mValue;
    mValue = 0;  // value reset
 
@@ -64,10 +63,7 @@ class Neuron {
      mIncomingVector[i].wpNeuronReference.reset();
      mIncomingVector.erase(mIncomingVector.begin() + i); //delete the position of the destroyed neuron
     }
-
-
    }
-
 
    if (functionToUse == SIGMOID) {
     return mValue = Sigmoid(mValue);  // Sigmoid Function
@@ -86,10 +82,17 @@ class Neuron {
    * @return it returns the value of the neuron after the computation
   */
   T Compute(activationFunction functionToUse) {
-   if (mIsBias == true) return mValue = 1;  // return always 1 if the neuros is a Bias Neuron
-
    mValuePrevious = mValue;
    mValue = 0;  // value reset
+
+   for (unsigned int i = 0; i < mIncomingVector.size(); i++){
+    if(auto sp_Neuron_Reference = mIncomingVector[i].wpNeuronReference.lock()){ //this neuron still exist, calculate
+     mValue += (*mIncomingVector[i].spWeight) * (sp_Neuron_Reference->mValue);
+    }else{ //Oops, that Neuron has already been destroyed
+     mIncomingVector[i].wpNeuronReference.reset();
+     mIncomingVector.erase(mIncomingVector.begin() + i); //delete the position of the destroyed neuron
+    }
+   }
 
    switch (functionToUse) {
     case SIGMOID:
@@ -110,18 +113,18 @@ class Neuron {
 /**
 * Set the activation function used for the computation.
 * The default activation function is SIGMOID.
-* @param functionToUse this is the function to use, it is possible to choose these values: SIGMOID, TANH, BIAS
+* @param functionToUse this is the function to use, it is possible to choose these values: SIGMOID, TANH
 * @return it returns true if everything is all right, otherwise false.
 */
 inline bool SetActivationFunction(activationFunction functionToUse) {
-functionToUse = functionToUse;
-return true;
+ functionToUse = functionToUse;
+ return true;
 }
 
 /**
 * Get the activation function used for computation.
 *
-* @return it returns the activation function used: SIGMOID, TANH, BIAS
+* @return it returns the activation function used: SIGMOID, TANH
 **/
 inline activationFunction GetActivationFunction() {
 return functionToUse;
@@ -144,8 +147,8 @@ return false;
 }
 
 if (mIncomingVector.empty() == true) {
-std::cerr << "Neuron, there are not incoming connections" << std::endl;
-return false;
+//std::cerr << "Neuron, there are not incoming connections" << std::endl;
+ return false;
 }
 
 std::random_device randomDevice;
@@ -169,6 +172,31 @@ return false;
 * @param value value to write
 * @return bool it returns true if it is all right, otherwise false
 */
+bool SetConnectionValue(unsigned int connectionIndex, T value) {
+ if(connectionIndex >= mIncomingVector.size()) return false;
+ *mIncomingVector[connectionIndex].spWeight=value; 
+ return true;
+}
+
+/**
+* Get the value of an Incoming Connection.
+*
+* @param index unsiged int which identify the connection into the vector
+* @param value value to write
+* @return bool it returns true if it is all right, otherwise false
+*/
+T GetConnectionValue(unsigned int connectionIndex) {
+ if(connectionIndex >= mIncomingVector.size()) return NULL;
+ return *mIncomingVector[connectionIndex].spWeight;
+}
+
+/**
+* Set the value of an Incoming Connection.
+*
+* @param spNeuron shared_ptr which identify the incoming neuron associated with the connection
+* @param value value to write
+* @return bool it returns true if it is all right, otherwise false
+*/
 bool SetConnectionFromNeuron(std::shared_ptr< Neuron<T> > spNeuron, T value) {
 for (unsigned int i=0; i < mIncomingVector.size(); i++)
 if(mIncomingVector[i].wpNeuronReference ==  spNeuron) {*mIncomingVector[i].spWeight=value; return true;}
@@ -179,14 +207,13 @@ return false;
 /**
 * Get the value of an Incoming Connection.
 *
-* @param index unsiged int which identify the connection into the vector
+* @param spNeuron shared_ptr which identify the incoming neuron associated with the connection
 * @return it returns the value of the connection
 */
 T GetConnectionFromNeuron(std::shared_ptr< Neuron<T> > spNeuron) {
-for (unsigned int i = 0; i < mIncomingVector.size(); i++)
-if(mIncomingVector[i].wpNeuronReference.lock() ==  spNeuron) {return mIncomingVector[i].spWeight;}
-
-return 0;
+ for (unsigned int i = 0; i < mIncomingVector.size(); i++)
+ if(mIncomingVector[i].wpNeuronReference.lock() ==  spNeuron) {return mIncomingVector[i].spWeight;}
+ return 0;
 }
 
 /**
@@ -216,7 +243,7 @@ std::cout << "error ..... " << mError << std::endl;
 std::cout << "number of incoming connections ..... " << mIncomingVector.size() << std::endl;
 
 for (unsigned i = 0; i < mIncomingVector.size(); i++) {
-//std::cout << "incoming neuron[" << i << "] ..... " << mIncomingVector[i].wpNeuronReference->mValue << std::endl;
+std::cout << "incoming neuron[" << i << "] ..... " << mIncomingVector[i].wpNeuronReference.lock()->mValue << std::endl;
 std::cout << "incoming connection[" << i << "] ..... " << *mIncomingVector[i].spWeight << std::endl;
 }
 
@@ -236,12 +263,10 @@ std::cout << "number of incoming connections ..... " << mIncomingVector.size() <
 
 if (printConnections == true) {
 for (unsigned i = 0; i < mIncomingVector.size(); i++) {
-//std::cout << "incoming neuron[" << i << "] ..... " << mIncomingVector[i].wpNeuronReference->mValue << std::endl;
+std::cout << "incoming neuron[" << i << "] ..... " << mIncomingVector[i].wpNeuronReference.lock()->mValue << std::endl;
 std::cout << "incoming connection[" << i << "] ..... " << *mIncomingVector[i].spWeight << std::endl;
 }
-
 }
-
 std::cout << std::endl;
 }
 
@@ -251,7 +276,8 @@ std::cout << std::endl;
 * @param value the value to set, it is used for input neurons
 */
 inline void SetNeuronValue(T value) {
-mValue = value;
+mValuePrevious = mValue; //it saves the previous value
+mValue = value; //it set the current value
 }
 
 /**
@@ -353,27 +379,48 @@ unsigned int GetNumberOfIncomingConnections() {
 return mIncomingVector.size();
 }
 
-
 /**
-* Set the current neuron as a Bias Neuron.
-* A Bias neuron is used to shift the activation function on the x axis during the training.
-*
-* @param isBias this is a boolean value true: the neuron is set as a Bias neuron; false: the neuron is not a Bias Neuron
-*/
-inline void SetAsBiasNeuron(bool isBiasNeuron) {
-mIsBias = isBiasNeuron;
+* It saves the layer as an XML file
+* @param path complete path, included the file name
+* @return it returns true in case of succes otherwise it returns false
+**/
+bool SaveAsXML(std::string path){
+ std::ofstream file_stream(path, std::fstream::app); 
+
+ if(!file_stream) {
+  std::cerr<<"Cannot open the output file."<< std::endl;
+  return false;
+ }
+
+ file_stream << "   "  << "<neuron>" << std::endl;
+ file_stream << "    "  << "<id>" << this <<"</id>" << '\n';
+ if(functionToUse == SIGMOID) file_stream << "    "  << "<activation_function>" << "SIGMOID" <<"</activation_function>" << '\n';
+ if(functionToUse == TANH) file_stream << "    "  << "<activation_function>" << "TANH" <<"</activation_function>" << '\n';
+ file_stream << "    "  << "<value>" << mValue <<"</value>" << '\n';
+ file_stream << "    "  << "<previous_value>" << mValuePrevious <<"</previous_value>" << '\n';
+ file_stream << "    "  << "<error>" << mError <<"</error>" << '\n';
+ file_stream << "    "  << "<previous_error>" << mErrorPrevious <<"</previous_error>" << '\n';
+ file_stream << "    "  << "<connections_number>" << mIncomingVector.size() <<"</connections_number>" << '\n';
+ file_stream << "    "  << "<connections_vector>";
+
+ for (unsigned i = 0; i < mIncomingVector.size(); i++) {
+  file_stream << *mIncomingVector[i].spWeight << ";";
+ }
+ file_stream<<"</connections_vector>" << '\n';
+
+ file_stream << "    "  << "<references_vector>";
+ for (unsigned i = 0; i < mIncomingVector.size(); i++) {
+  file_stream << mIncomingVector[i].wpNeuronReference.lock() << ";";
+ }
+ file_stream << "</references_vector>" << '\n';
+
+ file_stream << "   "  << "</neuron>" << std::endl;
+
+ file_stream.close();
+
+ return true;
 }
 
-
-/**
- * Return a value which indicate if the current neuron is a Bias Neuron.
- * A Bias neuron is used to shift the activation function on the x axis during the training.
- *
- * @return boolean true: the neuron is set as a Bias neuron; false: the neuron is not a Bias Neuron
- */
-inline bool IsBiasNeuron() {
-return mIsBias;
-}
 
  private:
 /** This struct contain two std::shared_ptr, one to the neuron and another to the weight */
@@ -386,7 +433,6 @@ T mValue = 0;  /**< value obtained after the computation */
 T mValuePrevious = 0;  /**< value obtained after the computation at n-1 */
 T mError = 0;  /**< error obtained after the error backpropagation */
 T mErrorPrevious = 0; /**< error obtained after the error backpropagation at n-1 */
-bool mIsBias = false;
 activationFunction functionToUse = SIGMOID;
 std::vector<mConnectionStruct> mIncomingVector;
 

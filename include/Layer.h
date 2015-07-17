@@ -5,27 +5,26 @@
 #include <iostream> //printing functions
 #include <memory>  // shared_ptr
 #include <cassert>
+#include <fstream> //save in XML
 
 
 /**
-* Copyright 2015 <Massimiliano Patacchiola>
+* Copyright 2015 Massimiliano Patacchiola
 *
 * \class Layer
 *
-*
 * \brief This class is the middle level of the neural network library. It is a container for neurons. It allows the use of different floating points.
 *
-* \author $Author: Massimiliano Patacchiola $
+* \author Massimiliano Patacchiola
 *
-* \version $Revision: 0 $
+* \version 1.0
 *
-* \date $Date: 2015 $
+* \date 2015
 *
 * \todo RemoveBiasNeuron
+* \todo AppendLayer(Layer<T> layerToAppend)
 *
 * Contact:
-*
-* $Id:  $
 *
 */
 template<typename T>
@@ -88,8 +87,8 @@ if(HasBias == true){
 **/
 const std::shared_ptr< Neuron<T> >& operator[](unsigned int index)
 {
-assert(index < nNeuronsVector.size() && "Out of range index.");
-return nNeuronsVector[index];
+ assert(index < nNeuronsVector.size() && "Out of range index.");
+ return nNeuronsVector[index];
 }
 
 /**
@@ -98,7 +97,7 @@ return nNeuronsVector[index];
 * @return it returns the vector containing the double, in case of problems it returns an empty vector and print an error
 **/
 inline bool IsEmpty() {
-return nNeuronsVector.empty();
+ return nNeuronsVector.empty();
 }
 
 /**
@@ -128,17 +127,17 @@ std::vector<T> Compute() {
 **/
 std::vector<T> GetLayerValue(){
 
-std::vector<T> outputVector(nNeuronsVector.size() + 1);
-try {
-for(unsigned int i = 0; i < nNeuronsVector.size(); i++)
-outputVector.push_back(nNeuronsVector[i]->GetNeuronValue());
+ std::vector<T> outputVector(nNeuronsVector.size() + 1);
+ try {
+  for(unsigned int i = 0; i < nNeuronsVector.size(); i++)
+  outputVector.push_back(nNeuronsVector[i]->GetNeuronValue());
 
-return outputVector;
+  return outputVector;
 
-} catch(...) {
-std::cerr << "Layer error setting the value of the neurons" << std::endl;
-return outputVector;
-}
+ } catch(...) {
+  std::cerr << "Layer error setting the value of the neurons" << std::endl;
+  return outputVector;
+ }
 }
 
 /**
@@ -359,10 +358,8 @@ return NULL;
 *
 * @return it returns the number of neurons
 **/
-inline int ReturnNumberOfNeurons(){
-
-return nNeuronsVector.size();
-
+inline unsigned int ReturnNumberOfNeurons(){
+ return nNeuronsVector.size();
 }
 
 /**
@@ -370,11 +367,9 @@ return nNeuronsVector.size();
 *
 **/
 std::vector< std::shared_ptr<T> > ReturnConnectionsVector(){
-
  std::vector< std::shared_ptr<T> > output_vector;
 
  for (unsigned int i=0; i<nNeuronsVector.size(); i++){
-
   std::vector<std::shared_ptr<T>> vector_copy(nNeuronsVector[i]->ReturnConnectionsVector());
   unsigned int neuron_vector_size = vector_copy.size();
 
@@ -382,11 +377,8 @@ std::vector< std::shared_ptr<T> > ReturnConnectionsVector(){
    //output_vector.push_back( nNeuronsVector[i]->ReturnConnectionsVector()[j] );
    output_vector.push_back( vector_copy[j] );
   }
-
  }
-
  return output_vector;
-
 }
 
 /**
@@ -394,13 +386,16 @@ std::vector< std::shared_ptr<T> > ReturnConnectionsVector(){
 *
 **/
 void Print(){
-try{
+ try{
 
-for (unsigned int i=0; i<nNeuronsVector.size(); i++) nNeuronsVector[i]->Print();
+  for (unsigned int i = 0; i < nNeuronsVector.size(); i++) {
+   std::cout << "LAYER neuron[" << i << "]" << std::endl;
+   nNeuronsVector[i]->Print();
+  }
 
-}catch(...){
-std::cerr << "Layer error printing informations" << std::endl;
-}
+ }catch(...){
+ std::cerr << "Layer error printing informations" << std::endl;
+ }
 }
 
 /**
@@ -421,6 +416,50 @@ nNeuronsVector[i]->Print(tag, printConnections);
 std::cerr << "Layer error printing informations" << std::endl;
 }
 }
+
+/**
+* It returns true if the layer has an input Bias
+**/
+bool HasBias(){
+ if(spBiasNeuron == nullptr) return false;
+ else return true;
+}
+
+/**
+* It saves the layer as an XML file
+* @param path complete path, included the file name
+* @return it returns true in case of succes otherwise it returns false
+**/
+bool SaveAsXML(std::string path){
+ std::ofstream file_stream(path, std::fstream::app); 
+
+ if(!file_stream) {
+  std::cerr<<"Cannot open the output file."<< std::endl;
+  return false;
+ }
+
+  file_stream << "  " << "<layer>" <<  '\n';
+  file_stream << "  " << "<neurons_number>" << nNeuronsVector.size() <<"</neurons_number>" <<  '\n';
+  file_stream << "  " << "<has_bias>" << HasBias() <<"</has_bias>" << std::endl;
+  file_stream.close();
+
+  if(HasBias() == true) spBiasNeuron->SaveAsXML(path);
+
+  for (unsigned int i = 0; i < nNeuronsVector.size(); i++) {
+   nNeuronsVector[i]->SaveAsXML(path);
+  }
+
+ std::ofstream file_stream_close(path, std::fstream::app); 
+
+ if(!file_stream_close) {
+  std::cerr<<"Cannot open the output file."<< std::endl;
+  return false;
+ }
+  file_stream_close << "  " << "</layer>" << std::endl;
+  file_stream_close.close();
+ return true;
+}
+
 
 private:
 	std::vector< std::shared_ptr< Neuron<T> > > nNeuronsVector; /**< vector which contains the neurons of the layer */
