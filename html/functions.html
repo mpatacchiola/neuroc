@@ -76,6 +76,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="#index_a"><span>a</span></a></li>
       <li><a href="#index_c"><span>c</span></a></li>
+      <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
       <li><a href="#index_h"><span>h</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
@@ -128,6 +129,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </ul>
 
 
+<h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
+<li>Finalise()
+: <a class="el" href="class_parser.html#a31759432f64311455988c76e69f60e3e">Parser</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
 <li>GetActivationFunction()
 : <a class="el" href="class_neuron.html#a031f662e835fd73c94552a39d5a01797">Neuron&lt; T &gt;</a>
@@ -147,8 +155,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>GetNeuronValue()
 : <a class="el" href="class_neuron.html#ab1c9d034427884f2b2e93b7a7b180aab">Neuron&lt; T &gt;</a>
 </li>
-<li>GetNumberOfIncomingConnections()
-: <a class="el" href="class_neuron.html#a8ff425a80f32cff627e1c276f656d1f5">Neuron&lt; T &gt;</a>
+<li>GetVectorOfConnections()
+: <a class="el" href="class_layer.html#a26325a93dc9b58ef8850005a61a41bb5">Layer&lt; T &gt;</a>
+, <a class="el" href="class_network.html#a6b2d486e08dcb8effed6251caa0a373a">Network&lt; T &gt;</a>
+, <a class="el" href="class_neuron.html#a99e7139c4406d78eff96a289d842b963">Neuron&lt; T &gt;</a>
+</li>
+<li>GetVectorOfPointersToConnections()
+: <a class="el" href="class_layer.html#ac90b5bae8ce3fb93a77b7b6a4216958b">Layer&lt; T &gt;</a>
+, <a class="el" href="class_network.html#ae189a1e1610634c6c6a7f380ed8d95f2">Network&lt; T &gt;</a>
+, <a class="el" href="class_neuron.html#a11004a832d5cefdfadb289d80b31bc13">Neuron&lt; T &gt;</a>
 </li>
 </ul>
 
@@ -161,6 +176,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 
 <h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
+<li>Initialise()
+: <a class="el" href="class_parser.html#a84edb4fd8d8d9c7daa6b030d124f5150">Parser</a>
+</li>
 <li>IsEmpty()
 : <a class="el" href="class_layer.html#a3e4b30ebd4b3b986be618341b8e93c1a">Layer&lt; T &gt;</a>
 </li>
@@ -177,7 +195,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
 <li>operator[]()
 : <a class="el" href="class_layer.html#ab6e85fa0b63e6b7d359b555f67181d60">Layer&lt; T &gt;</a>
-, <a class="el" href="class_network.html#acf11f56201cea8715af9feb8061d41b4">Network&lt; T &gt;</a>
+, <a class="el" href="class_network.html#ae4183d5d350e74924449a8c8c9f3cfc0">Network&lt; T &gt;</a>
 </li>
 </ul>
 
@@ -204,20 +222,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>RemoveNeuron()
 : <a class="el" href="class_layer.html#af1910906ff4fc7da8ec8159b0bd4e1fb">Layer&lt; T &gt;</a>
 </li>
-<li>ReturnConnectionsVector()
-: <a class="el" href="class_layer.html#a2aec9502bd44329b72e8e2f18fac2212">Layer&lt; T &gt;</a>
-, <a class="el" href="class_network.html#a1ba47ae1d6dd85536a4df4ef8e36bf70">Network&lt; T &gt;</a>
-, <a class="el" href="class_neuron.html#aeb320d3914d6d2060c3e78bdb34cc9be">Neuron&lt; T &gt;</a>
+<li>ReturnNumberOfConnections()
+: <a class="el" href="class_network.html#af0f6881884ced3633bd0d05af18beea8">Network&lt; T &gt;</a>
+</li>
+<li>ReturnNumberOfIncomingConnections()
+: <a class="el" href="class_layer.html#aacf8de76dee0a2d3c9b38e20457700fb">Layer&lt; T &gt;</a>
+, <a class="el" href="class_neuron.html#ad333f53ff8d1948b205789ac4b7b908a">Neuron&lt; T &gt;</a>
 </li>
 <li>ReturnNumberOfLayers()
 : <a class="el" href="class_network.html#a5d3c05dc69a0f3bd284adb34e59b5b1a">Network&lt; T &gt;</a>
+, <a class="el" href="class_parser.html#afd68c8694b232cc663957a6ae07f6aad">Parser</a>
+</li>
+<li>ReturnNumberOfNetworks()
+: <a class="el" href="class_parser.html#a60bfa9ffe6cc0f3a53f67a7967239d39">Parser</a>
 </li>
 <li>ReturnNumberOfNeurons()
 : <a class="el" href="class_layer.html#a4aa9c8f9572f6e2fd5d6a705cf3d3217">Layer&lt; T &gt;</a>
 , <a class="el" href="class_network.html#a3c1ac39fba741f4b905c94491c493c2c">Network&lt; T &gt;</a>
+, <a class="el" href="class_parser.html#a8e11d9659548d11a506790d34beabcae">Parser</a>
+</li>
+<li>ReturnSharedPointerToLayer()
+: <a class="el" href="class_network.html#a5160801f755bc1fbf5d4b4b1e95bcc02">Network&lt; T &gt;</a>
 </li>
 <li>ReturnSharedPointerToNeuron()
 : <a class="el" href="class_layer.html#ac5eaecca88a794702a88139e4bbebdb5">Layer&lt; T &gt;</a>
+</li>
+<li>ReturnStringXML()
+: <a class="el" href="class_layer.html#a7fb8a2aad2bb8182f1787957458778f6">Layer&lt; T &gt;</a>
+, <a class="el" href="class_network.html#ad4ba79901fb456e2dcaec2cedcd9bd19">Network&lt; T &gt;</a>
+, <a class="el" href="class_neuron.html#a0dc3557cb274bffe12ce8eca46d9aace">Neuron&lt; T &gt;</a>
 </li>
 </ul>
 
@@ -251,11 +284,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 : <a class="el" href="class_layer.html#a3fc18f8a64075b244e22f281402ac200">Layer&lt; T &gt;</a>
 , <a class="el" href="class_neuron.html#ae171c3e0e292420eb994446c0239753a">Neuron&lt; T &gt;</a>
 </li>
+<li>SetVectorOfConnections()
+: <a class="el" href="class_layer.html#a16cbdc658a4f4b95469529b239b4e15d">Layer&lt; T &gt;</a>
+, <a class="el" href="class_network.html#a74cb49aa8a6553f4e0e0cabf9a043882">Network&lt; T &gt;</a>
+, <a class="el" href="class_neuron.html#a37857e14579760e07d97944acde393f7">Neuron&lt; T &gt;</a>
+</li>
+<li>SetVectorOfPointersToConnections()
+: <a class="el" href="class_layer.html#a69e1ea4df58b2d72d10f7cd1e6e2ea0d">Layer&lt; T &gt;</a>
+, <a class="el" href="class_network.html#ae4b4dd4fd670f5f5b76480a6778dbe44">Network&lt; T &gt;</a>
+, <a class="el" href="class_neuron.html#aa29387f122b109ee63c1f63dbce1dc1a">Neuron&lt; T &gt;</a>
+</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jul 17 2015 16:59:19 for neuroc by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 23 2015 18:06:48 for neuroc by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

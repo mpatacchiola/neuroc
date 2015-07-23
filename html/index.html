@@ -85,6 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Safe memory management using Smart Pointers</li>
 <li>Object Oriented approach</li>
 <li>Multilayer feedforward Networks</li>
+<li>Template classes for float or double objects</li>
 <li>Sparse connected Networks</li>
 <li>Multiple Activation Functions</li>
 </ul>
@@ -110,17 +111,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>This command will compile the imaginary file mycode.cpp and will produce an executable file called mycode in your project directory. To check if the shared library is linked to your executable, you can run the Unix command ldd. Using g++ it is also possible to use the static version of the library:</p>
 <p><code>g++ -std=c++11 -I/usr/local/include/neuroc -L/usr/local/lib -static /home/username/mycode.cpp -o mycode -lneuroc</code></p>
 <p>In this case the library will be statically included inside your code. To integrate neuroc in a different environment (ex Eclipse, Code::Blocks, etc) follow the istructions given by the producer on how to integrate an external shared library or a static one.</p>
-<h2>Code Examples </h2>
+<h2>Examples </h2>
 <p>Neuroc permits to create diffrent kind of network. With only a single line of code it is possible to create a multilayer perceptron:</p>
 <p><code><a class="el" href="class_network.html" title="This is the higest class and it permits to create Networks without declaring neurons or layers...">Network</a>&lt;float&gt; myNet(10, 5, 1); //Feedforward network with: 10 input, 5 hidden, 1 output</code></p>
 <p>To create a <a class="el" href="class_network.html" title="This is the higest class and it permits to create Networks without declaring neurons or layers...">Network</a> with more than three layers you can write:</p>
 <p><code><a class="el" href="class_network.html" title="This is the higest class and it permits to create Networks without declaring neurons or layers...">Network</a>&lt;float&gt; myNet({10, 5, 3, 2, 1}); //Feedforward network with: 10 input, 5 hidden, 3 hidden, 2 hidden, 1 output</code></p>
-<p>You can save the <a class="el" href="class_network.html" title="This is the higest class and it permits to create Networks without declaring neurons or layers...">Network</a> in an XML file:</p>
-<p><code>myNet.SaveAsXML("/home/user/mynet.xml"); //its saves the network</code> </p>
+<p>You can save the <a class="el" href="class_network.html" title="This is the higest class and it permits to create Networks without declaring neurons or layers...">Network</a> in an XML file using the class <a class="el" href="class_parser.html" title="This class permits to save networks in XML files. ">Parser</a>:</p>
+<p><code><a class="el" href="class_parser.html" title="This class permits to save networks in XML files. ">Parser</a> myParser;</code> <code>myParser.Initialise("/home/user/mynet.xml");</code> <code>myParser.SaveNetwork(myNetwork);</code> <code>myParser.Finalise();</code></p>
+<h2>License </h2>
+<p><em>neuroc - c++11 Artificial Neural Networks library</em></p>
+<p><em>Copyright (C) 2015 Massimiliano Patacchiola</em></p>
+<p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jul 17 2015 16:59:19 for neuroc by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 23 2015 18:06:48 for neuroc by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

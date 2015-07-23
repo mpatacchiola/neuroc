@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['operator_5b_5d',['operator[]',['../class_layer.html#ab6e85fa0b63e6b7d359b555f67181d60',1,'Layer::operator[]()'],['../class_network.html#acf11f56201cea8715af9feb8061d41b4',1,'Network::operator[]()']]]
+  ['network',['Network',['../class_network.html',1,'Network&lt; T &gt;'],['../class_network.html#aa2c50d062c4c56909d4cba2e254c33bf',1,'Network::Network(std::initializer_list&lt; int &gt; list)'],['../class_network.html#a17674924c618d2745d6573a0ac540962',1,'Network::Network(unsigned int numberOfInputNeurons, unsigned int numberOfOutputNeurons)'],['../class_network.html#afb687e9bc456c26e5b16f81026f22b6d',1,'Network::Network(unsigned int numberOfInputNeurons, unsigned int numberOfHiddenNeurons, unsigned int numberOfOutputNeurons)']]],
+  ['neuron',['Neuron',['../class_neuron.html',1,'']]]
 ];

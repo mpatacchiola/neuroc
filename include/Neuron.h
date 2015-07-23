@@ -1,13 +1,34 @@
+/* 
+ * neuroc - c++11 Artificial Neural Networks library
+ * Copyright (C) 2015  Massimiliano Patacchiola
+ * Author: Massimiliano Patacchiola
+ * email:  
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+*/
+
 #ifndef NEURON_H
 #define NEURON_H
 
 #include <vector>
 #include <memory>  // shared_ptr
 #include <cmath>  //  "exp" function
+#include <math.h>  //  "isnan" function
 #include <string>
 #include <random>
 #include <iostream>  // printing functions
 #include <fstream> //save in XML
+#include <sstream>
 
 /**
  * Copyright 2015 Massimiliano Patacchiola
@@ -198,10 +219,10 @@ T GetConnectionValue(unsigned int connectionIndex) {
 * @return bool it returns true if it is all right, otherwise false
 */
 bool SetConnectionFromNeuron(std::shared_ptr< Neuron<T> > spNeuron, T value) {
-for (unsigned int i=0; i < mIncomingVector.size(); i++)
-if(mIncomingVector[i].wpNeuronReference ==  spNeuron) {*mIncomingVector[i].spWeight=value; return true;}
+ for (unsigned int i=0; i < mIncomingVector.size(); i++)
+ if(mIncomingVector[i].wpNeuronReference ==  spNeuron) {*mIncomingVector[i].spWeight=value; return true;}
 
-return false;
+ return false;
 }
 
 /**
@@ -217,21 +238,64 @@ T GetConnectionFromNeuron(std::shared_ptr< Neuron<T> > spNeuron) {
 }
 
 /**
-* Returning a vector containing pointers to neurons connections
-*
+* Returning a vector containing smart-pointers to neuron connections
+* The vector start with the first incoming connection and it ends with the last incoming connection
+* If the Neuron has a Bias Unit then the first connection of the neuron is the Bias incoming connection
+* @return it returns a vector of smart-pointers to double or float
 **/
-std::vector<std::shared_ptr<T>> ReturnConnectionsVector(){
-
+std::vector<std::shared_ptr<T>> GetVectorOfPointersToConnections(){
  std::vector<std::shared_ptr<T>> output_vector;
 
  for (unsigned int i = 0; i < mIncomingVector.size(); i++){
   std::shared_ptr<T> sp_connection_value = mIncomingVector[i].spWeight;
   output_vector.push_back(sp_connection_value);
  }
-
  return output_vector;
-
 }
+
+/**
+* Returning a vector containing the values of the neuron connections
+* The vector start with the first incoming connection and it ends with the last incoming connection
+* If the Neuron has a Bias Unit then the first connection of the neuron is the Bias incoming connection
+* @return it returns a vector of values
+**/
+std::vector<T> GetVectorOfConnections(){
+ std::vector<T> output_vector;
+
+ for (unsigned int i = 0; i < mIncomingVector.size(); i++){
+  output_vector.push_back(*mIncomingVector[i].spWeight);
+ }
+ return output_vector;
+}
+
+/**
+* It permits to set the vector of the incoming connections to the neuron
+*
+* @param connectionsVector a vector of shared pointer to floating point numbers
+**/
+bool SetVectorOfPointersToConnections(std::vector<std::shared_ptr<T>>& connectionsVector){
+ if(connectionsVector.size() != mIncomingVector.size()) return false;
+
+ for (unsigned int i = 0; i < mIncomingVector.size(); i++){
+  mIncomingVector[i].spWeight = connectionsVector[i];
+ }
+ return true;
+}
+
+/**
+* It permits to set the vector of the incoming connections to the neuron
+*
+* @param connectionsVector a vector of shared pointer to floating point numbers
+**/
+bool SetVectorOfConnections(std::vector<T>& connectionsVector){
+ if(connectionsVector.size() != mIncomingVector.size()) return false;
+
+ for (unsigned int i = 0; i < mIncomingVector.size(); i++){
+  mIncomingVector[i].spWeight = std::make_shared<T>(connectionsVector[i]);
+ }
+ return true;
+}
+
 
 /**
 * Print on terminal informations about the neuron.
@@ -375,7 +439,7 @@ return false;
 *
 * @return unisgned int which represents the number of connections
 */
-unsigned int GetNumberOfIncomingConnections() {
+unsigned int ReturnNumberOfIncomingConnections() {
 return mIncomingVector.size();
 }
 
@@ -386,41 +450,77 @@ return mIncomingVector.size();
 **/
 bool SaveAsXML(std::string path){
  std::ofstream file_stream(path, std::fstream::app); 
-
+std::ostringstream oss;
  if(!file_stream) {
   std::cerr<<"Cannot open the output file."<< std::endl;
   return false;
  }
 
- file_stream << "   "  << "<neuron>" << std::endl;
- file_stream << "    "  << "<id>" << this <<"</id>" << '\n';
+ file_stream << "<neuron>" << std::endl;
+ file_stream << "<id>" << this <<"</id>" << '\n';
  if(functionToUse == SIGMOID) file_stream << "    "  << "<activation_function>" << "SIGMOID" <<"</activation_function>" << '\n';
  if(functionToUse == TANH) file_stream << "    "  << "<activation_function>" << "TANH" <<"</activation_function>" << '\n';
- file_stream << "    "  << "<value>" << mValue <<"</value>" << '\n';
- file_stream << "    "  << "<previous_value>" << mValuePrevious <<"</previous_value>" << '\n';
- file_stream << "    "  << "<error>" << mError <<"</error>" << '\n';
- file_stream << "    "  << "<previous_error>" << mErrorPrevious <<"</previous_error>" << '\n';
- file_stream << "    "  << "<connections_number>" << mIncomingVector.size() <<"</connections_number>" << '\n';
- file_stream << "    "  << "<connections_vector>";
+ file_stream << "<value>" << mValue <<"</value>" << '\n';
+ file_stream << "<previous_value>" << mValuePrevious <<"</previous_value>" << '\n';
+ file_stream << "<error>" << mError <<"</error>" << '\n';
+ file_stream << "<previous_error>" << mErrorPrevious <<"</previous_error>" << '\n';
+ file_stream << "<connections_number>" << mIncomingVector.size() <<"</connections_number>" << '\n';
+ file_stream  << "<connections_vector>";
 
  for (unsigned i = 0; i < mIncomingVector.size(); i++) {
   file_stream << *mIncomingVector[i].spWeight << ";";
  }
  file_stream<<"</connections_vector>" << '\n';
 
- file_stream << "    "  << "<references_vector>";
+ file_stream << "<references_vector>";
  for (unsigned i = 0; i < mIncomingVector.size(); i++) {
   file_stream << mIncomingVector[i].wpNeuronReference.lock() << ";";
  }
  file_stream << "</references_vector>" << '\n';
 
- file_stream << "   "  << "</neuron>" << std::endl;
+ file_stream << "</neuron>" << std::endl;
 
  file_stream.close();
 
  return true;
 }
 
+/**
+* It saves the layer as an XML file
+* @param path complete path, included the file name
+* @return it returns true in case of succes otherwise it returns false
+**/
+std::string ReturnStringXML(){
+
+ std::ostringstream string_stream; 
+
+ string_stream << "<neuron>" << std::endl;
+ string_stream << "<id>" << this <<"</id>" << '\n';
+ if(functionToUse == SIGMOID) string_stream << "<activation_function>" << "SIGMOID" <<"</activation_function>" << '\n';
+ if(functionToUse == TANH) string_stream << "<activation_function>" << "TANH" <<"</activation_function>" << '\n';
+ string_stream << "<value>" << mValue <<"</value>" << '\n';
+ string_stream << "<previous_value>" << mValuePrevious <<"</previous_value>" << '\n';
+ string_stream << "<error>" << mError <<"</error>" << '\n';
+ string_stream << "<previous_error>" << mErrorPrevious <<"</previous_error>" << '\n';
+ string_stream << "<connections_number>" << mIncomingVector.size() <<"</connections_number>" << '\n';
+ string_stream << "<connections_vector>";
+
+ for (unsigned i = 0; i < mIncomingVector.size(); i++) {
+  string_stream << *mIncomingVector[i].spWeight << ";";
+ }
+ string_stream <<"</connections_vector>" << '\n';
+
+ string_stream << "<references_vector>";
+ for (unsigned i = 0; i < mIncomingVector.size(); i++) {
+  string_stream << mIncomingVector[i].wpNeuronReference.lock() << ";";
+ }
+ string_stream << "</references_vector>" << '\n';
+
+ string_stream << "</neuron>" << std::endl;
+
+
+ return string_stream.str();
+}
 
  private:
 /** This struct contain two std::shared_ptr, one to the neuron and another to the weight */
@@ -436,7 +536,12 @@ T mErrorPrevious = 0; /**< error obtained after the error backpropagation at n-1
 activationFunction functionToUse = SIGMOID;
 std::vector<mConnectionStruct> mIncomingVector;
 
-inline T Sigmoid(T input) { return ( 1 / (1 + exp(-input)) ); }
+inline T Sigmoid(T input) { 
+ T result =  ( 1 / (1 + exp(-input)) );
+ if( isnan(result) ) return 0; //protection against large negative number
+ return result; 
+}
+
 inline T SigmoidDerivative(T input) { return (1 / (1 + exp(-input))) * (1 - (1 / (1 + exp(-input)))); }
 inline T TanhDerivative(T input) { return (1-tanh(input)) * (1+tanh(input)); }
 };  // Class Neuron

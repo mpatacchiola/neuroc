@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['isempty',['IsEmpty',['../class_layer.html#a3e4b30ebd4b3b986be618341b8e93c1a',1,'Layer']]]
+  ['hasbias',['HasBias',['../class_layer.html#a5c68004d9da52b17c2778f5aaa960b8a',1,'Layer']]]
 ];

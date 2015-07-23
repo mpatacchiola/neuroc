@@ -9,6 +9,7 @@ Welcome in the neuroc repository! I designed this library after reading the exce
 - Safe memory management using Smart Pointers
 - Object Oriented approach
 - Multilayer feedforward Networks
+- Template classes for float or double objects
 - Sparse connected Networks
 - Multiple Activation Functions
 
@@ -56,23 +57,36 @@ In this case the library will be statically included inside your code.
 To integrate neuroc in a different environment (ex Eclipse, Code::Blocks, etc) follow the istructions given by the producer on how to integrate an external shared library or a static one.
 
 
-Code Examples
+Examples
 --------------
 
 Neuroc permits to create diffrent kind of network. With only a single line of code it is possible to create a multilayer perceptron:
 
 `Network<float> myNet(10, 5, 1);  //Feedforward network with: 10 input, 5 hidden, 1 output`
 
+
 To create a Network with more than three layers you can write:
 
 `Network<float> myNet({10, 5, 3, 2, 1});  //Feedforward network with: 10 input, 5 hidden, 3 hidden, 2 hidden, 1 output`
 
-You can save the Network in an XML file:
 
-`myNet.SaveAsXML("/home/user/mynet.xml");  //its saves the network`
+You can save the Network in an XML file using the class Parser:
+
+`Parser myParser;`
+`myParser.Initialise("/home/user/mynet.xml");`
+`myParser.SaveNetwork(myNetwork);`
+`myParser.Finalise();`
 
 
+License
+--------------
 
+*neuroc - c++11 Artificial Neural Networks library*
 
+*Copyright (C) 2015  Massimiliano Patacchiola*
+
+This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 

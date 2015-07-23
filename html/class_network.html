@@ -103,23 +103,41 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a17674924c618d2745d6573a0ac540962"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb687e9bc456c26e5b16f81026f22b6d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#afb687e9bc456c26e5b16f81026f22b6d">Network</a> (unsigned int numberOfInputNeurons, unsigned int numberOfHiddenNeurons, unsigned int numberOfOutputNeurons)</td></tr>
 <tr class="separator:afb687e9bc456c26e5b16f81026f22b6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4183d5d350e74924449a8c8c9f3cfc0"><td class="memItemLeft" align="right" valign="top">const std::shared_ptr&lt; <a class="el" href="class_layer.html">Layer</a><br class="typebreak"/>
+&lt; T &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#ae4183d5d350e74924449a8c8c9f3cfc0">operator[]</a> (int index)</td></tr>
+<tr class="separator:ae4183d5d350e74924449a8c8c9f3cfc0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a32105c92232a9418934bf8951a3de3"><td class="memItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#a9a32105c92232a9418934bf8951a3de3">Compute</a> (std::vector&lt; T &gt; InputVector)</td></tr>
 <tr class="separator:a9a32105c92232a9418934bf8951a3de3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6027a831fbe7bf028257bed52aebbf44"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#a6027a831fbe7bf028257bed52aebbf44">AddBiasNeuron</a> ()</td></tr>
 <tr class="separator:a6027a831fbe7bf028257bed52aebbf44"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5d3c05dc69a0f3bd284adb34e59b5b1a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#a5d3c05dc69a0f3bd284adb34e59b5b1a">ReturnNumberOfLayers</a> ()</td></tr>
 <tr class="separator:a5d3c05dc69a0f3bd284adb34e59b5b1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf11f56201cea8715af9feb8061d41b4"><td class="memItemLeft" align="right" valign="top">const std::shared_ptr&lt; <a class="el" href="class_layer.html">Layer</a><br class="typebreak"/>
-&lt; T &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#acf11f56201cea8715af9feb8061d41b4">operator[]</a> (unsigned int index)</td></tr>
-<tr class="separator:acf11f56201cea8715af9feb8061d41b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1ba47ae1d6dd85536a4df4ef8e36bf70"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#a1ba47ae1d6dd85536a4df4ef8e36bf70">ReturnConnectionsVector</a> ()</td></tr>
-<tr class="separator:a1ba47ae1d6dd85536a4df4ef8e36bf70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5160801f755bc1fbf5d4b4b1e95bcc02"><td class="memItemLeft" align="right" valign="top">std::shared_ptr&lt; <a class="el" href="class_layer.html">Layer</a>&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#a5160801f755bc1fbf5d4b4b1e95bcc02">ReturnSharedPointerToLayer</a> (unsigned int index)</td></tr>
+<tr class="separator:a5160801f755bc1fbf5d4b4b1e95bcc02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae189a1e1610634c6c6a7f380ed8d95f2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::shared_ptr&lt; T &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#ae189a1e1610634c6c6a7f380ed8d95f2">GetVectorOfPointersToConnections</a> ()</td></tr>
+<tr class="separator:ae189a1e1610634c6c6a7f380ed8d95f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b2d486e08dcb8effed6251caa0a373a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; T &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#a6b2d486e08dcb8effed6251caa0a373a">GetVectorOfConnections</a> ()</td></tr>
+<tr class="separator:a6b2d486e08dcb8effed6251caa0a373a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4b4dd4fd670f5f5b76480a6778dbe44"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#ae4b4dd4fd670f5f5b76480a6778dbe44">SetVectorOfPointersToConnections</a> (std::vector&lt; std::shared_ptr&lt; T &gt;&gt; &amp;connectionsVector)</td></tr>
+<tr class="separator:ae4b4dd4fd670f5f5b76480a6778dbe44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74cb49aa8a6553f4e0e0cabf9a043882"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#a74cb49aa8a6553f4e0e0cabf9a043882">SetVectorOfConnections</a> (std::vector&lt; T &gt; &amp;connectionsVector)</td></tr>
+<tr class="separator:a74cb49aa8a6553f4e0e0cabf9a043882"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c1ac39fba741f4b905c94491c493c2c"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#a3c1ac39fba741f4b905c94491c493c2c">ReturnNumberOfNeurons</a> ()</td></tr>
 <tr class="separator:a3c1ac39fba741f4b905c94491c493c2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab6b185db6668ede4cb2f875b4b092d9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aab6b185db6668ede4cb2f875b4b092d9"></a>
+double&#160;</td><td class="memItemRight" valign="bottom"><b>GetMark</b> ()</td></tr>
+<tr class="separator:aab6b185db6668ede4cb2f875b4b092d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f075c61afe94da8d2606d366b363013"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7f075c61afe94da8d2606d366b363013"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>SetMark</b> (double value)</td></tr>
+<tr class="separator:a7f075c61afe94da8d2606d366b363013"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b7c41ddbfbb95e345194f69c527c5eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#a6b7c41ddbfbb95e345194f69c527c5eb">Print</a> ()</td></tr>
 <tr class="separator:a6b7c41ddbfbb95e345194f69c527c5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0f6881884ced3633bd0d05af18beea8"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#af0f6881884ced3633bd0d05af18beea8">ReturnNumberOfConnections</a> ()</td></tr>
+<tr class="separator:af0f6881884ced3633bd0d05af18beea8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8472677148c4709e9381e557fc58d7ed"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#a8472677148c4709e9381e557fc58d7ed">SaveAsXML</a> (std::string path)</td></tr>
 <tr class="separator:a8472677148c4709e9381e557fc58d7ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4ba79901fb456e2dcaec2cedcd9bd19"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_network.html#ad4ba79901fb456e2dcaec2cedcd9bd19">ReturnStringXML</a> ()</td></tr>
+<tr class="separator:ad4ba79901fb456e2dcaec2cedcd9bd19"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><h3>template&lt;typename T&gt;<br/>
@@ -136,7 +154,7 @@ class Network&lt; T &gt;</h3>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -170,7 +188,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -214,7 +232,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -266,7 +284,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -293,7 +311,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -317,11 +335,65 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="acf11f56201cea8715af9feb8061d41b4"></a>
+<a class="anchor" id="a6b2d486e08dcb8effed6251caa0a373a"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;T&gt; <a class="el" href="class_network.html">Network</a>&lt; T &gt;::GetVectorOfConnections </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returning a vector containing neurons connections The vector start with the first incoming connection of the first neuron of the first layer and it ends with the last incoming connection of the last neuron of the last layer If the network has Bias Units then the first connection of the neuron is the Bias incoming connection </p>
+<dl class="section return"><dt>Returns</dt><dd>it returns a vector of double or float </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae189a1e1610634c6c6a7f380ed8d95f2"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::shared_ptr&lt;T&gt; &gt; <a class="el" href="class_network.html">Network</a>&lt; T &gt;::GetVectorOfPointersToConnections </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Returning a vector containing smart-pointers to neurons connections The vector start with the first incoming connection of the first neuron of the first layer and it ends with the last incoming connection of the last neuron of the last layer If the network has Bias Units then the first connection of the neuron is the Bias incoming connection </p>
+<dl class="section return"><dt>Returns</dt><dd>it returns a vector of smart-pointers to double or float </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae4183d5d350e74924449a8c8c9f3cfc0"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -329,7 +401,7 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">const std::shared_ptr&lt; <a class="el" href="class_layer.html">Layer</a>&lt;T&gt; &gt;&amp; <a class="el" href="class_network.html">Network</a>&lt; T &gt;::operator[] </td>
           <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramtype">int&#160;</td>
           <td class="paramname"><em>index</em></td><td>)</td>
           <td></td>
         </tr>
@@ -340,14 +412,14 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Operator overload [] it is used to return a smart pointer to the layer stored inside the network It is possible to access the methods of the single layer using the deferencing operator -&gt; Example: net[3]-&gt;<a class="el" href="class_network.html#a9a32105c92232a9418934bf8951a3de3">Compute()</a>; // It calls the <a class="el" href="class_network.html#a9a32105c92232a9418934bf8951a3de3">Compute()</a> method of the third layer </p>
+<p>Operator overload [] it is used to return the smart pointer reference to the <a class="el" href="class_layer.html" title="This class is the middle level of the neural network library. It is a container for neurons...">Layer</a> stored inside the <a class="el" href="class_network.html" title="This is the higest class and it permits to create Networks without declaring neurons or layers...">Network</a> It is possible to access the methods of the single <a class="el" href="class_layer.html" title="This class is the middle level of the neural network library. It is a container for neurons...">Layer</a> using the deferencing operator -&gt; Example: myNet[3]-&gt;<a class="el" href="class_network.html#a9a32105c92232a9418934bf8951a3de3">Compute()</a>; // It calls the <a class="el" href="class_network.html#a9a32105c92232a9418934bf8951a3de3">Compute()</a> method of the <a class="el" href="class_layer.html" title="This class is the middle level of the neural network library. It is a container for neurons...">Layer</a> returned </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">index</td><td>the number of the element stored inside the network </td></tr>
+    <tr><td class="paramname">index</td><td>the number of the element stored inside the <a class="el" href="class_network.html" title="This is the higest class and it permits to create Networks without declaring neurons or layers...">Network</a> </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>it returns a const reference to the neuron </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>it returns a const reference to the <a class="el" href="class_layer.html" title="This class is the middle level of the neural network library. It is a container for neurons...">Layer</a> </dd></dl>
 
 </div>
 </div>
@@ -355,7 +427,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -377,17 +449,17 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a1ba47ae1d6dd85536a4df4ef8e36bf70"></a>
+<a class="anchor" id="af0f6881884ced3633bd0d05af18beea8"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt;std::shared_ptr&lt;T&gt; &gt; <a class="el" href="class_network.html">Network</a>&lt; T &gt;::ReturnConnectionsVector </td>
+          <td class="memname">unsigned int <a class="el" href="class_network.html">Network</a>&lt; T &gt;::ReturnNumberOfConnections </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
@@ -399,8 +471,8 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>Returning a vector containing smart-pointers to neurons connections The vector start with the first incoming connection of the first neuron of the first layer and it ends with the last incoming connection of the last neuron of the last layer </p>
-<dl class="section return"><dt>Returns</dt><dd>it returns a vector of smart-pointers to double or float </dd></dl>
+<p>Get the total number of the connections.</p>
+<dl class="section return"><dt>Returns</dt><dd>unisgned int which represents the number of connections </dd></dl>
 
 </div>
 </div>
@@ -408,7 +480,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -435,7 +507,7 @@ template&lt;typename T &gt; </div>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -458,11 +530,78 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a5160801f755bc1fbf5d4b4b1e95bcc02"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::shared_ptr&lt; <a class="el" href="class_layer.html">Layer</a>&lt;T&gt; &gt; <a class="el" href="class_network.html">Network</a>&lt; T &gt;::ReturnSharedPointerToLayer </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>index</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get a pointer to a <a class="el" href="class_layer.html" title="This class is the middle level of the neural network library. It is a container for neurons...">Layer</a> contained into the <a class="el" href="class_network.html" title="This is the higest class and it permits to create Networks without declaring neurons or layers...">Network</a></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>int which identify the <a class="el" href="class_layer.html" title="This class is the middle level of the neural network library. It is a container for neurons...">Layer</a> inside the internal contaniner </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>it returns the pointer, if there is an error or the index is out of range it returns NULL </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ad4ba79901fb456e2dcaec2cedcd9bd19"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string <a class="el" href="class_network.html">Network</a>&lt; T &gt;::ReturnStringXML </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>It saves the network as an XML file </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>complete path, included the file name </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>it returns true in case of succes otherwise it returns false </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a8472677148c4709e9381e557fc58d7ed"></a>
 <div class="memitem">
 <div class="memproto">
 <div class="memtemplate">
-template&lt;typename T &gt; </div>
+template&lt;typename T&gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
@@ -492,13 +631,79 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a class="anchor" id="a74cb49aa8a6553f4e0e0cabf9a043882"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_network.html">Network</a>&lt; T &gt;::SetVectorOfConnections </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>connectionsVector</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>It permits to set the vector of the incoming connections to the neuron</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connectionsVector</td><td>a vector of shared pointer to floating point numbers </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ae4b4dd4fd670f5f5b76480a6778dbe44"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool <a class="el" href="class_network.html">Network</a>&lt; T &gt;::SetVectorOfPointersToConnections </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::shared_ptr&lt; T &gt;&gt; &amp;&#160;</td>
+          <td class="paramname"><em>connectionsVector</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>It permits to set the vector of the incoming connections to the neuron</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">connectionsVector</td><td>a vector of shared pointer to floating point numbers </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following file:<ul>
 <li>include/<a class="el" href="_network_8h_source.html">Network.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Jul 17 2015 16:59:19 for neuroc by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Jul 23 2015 18:06:48 for neuroc by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

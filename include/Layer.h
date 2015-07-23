@@ -1,3 +1,22 @@
+/* 
+ * neuroc - c++11 Artificial Neural Networks library
+ * Copyright (C) 2015  Massimiliano Patacchiola
+ * Author: Massimiliano Patacchiola
+ * email:  
+ * This program is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU General Public License
+ * as published by the Free Software Foundation; either version 2
+ * of the License, or (at your option) any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+*/
+
 #ifndef LAYER_H
 #define LAYER_H
 
@@ -6,7 +25,7 @@
 #include <memory>  // shared_ptr
 #include <cassert>
 #include <fstream> //save in XML
-
+#include <sstream>
 
 /**
 * Copyright 2015 Massimiliano Patacchiola
@@ -107,6 +126,8 @@ inline bool IsEmpty() {
 **/
 std::vector<T> Compute() {
  std::vector<T> output_vector;
+ output_vector.reserve(nNeuronsVector.size());
+
  try {
   for (unsigned int i = 0; i < nNeuronsVector.size(); i++) output_vector.push_back(nNeuronsVector[i]->Compute());
 
@@ -127,7 +148,9 @@ std::vector<T> Compute() {
 **/
 std::vector<T> GetLayerValue(){
 
- std::vector<T> outputVector(nNeuronsVector.size() + 1);
+ std::vector<T> outputVector;
+ outputVector.reserve(nNeuronsVector.size());
+
  try {
   for(unsigned int i = 0; i < nNeuronsVector.size(); i++)
   outputVector.push_back(nNeuronsVector[i]->GetNeuronValue());
@@ -363,22 +386,92 @@ inline unsigned int ReturnNumberOfNeurons(){
 }
 
 /**
-* Returning a vector containing pointers to neurons connections
-*
+* Returning a vector containing smart-pointers to neurons connections
+* The vector start with the first incoming connection of the first neuron
+* and it ends with the last incoming connection of the last neuron
+* If the Layer has a Bias Unit then the first connection of the neurons is the Bias incoming connection
+* @return it returns a vector of smart-pointers to double or float
 **/
-std::vector< std::shared_ptr<T> > ReturnConnectionsVector(){
+std::vector< std::shared_ptr<T> > GetVectorOfPointersToConnections(){
  std::vector< std::shared_ptr<T> > output_vector;
 
  for (unsigned int i=0; i<nNeuronsVector.size(); i++){
-  std::vector<std::shared_ptr<T>> vector_copy(nNeuronsVector[i]->ReturnConnectionsVector());
+  std::vector<std::shared_ptr<T>> vector_copy(nNeuronsVector[i]->GetVectorOfPointersToConnections());
   unsigned int neuron_vector_size = vector_copy.size();
 
   for (unsigned int j=0; j<neuron_vector_size; j++){
-   //output_vector.push_back( nNeuronsVector[i]->ReturnConnectionsVector()[j] );
    output_vector.push_back( vector_copy[j] );
   }
  }
  return output_vector;
+}
+
+/**
+* Returning a vector containing neurons connections
+* The vector start with the first incoming connection of the first neuron
+* and it ends with the last incoming connection of the last neuron
+* If the Layer has a Bias Unit then the first connection of the neurons is the Bias incoming connection
+* @return it returns a vector of double or float
+**/
+std::vector<T> GetVectorOfConnections(){
+ 
+ std::vector<T> output_vector;
+
+ for (unsigned int i=0; i<nNeuronsVector.size(); i++){
+  std::vector<T> vector_copy(nNeuronsVector[i]->GetVectorOfConnections());
+  unsigned int neuron_vector_size = vector_copy.size();
+
+  for (unsigned int j=0; j<neuron_vector_size; j++){
+   output_vector.push_back( vector_copy[j] );
+  }
+ }
+ return output_vector;
+}
+
+/**
+* It permits to set the vector of the incoming connections to the neuron
+*
+* @param connectionsVector a vector of shared pointer to floating point numbers
+**/
+bool SetVectorOfPointersToConnections(std::vector<std::shared_ptr<T>>& connectionsVector){
+ if(ReturnNumberOfIncomingConnections() != connectionsVector.size()) return false;
+
+ unsigned int previous_neuron_connections = 0;
+ for (unsigned int i = 0; i < nNeuronsVector.size(); i++){
+  unsigned int neuron_connections = previous_neuron_connections + nNeuronsVector[i]->ReturnNumberOfIncomingConnections();
+  std::vector<std::shared_ptr<T>> temp_vector;
+  
+  for(unsigned int j=previous_neuron_connections; j < neuron_connections; j++){
+   temp_vector.push_back(connectionsVector[j]);
+  }
+
+  previous_neuron_connections += neuron_connections;
+  nNeuronsVector[i]->SetVectorOfPointersToConnections(temp_vector);
+ }
+ return true;
+}
+
+/**
+* It permits to set the vector of the incoming connections to the neuron
+*
+* @param connectionsVector a vector of shared pointer to floating point numbers
+**/
+bool SetVectorOfConnections(std::vector<T>& connectionsVector){
+ if(ReturnNumberOfIncomingConnections() != connectionsVector.size()) return false;
+
+ unsigned int previous_neuron_connections = 0;
+ for (unsigned int i = 0; i < nNeuronsVector.size(); i++){
+  unsigned int neuron_connections = previous_neuron_connections + nNeuronsVector[i]->ReturnNumberOfIncomingConnections();
+  std::vector<T> temp_vector;
+  
+  for(unsigned int j=previous_neuron_connections; j < neuron_connections; j++){
+   temp_vector.push_back(connectionsVector[j]);
+  }
+
+  previous_neuron_connections += neuron_connections;
+  nNeuronsVector[i]->SetVectorOfConnections(temp_vector);
+ }
+ return true;
 }
 
 /**
@@ -426,6 +519,21 @@ bool HasBias(){
 }
 
 /**
+* Get the total number of the incoming connections.
+*
+* @return unisgned int which represents the number of connections
+*/
+unsigned int ReturnNumberOfIncomingConnections() {
+ unsigned int total_number = 0;
+
+ for (unsigned int i = 0; i < nNeuronsVector.size(); i++) {
+  total_number += nNeuronsVector[i]->ReturnNumberOfIncomingConnections();
+ }
+
+ return total_number;
+}
+
+/**
 * It saves the layer as an XML file
 * @param path complete path, included the file name
 * @return it returns true in case of succes otherwise it returns false
@@ -438,9 +546,10 @@ bool SaveAsXML(std::string path){
   return false;
  }
 
-  file_stream << "  " << "<layer>" <<  '\n';
-  file_stream << "  " << "<neurons_number>" << nNeuronsVector.size() <<"</neurons_number>" <<  '\n';
-  file_stream << "  " << "<has_bias>" << HasBias() <<"</has_bias>" << std::endl;
+  file_stream << "<layer>" <<  '\n';
+  file_stream << "<neurons_number>" << nNeuronsVector.size() <<"</neurons_number>" <<  '\n';
+  file_stream << "<connections_number>" << ReturnNumberOfIncomingConnections() <<"</connections_number>" <<  '\n';
+  file_stream << "<has_bias>" << HasBias() <<"</has_bias>" << std::endl;
   file_stream.close();
 
   if(HasBias() == true) spBiasNeuron->SaveAsXML(path);
@@ -455,9 +564,31 @@ bool SaveAsXML(std::string path){
   std::cerr<<"Cannot open the output file."<< std::endl;
   return false;
  }
-  file_stream_close << "  " << "</layer>" << std::endl;
+  file_stream_close << "</layer>" << std::endl;
   file_stream_close.close();
  return true;
+}
+
+/**
+* It saves the network as an XML file
+* @param path complete path, included the file name
+* @return it returns true in case of succes otherwise it returns false
+**/
+std::string ReturnStringXML(){
+
+  std::ostringstream string_stream; 
+
+  string_stream << "<layer>" <<  '\n';
+  string_stream << "<neurons_number>" << nNeuronsVector.size() <<"</neurons_number>" <<  '\n';
+  string_stream << "<connections_number>" << ReturnNumberOfIncomingConnections() <<"</connections_number>" <<  '\n';
+  string_stream << "<has_bias>" << HasBias() <<"</has_bias>" << std::endl;
+
+  for (unsigned int i = 0; i < nNeuronsVector.size(); i++) {
+    string_stream << nNeuronsVector[i]->ReturnStringXML();
+  }
+
+ string_stream << "</layer>" << std::endl;
+ return string_stream.str();
 }
 
 
