@@ -32,18 +32,22 @@ compile:
 	g++ $(CFLAGS) -Iinclude -c ./src/Layer.cpp -o ./bin/obj/Layer.o
 	g++ $(CFLAGS) -Iinclude -c ./src/Network.cpp -o ./bin/obj/Network.o
 	g++ $(CFLAGS) -Iinclude -c ./src/Parser.cpp -o ./bin/obj/Parser.o
+	g++ $(CFLAGS) -Iinclude -c ./src/Dataset.cpp -o ./bin/obj/Dataset.o
 
 	@echo
 	@echo "=== Starting creation of Shared Library ==="
-	g++ -fPIC -shared -Wl,-soname,libneuroc.so.1  -o ./bin/lib/libneuroc.so.1.0 ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o
+	g++ -fPIC -shared -Wl,-soname,libneuroc.so.1  -o ./bin/lib/libneuroc.so.1.0 ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o ./bin/obj/Dataset.o
 
 	@echo
 	@echo "=== Creating the Static Library ==="
-	ar rcs ./bin/lib/libneuroc.a ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o
+	ar rcs ./bin/lib/libneuroc.a ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o ./bin/obj/Dataset.o
 	@echo
 
 install:
 
+	@echo
+	@echo "=== neuroc - C++11 Artificial Neural Networks library ==="
+	@echo "===      Copyright Massimiliano Patacchiola 2015      ==="
 	@echo
 	@echo "=== Copying file in the system folders ==="
 	mkdir -p /usr/local/include/neuroc
@@ -58,11 +62,18 @@ install:
 
 clean:
 	@echo
+	@echo "=== Cleaning unnecessary files  ==="
+	rm ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o ./bin/obj/Dataset.o
+	@echo
+
+remove:
+	@echo
 	@echo "=== Removing files in the system folders ==="
 	rm -r /usr/local/include/neuroc
-	rm ./bin/lib/libneuroc.a ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o
+	rm ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o ./bin/obj/Dataset.o
+	rm ./bin/lib/libneuroc.a 
 	rm ./bin/lib/libneuroc.so.1.0
 	rm /usr/local/lib/libneuroc.so.1 
-	rm /usr/local/lib/libneuroc.a  ./bin/lib/libneuroc.a
+	rm /usr/local/lib/libneuroc.a
 	@echo
 

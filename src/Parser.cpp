@@ -25,9 +25,6 @@ Parser::Parser(){
   mInitialised = false;
 }
 
-Parser::Parser(std::string filePath){
- Parser::SetPath(filePath);
-}
 
 Parser::~Parser(){
 }
@@ -37,7 +34,7 @@ Parser::~Parser(){
 *
 * @return it returns true in case of succes otherwise it returns false
 **/
-bool Parser::Initialise(std::string filePath){
+bool Parser::InitialiseXML(std::string filePath){
  Parser::SetPath(filePath);
  std::ofstream file_stream(mFilePath, std::fstream::trunc); 
 
@@ -54,34 +51,13 @@ bool Parser::Initialise(std::string filePath){
  return true;
 }
 
-/**
-* It Initialise the XML file deleting all previous content and adding a the XML declaration and the root node <neuroc>
-*
-* @return it returns true in case of succes otherwise it returns false
-**/
-bool Parser::Initialise(){
-
- std::ofstream file_stream(mFilePath, std::fstream::trunc); 
-
- if(!file_stream) {
-  std::cerr<<"Error: Cannot open the output file."<< std::endl;
-  mInitialised = false;
-  return false;
- }
-
- file_stream << "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>" << '\n';
- file_stream << "<neuroc>" << std::endl;
- file_stream.close();
- mInitialised = true;
- return true;
-}
 
 /**
 * It Finalises the XML file adding a terminator index
 *
 * @return it returns true in case of succes otherwise it returns false
 **/
-bool Parser::Finalise(){
+bool Parser::FinaliseXML(){
 
  if(mInitialised == false){
   std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
@@ -142,6 +118,29 @@ unsigned int Parser::ReturnNumberOfLayers()
 
   while (file_stream >> std::ws && std::getline(file_stream, line)){
    if(line == "<layer>") counter++;
+  }
+
+    return counter;
+}
+
+/**
+* It Returns the number of Datasets saved inside the XML file
+*
+* @return it returns an unsigned int representing the number of Datasets
+**/
+unsigned int Parser::ReturnNumberOfDatasets()
+{
+  std::ifstream file_stream (mFilePath, std::ifstream::binary);
+ if(!file_stream) {
+  std::cerr<<"Error: Cannot open the output file."<<std::endl;
+  return false;
+ }
+
+  std::string line;
+  unsigned int counter = 0;
+
+  while (file_stream >> std::ws && std::getline(file_stream, line)){
+   if(line == "<dataset>") counter++;
   }
 
     return counter;

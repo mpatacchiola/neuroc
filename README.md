@@ -39,11 +39,24 @@ If you are using a Unix system you can install the library very easily:
 8. To remove the library you have to write `sudo make clean` in the terminal, it will delete all the files produced during the installation
 
 
-Using the library
+Using the library in your own code
 --------------
 
 After the installation neuroc was copied on your system, inside the folder */usr/local/lib* you can see the shared library libneuroc.so and the static library libneuroc.a. The header files were copied in */usr/local/include*, you need them in order to use the library.
-To use the shared library it is necessary to link it to your project. In g++ this is very easy, here is an example:
+The first thing to do is to include the library in your source file, you can do it adding the following includes:
+
+> #include<neuroc/Neuron.h>
+> 
+> #include<neuroc/Layer.h>
+> 
+> #include<neuroc/Network.h>
+> 
+> #include<neuroc/Parser.h>
+> 
+> #include<neuroc/Dataset.h>
+> 
+
+To use the shared library it is also necessary to link it to your project. In g++ this is very easy, here is an example:
 
 `g++ -Wall -std=c++11 -fPIC -I/usr/local/include/neuroc -L/usr/local/lib -Wl,--no-as-needed mycode.cpp -o mycode -lneuroc`
 
@@ -60,22 +73,26 @@ To integrate neuroc in a different environment (ex Eclipse, Code::Blocks, etc) f
 Examples
 --------------
 
-Neuroc permits to create diffrent kind of network. With only a single line of code it is possible to create a multilayer perceptron:
+Neuroc permits to create different kind of network. With only a single line of code it is possible to create a fully connected multilayer perceptron:
 
-`Network<float> myNet(10, 5, 1);  //Feedforward network with: 10 input, 5 hidden, 1 output`
+> Network<float> myNet(10, 5, 1);  //Feedforward network with: 10 input, 5 hidden, 1 output
 
 
 To create a Network with more than three layers you can write:
 
-`Network<float> myNet({10, 5, 3, 2, 1});  //Feedforward network with: 10 input, 5 hidden, 3 hidden, 2 hidden, 1 output`
+> Network<float> myNet({10, 5, 3, 2, 1});  //Feedforward network with: 10 input, 5 hidden, 3 hidden, 2 hidden, 1 output
 
 
 You can save the Network in an XML file using the class Parser:
 
-`Parser myParser;`
-`myParser.Initialise("/home/user/mynet.xml");`
-`myParser.SaveNetwork(myNetwork);`
-`myParser.Finalise();`
+
+> Parser myParser;  //Definition of the Parser
+> 
+> myParser.Initialise("/home/user/mynet.xml");  //It initialises the Parser, adding the prefix of the XML file
+> 
+> myParser.SaveNetwork(myNetwork);  //It saves the network in the XML
+> 
+> myParser.Finalise();  //It finalises and close the file
 
 
 License

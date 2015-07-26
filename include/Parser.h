@@ -24,6 +24,7 @@
 #include "Network.h"
 #include "Neuron.h"
 #include "Layer.h"
+#include "Dataset.h"
 
 
 /**
@@ -48,12 +49,10 @@ class Parser {
 public:
 
 Parser();
-Parser(std::string filePath);
 ~Parser();
 
-bool Initialise();
-bool Initialise(std::string filePath);
-bool Finalise();
+bool InitialiseXML(std::string filePath);
+bool FinaliseXML();
 
 inline bool SetPath(std::string filePath){
 mFilePath=filePath;
@@ -126,11 +125,56 @@ bool SaveNeuron(Neuron<T>& rNeuron){
  return true;
 }
 
+template<typename T>
+bool SaveDataset(Dataset<T>& rDataset){
+
+ if(mInitialised == false){
+  std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
+  return false;
+ }
+
+ if(rDataset.CheckIntegrity() == false) {
+  std::cerr<<"Error: The dataset is bad formed."<<std::endl;
+  return false;
+ }
+ std::ofstream file_stream(mFilePath, std::fstream::app); 
+
+ if(!file_stream) {
+  std::cerr<<"Error: Cannot open the output file."<<std::endl;
+  return false;
+ }
+
+ file_stream << rDataset.ReturnStringXML();
+
+ file_stream.close();
+ return true;
+}
+
+template<typename T>
+bool SaveDatasetAsCSV(Dataset<T>& rDataset, std::string filePath){
+
+ if(rDataset.CheckIntegrity() == false) {
+  std::cerr<<"Error: The dataset is bad formed."<<std::endl;
+  return false;
+ }
+ std::ofstream file_stream(filePath, std::fstream::app); 
+
+ if(!file_stream) {
+  std::cerr<<"Error: Cannot open the output file."<<std::endl;
+  return false;
+ }
+
+ file_stream << rDataset.ReturnStringCSV();
+
+ file_stream.close();
+ return true;
+}
+
 bool CheckIntegrity();
 unsigned int ReturnNumberOfNetworks();
 unsigned int ReturnNumberOfLayers();
 unsigned int ReturnNumberOfNeurons();
-
+unsigned int ReturnNumberOfDatasets();
 
 private:
 std::string mFilePath;
