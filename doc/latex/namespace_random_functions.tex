@@ -1,0 +1,95 @@
+\hypertarget{namespace_random_functions}{\section{Random\-Functions Namespace Reference}
+\label{namespace_random_functions}\index{Random\-Functions@{Random\-Functions}}
+}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{namespace_random_functions_a350dce82bad1dcf14eda5f13fd8a71b0}{{\footnotesize template$<$typename T $>$ }\\std\-::vector$<$ T $>$ \& {\bfseries Return\-Random\-Vector} (unsigned int vector\-Size, T min\-Range=0.\-1, T max\-Range=0.\-1)}\label{namespace_random_functions_a350dce82bad1dcf14eda5f13fd8a71b0}
+
+\item 
+\hypertarget{namespace_random_functions_a9dadfe32d54cb115dbcff0947c14636c}{{\footnotesize template$<$typename T $>$ }\\T {\bfseries Randomize\-Vector} (std\-::vector$<$ T $>$ $\ast$vector\-To\-Randomize, T min\-Range=-\/1, T max\-Range=1)}\label{namespace_random_functions_a9dadfe32d54cb115dbcff0947c14636c}
+
+\item 
+bool \hyperlink{namespace_random_functions_ae21250aea3088912780a1076997705a4}{Percentage\-Probability} (const double \&probability)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespace_random_functions_ac55cefe4f588e01fc03ae38654392603}{Return\-Uniform\-Floating\-Point\-Number} (T min\-Range=-\/1, T max\-Range=1)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespace_random_functions_a55ad7cfd900e46d68eae56a0423ecc7e}{Return\-Gaussian\-Floating\-Point\-Number} (T mean, T standard\-Deviation)
+\item 
+int \hyperlink{namespace_random_functions_a200a639a00e395a6d053a689a558227f}{Return\-Integer} (int min\-Range, int max\-Range)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+It contains functions for randomization 
+
+\subsection{Function Documentation}
+\hypertarget{namespace_random_functions_ae21250aea3088912780a1076997705a4}{\index{Random\-Functions@{Random\-Functions}!Percentage\-Probability@{Percentage\-Probability}}
+\index{Percentage\-Probability@{Percentage\-Probability}!RandomFunctions@{Random\-Functions}}
+\subsubsection[{Percentage\-Probability}]{\setlength{\rightskip}{0pt plus 5cm}bool Random\-Functions\-::\-Percentage\-Probability (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{probability}
+\end{DoxyParamCaption}
+)}}\label{namespace_random_functions_ae21250aea3088912780a1076997705a4}
+Return true if a percentage probability is reached Ex. Return\-Percentage\-Probability(2.\-5); // It returns true if a random generated value in the range 0-\/100 is smaller or equal to 2.\-5 
+\begin{DoxyParams}{Parameters}
+{\em probability} & expressed as a \% value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+It returns true if the probability is reached, otherwise it returns false 
+\end{DoxyReturn}
+\hypertarget{namespace_random_functions_a55ad7cfd900e46d68eae56a0423ecc7e}{\index{Random\-Functions@{Random\-Functions}!Return\-Gaussian\-Floating\-Point\-Number@{Return\-Gaussian\-Floating\-Point\-Number}}
+\index{Return\-Gaussian\-Floating\-Point\-Number@{Return\-Gaussian\-Floating\-Point\-Number}!RandomFunctions@{Random\-Functions}}
+\subsubsection[{Return\-Gaussian\-Floating\-Point\-Number}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T Random\-Functions\-::\-Return\-Gaussian\-Floating\-Point\-Number (
+\begin{DoxyParamCaption}
+\item[{T}]{mean, }
+\item[{T}]{standard\-Deviation}
+\end{DoxyParamCaption}
+)}}\label{namespace_random_functions_a55ad7cfd900e46d68eae56a0423ecc7e}
+Return a random generated floating point number. It is used a gaussian distribution. 
+\begin{DoxyParams}{Parameters}
+{\em mean} & this is the mean to use for the distribution \\
+\hline
+{\em standard\-Deviation} & this is the standard deviation to use for the distribution \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+It returns the generated number 
+\end{DoxyReturn}
+\hypertarget{namespace_random_functions_a200a639a00e395a6d053a689a558227f}{\index{Random\-Functions@{Random\-Functions}!Return\-Integer@{Return\-Integer}}
+\index{Return\-Integer@{Return\-Integer}!RandomFunctions@{Random\-Functions}}
+\subsubsection[{Return\-Integer}]{\setlength{\rightskip}{0pt plus 5cm}int Random\-Functions\-::\-Return\-Integer (
+\begin{DoxyParamCaption}
+\item[{int}]{min\-Range, }
+\item[{int}]{max\-Range}
+\end{DoxyParamCaption}
+)}}\label{namespace_random_functions_a200a639a00e395a6d053a689a558227f}
+Return a random generated integer. It is used a uniform distribution. 
+\begin{DoxyParams}{Parameters}
+{\em min\-Range} & it is the minimum value to use for selecting the integer \\
+\hline
+{\em max\-Range} & it is the maximum value to use for selecting the integer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+It returns the selected integer 
+\end{DoxyReturn}
+\hypertarget{namespace_random_functions_ac55cefe4f588e01fc03ae38654392603}{\index{Random\-Functions@{Random\-Functions}!Return\-Uniform\-Floating\-Point\-Number@{Return\-Uniform\-Floating\-Point\-Number}}
+\index{Return\-Uniform\-Floating\-Point\-Number@{Return\-Uniform\-Floating\-Point\-Number}!RandomFunctions@{Random\-Functions}}
+\subsubsection[{Return\-Uniform\-Floating\-Point\-Number}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T Random\-Functions\-::\-Return\-Uniform\-Floating\-Point\-Number (
+\begin{DoxyParamCaption}
+\item[{T}]{min\-Range = {\ttfamily -\/1}, }
+\item[{T}]{max\-Range = {\ttfamily 1}}
+\end{DoxyParamCaption}
+)}}\label{namespace_random_functions_ac55cefe4f588e01fc03ae38654392603}
+Return a random generated floating point number. It is used a uniform distribution. 
+\begin{DoxyParams}{Parameters}
+{\em min\-Range} & \\
+\hline
+{\em max\-Range} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+It returns the generated number 
+\end{DoxyReturn}

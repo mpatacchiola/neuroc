@@ -1,0 +1,278 @@
+\hypertarget{class_network}{\section{Network$<$ T $>$ Class Template Reference}
+\label{class_network}\index{Network$<$ T $>$@{Network$<$ T $>$}}
+}
+
+
+This is the higest class and it permits to create Networks without declaring neurons or layers.  
+
+
+
+
+{\ttfamily \#include $<$Network.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_network_abd7006cd24e1333ed31de0268841e5a4}{Network} ()
+\item 
+\hyperlink{class_network_a534cb88e47da2fb2e581fb05441d2b68}{Network} (const \hyperlink{class_network}{Network}$<$ T $>$ \&r\-Network)
+\item 
+\hyperlink{class_network_a89c4ca4ab61bb971843b281aad6d8bb3}{Network} (std\-::initializer\-\_\-list$<$ \hyperlink{class_layer}{Layer}$<$ T $>$$>$ layers\-List)
+\item 
+\hyperlink{class_network}{Network}$<$ T $>$ \hyperlink{class_network_a846908af5c8ecdde63b9d575086bf83b}{operator=} (const \hyperlink{class_network}{Network}$<$ T $>$ \&r\-Network)
+\item 
+const \hyperlink{class_layer}{Layer}$<$ T $>$ \& \hyperlink{class_network_a6e6f8026320dcd8b3f673900a2a01529}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int index) const 
+\item 
+bool \hyperlink{class_network_ab9232111938bdcc18824e33044c8a405}{operator$<$} (const \hyperlink{class_network}{Network} \&rhs) const 
+\item 
+bool \hyperlink{class_network_ad557cca20ed05beda654ffa68e552df2}{operator$>$} (const \hyperlink{class_network}{Network} \&rhs) const 
+\item 
+const unsigned int \hyperlink{class_network_a6784de433a045e33e8247f26f942e812}{Size} () const 
+\item 
+std\-::vector$<$ T $>$ \hyperlink{class_network_a3487cfb19fcb05c7a4c6352130128314}{Compute} (const std\-::vector$<$ T $>$ \&Input\-Vector)
+\item 
+const std\-::vector$<$ \hyperlink{class_layer}{Layer}$<$ T $>$ $>$ \& \hyperlink{class_network_ae9cae333bdd235de6ce92a952d40d156}{Retur\-Reference\-To\-Layers\-Vector} ()
+\item 
+void \hyperlink{class_network_a46fe91fa52542dc56e42bb6a842dcf93}{Randomize\-Connection\-Matrix} (std\-::function$<$ T(T)$>$ init\-Function)
+\item 
+int \hyperlink{class_network_a5d3c05dc69a0f3bd284adb34e59b5b1a}{Return\-Number\-Of\-Layers} ()
+\item 
+unsigned int \hyperlink{class_network_a3c1ac39fba741f4b905c94491c493c2c}{Return\-Number\-Of\-Neurons} ()
+\item 
+const T \hyperlink{class_network_a86bc8e3623e056a8ece9487fc9532b33}{Get\-User\-Value} () const 
+\item 
+void \hyperlink{class_network_a58a754f024cf63907574ca4057ab7454}{Set\-User\-Value} (T value)
+\item 
+void \hyperlink{class_network_a6b7c41ddbfbb95e345194f69c527c5eb}{Print} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class Network$<$ T $>$}
+
+This is the higest class and it permits to create Networks without declaring neurons or layers. 
+
+\begin{DoxyAuthor}{Author}
+Massimiliano Patacchiola
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2015
+\end{DoxyDate}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000002}{Todo}]Load\-From\-X\-M\-L\end{DoxyRefDesc}
+
+
+Contact\-: 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_network_abd7006cd24e1333ed31de0268841e5a4}{\index{Network@{Network}!Network@{Network}}
+\index{Network@{Network}!Network@{Network}}
+\subsubsection[{Network}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Network}$<$ T $>$\-::{\bf Network} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_abd7006cd24e1333ed31de0268841e5a4}
+Default constructor \hypertarget{class_network_a534cb88e47da2fb2e581fb05441d2b68}{\index{Network@{Network}!Network@{Network}}
+\index{Network@{Network}!Network@{Network}}
+\subsubsection[{Network}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Network}$<$ T $>$\-::{\bf Network} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Network}$<$ T $>$ \&}]{r\-Network}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_a534cb88e47da2fb2e581fb05441d2b68}
+Copy constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em r\-Layer} & reference to an existing \hyperlink{class_layer}{Layer} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_network_a89c4ca4ab61bb971843b281aad6d8bb3}{\index{Network@{Network}!Network@{Network}}
+\index{Network@{Network}!Network@{Network}}
+\subsubsection[{Network}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Network}$<$ T $>$\-::{\bf Network} (
+\begin{DoxyParamCaption}
+\item[{std\-::initializer\-\_\-list$<$ {\bf Layer}$<$ T $>$$>$}]{layers\-List}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_a89c4ca4ab61bb971843b281aad6d8bb3}
+Class constructor. It permits to create directly a multiple hidden layer network
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & of layers. ex\-: \{my\-First\-Hidden\-Layer, my\-Second\-Hidden\-Layer, my\-Output\-Layer\} Three Layers of Neurons \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_network_a3487cfb19fcb05c7a4c6352130128314}{\index{Network@{Network}!Compute@{Compute}}
+\index{Compute@{Compute}!Network@{Network}}
+\subsubsection[{Compute}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ std\-::vector$<$T$>$ {\bf Network}$<$ T $>$\-::Compute (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ T $>$ \&}]{Input\-Vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_a3487cfb19fcb05c7a4c6352130128314}
+Compute all the neurons of the layer and return a vector containing the values of these neurons
+
+\begin{DoxyReturn}{Returns}
+it returns the vector containing the double, in case of problems it returns an empty vector and print an error 
+\end{DoxyReturn}
+\hypertarget{class_network_a86bc8e3623e056a8ece9487fc9532b33}{\index{Network@{Network}!Get\-User\-Value@{Get\-User\-Value}}
+\index{Get\-User\-Value@{Get\-User\-Value}!Network@{Network}}
+\subsubsection[{Get\-User\-Value}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const T {\bf Network}$<$ T $>$\-::Get\-User\-Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_a86bc8e3623e056a8ece9487fc9532b33}
+It returns the generic user value
+
+\begin{DoxyReturn}{Returns}
+it returns the user value 
+\end{DoxyReturn}
+\hypertarget{class_network_ab9232111938bdcc18824e33044c8a405}{\index{Network@{Network}!operator$<$@{operator$<$}}
+\index{operator$<$@{operator$<$}!Network@{Network}}
+\subsubsection[{operator$<$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Network}$<$ T $>$\-::operator$<$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Network}$<$ T $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_ab9232111938bdcc18824e33044c8a405}
+Operator overload $<$ it is used to permit sorting on internal container 
+\begin{DoxyParams}{Parameters}
+{\em rhs} & another \hyperlink{class_network}{Network} to compare \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_network_a846908af5c8ecdde63b9d575086bf83b}{\index{Network@{Network}!operator=@{operator=}}
+\index{operator=@{operator=}!Network@{Network}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Network}$<$T$>$ {\bf Network}$<$ T $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Network}$<$ T $>$ \&}]{r\-Network}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_a846908af5c8ecdde63b9d575086bf83b}
+Overload of the assignment operator
+
+
+\begin{DoxyParams}{Parameters}
+{\em r\-Layer} & reference to an existing \hyperlink{class_layer}{Layer} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_network_ad557cca20ed05beda654ffa68e552df2}{\index{Network@{Network}!operator$>$@{operator$>$}}
+\index{operator$>$@{operator$>$}!Network@{Network}}
+\subsubsection[{operator$>$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Network}$<$ T $>$\-::operator$>$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Network}$<$ T $>$ \&}]{rhs}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_ad557cca20ed05beda654ffa68e552df2}
+Operator overload $>$ it is used to permit sorting on internal container 
+\begin{DoxyParams}{Parameters}
+{\em rhs} & another \hyperlink{class_network}{Network} to compare \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_network_a6e6f8026320dcd8b3f673900a2a01529}{\index{Network@{Network}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!Network@{Network}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const {\bf Layer}$<$T$>$\& {\bf Network}$<$ T $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_a6e6f8026320dcd8b3f673900a2a01529}
+Operator overload \mbox{[}\mbox{]} it is used to return the smart pointer reference to the \hyperlink{class_layer}{Layer} stored inside the \hyperlink{class_network}{Network} It is possible to access the methods of the single \hyperlink{class_layer}{Layer} using the deferencing operator -\/$>$ Example\-: my\-Net\mbox{[}3\mbox{]}-\/$>$\hyperlink{class_network_a3487cfb19fcb05c7a4c6352130128314}{Compute()}; // It calls the \hyperlink{class_network_a3487cfb19fcb05c7a4c6352130128314}{Compute()} method of the \hyperlink{class_layer}{Layer} returned 
+\begin{DoxyParams}{Parameters}
+{\em index} & the number of the element stored inside the \hyperlink{class_network}{Network} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns a const reference to the \hyperlink{class_layer}{Layer} 
+\end{DoxyReturn}
+\hypertarget{class_network_a6b7c41ddbfbb95e345194f69c527c5eb}{\index{Network@{Network}!Print@{Print}}
+\index{Print@{Print}!Network@{Network}}
+\subsubsection[{Print}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Network}$<$ T $>$\-::Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_a6b7c41ddbfbb95e345194f69c527c5eb}
+Print information about all the neurons contained inside the \hyperlink{class_layer}{Layer} \hypertarget{class_network_a46fe91fa52542dc56e42bb6a842dcf93}{\index{Network@{Network}!Randomize\-Connection\-Matrix@{Randomize\-Connection\-Matrix}}
+\index{Randomize\-Connection\-Matrix@{Randomize\-Connection\-Matrix}!Network@{Network}}
+\subsubsection[{Randomize\-Connection\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Network}$<$ T $>$\-::Randomize\-Connection\-Matrix (
+\begin{DoxyParamCaption}
+\item[{std\-::function$<$ T(T)$>$}]{init\-Function}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_a46fe91fa52542dc56e42bb6a842dcf93}
+Randomize all the connections of the neurons inside the layer It is possible to specify a minimum and maximum range for the random generator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em min\-Range} & the minimum range for the random generator \\
+\hline
+{\em max\-Range} & the maximum range for the random generator \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool it returns true if everything is all right, otherwise false. 
+\end{DoxyReturn}
+\hypertarget{class_network_a5d3c05dc69a0f3bd284adb34e59b5b1a}{\index{Network@{Network}!Return\-Number\-Of\-Layers@{Return\-Number\-Of\-Layers}}
+\index{Return\-Number\-Of\-Layers@{Return\-Number\-Of\-Layers}!Network@{Network}}
+\subsubsection[{Return\-Number\-Of\-Layers}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ int {\bf Network}$<$ T $>$\-::Return\-Number\-Of\-Layers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_a5d3c05dc69a0f3bd284adb34e59b5b1a}
+It returns the number of layer contained inside the Newtork
+
+\begin{DoxyReturn}{Returns}
+it returns the number of Layers 
+\end{DoxyReturn}
+\hypertarget{class_network_a3c1ac39fba741f4b905c94491c493c2c}{\index{Network@{Network}!Return\-Number\-Of\-Neurons@{Return\-Number\-Of\-Neurons}}
+\index{Return\-Number\-Of\-Neurons@{Return\-Number\-Of\-Neurons}!Network@{Network}}
+\subsubsection[{Return\-Number\-Of\-Neurons}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ unsigned int {\bf Network}$<$ T $>$\-::Return\-Number\-Of\-Neurons (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_a3c1ac39fba741f4b905c94491c493c2c}
+It returns the number of neuron contained inside the \hyperlink{class_network}{Network}
+
+\begin{DoxyReturn}{Returns}
+it returns the number of neurons 
+\end{DoxyReturn}
+\hypertarget{class_network_ae9cae333bdd235de6ce92a952d40d156}{\index{Network@{Network}!Retur\-Reference\-To\-Layers\-Vector@{Retur\-Reference\-To\-Layers\-Vector}}
+\index{Retur\-Reference\-To\-Layers\-Vector@{Retur\-Reference\-To\-Layers\-Vector}!Network@{Network}}
+\subsubsection[{Retur\-Reference\-To\-Layers\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const std\-::vector$<${\bf Layer}$<$T$>$ $>$\& {\bf Network}$<$ T $>$\-::Retur\-Reference\-To\-Layers\-Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_ae9cae333bdd235de6ce92a952d40d156}
+It returns a reference to the vector that contain the neurons
+
+\begin{DoxyReturn}{Returns}
+a const reference to the vector 
+\end{DoxyReturn}
+\hypertarget{class_network_a58a754f024cf63907574ca4057ab7454}{\index{Network@{Network}!Set\-User\-Value@{Set\-User\-Value}}
+\index{Set\-User\-Value@{Set\-User\-Value}!Network@{Network}}
+\subsubsection[{Set\-User\-Value}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Network}$<$ T $>$\-::Set\-User\-Value (
+\begin{DoxyParamCaption}
+\item[{T}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_a58a754f024cf63907574ca4057ab7454}
+It sets the generic user value
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to set \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_network_a6784de433a045e33e8247f26f942e812}{\index{Network@{Network}!Size@{Size}}
+\index{Size@{Size}!Network@{Network}}
+\subsubsection[{Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const unsigned int {\bf Network}$<$ T $>$\-::Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_network_a6784de433a045e33e8247f26f942e812}
+It gives the size of the connections container
+
+\begin{DoxyReturn}{Returns}
+it returns the number of connection of the neuron 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/Network.\-h\end{DoxyCompactItemize}

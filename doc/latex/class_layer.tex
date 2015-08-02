@@ -1,0 +1,300 @@
+\hypertarget{class_layer}{\section{Layer$<$ T $>$ Class Template Reference}
+\label{class_layer}\index{Layer$<$ T $>$@{Layer$<$ T $>$}}
+}
+
+
+This class is the middle level of the neural network library. It is a container for neurons. It allows the use of different floating points.  
+
+
+
+
+{\ttfamily \#include $<$Layer.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_layer_ae0654b5e7121979d405c2fc361ef02aa}{Layer} (const \hyperlink{class_layer}{Layer}$<$ T $>$ \&r\-Layer)
+\item 
+\hyperlink{class_layer_a7d5cf06e8f644207527253817f5b0676}{Layer} (\hyperlink{class_neuron}{Neuron}$<$ T $>$ neuron\-Prototype, unsigned int dimension)
+\item 
+\hyperlink{class_layer_a65ed4f2c35380e4f8513f450aadc024f}{Layer} (std\-::initializer\-\_\-list$<$ \hyperlink{class_neuron}{Neuron}$<$ T $>$$>$ neuron\-List)
+\item 
+\hyperlink{class_layer}{Layer}$<$ T $>$ \hyperlink{class_layer_aee99a6405e2431801cbadf6ea72b227f}{operator=} (const \hyperlink{class_layer}{Layer}$<$ T $>$ \&r\-Layer)
+\item 
+const \hyperlink{class_neuron}{Neuron}$<$ T $>$ \& \hyperlink{class_layer_afe63391049cda09e74df10410b501275}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int index) const 
+\item 
+const unsigned int \hyperlink{class_layer_ae13b1978d32f18cb1d80c6b23358ca36}{Size} () const 
+\item 
+const std\-::vector$<$ \hyperlink{class_neuron}{Neuron}$<$ T $>$ $>$ \& \hyperlink{class_layer_a6a3743652e26f0870e9eba938248ae5f}{Retur\-Reference\-To\-Neurons\-Vector} () const 
+\item 
+std\-::vector$<$ T $>$ \hyperlink{class_layer_a1401e5314597e415216efc1417b946e8}{Compute} (std\-::vector$<$ T $>$ input\-Vector)
+\item 
+void \hyperlink{class_layer_a321180e42ad2dbf59a6b237d789b0538}{Randomize\-Connection\-Matrix} (std\-::function$<$ T(T)$>$ init\-Function)
+\item 
+const std\-::vector$<$ T $>$ \& \hyperlink{class_layer_a663cea9c505c25cd499686ceda753f9b}{Get\-Value\-Vector} () const 
+\item 
+bool \hyperlink{class_layer_a649d22a69aaf939df7db9e60cc8685fa}{Set\-Bias\-Vector} (std\-::vector$<$ T $>$ bias\-Vector)
+\item 
+bool \hyperlink{class_layer_a0f6e73b9ae5a1ffc665e217ac24ca3f8}{Set\-Value\-Vector} (std\-::vector$<$ T $>$ value\-Vector)
+\item 
+bool \hyperlink{class_layer_a4933418bd74c92417635f9a1c3b1311e}{Set\-Error\-Vector} (std\-::vector$<$ T $>$ error\-Vector)
+\item 
+unsigned int \hyperlink{class_layer_a4aa9c8f9572f6e2fd5d6a705cf3d3217}{Return\-Number\-Of\-Neurons} ()
+\item 
+std\-::vector$<$ std\-::vector$<$ T $>$ $>$ \hyperlink{class_layer_a7f212ec7632cb7f08f3ceba8a318548b}{Get\-Connection\-Matrix} ()
+\item 
+void \hyperlink{class_layer_a21b74e87accce3dad35331fd81048b6b}{Print} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class Layer$<$ T $>$}
+
+This class is the middle level of the neural network library. It is a container for neurons. It allows the use of different floating points. 
+
+Copyright 2015 Massimiliano Patacchiola
+
+\begin{DoxyAuthor}{Author}
+Massimiliano Patacchiola
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2015
+\end{DoxyDate}
+Contact\-: 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_layer_ae0654b5e7121979d405c2fc361ef02aa}{\index{Layer@{Layer}!Layer@{Layer}}
+\index{Layer@{Layer}!Layer@{Layer}}
+\subsubsection[{Layer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Layer}$<$ T $>$\-::{\bf Layer} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Layer}$<$ T $>$ \&}]{r\-Layer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_ae0654b5e7121979d405c2fc361ef02aa}
+Copy constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em r\-Layer} & reference to an existing \hyperlink{class_layer}{Layer} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_layer_a7d5cf06e8f644207527253817f5b0676}{\index{Layer@{Layer}!Layer@{Layer}}
+\index{Layer@{Layer}!Layer@{Layer}}
+\subsubsection[{Layer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Layer}$<$ T $>$\-::{\bf Layer} (
+\begin{DoxyParamCaption}
+\item[{{\bf Neuron}$<$ T $>$}]{neuron\-Prototype, }
+\item[{unsigned int}]{dimension}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_a7d5cf06e8f644207527253817f5b0676}
+It creates a new \hyperlink{class_layer}{Layer} containing similar neurons.
+
+
+\begin{DoxyParams}{Parameters}
+{\em neuron\-Prototype} & it is a prototype and will be used to create copies inside the layer. \\
+\hline
+{\em dimension} & the size of the layer \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_layer_a65ed4f2c35380e4f8513f450aadc024f}{\index{Layer@{Layer}!Layer@{Layer}}
+\index{Layer@{Layer}!Layer@{Layer}}
+\subsubsection[{Layer}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Layer}$<$ T $>$\-::{\bf Layer} (
+\begin{DoxyParamCaption}
+\item[{std\-::initializer\-\_\-list$<$ {\bf Neuron}$<$ T $>$$>$}]{neuron\-List}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_a65ed4f2c35380e4f8513f450aadc024f}
+It creates a new \hyperlink{class_layer}{Layer}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em neuron\-List} & a list of existing neurons \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_layer_a1401e5314597e415216efc1417b946e8}{\index{Layer@{Layer}!Compute@{Compute}}
+\index{Compute@{Compute}!Layer@{Layer}}
+\subsubsection[{Compute}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ std\-::vector$<$T$>$ {\bf Layer}$<$ T $>$\-::Compute (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ T $>$}]{input\-Vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_a1401e5314597e415216efc1417b946e8}
+Compute all the neurons of the layer and return a vector containing the values of these neurons
+
+\begin{DoxyReturn}{Returns}
+it returns the vector containing the double, in case of problems it returns an empty vector and print an error 
+\end{DoxyReturn}
+\hypertarget{class_layer_a7f212ec7632cb7f08f3ceba8a318548b}{\index{Layer@{Layer}!Get\-Connection\-Matrix@{Get\-Connection\-Matrix}}
+\index{Get\-Connection\-Matrix@{Get\-Connection\-Matrix}!Layer@{Layer}}
+\subsubsection[{Get\-Connection\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ std\-::vector$<$ std\-::vector$<$T$>$ $>$ {\bf Layer}$<$ T $>$\-::Get\-Connection\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_a7f212ec7632cb7f08f3ceba8a318548b}
+Returning a vector of vectors Matrix containing neurons connections The vector start with the first incoming connection of the first neuron and it ends with the last incoming connection of the last neuron If the \hyperlink{class_layer}{Layer} has a Bias Unit then the first connection of the neurons is the Bias incoming connection \begin{DoxyReturn}{Returns}
+it returns a vector of double or float 
+\end{DoxyReturn}
+\hypertarget{class_layer_a663cea9c505c25cd499686ceda753f9b}{\index{Layer@{Layer}!Get\-Value\-Vector@{Get\-Value\-Vector}}
+\index{Get\-Value\-Vector@{Get\-Value\-Vector}!Layer@{Layer}}
+\subsubsection[{Get\-Value\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const std\-::vector$<$T$>$\& {\bf Layer}$<$ T $>$\-::Get\-Value\-Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_a663cea9c505c25cd499686ceda753f9b}
+Get the values of all the neurons inside the layer
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-Values} & vector of doubles of the same size of the layer. Every double is given as input to the neurons inside the layer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns true if it is all right, otherwise false 
+\end{DoxyReturn}
+\hypertarget{class_layer_aee99a6405e2431801cbadf6ea72b227f}{\index{Layer@{Layer}!operator=@{operator=}}
+\index{operator=@{operator=}!Layer@{Layer}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Layer}$<$T$>$ {\bf Layer}$<$ T $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Layer}$<$ T $>$ \&}]{r\-Layer}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_aee99a6405e2431801cbadf6ea72b227f}
+Overload of the assignment operator
+
+
+\begin{DoxyParams}{Parameters}
+{\em r\-Layer} & reference to an existing \hyperlink{class_layer}{Layer} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_layer_afe63391049cda09e74df10410b501275}{\index{Layer@{Layer}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!Layer@{Layer}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const {\bf Neuron}$<$T$>$\& {\bf Layer}$<$ T $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_afe63391049cda09e74df10410b501275}
+Operator overload \mbox{[}\mbox{]} it is used to return the smart pointer reference to the neuron stored inside the layer It is possible to access the methods of the single neuron using the deferencing operator -\/$>$ Example\-: input\-\_\-layer-\/$>$\hyperlink{class_layer_a1401e5314597e415216efc1417b946e8}{Compute()}; // It calls the \hyperlink{class_layer_a1401e5314597e415216efc1417b946e8}{Compute()} method of the neuron returned 
+\begin{DoxyParams}{Parameters}
+{\em index} & the number of the element stored inside the layer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns a const reference to the neuron 
+\end{DoxyReturn}
+\hypertarget{class_layer_a21b74e87accce3dad35331fd81048b6b}{\index{Layer@{Layer}!Print@{Print}}
+\index{Print@{Print}!Layer@{Layer}}
+\subsubsection[{Print}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Layer}$<$ T $>$\-::Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_a21b74e87accce3dad35331fd81048b6b}
+Print information about all the neurons contained inside the \hyperlink{class_layer}{Layer} \hypertarget{class_layer_a321180e42ad2dbf59a6b237d789b0538}{\index{Layer@{Layer}!Randomize\-Connection\-Matrix@{Randomize\-Connection\-Matrix}}
+\index{Randomize\-Connection\-Matrix@{Randomize\-Connection\-Matrix}!Layer@{Layer}}
+\subsubsection[{Randomize\-Connection\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Layer}$<$ T $>$\-::Randomize\-Connection\-Matrix (
+\begin{DoxyParamCaption}
+\item[{std\-::function$<$ T(T)$>$}]{init\-Function}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_a321180e42ad2dbf59a6b237d789b0538}
+Randomize all the connections of the neurons inside the layer It is possible to specify a minimum and maximum range for the random generator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em init\-Function} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool it returns true if everything is all right, otherwise false. 
+\end{DoxyReturn}
+\hypertarget{class_layer_a4aa9c8f9572f6e2fd5d6a705cf3d3217}{\index{Layer@{Layer}!Return\-Number\-Of\-Neurons@{Return\-Number\-Of\-Neurons}}
+\index{Return\-Number\-Of\-Neurons@{Return\-Number\-Of\-Neurons}!Layer@{Layer}}
+\subsubsection[{Return\-Number\-Of\-Neurons}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ unsigned int {\bf Layer}$<$ T $>$\-::Return\-Number\-Of\-Neurons (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_a4aa9c8f9572f6e2fd5d6a705cf3d3217}
+It returns the number of neuron contained inside the layer
+
+\begin{DoxyReturn}{Returns}
+it returns the number of neurons 
+\end{DoxyReturn}
+\hypertarget{class_layer_a6a3743652e26f0870e9eba938248ae5f}{\index{Layer@{Layer}!Retur\-Reference\-To\-Neurons\-Vector@{Retur\-Reference\-To\-Neurons\-Vector}}
+\index{Retur\-Reference\-To\-Neurons\-Vector@{Retur\-Reference\-To\-Neurons\-Vector}!Layer@{Layer}}
+\subsubsection[{Retur\-Reference\-To\-Neurons\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const std\-::vector$<${\bf Neuron}$<$T$>$ $>$\& {\bf Layer}$<$ T $>$\-::Retur\-Reference\-To\-Neurons\-Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_a6a3743652e26f0870e9eba938248ae5f}
+It returns a reference to the vector that contain the neurons
+
+\begin{DoxyReturn}{Returns}
+a const reference to the vector 
+\end{DoxyReturn}
+\hypertarget{class_layer_a649d22a69aaf939df7db9e60cc8685fa}{\index{Layer@{Layer}!Set\-Bias\-Vector@{Set\-Bias\-Vector}}
+\index{Set\-Bias\-Vector@{Set\-Bias\-Vector}!Layer@{Layer}}
+\subsubsection[{Set\-Bias\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Layer}$<$ T $>$\-::Set\-Bias\-Vector (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ T $>$}]{bias\-Vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_a649d22a69aaf939df7db9e60cc8685fa}
+Set the values of all the bias inside the layer
+
+
+\begin{DoxyParams}{Parameters}
+{\em bias\-Vector} & vector of values with the same size of the layer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns true if it is all right, otherwise false 
+\end{DoxyReturn}
+\hypertarget{class_layer_a4933418bd74c92417635f9a1c3b1311e}{\index{Layer@{Layer}!Set\-Error\-Vector@{Set\-Error\-Vector}}
+\index{Set\-Error\-Vector@{Set\-Error\-Vector}!Layer@{Layer}}
+\subsubsection[{Set\-Error\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Layer}$<$ T $>$\-::Set\-Error\-Vector (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ T $>$}]{error\-Vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_a4933418bd74c92417635f9a1c3b1311e}
+Set the values of all the Error associated with the neurons inside the layer
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & vector of the same size of the layer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns true if it is all right, otherwise false 
+\end{DoxyReturn}
+\hypertarget{class_layer_a0f6e73b9ae5a1ffc665e217ac24ca3f8}{\index{Layer@{Layer}!Set\-Value\-Vector@{Set\-Value\-Vector}}
+\index{Set\-Value\-Vector@{Set\-Value\-Vector}!Layer@{Layer}}
+\subsubsection[{Set\-Value\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Layer}$<$ T $>$\-::Set\-Value\-Vector (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ T $>$}]{value\-Vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_a0f6e73b9ae5a1ffc665e217ac24ca3f8}
+Set the values of all the neurons inside the layer
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-Values} & vector of doubles of the same size of the layer. Every double is given as input to the neurons inside the layer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns true if it is all right, otherwise false 
+\end{DoxyReturn}
+\hypertarget{class_layer_ae13b1978d32f18cb1d80c6b23358ca36}{\index{Layer@{Layer}!Size@{Size}}
+\index{Size@{Size}!Layer@{Layer}}
+\subsubsection[{Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const unsigned int {\bf Layer}$<$ T $>$\-::Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_layer_ae13b1978d32f18cb1d80c6b23358ca36}
+It gives the size of the connections container
+
+\begin{DoxyReturn}{Returns}
+it returns the number of connection of the neuron 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/Layer.\-h\end{DoxyCompactItemize}

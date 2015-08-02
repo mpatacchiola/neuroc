@@ -1,0 +1,89 @@
+\hypertarget{class_trainer}{\section{Trainer$<$ T $>$ Class Template Reference}
+\label{class_trainer}\index{Trainer$<$ T $>$@{Trainer$<$ T $>$}}
+}
+
+
+This class permits to train a single network or group of networks.  
+
+
+
+
+{\ttfamily \#include $<$Trainer.\-h$>$}
+
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum {\bfseries Algorithm} \{ {\bfseries B\-A\-C\-K\-\_\-\-P\-R\-O\-P}, 
+{\bfseries G\-A\-\_\-\-S\-U\-P\-E\-R\-V\-I\-S\-E\-D}
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_trainer_a941152f64feaa19e6af48a78ce43c62f}{{\bfseries Trainer} (\hyperlink{class_network}{Network}$<$ T $>$ network\-To\-Train, \hyperlink{class_dataset}{Dataset}$<$ T $>$ dataset)}\label{class_trainer_a941152f64feaa19e6af48a78ce43c62f}
+
+\item 
+void \hyperlink{class_trainer_aa3c60fb2a4853a1adfe5b34c243ccbf6}{Test\-Network} (\hyperlink{class_network}{Network}$<$ T $>$ \&network\-To\-Test, \hyperlink{class_dataset}{Dataset}$<$ T $>$ \&r\-Dataset)
+\item 
+bool \hyperlink{class_trainer_ace9afdb3c754876928ca81d38e67fa8d}{Back\-Propagation\-Training} (unsigned int epoch, double learning\-Rate, double momentum)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class Trainer$<$ T $>$}
+
+This class permits to train a single network or group of networks. 
+
+Specifing a \hyperlink{class_network}{Network} and a \hyperlink{class_dataset}{Dataset} it is possible to train the network using a specific train algorithm.
+
+\begin{DoxyAuthor}{Author}
+Massimiliano Patacchiola
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2015
+\end{DoxyDate}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000004}{Todo}]T\-W\-E\-A\-N\-N (Topology \& Weight Evolving Artificial Neural \hyperlink{class_network}{Network})\end{DoxyRefDesc}
+
+
+Contact\-: 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_trainer_ace9afdb3c754876928ca81d38e67fa8d}{\index{Trainer@{Trainer}!Back\-Propagation\-Training@{Back\-Propagation\-Training}}
+\index{Back\-Propagation\-Training@{Back\-Propagation\-Training}!Trainer@{Trainer}}
+\subsubsection[{Back\-Propagation\-Training}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ bool {\bf Trainer}$<$ T $>$\-::Back\-Propagation\-Training (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{epoch, }
+\item[{double}]{learning\-Rate, }
+\item[{double}]{momentum}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_trainer_ace9afdb3c754876928ca81d38e67fa8d}
+Return true if a percentage probability is reached Ex. Return\-Percentage\-Probability(2.\-5); // It returns true if a random generated value in the range 0-\/100 is smaller or equal to 2.\-5 
+\begin{DoxyParams}{Parameters}
+{\em probability} & expressed as a \% value. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+It returns true if the probability is reached, otherwise it returns false 
+\end{DoxyReturn}
+\hypertarget{class_trainer_aa3c60fb2a4853a1adfe5b34c243ccbf6}{\index{Trainer@{Trainer}!Test\-Network@{Test\-Network}}
+\index{Test\-Network@{Test\-Network}!Trainer@{Trainer}}
+\subsubsection[{Test\-Network}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ void {\bf Trainer}$<$ T $>$\-::Test\-Network (
+\begin{DoxyParamCaption}
+\item[{{\bf Network}$<$ T $>$ \&}]{network\-To\-Test, }
+\item[{{\bf Dataset}$<$ T $>$ \&}]{r\-Dataset}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_trainer_aa3c60fb2a4853a1adfe5b34c243ccbf6}
+It tests the network using the \hyperlink{class_dataset}{Dataset}.
+
+\begin{DoxyReturn}{Returns}
+It returns a value that represents the network performance 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/Trainer.\-h\end{DoxyCompactItemize}

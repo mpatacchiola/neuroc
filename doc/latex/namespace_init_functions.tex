@@ -1,0 +1,96 @@
+\hypertarget{namespace_init_functions}{\section{Init\-Functions Namespace Reference}
+\label{namespace_init_functions}\index{Init\-Functions@{Init\-Functions}}
+}
+
+
+This is and header wich contains different useful functions.  
+
+
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespace_init_functions_a224e8c5e5e4b61ad3049fc595e2592d2}{Linear} (T input\-Value)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespace_init_functions_aed315ce21509a91d31fa5f8cff75b2da}{Small\-Value} (T input\-Value)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespace_init_functions_afe89dff533fa5a64df3f80c7d59de8d0}{Unit} (T input\-Value)
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespace_init_functions_a4a8d93995d8a773df46c986385f0caa4}{Gaussian\-Mutation} (T input\-Value)
+\item 
+double \hyperlink{namespace_init_functions_a3f7bb8d9c5733fb01f5c8be4c20ced4a}{Binary\-Mutation} (double input\-Value)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is and header wich contains different useful functions. Copyright 2015 Massimiliano Patacchiola
+
+This header contains useful functions. The functions are assigned to different namespaces. You are free to extend this header adding your own functions.
+
+\begin{DoxyAuthor}{Author}
+Massimiliano Patacchiola
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2015
+\end{DoxyDate}
+Contact\-:
+
+It contains functions for weights initialization All the functions of this namespace must take a single value and return a single value 
+
+\subsection{Function Documentation}
+\hypertarget{namespace_init_functions_a3f7bb8d9c5733fb01f5c8be4c20ced4a}{\index{Init\-Functions@{Init\-Functions}!Binary\-Mutation@{Binary\-Mutation}}
+\index{Binary\-Mutation@{Binary\-Mutation}!InitFunctions@{Init\-Functions}}
+\subsubsection[{Binary\-Mutation}]{\setlength{\rightskip}{0pt plus 5cm}double Init\-Functions\-::\-Binary\-Mutation (
+\begin{DoxyParamCaption}
+\item[{double}]{input\-Value}
+\end{DoxyParamCaption}
+)}}\label{namespace_init_functions_a3f7bb8d9c5733fb01f5c8be4c20ced4a}
+Return a mutate number with a 2\% probability. The mutate number is picked from a gaussian distribution with mean equal to the input value and standard deviation of 1. \begin{DoxyReturn}{Returns}
+a gaussian random value 
+\end{DoxyReturn}
+\hypertarget{namespace_init_functions_a4a8d93995d8a773df46c986385f0caa4}{\index{Init\-Functions@{Init\-Functions}!Gaussian\-Mutation@{Gaussian\-Mutation}}
+\index{Gaussian\-Mutation@{Gaussian\-Mutation}!InitFunctions@{Init\-Functions}}
+\subsubsection[{Gaussian\-Mutation}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T Init\-Functions\-::\-Gaussian\-Mutation (
+\begin{DoxyParamCaption}
+\item[{T}]{input\-Value}
+\end{DoxyParamCaption}
+)}}\label{namespace_init_functions_a4a8d93995d8a773df46c986385f0caa4}
+Return a mutate number with a 2\% probability. The mutate number is picked from a gaussian distribution with mean equal to the input value and standard deviation of 1. \begin{DoxyReturn}{Returns}
+a gaussian random value 
+\end{DoxyReturn}
+\hypertarget{namespace_init_functions_a224e8c5e5e4b61ad3049fc595e2592d2}{\index{Init\-Functions@{Init\-Functions}!Linear@{Linear}}
+\index{Linear@{Linear}!InitFunctions@{Init\-Functions}}
+\subsubsection[{Linear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T Init\-Functions\-::\-Linear (
+\begin{DoxyParamCaption}
+\item[{T}]{input\-Value}
+\end{DoxyParamCaption}
+)}}\label{namespace_init_functions_a224e8c5e5e4b61ad3049fc595e2592d2}
+Return the same value given as input It is useful when it is not necessary to change the connections vector of the neuron \begin{DoxyReturn}{Returns}
+the same value given as input 
+\end{DoxyReturn}
+\hypertarget{namespace_init_functions_aed315ce21509a91d31fa5f8cff75b2da}{\index{Init\-Functions@{Init\-Functions}!Small\-Value@{Small\-Value}}
+\index{Small\-Value@{Small\-Value}!InitFunctions@{Init\-Functions}}
+\subsubsection[{Small\-Value}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T Init\-Functions\-::\-Small\-Value (
+\begin{DoxyParamCaption}
+\item[{T}]{input\-Value}
+\end{DoxyParamCaption}
+)}}\label{namespace_init_functions_aed315ce21509a91d31fa5f8cff75b2da}
+Return a uniform generated number in the range -\/0.\-1/+0.1
+
+\begin{DoxyReturn}{Returns}
+a uniform random value 
+\end{DoxyReturn}
+\hypertarget{namespace_init_functions_afe89dff533fa5a64df3f80c7d59de8d0}{\index{Init\-Functions@{Init\-Functions}!Unit@{Unit}}
+\index{Unit@{Unit}!InitFunctions@{Init\-Functions}}
+\subsubsection[{Unit}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T Init\-Functions\-::\-Unit (
+\begin{DoxyParamCaption}
+\item[{T}]{input\-Value}
+\end{DoxyParamCaption}
+)}}\label{namespace_init_functions_afe89dff533fa5a64df3f80c7d59de8d0}
+Return a uniform generated number in the range -\/0.\-1/+0.1
+
+\begin{DoxyReturn}{Returns}
+a uniform random value 
+\end{DoxyReturn}

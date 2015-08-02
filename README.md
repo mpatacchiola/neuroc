@@ -4,14 +4,16 @@ neuroc
 Lightweight and highly optimized C++ library for Neural Networks
 --------------
 
-Welcome in the neuroc repository! I designed this library after reading the excellent book of Bjarne-Stroustrup *The C++ Programming Language (4th Edition)* especially the chapter 34 *Memory and Resources* where the author presents some illuminating examples of **shared_ptr** and **weak_ptr**. Starting from there I decided to create a Neural Networks library based on the idea of a safe memory management.
+Welcome in the Neuroc repository! Neuroc is a modular library based on the idea of smart blocks. The neuron class is a generic object made of different functions. The architecture is inspired by the *Matlab Neural Network Toolbox*, you can find other details about neuroc design [here](ARCHITECTURE.md). Let's look now at the main features of Neuroc:
 
-- Safe memory management using Smart Pointers
+- Essential and expandible
+- Safe memory management
 - Object Oriented approach
-- Multilayer feedforward Networks
-- Template classes for float or double objects
-- Sparse connected Networks
-- Multiple Activation Functions
+- Can use float or double
+- All you can eat networks architecture
+- Customizable Transfer Function, Weight Initialization 
+- You can save Networks, Layers and Neurons in XML files
+- Open source (GNU v.2 license)
 
 Prerequisites
 --------------
@@ -25,7 +27,7 @@ You can install them from a Unix system running the following commands from the 
 
 
 Installation
---------------
+-------------
 
 If you are using a Unix system you can install the library very easily:
 
@@ -40,20 +42,20 @@ If you are using a Unix system you can install the library very easily:
 
 
 Using the library in your own code
---------------
+----------------------------------
 
 After the installation neuroc was copied on your system, inside the folder */usr/local/lib* you can see the shared library libneuroc.so and the static library libneuroc.a. The header files were copied in */usr/local/include*, you need them in order to use the library.
 The first thing to do is to include the library in your source file, you can do it adding the following includes:
 
-> #include<neuroc/Neuron.h>
+> `#include<neuroc/Neuron.h>`
 > 
-> #include<neuroc/Layer.h>
+>  `#include<neuroc/Layer.h>`
 > 
-> #include<neuroc/Network.h>
+>  `#include<neuroc/Network.h>`
 > 
-> #include<neuroc/Parser.h>
+>  `#include<neuroc/Parser.h>`
 > 
-> #include<neuroc/Dataset.h>
+>  `#include<neuroc/Dataset.h>`
 > 
 
 To use the shared library it is also necessary to link it to your project. In g++ this is very easy, here is an example:
@@ -71,32 +73,53 @@ To integrate neuroc in a different environment (ex Eclipse, Code::Blocks, etc) f
 
 
 Examples
---------------
+---------
 
-Neuroc permits to create different kind of network. With only a single line of code it is possible to create a fully connected multilayer perceptron:
+Neuroc permits to create different kind of network. Every object is a container where you can push other objects or data.
+The class network is a container of Layers, the class Layers is a container of Neurons and the class Dataset is a container of input/target values.
+
+With only a single line of code it is possible to create a fully connected multilayer perceptron:
 
 > Network<float> myNet(10, 5, 1);  //Feedforward network with: 10 input, 5 hidden, 1 output
 
-
-To create a Network with more than three layers you can write:
+To create a Network with more than three layers:
 
 > Network<float> myNet({10, 5, 3, 2, 1});  //Feedforward network with: 10 input, 5 hidden, 3 hidden, 2 hidden, 1 output
 
+It is very easy to create a Dataset and push inside it some values:
 
-You can save the Network in an XML file using the class Parser:
+> Dataset myDataset; //Creating the XOR dataset
+> 
+> myDataset.PushBackInputAndTarget({0.0, 0.0}, {0.0});
+> 
+> myDataset.PushBackInputAndTarget({0.0, 1.0}, {1.0});
+> 
+> myDataset.PushBackInputAndTarget({1.0, 0.0}, {1.0});
+> 
+> myDataset.PushBackInputAndTarget({1.0, 1.0}, {0.0});
 
+You can save Networks, Layers, Datasets in an XML file using the class Parser:
 
 > Parser myParser;  //Definition of the Parser
 > 
-> myParser.Initialise("/home/user/mynet.xml");  //It initialises the Parser, adding the prefix of the XML file
+> myParser.InitialiseXML("/home/user/mynet.xml");  //It initialises the Parser, adding the prefix of the XML file
 > 
 > myParser.SaveNetwork(myNetwork);  //It saves the network in the XML
 > 
-> myParser.Finalise();  //It finalises and close the file
+> myParser.SaveNetwork(myDataset);  //It saves the dataset in the XML
+> 
+> myParser.FinaliseXML();  //It finalises and close the file
+
+
+Documentation
+-------------
+
+The documentation is produced with Doxygen and the HTML output can be found inside the folder /html.
+An explenation of the logic behind the architecture can be found in this specific [readme](ARCHITECTURE.md).
 
 
 License
---------------
+-------
 
 *neuroc - c++11 Artificial Neural Networks library*
 

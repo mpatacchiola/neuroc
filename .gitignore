@@ -9,6 +9,7 @@
 *.a
 *~
 
+
 # OS generated files #
 ######################
 .DS_Store
@@ -18,9 +19,15 @@
 .Trashes
 ehthumbs.db
 Thumbs.db
-.orig
+
 
 # Directories #
 ####################
 /bin
+/backup
+
+
+# Documentation #
+####################
 *Doxyfile
+.orig

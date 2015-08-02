@@ -1,0 +1,286 @@
+\hypertarget{class_dataset}{\section{Dataset$<$ T $>$ Class Template Reference}
+\label{class_dataset}\index{Dataset$<$ T $>$@{Dataset$<$ T $>$}}
+}
+
+
+This class permits to create complex datasets and use them to feed the network.  
+
+
+
+
+{\ttfamily \#include $<$Dataset.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_dataset_a3c1d2e0fa826798f46e0e84425f3d577}{Dataset} (unsigned int dataset\-Dimension)
+\item 
+bool \hyperlink{class_dataset_a6be5cd1a0217450a47895ec191becb8d}{Push\-Back\-Input\-And\-Target} (std\-::initializer\-\_\-list$<$ T $>$ input\-List, std\-::initializer\-\_\-list$<$ T $>$ target\-List)
+\item 
+bool \hyperlink{class_dataset_af3cf63ef5a12c9c84dd7230ca4c0e4f3}{Push\-Back\-Input\-And\-Target} (std\-::vector$<$ T $>$ input\-Data\-To\-Push, std\-::vector$<$ T $>$ target\-Data\-To\-Push)
+\item 
+bool \hyperlink{class_dataset_abdbd78b795d4466da2b9435793d18977}{Push\-Back\-Input} (std\-::vector$<$ T $>$ data\-To\-Push)
+\item 
+bool \hyperlink{class_dataset_add6309542e511497b33667d7244e6993}{Push\-Back\-Input} (std\-::initializer\-\_\-list$<$ T $>$ input\-List)
+\item 
+std\-::vector$<$ T $>$ \hyperlink{class_dataset_a89d16a207a6852f6fd5585d9c015c3b3}{Get\-Input} (unsigned int index)
+\item 
+bool \hyperlink{class_dataset_a3ccdc91604800a3a7ee30d05d984e27f}{Set\-Input} (unsigned int index, std\-::vector$<$ T $>$ data)
+\item 
+unsigned int \hyperlink{class_dataset_a832fcfa74d58b6f896cbe92c9fd77741}{Return\-Number\-Of\-Inputs} ()
+\item 
+bool \hyperlink{class_dataset_af395132a97084aad5113ab16885f4ad2}{Push\-Back\-Target} (std\-::vector$<$ T $>$ data\-To\-Push)
+\item 
+bool \hyperlink{class_dataset_a5f9e4e1d76d2100dcf5985f67790d5bb}{Push\-Back\-Target} (std\-::initializer\-\_\-list$<$ T $>$ target\-List)
+\item 
+std\-::vector$<$ T $>$ \hyperlink{class_dataset_ab72961bcb2ff0152977dbe1ae3ec670a}{Get\-Target} (unsigned int index)
+\item 
+bool \hyperlink{class_dataset_a04bb918c29600b1a681b5d079a941401}{Set\-Target} (unsigned int index, T data)
+\item 
+unsigned int \hyperlink{class_dataset_a8b77104d037f1895a15803a4d0d8c06b}{Return\-Number\-Of\-Targets} ()
+\item 
+bool \hyperlink{class_dataset_a672561f00cfd9018df2555974389b816}{Check\-Integrity} ()
+\item 
+\hypertarget{class_dataset_a7016d7ef7cabad560be6ded0232e0142}{void {\bfseries Print\-Input} (unsigned int index)}\label{class_dataset_a7016d7ef7cabad560be6ded0232e0142}
+
+\item 
+\hypertarget{class_dataset_a388aa8d7ad1bd2fb8a902e8900bfab46}{void {\bfseries Print\-Target} (unsigned int index)}\label{class_dataset_a388aa8d7ad1bd2fb8a902e8900bfab46}
+
+\item 
+\hypertarget{class_dataset_a7ff4595a70bce2e984e87b11211a436a}{std\-::string {\bfseries Return\-String\-X\-M\-L} ()}\label{class_dataset_a7ff4595a70bce2e984e87b11211a436a}
+
+\item 
+\hypertarget{class_dataset_acc5411ee1e5a7e47cb9f546523d40bb4}{std\-::string {\bfseries Return\-String\-C\-S\-V} ()}\label{class_dataset_acc5411ee1e5a7e47cb9f546523d40bb4}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class Dataset$<$ T $>$}
+
+This class permits to create complex datasets and use them to feed the network. 
+
+This class provides two containers for Input and Target datas. The \hyperlink{class_dataset}{Dataset} can be created using the \hyperlink{class_parser}{Parser} directly from a C\-S\-V (Comma-\/\-Separeted Values) file or an X\-M\-L file. During the backpropagation training it loads Input and Output values and use them to feed the \hyperlink{class_network}{Network}.
+
+\begin{DoxyAuthor}{Author}
+Massimiliano Patacchiola
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2015
+\end{DoxyDate}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000001}{Todo}]\end{DoxyRefDesc}
+
+
+Contact\-: 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_dataset_a3c1d2e0fa826798f46e0e84425f3d577}{\index{Dataset@{Dataset}!Dataset@{Dataset}}
+\index{Dataset@{Dataset}!Dataset@{Dataset}}
+\subsubsection[{Dataset}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Dataset}$<$ T $>$\-::{\bf Dataset} (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{dataset\-Dimension}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_a3c1d2e0fa826798f46e0e84425f3d577}
+Class constructor. It permits to create directly a multiple hidden layer network
+
+
+\begin{DoxyParams}{Parameters}
+{\em dataset\-Dimension} & the dimension of the dataset \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_dataset_a672561f00cfd9018df2555974389b816}{\index{Dataset@{Dataset}!Check\-Integrity@{Check\-Integrity}}
+\index{Check\-Integrity@{Check\-Integrity}!Dataset@{Dataset}}
+\subsubsection[{Check\-Integrity}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Dataset}$<$ T $>$\-::Check\-Integrity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_a672561f00cfd9018df2555974389b816}
+It checks if there is the same number of input and target values
+
+\begin{DoxyReturn}{Returns}
+it returns true if everything is all right, otherwise it returns false 
+\end{DoxyReturn}
+\hypertarget{class_dataset_a89d16a207a6852f6fd5585d9c015c3b3}{\index{Dataset@{Dataset}!Get\-Input@{Get\-Input}}
+\index{Get\-Input@{Get\-Input}!Dataset@{Dataset}}
+\subsubsection[{Get\-Input}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ std\-::vector$<$T$>$ {\bf Dataset}$<$ T $>$\-::Get\-Input (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_a89d16a207a6852f6fd5585d9c015c3b3}
+It permits to extract a vector of inputs
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & of the input vector to return \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_dataset_ab72961bcb2ff0152977dbe1ae3ec670a}{\index{Dataset@{Dataset}!Get\-Target@{Get\-Target}}
+\index{Get\-Target@{Get\-Target}!Dataset@{Dataset}}
+\subsubsection[{Get\-Target}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ std\-::vector$<$T$>$ {\bf Dataset}$<$ T $>$\-::Get\-Target (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{index}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_ab72961bcb2ff0152977dbe1ae3ec670a}
+It permits to extract a vector of targets
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & of the target vector to return \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_dataset_abdbd78b795d4466da2b9435793d18977}{\index{Dataset@{Dataset}!Push\-Back\-Input@{Push\-Back\-Input}}
+\index{Push\-Back\-Input@{Push\-Back\-Input}!Dataset@{Dataset}}
+\subsubsection[{Push\-Back\-Input}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Dataset}$<$ T $>$\-::Push\-Back\-Input (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ T $>$}]{data\-To\-Push}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_abdbd78b795d4466da2b9435793d18977}
+It permits to push back in the \hyperlink{class_dataset}{Dataset} a new set of Input values
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\-To\-Push} & the vector of values to push inside the \hyperlink{class_dataset}{Dataset} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_dataset_add6309542e511497b33667d7244e6993}{\index{Dataset@{Dataset}!Push\-Back\-Input@{Push\-Back\-Input}}
+\index{Push\-Back\-Input@{Push\-Back\-Input}!Dataset@{Dataset}}
+\subsubsection[{Push\-Back\-Input}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Dataset}$<$ T $>$\-::Push\-Back\-Input (
+\begin{DoxyParamCaption}
+\item[{std\-::initializer\-\_\-list$<$ T $>$}]{input\-List}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_add6309542e511497b33667d7244e6993}
+It permits to push back in the \hyperlink{class_dataset}{Dataset} a new set of Input values
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\-To\-Push} & the vector of values to push inside the \hyperlink{class_dataset}{Dataset} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_dataset_a6be5cd1a0217450a47895ec191becb8d}{\index{Dataset@{Dataset}!Push\-Back\-Input\-And\-Target@{Push\-Back\-Input\-And\-Target}}
+\index{Push\-Back\-Input\-And\-Target@{Push\-Back\-Input\-And\-Target}!Dataset@{Dataset}}
+\subsubsection[{Push\-Back\-Input\-And\-Target}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Dataset}$<$ T $>$\-::Push\-Back\-Input\-And\-Target (
+\begin{DoxyParamCaption}
+\item[{std\-::initializer\-\_\-list$<$ T $>$}]{input\-List, }
+\item[{std\-::initializer\-\_\-list$<$ T $>$}]{target\-List}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_a6be5cd1a0217450a47895ec191becb8d}
+It permits to push back directly list of values without use a vector ex\-: my\-Dataset.\-Push\-Back\-Input\-And\-Target(\{0.\-4, 0.\-3, 0.\-2\}, \{0.\-01, 0.\-02\});
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-List} & the list of values to push in the input container \\
+\hline
+{\em target\-List} & the list of values to push in the target container \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_dataset_af3cf63ef5a12c9c84dd7230ca4c0e4f3}{\index{Dataset@{Dataset}!Push\-Back\-Input\-And\-Target@{Push\-Back\-Input\-And\-Target}}
+\index{Push\-Back\-Input\-And\-Target@{Push\-Back\-Input\-And\-Target}!Dataset@{Dataset}}
+\subsubsection[{Push\-Back\-Input\-And\-Target}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Dataset}$<$ T $>$\-::Push\-Back\-Input\-And\-Target (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ T $>$}]{input\-Data\-To\-Push, }
+\item[{std\-::vector$<$ T $>$}]{target\-Data\-To\-Push}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_af3cf63ef5a12c9c84dd7230ca4c0e4f3}
+It permits to push back in the \hyperlink{class_dataset}{Dataset} a new set of Input values
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\-To\-Push} & the vector of values to push inside the \hyperlink{class_dataset}{Dataset} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_dataset_af395132a97084aad5113ab16885f4ad2}{\index{Dataset@{Dataset}!Push\-Back\-Target@{Push\-Back\-Target}}
+\index{Push\-Back\-Target@{Push\-Back\-Target}!Dataset@{Dataset}}
+\subsubsection[{Push\-Back\-Target}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Dataset}$<$ T $>$\-::Push\-Back\-Target (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ T $>$}]{data\-To\-Push}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_af395132a97084aad5113ab16885f4ad2}
+It permits to push back in the \hyperlink{class_dataset}{Dataset} a new set of Target values
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\-To\-Push} & the vector of values to push inside the \hyperlink{class_dataset}{Dataset} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_dataset_a5f9e4e1d76d2100dcf5985f67790d5bb}{\index{Dataset@{Dataset}!Push\-Back\-Target@{Push\-Back\-Target}}
+\index{Push\-Back\-Target@{Push\-Back\-Target}!Dataset@{Dataset}}
+\subsubsection[{Push\-Back\-Target}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Dataset}$<$ T $>$\-::Push\-Back\-Target (
+\begin{DoxyParamCaption}
+\item[{std\-::initializer\-\_\-list$<$ T $>$}]{target\-List}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_a5f9e4e1d76d2100dcf5985f67790d5bb}
+It permits to push back in the \hyperlink{class_dataset}{Dataset} a new set of Target values
+
+
+\begin{DoxyParams}{Parameters}
+{\em data\-To\-Push} & the vector of values to push inside the \hyperlink{class_dataset}{Dataset} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_dataset_a832fcfa74d58b6f896cbe92c9fd77741}{\index{Dataset@{Dataset}!Return\-Number\-Of\-Inputs@{Return\-Number\-Of\-Inputs}}
+\index{Return\-Number\-Of\-Inputs@{Return\-Number\-Of\-Inputs}!Dataset@{Dataset}}
+\subsubsection[{Return\-Number\-Of\-Inputs}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ unsigned int {\bf Dataset}$<$ T $>$\-::Return\-Number\-Of\-Inputs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_a832fcfa74d58b6f896cbe92c9fd77741}
+It permits to extract a vector of inputs
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & of the input vector to return \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_dataset_a8b77104d037f1895a15803a4d0d8c06b}{\index{Dataset@{Dataset}!Return\-Number\-Of\-Targets@{Return\-Number\-Of\-Targets}}
+\index{Return\-Number\-Of\-Targets@{Return\-Number\-Of\-Targets}!Dataset@{Dataset}}
+\subsubsection[{Return\-Number\-Of\-Targets}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ unsigned int {\bf Dataset}$<$ T $>$\-::Return\-Number\-Of\-Targets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_a8b77104d037f1895a15803a4d0d8c06b}
+It returns the number of targets inside the \hyperlink{class_dataset}{Dataset}
+
+\begin{DoxyReturn}{Returns}
+it returns an unsigned integer representing the number of targets 
+\end{DoxyReturn}
+\hypertarget{class_dataset_a3ccdc91604800a3a7ee30d05d984e27f}{\index{Dataset@{Dataset}!Set\-Input@{Set\-Input}}
+\index{Set\-Input@{Set\-Input}!Dataset@{Dataset}}
+\subsubsection[{Set\-Input}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Dataset}$<$ T $>$\-::Set\-Input (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{index, }
+\item[{std\-::vector$<$ T $>$}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_a3ccdc91604800a3a7ee30d05d984e27f}
+It permits to set a vector of input
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & of the input vector to set \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_dataset_a04bb918c29600b1a681b5d079a941401}{\index{Dataset@{Dataset}!Set\-Target@{Set\-Target}}
+\index{Set\-Target@{Set\-Target}!Dataset@{Dataset}}
+\subsubsection[{Set\-Target}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Dataset}$<$ T $>$\-::Set\-Target (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{index, }
+\item[{T}]{data}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_dataset_a04bb918c29600b1a681b5d079a941401}
+It permits to set a vector of targets
+
+
+\begin{DoxyParams}{Parameters}
+{\em index} & of the target vector to set \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/Dataset.\-h\end{DoxyCompactItemize}

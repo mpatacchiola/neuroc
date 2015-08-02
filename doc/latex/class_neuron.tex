@@ -1,0 +1,284 @@
+\hypertarget{class_neuron}{\section{Neuron$<$ T $>$ Class Template Reference}
+\label{class_neuron}\index{Neuron$<$ T $>$@{Neuron$<$ T $>$}}
+}
+
+
+This is the lowest class and it represents the \hyperlink{class_neuron}{Neuron} object.  
+
+
+
+
+{\ttfamily \#include $<$Neuron.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_neuron_a54a06b1dd7b89dd044cd14a406ff78a4}{Neuron} (const \hyperlink{class_neuron}{Neuron}$<$ T $>$ \&r\-Neuron)
+\item 
+\hyperlink{class_neuron_affff6501384d5b775d82b256fa890e54}{Neuron} (const std\-::vector$<$ T $>$ \&connections\-Vector, std\-::function$<$ T(std\-::vector$<$ T $>$, std\-::vector$<$ T $>$)$>$ weight\-Function, std\-::function$<$ T(T, T)$>$ join\-Function, std\-::function$<$ T(T)$>$ transfer\-Function, T bias\-Weight=0)
+\item 
+\hyperlink{class_neuron}{Neuron}$<$ T $>$ \hyperlink{class_neuron_a7c3dca11875d3750232572b9dbaa3f92}{operator=} (const \hyperlink{class_neuron}{Neuron}$<$ T $>$ \&r\-Neuron)
+\item 
+const T \& \hyperlink{class_neuron_a1d18d688f5f310ec29f93c38b9d5e6e3}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int index) const 
+\item 
+const unsigned int \hyperlink{class_neuron_a58d46a89339b5d1a2987159d56adaeca}{Size} () const 
+\item 
+T \hyperlink{class_neuron_a38bba6f81fde2ce7df32372cade0fb87}{Compute} (std\-::vector$<$ T $>$ input\-Vector)
+\item 
+void \hyperlink{class_neuron_af98248f8266d73307ff2b6820038a0c4}{Randomize\-Connection\-Vector} (std\-::function$<$ T(T)$>$ init\-Function)
+\item 
+const std\-::vector$<$ T $>$ \& \hyperlink{class_neuron_a9090ebb7bbaea65059bbdb0b2d01e004}{Get\-Connection\-Vector} () const 
+\item 
+bool \hyperlink{class_neuron_a535b1f8371c08845f0b2a6a2cb35e869}{Set\-Connection\-Vector} (const std\-::vector$<$ T $>$ \&connection\-Vector)
+\item 
+void \hyperlink{class_neuron_a8ec9e10ab930126918685eafb176ebf4}{Print} ()
+\item 
+void \hyperlink{class_neuron_a66d4ef8439d816a6101e6df51c81f9d2}{Set\-Value} (T value)
+\item 
+const T \hyperlink{class_neuron_a30efca244cc827db1f66907e77c5d651}{Get\-Value} () const 
+\item 
+void \hyperlink{class_neuron_a5328571eb332fabe1c81136a809d8ad9}{Set\-Error} (T value)
+\item 
+const T \hyperlink{class_neuron_a74d809b4b33e36eda9249d372311f69c}{Get\-Error} () const 
+\item 
+void \hyperlink{class_neuron_aa339dd785e46a7d7eb0fa43284acc690}{Set\-Bias} (T value)
+\item 
+const T \hyperlink{class_neuron_a572bd4cfd686214a4f563e4a4203c14e}{Get\-Bias} () const 
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T$>$class Neuron$<$ T $>$}
+
+This is the lowest class and it represents the \hyperlink{class_neuron}{Neuron} object. 
+
+Copyright 2015 Massimiliano Patacchiola
+
+\begin{DoxyAuthor}{Author}
+Massimiliano Patacchiola
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2015
+\end{DoxyDate}
+Contact\-: 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_neuron_a54a06b1dd7b89dd044cd14a406ff78a4}{\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\subsubsection[{Neuron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Neuron}$<$ T $>$\-::{\bf Neuron} (
+\begin{DoxyParamCaption}
+\item[{const {\bf Neuron}$<$ T $>$ \&}]{r\-Neuron}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_a54a06b1dd7b89dd044cd14a406ff78a4}
+Copy constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em r\-Neuron} & reference to an existing \hyperlink{class_neuron}{Neuron} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_neuron_affff6501384d5b775d82b256fa890e54}{\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\index{Neuron@{Neuron}!Neuron@{Neuron}}
+\subsubsection[{Neuron}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Neuron}$<$ T $>$\-::{\bf Neuron} (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ T $>$ \&}]{connections\-Vector, }
+\item[{std\-::function$<$ T(std\-::vector$<$ T $>$, std\-::vector$<$ T $>$)$>$}]{weight\-Function, }
+\item[{std\-::function$<$ T(T, T)$>$}]{join\-Function, }
+\item[{std\-::function$<$ T(T)$>$}]{transfer\-Function, }
+\item[{T}]{bias\-Weight = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_affff6501384d5b775d82b256fa890e54}
+It creates an object of type \hyperlink{class_neuron}{Neuron}
+
+
+\begin{DoxyParams}{Parameters}
+{\em bias\-Weight} & it is the value of the weight of the bias neuron \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_neuron_a38bba6f81fde2ce7df32372cade0fb87}{\index{Neuron@{Neuron}!Compute@{Compute}}
+\index{Compute@{Compute}!Neuron@{Neuron}}
+\subsubsection[{Compute}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ T {\bf Neuron}$<$ T $>$\-::Compute (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ T $>$}]{input\-Vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_a38bba6f81fde2ce7df32372cade0fb87}
+It gives the value of the \hyperlink{class_neuron}{Neuron} after one computation after that the internal value of the neuron is changed
+
+\begin{DoxyReturn}{Returns}
+it returns the value of the neuron after the computation 
+\end{DoxyReturn}
+\hypertarget{class_neuron_a572bd4cfd686214a4f563e4a4203c14e}{\index{Neuron@{Neuron}!Get\-Bias@{Get\-Bias}}
+\index{Get\-Bias@{Get\-Bias}!Neuron@{Neuron}}
+\subsubsection[{Get\-Bias}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const T {\bf Neuron}$<$ T $>$\-::Get\-Bias (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_a572bd4cfd686214a4f563e4a4203c14e}
+Get the value of the Bias Connection
+
+\begin{DoxyReturn}{Returns}
+it returns the current value of the Bias Connection 
+\end{DoxyReturn}
+\hypertarget{class_neuron_a9090ebb7bbaea65059bbdb0b2d01e004}{\index{Neuron@{Neuron}!Get\-Connection\-Vector@{Get\-Connection\-Vector}}
+\index{Get\-Connection\-Vector@{Get\-Connection\-Vector}!Neuron@{Neuron}}
+\subsubsection[{Get\-Connection\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const std\-::vector$<$T$>$\& {\bf Neuron}$<$ T $>$\-::Get\-Connection\-Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_a9090ebb7bbaea65059bbdb0b2d01e004}
+Returning a vector containing the values of the neuron connections The vector start with the first incoming connection and it ends with the last incoming connection If the \hyperlink{class_neuron}{Neuron} has a Bias Unit then the first connection of the neuron is the Bias incoming connection \begin{DoxyReturn}{Returns}
+it returns a vector of values 
+\end{DoxyReturn}
+\hypertarget{class_neuron_a74d809b4b33e36eda9249d372311f69c}{\index{Neuron@{Neuron}!Get\-Error@{Get\-Error}}
+\index{Get\-Error@{Get\-Error}!Neuron@{Neuron}}
+\subsubsection[{Get\-Error}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const T {\bf Neuron}$<$ T $>$\-::Get\-Error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_a74d809b4b33e36eda9249d372311f69c}
+Get the value of the neuron
+
+\begin{DoxyReturn}{Returns}
+it returns the current value of the neuron 
+\end{DoxyReturn}
+\hypertarget{class_neuron_a30efca244cc827db1f66907e77c5d651}{\index{Neuron@{Neuron}!Get\-Value@{Get\-Value}}
+\index{Get\-Value@{Get\-Value}!Neuron@{Neuron}}
+\subsubsection[{Get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const T {\bf Neuron}$<$ T $>$\-::Get\-Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_a30efca244cc827db1f66907e77c5d651}
+Get the value of the neuron
+
+\begin{DoxyReturn}{Returns}
+it returns the current value of the neuron 
+\end{DoxyReturn}
+\hypertarget{class_neuron_a7c3dca11875d3750232572b9dbaa3f92}{\index{Neuron@{Neuron}!operator=@{operator=}}
+\index{operator=@{operator=}!Neuron@{Neuron}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ {\bf Neuron}$<$T$>$ {\bf Neuron}$<$ T $>$\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Neuron}$<$ T $>$ \&}]{r\-Neuron}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_a7c3dca11875d3750232572b9dbaa3f92}
+Overload of the assignment operator
+
+
+\begin{DoxyParams}{Parameters}
+{\em r\-Neuron} & reference to an existing \hyperlink{class_neuron}{Neuron} \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_neuron_a1d18d688f5f310ec29f93c38b9d5e6e3}{\index{Neuron@{Neuron}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!Neuron@{Neuron}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const T\& {\bf Neuron}$<$ T $>$\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{index}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_a1d18d688f5f310ec29f93c38b9d5e6e3}
+Operator overload \mbox{[}\mbox{]} it is used to return the connection weight stored inside the neuron 
+\begin{DoxyParams}{Parameters}
+{\em index} & the number of the element stored inside the layer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns a reference to the weight 
+\end{DoxyReturn}
+\hypertarget{class_neuron_a8ec9e10ab930126918685eafb176ebf4}{\index{Neuron@{Neuron}!Print@{Print}}
+\index{Print@{Print}!Neuron@{Neuron}}
+\subsubsection[{Print}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Neuron}$<$ T $>$\-::Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_a8ec9e10ab930126918685eafb176ebf4}
+Print on terminal informations about the neuron. \hypertarget{class_neuron_af98248f8266d73307ff2b6820038a0c4}{\index{Neuron@{Neuron}!Randomize\-Connection\-Vector@{Randomize\-Connection\-Vector}}
+\index{Randomize\-Connection\-Vector@{Randomize\-Connection\-Vector}!Neuron@{Neuron}}
+\subsubsection[{Randomize\-Connection\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Neuron}$<$ T $>$\-::Randomize\-Connection\-Vector (
+\begin{DoxyParamCaption}
+\item[{std\-::function$<$ T(T)$>$}]{init\-Function}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_af98248f8266d73307ff2b6820038a0c4}
+Randomize all the connection of the neuron using a Init Function. The function to use must take a value as input and return a value as output. The returned value will be assigned to the weight.
+
+
+\begin{DoxyParams}{Parameters}
+{\em init\-Function} & this function is used for modifying all the weights of the neuron \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_neuron_aa339dd785e46a7d7eb0fa43284acc690}{\index{Neuron@{Neuron}!Set\-Bias@{Set\-Bias}}
+\index{Set\-Bias@{Set\-Bias}!Neuron@{Neuron}}
+\subsubsection[{Set\-Bias}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Neuron}$<$ T $>$\-::Set\-Bias (
+\begin{DoxyParamCaption}
+\item[{T}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_aa339dd785e46a7d7eb0fa43284acc690}
+Set the value of the bias
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to set \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_neuron_a535b1f8371c08845f0b2a6a2cb35e869}{\index{Neuron@{Neuron}!Set\-Connection\-Vector@{Set\-Connection\-Vector}}
+\index{Set\-Connection\-Vector@{Set\-Connection\-Vector}!Neuron@{Neuron}}
+\subsubsection[{Set\-Connection\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ bool {\bf Neuron}$<$ T $>$\-::Set\-Connection\-Vector (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ T $>$ \&}]{connection\-Vector}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_a535b1f8371c08845f0b2a6a2cb35e869}
+It permits to set the vector of the incoming connections to the neuron
+
+
+\begin{DoxyParams}{Parameters}
+{\em connections\-Vector} & a vector of floating point numbers \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_neuron_a5328571eb332fabe1c81136a809d8ad9}{\index{Neuron@{Neuron}!Set\-Error@{Set\-Error}}
+\index{Set\-Error@{Set\-Error}!Neuron@{Neuron}}
+\subsubsection[{Set\-Error}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Neuron}$<$ T $>$\-::Set\-Error (
+\begin{DoxyParamCaption}
+\item[{T}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_a5328571eb332fabe1c81136a809d8ad9}
+Set the value of the neuron
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to set, it is used for input neurons \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_neuron_a66d4ef8439d816a6101e6df51c81f9d2}{\index{Neuron@{Neuron}!Set\-Value@{Set\-Value}}
+\index{Set\-Value@{Set\-Value}!Neuron@{Neuron}}
+\subsubsection[{Set\-Value}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ void {\bf Neuron}$<$ T $>$\-::Set\-Value (
+\begin{DoxyParamCaption}
+\item[{T}]{value}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_a66d4ef8439d816a6101e6df51c81f9d2}
+Set the value of the neuron
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to set, it is used for input neurons \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_neuron_a58d46a89339b5d1a2987159d56adaeca}{\index{Neuron@{Neuron}!Size@{Size}}
+\index{Size@{Size}!Neuron@{Neuron}}
+\subsubsection[{Size}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T$>$ const unsigned int {\bf Neuron}$<$ T $>$\-::Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inline]}}}\label{class_neuron_a58d46a89339b5d1a2987159d56adaeca}
+It gives the size of the connections container
+
+\begin{DoxyReturn}{Returns}
+it returns the number of connection of the neuron 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\-:\begin{DoxyCompactItemize}
+\item 
+include/Neuron.\-h\end{DoxyCompactItemize}

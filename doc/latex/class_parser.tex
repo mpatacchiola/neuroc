@@ -1,0 +1,156 @@
+\hypertarget{class_parser}{\section{Parser Class Reference}
+\label{class_parser}\index{Parser@{Parser}}
+}
+
+
+This class permits to save networks in X\-M\-L files.  
+
+
+
+
+{\ttfamily \#include $<$Parser.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{class_parser_a318a8a1b41e2c61dc32ddc9dca8b3e0b}{Initialise\-X\-M\-L} (std\-::string file\-Path)
+\item 
+bool \hyperlink{class_parser_a1717f9c75640cbfea99d1fbce0c19a2b}{Finalise\-X\-M\-L} ()
+\item 
+\hypertarget{class_parser_a15b8895c750b64246db278d974c015d9}{bool {\bfseries Set\-Path} (std\-::string file\-Path)}\label{class_parser_a15b8895c750b64246db278d974c015d9}
+
+\item 
+\hypertarget{class_parser_a2bfbe504553d36e4fd0a4e1224b3ffc8}{std\-::string {\bfseries Get\-Path} ()}\label{class_parser_a2bfbe504553d36e4fd0a4e1224b3ffc8}
+
+\item 
+\hypertarget{class_parser_a33cf5494cdd71d936e370adb88d59f52}{bool {\bfseries Add\-Note} (std\-::string note, std\-::string title=\char`\"{}\char`\"{})}\label{class_parser_a33cf5494cdd71d936e370adb88d59f52}
+
+\item 
+\hypertarget{class_parser_ac24b45199cae7358fbfb30943c527d09}{{\footnotesize template$<$typename T $>$ }\\bool {\bfseries Save\-Network} (const \hyperlink{class_network}{Network}$<$ T $>$ \&r\-Network)}\label{class_parser_ac24b45199cae7358fbfb30943c527d09}
+
+\item 
+\hypertarget{class_parser_ac47cb9ddac8b7b0f9dfd21842e31f8c5}{{\footnotesize template$<$typename T $>$ }\\bool {\bfseries Save\-Layer} (const \hyperlink{class_layer}{Layer}$<$ T $>$ \&r\-Layer)}\label{class_parser_ac47cb9ddac8b7b0f9dfd21842e31f8c5}
+
+\item 
+\hypertarget{class_parser_a5bd2432d945fb668ab256fcf9286bcc7}{{\footnotesize template$<$typename T $>$ }\\bool {\bfseries Save\-Neuron} (const \hyperlink{class_neuron}{Neuron}$<$ T $>$ \&r\-Neuron)}\label{class_parser_a5bd2432d945fb668ab256fcf9286bcc7}
+
+\item 
+\hypertarget{class_parser_a144823dc8e484a9ccd6b41cfdc903e38}{{\footnotesize template$<$typename T $>$ }\\bool {\bfseries Fill\-Neuron} (\hyperlink{class_neuron}{Neuron}$<$ T $>$ $\ast$p\-Neuron)}\label{class_parser_a144823dc8e484a9ccd6b41cfdc903e38}
+
+\item 
+\hypertarget{class_parser_a3e53faee9d796f0ddf21b567826c30e2}{{\footnotesize template$<$typename T $>$ }\\bool {\bfseries Save\-Dataset} (\hyperlink{class_dataset}{Dataset}$<$ T $>$ \&r\-Dataset)}\label{class_parser_a3e53faee9d796f0ddf21b567826c30e2}
+
+\item 
+\hypertarget{class_parser_ae95eca02d45e57f346bce044a314afad}{{\footnotesize template$<$typename T $>$ }\\bool {\bfseries Save\-Dataset\-As\-C\-S\-V} (\hyperlink{class_dataset}{Dataset}$<$ T $>$ \&r\-Dataset, std\-::string file\-Path)}\label{class_parser_ae95eca02d45e57f346bce044a314afad}
+
+\item 
+\hypertarget{class_parser_a7cf0c8df884455df7535b6114cd117a4}{bool {\bfseries Check\-Integrity} ()}\label{class_parser_a7cf0c8df884455df7535b6114cd117a4}
+
+\item 
+unsigned int \hyperlink{class_parser_a60bfa9ffe6cc0f3a53f67a7967239d39}{Return\-Number\-Of\-Networks} ()
+\item 
+unsigned int \hyperlink{class_parser_afd68c8694b232cc663957a6ae07f6aad}{Return\-Number\-Of\-Layers} ()
+\item 
+unsigned int \hyperlink{class_parser_a8e11d9659548d11a506790d34beabcae}{Return\-Number\-Of\-Neurons} ()
+\item 
+unsigned int \hyperlink{class_parser_a39d80043fae9149679012da39bff0f89}{Return\-Number\-Of\-Datasets} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class permits to save networks in X\-M\-L files. 
+
+\begin{DoxyAuthor}{Author}
+Massimiliano Patacchiola
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\-0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2015
+\end{DoxyDate}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000003}{Todo}]Load\-From\-X\-M\-L\end{DoxyRefDesc}
+
+
+Contact\-: 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_parser_a1717f9c75640cbfea99d1fbce0c19a2b}{\index{Parser@{Parser}!Finalise\-X\-M\-L@{Finalise\-X\-M\-L}}
+\index{Finalise\-X\-M\-L@{Finalise\-X\-M\-L}!Parser@{Parser}}
+\subsubsection[{Finalise\-X\-M\-L}]{\setlength{\rightskip}{0pt plus 5cm}bool Parser\-::\-Finalise\-X\-M\-L (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_parser_a1717f9c75640cbfea99d1fbce0c19a2b}
+It Finalises the X\-M\-L file adding a terminator index
+
+\begin{DoxyReturn}{Returns}
+it returns true in case of succes otherwise it returns false 
+\end{DoxyReturn}
+\hypertarget{class_parser_a318a8a1b41e2c61dc32ddc9dca8b3e0b}{\index{Parser@{Parser}!Initialise\-X\-M\-L@{Initialise\-X\-M\-L}}
+\index{Initialise\-X\-M\-L@{Initialise\-X\-M\-L}!Parser@{Parser}}
+\subsubsection[{Initialise\-X\-M\-L}]{\setlength{\rightskip}{0pt plus 5cm}bool Parser\-::\-Initialise\-X\-M\-L (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-Path}
+\end{DoxyParamCaption}
+)}}\label{class_parser_a318a8a1b41e2c61dc32ddc9dca8b3e0b}
+It Initialise the X\-M\-L file deleting all previous content and adding a the X\-M\-L declaration and the root node $<$neuroc$>$
+
+\begin{DoxyReturn}{Returns}
+it returns true in case of succes otherwise it returns false 
+\end{DoxyReturn}
+\hypertarget{class_parser_a39d80043fae9149679012da39bff0f89}{\index{Parser@{Parser}!Return\-Number\-Of\-Datasets@{Return\-Number\-Of\-Datasets}}
+\index{Return\-Number\-Of\-Datasets@{Return\-Number\-Of\-Datasets}!Parser@{Parser}}
+\subsubsection[{Return\-Number\-Of\-Datasets}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Parser\-::\-Return\-Number\-Of\-Datasets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_parser_a39d80043fae9149679012da39bff0f89}
+It Returns the number of Datasets saved inside the X\-M\-L file
+
+\begin{DoxyReturn}{Returns}
+it returns an unsigned int representing the number of Datasets 
+\end{DoxyReturn}
+\hypertarget{class_parser_afd68c8694b232cc663957a6ae07f6aad}{\index{Parser@{Parser}!Return\-Number\-Of\-Layers@{Return\-Number\-Of\-Layers}}
+\index{Return\-Number\-Of\-Layers@{Return\-Number\-Of\-Layers}!Parser@{Parser}}
+\subsubsection[{Return\-Number\-Of\-Layers}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Parser\-::\-Return\-Number\-Of\-Layers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_parser_afd68c8694b232cc663957a6ae07f6aad}
+It Returns the number of Layers saved inside the X\-M\-L file
+
+\begin{DoxyReturn}{Returns}
+it returns an unsigned int representing the number of Layers 
+\end{DoxyReturn}
+\hypertarget{class_parser_a60bfa9ffe6cc0f3a53f67a7967239d39}{\index{Parser@{Parser}!Return\-Number\-Of\-Networks@{Return\-Number\-Of\-Networks}}
+\index{Return\-Number\-Of\-Networks@{Return\-Number\-Of\-Networks}!Parser@{Parser}}
+\subsubsection[{Return\-Number\-Of\-Networks}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Parser\-::\-Return\-Number\-Of\-Networks (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_parser_a60bfa9ffe6cc0f3a53f67a7967239d39}
+It Returns the number of Networks saved inside the X\-M\-L file
+
+\begin{DoxyReturn}{Returns}
+it returns an unsigned int representing the number of Networks 
+\end{DoxyReturn}
+\hypertarget{class_parser_a8e11d9659548d11a506790d34beabcae}{\index{Parser@{Parser}!Return\-Number\-Of\-Neurons@{Return\-Number\-Of\-Neurons}}
+\index{Return\-Number\-Of\-Neurons@{Return\-Number\-Of\-Neurons}!Parser@{Parser}}
+\subsubsection[{Return\-Number\-Of\-Neurons}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int Parser\-::\-Return\-Number\-Of\-Neurons (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_parser_a8e11d9659548d11a506790d34beabcae}
+It Returns the number of Neurons saved inside the X\-M\-L file
+
+\begin{DoxyReturn}{Returns}
+it returns an unsigned int representing the number of Neurons 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/Parser.\-h\item 
+src/Parser.\-cpp\end{DoxyCompactItemize}

@@ -1,8 +1,8 @@
-/* 
+/*
  * neuroc - c++11 Artificial Neural Networks library
  * Copyright (C) 2015  Massimiliano Patacchiola
  * Author: Massimiliano Patacchiola
- * email:  
+ * email:
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
@@ -48,140 +48,211 @@ class Parser {
 
 public:
 
-Parser();
-~Parser();
+    Parser();
+    ~Parser();
 
-bool InitialiseXML(std::string filePath);
-bool FinaliseXML();
+    bool InitialiseXML(std::string filePath);
+    bool FinaliseXML();
 
-inline bool SetPath(std::string filePath){
-mFilePath=filePath;
-return true;
-}
+    inline bool SetPath(std::string filePath) {
+        mFilePath=filePath;
+        return true;
+    }
 
-inline std::string GetPath(){ return mFilePath; }
+    inline std::string GetPath() {
+        return mFilePath;
+    }
 
-template<typename T>
-bool SaveNetwork(Network<T>& rNetwork){
 
- if(mInitialised == false){
-  std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
-  return false;
- }
+    bool AddNote(std::string note, std::string title = "") {
 
- std::ofstream file_stream(mFilePath, std::fstream::app); 
+        if(mInitialised == false) {
+            std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
+            return false;
+        }
 
- if(!file_stream) {
-  std::cerr<<"Error: Cannot open the output file."<<std::endl;
-  return false;
- }
+        std::ofstream file_stream(mFilePath, std::fstream::app);
 
- file_stream << rNetwork.ReturnStringXML();
+        if(!file_stream) {
+            std::cerr<<"Error: Cannot open the output file."<<std::endl;
+            return false;
+        }
 
- file_stream.close();
- return true;
-}
+	if(title == "") file_stream << "<note>" << note << "</note>" << '\n';
+	else file_stream << "<note " << "title:'" << title << "'>" << note << "</note>" << '\n';
 
-template<typename T>
-bool SaveLayer(Layer<T>& rLayer){
+   }
 
- if(mInitialised == false){
-  std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
-  return false;
- }
+    template<typename T>
+    bool SaveNetwork(const Network<T>& rNetwork) {
 
- std::ofstream file_stream(mFilePath, std::fstream::app); 
+        if(mInitialised == false) {
+            std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
+            return false;
+        }
 
- if(!file_stream) {
-  std::cerr<<"Error: Cannot open the output file."<<std::endl;
-  return false;
- }
+        std::ofstream file_stream(mFilePath, std::fstream::app);
 
- file_stream << rLayer.ReturnStringXML();
+        if(!file_stream) {
+            std::cerr<<"Error: Cannot open the output file."<<std::endl;
+            return false;
+        }
 
- file_stream.close();
- return true;
+	file_stream << "<network>" << '\n';
+	file_stream << "<user_value>" << rNetwork.GetUserValue() <<"</user_value>" << '\n';	
+	for(unsigned int lay=0; lay<rNetwork.Size(); lay++){
 
-}
+		file_stream << "<layer>" << '\n';
+		for(unsigned int neu=0; neu<rNetwork[lay].Size(); neu++){
+			file_stream << "<neuron>" << '\n';
+			file_stream << "<value>" << rNetwork[lay][neu].GetValue() <<"</value>" << '\n';
+			file_stream << "<error>" << rNetwork[lay][neu].GetError() <<"</error>" << '\n';
+			file_stream << "<bias>" << rNetwork[lay][neu].GetBias() <<"</bias>" << '\n';
+		
+			file_stream << "<connections>";
+			for(unsigned int con=0; con<rNetwork[lay][neu].Size(); con++){
+			 file_stream << rNetwork[lay][neu][con] << ";";
+			}
+			file_stream <<"</connections>" << '\n';
+			file_stream << "</neuron>" << '\n';
+		}
+		file_stream << "</layer>" << '\n';
+	}
+	file_stream << "</network>" << '\n';
 
-template<typename T>
-bool SaveNeuron(Neuron<T>& rNeuron){
+        file_stream.close();
+        return true;
+    }
 
- if(mInitialised == false){
-  std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
-  return false;
- }
+    template<typename T>
+    bool SaveLayer(const Layer<T>& rLayer) {
 
- std::ofstream file_stream(mFilePath, std::fstream::app); 
+        if(mInitialised == false) {
+            std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
+            return false;
+        }
 
- if(!file_stream) {
-  std::cerr<<"Error: Cannot open the output file."<<std::endl;
-  return false;
- }
+        std::ofstream file_stream(mFilePath, std::fstream::app);
 
- file_stream << rNeuron.ReturnStringXML();
+        if(!file_stream) {
+            std::cerr<<"Error: Cannot open the output file."<<std::endl;
+            return false;
+        }
 
- file_stream.close();
- return true;
-}
+	file_stream << "<layer>" << '\n';
+		for(unsigned int neu=0; neu<rLayer.Size(); neu++){
+			file_stream << "<neuron>" << '\n';
+			file_stream << "<value>" << rLayer[neu].GetValue() <<"</value>" << '\n';
+			file_stream << "<error>" << rLayer[neu].GetError() <<"</error>" << '\n';
+			file_stream << "<bias>" << rLayer[neu].GetBias() <<"</bias>" << '\n';
+		
+			file_stream << "<connections>";
+			for(unsigned int con=0; con<rLayer[neu].Size(); con++){
+			 file_stream << rLayer[neu][con] << ";";
+			}
+			file_stream <<"</connections>" << '\n';
+			file_stream << "</neuron>" << '\n';
+		}
+	file_stream << "</layer>" << '\n';
 
-template<typename T>
-bool SaveDataset(Dataset<T>& rDataset){
+        file_stream.close();
+        return true;
 
- if(mInitialised == false){
-  std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
-  return false;
- }
+    }
 
- if(rDataset.CheckIntegrity() == false) {
-  std::cerr<<"Error: The dataset is bad formed."<<std::endl;
-  return false;
- }
- std::ofstream file_stream(mFilePath, std::fstream::app); 
+    template<typename T>
+    bool SaveNeuron(const Neuron<T>& rNeuron) {
 
- if(!file_stream) {
-  std::cerr<<"Error: Cannot open the output file."<<std::endl;
-  return false;
- }
+        if(mInitialised == false) {
+            std::cerr<<"Error: the XML Parser was not Initialised."<<std::endl;
+            return false;
+        }
 
- file_stream << rDataset.ReturnStringXML();
+        std::ofstream file_stream(mFilePath, std::fstream::app);
 
- file_stream.close();
- return true;
-}
+        if(!file_stream) {
+            std::cerr<<"Error: Cannot open the output file."<<std::endl;
+            return false;
+        }
 
-template<typename T>
-bool SaveDatasetAsCSV(Dataset<T>& rDataset, std::string filePath){
+	file_stream << "<neuron>" << '\n';
+        file_stream << "<value>" << rNeuron.GetValue() <<"</value>" << '\n';
+        file_stream << "<error>" << rNeuron.GetError() <<"</error>" << '\n';
+        file_stream << "<bias>" << rNeuron.GetBias() <<"</bias>" << '\n';
+        
+	file_stream << "<connections>";
+	for(unsigned int con=0; con<rNeuron.Size(); con++){
+	 file_stream << rNeuron[con] << ";";
+	}
+	file_stream <<"</connections>" << '\n';
+	file_stream << "</neuron>" << '\n';
 
- if(rDataset.CheckIntegrity() == false) {
-  std::cerr<<"Error: The dataset is bad formed."<<std::endl;
-  return false;
- }
- std::ofstream file_stream(filePath, std::fstream::app); 
+        file_stream.close();
+        return true;
+    }
 
- if(!file_stream) {
-  std::cerr<<"Error: Cannot open the output file."<<std::endl;
-  return false;
- }
+    template<typename T>
+    bool FillNeuron(Neuron<T>* pNeuron) {
 
- file_stream << rDataset.ReturnStringCSV();
+    }
 
- file_stream.close();
- return true;
-}
+    template<typename T>
+    bool SaveDataset(Dataset<T>& rDataset) {
 
-bool CheckIntegrity();
-unsigned int ReturnNumberOfNetworks();
-unsigned int ReturnNumberOfLayers();
-unsigned int ReturnNumberOfNeurons();
-unsigned int ReturnNumberOfDatasets();
+        if(mInitialised == false) {
+            std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
+            return false;
+        }
+
+        if(rDataset.CheckIntegrity() == false) {
+            std::cerr<<"Error: The dataset is bad formed."<<std::endl;
+            return false;
+        }
+        std::ofstream file_stream(mFilePath, std::fstream::app);
+
+        if(!file_stream) {
+            std::cerr<<"Error: Cannot open the output file."<<std::endl;
+            return false;
+        }
+
+        file_stream << rDataset.ReturnStringXML();
+
+        file_stream.close();
+        return true;
+    }
+
+    template<typename T>
+    bool SaveDatasetAsCSV(Dataset<T>& rDataset, std::string filePath) {
+
+        if(rDataset.CheckIntegrity() == false) {
+            std::cerr<<"Error: The dataset is bad formed."<<std::endl;
+            return false;
+        }
+        std::ofstream file_stream(filePath, std::fstream::app);
+
+        if(!file_stream) {
+            std::cerr<<"Error: Cannot open the output file."<<std::endl;
+            return false;
+        }
+
+        file_stream << rDataset.ReturnStringCSV();
+
+        file_stream.close();
+        return true;
+    }
+
+    bool CheckIntegrity();
+    unsigned int ReturnNumberOfNetworks();
+    unsigned int ReturnNumberOfLayers();
+    unsigned int ReturnNumberOfNeurons();
+    unsigned int ReturnNumberOfDatasets();
 
 private:
-std::string mFilePath;
-bool mInitialised;
+    std::string mFilePath;
+    bool mInitialised;
 
-std::string GetLastLine(std::string filePath);
-std::string GetFirstLine(std::string filePath);
+    std::string GetLastLine(std::string filePath);
+    std::string GetFirstLine(std::string filePath);
 
 
 };

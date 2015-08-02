@@ -31,16 +31,18 @@ compile:
 	g++ $(CFLAGS) -Iinclude -c ./src/Neuron.cpp -o ./bin/obj/Neuron.o
 	g++ $(CFLAGS) -Iinclude -c ./src/Layer.cpp -o ./bin/obj/Layer.o
 	g++ $(CFLAGS) -Iinclude -c ./src/Network.cpp -o ./bin/obj/Network.o
+	g++ $(CFLAGS) -Iinclude -c ./src/Trainer.cpp -o ./bin/obj/Trainer.o
 	g++ $(CFLAGS) -Iinclude -c ./src/Parser.cpp -o ./bin/obj/Parser.o
 	g++ $(CFLAGS) -Iinclude -c ./src/Dataset.cpp -o ./bin/obj/Dataset.o
+	g++ $(CFLAGS) -Iinclude -c ./src/Functions.cpp -o ./bin/obj/Functions.o
 
 	@echo
 	@echo "=== Starting creation of Shared Library ==="
-	g++ -fPIC -shared -Wl,-soname,libneuroc.so.1  -o ./bin/lib/libneuroc.so.1.0 ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o ./bin/obj/Dataset.o
+	g++ -fPIC -shared -Wl,-soname,libneuroc.so.1 -o ./bin/lib/libneuroc.so.1.0 ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Trainer.o ./bin/obj/Parser.o ./bin/obj/Dataset.o ./bin/obj/Functions.o
 
 	@echo
 	@echo "=== Creating the Static Library ==="
-	ar rcs ./bin/lib/libneuroc.a ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o ./bin/obj/Dataset.o
+	ar rcs ./bin/lib/libneuroc.a ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Trainer.o ./bin/obj/Parser.o ./bin/obj/Dataset.o ./bin/obj/Functions.o
 	@echo
 
 install:
@@ -63,14 +65,14 @@ install:
 clean:
 	@echo
 	@echo "=== Cleaning unnecessary files  ==="
-	rm ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o ./bin/obj/Dataset.o
+	rm ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Trainer.o ./bin/obj/Parser.o ./bin/obj/Dataset.o ./bin/obj/Functions.o
 	@echo
 
 remove:
 	@echo
 	@echo "=== Removing files in the system folders ==="
 	rm -r /usr/local/include/neuroc
-	rm ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o ./bin/obj/Dataset.o
+	rm ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Trainer.o ./bin/obj/Parser.o ./bin/obj/Dataset.o ./bin/obj/Functions.o
 	rm ./bin/lib/libneuroc.a 
 	rm ./bin/lib/libneuroc.so.1.0
 	rm /usr/local/lib/libneuroc.so.1 
