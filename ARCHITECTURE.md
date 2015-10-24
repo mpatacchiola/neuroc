@@ -24,11 +24,11 @@ Example: A neuron with 4 input will have a connection vector with 4 elements, ea
 Once the neuron is created it is possible to have the output using the fucntion **Compute()** that take as input a vector or a list and produce as output a single value.
 This function is a sequence of operations, the following list is an example of operations taken from a standard neuron:
 
-- Neuron-input = input_vector
-- Weight Function output = input_vector · connection_vector
-- Join Function output = weight_function_output + bias
-- Transfer Function output = TransferFunction(join_function_output)
-- Neuron-output = transfer_function_output
+1- Neuron-input = input_vector
+2- Weight Function output = input_vector · connection_vector
+3- Join Function output = weight_function_output + bias
+4- Transfer Function output = TransferFunction(join_function_output)
+5- Neuron-output = transfer_function_output
 
 Layer
 -------

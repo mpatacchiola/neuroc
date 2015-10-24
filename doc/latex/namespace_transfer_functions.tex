@@ -4,6 +4,13 @@
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespace_transfer_functions_a0d83aec6536e9695890ebe13fc6126d0}{Linear} (T input)
+\item 
+\hypertarget{namespace_transfer_functions_a979551c123dc84b2bb2907fca94ea945}{{\footnotesize template$<$typename T $>$ }\\T {\bfseries Positive\-Linear} (T input)}\label{namespace_transfer_functions_a979551c123dc84b2bb2907fca94ea945}
+
+\item 
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespace_transfer_functions_aa9cca800e59bdd837189466b39669191}{Saturated\-Linear} (T input)
+\item 
 \hypertarget{namespace_transfer_functions_a9df6db0ada4f365903d3a75aeebab3a6}{{\footnotesize template$<$typename T $>$ }\\T {\bfseries Sigmoid} (T input)}\label{namespace_transfer_functions_a9df6db0ada4f365903d3a75aeebab3a6}
 
 \item 
@@ -19,16 +26,90 @@
 \hypertarget{namespace_transfer_functions_ae8021fc6db8a440800c7d02b9a4dfa42}{{\footnotesize template$<$typename T $>$ }\\T {\bfseries Tanh\-Derivative} (T input)}\label{namespace_transfer_functions_ae8021fc6db8a440800c7d02b9a4dfa42}
 
 \item 
-\hypertarget{namespace_transfer_functions_a0d83aec6536e9695890ebe13fc6126d0}{{\footnotesize template$<$typename T $>$ }\\T {\bfseries Linear} (T input)}\label{namespace_transfer_functions_a0d83aec6536e9695890ebe13fc6126d0}
-
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespace_transfer_functions_a20953b42a150ac8c6f482831cabb097f}{Radial\-Basis} (T input)
 \item 
-\hypertarget{namespace_transfer_functions_a979551c123dc84b2bb2907fca94ea945}{{\footnotesize template$<$typename T $>$ }\\T {\bfseries Positive\-Linear} (T input)}\label{namespace_transfer_functions_a979551c123dc84b2bb2907fca94ea945}
-
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespace_transfer_functions_a779825bc04818589560e97f5749d5138}{Multi\-Quadratic} (T input)
 \item 
-\hypertarget{namespace_transfer_functions_a20953b42a150ac8c6f482831cabb097f}{{\footnotesize template$<$typename T $>$ }\\T {\bfseries Radial\-Basis} (T input)}\label{namespace_transfer_functions_a20953b42a150ac8c6f482831cabb097f}
-
+{\footnotesize template$<$typename T $>$ }\\T \hyperlink{namespace_transfer_functions_a7f603d213bbeb492c8362547cedab5a2}{Hard\-Limit} (T input)
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 It contains functions used by the neuron in the third computational step All the functions of this namespace must take a single value and return a single value 
+
+\subsection{Function Documentation}
+\hypertarget{namespace_transfer_functions_a7f603d213bbeb492c8362547cedab5a2}{\index{Transfer\-Functions@{Transfer\-Functions}!Hard\-Limit@{Hard\-Limit}}
+\index{Hard\-Limit@{Hard\-Limit}!TransferFunctions@{Transfer\-Functions}}
+\subsubsection[{Hard\-Limit}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T Transfer\-Functions\-::\-Hard\-Limit (
+\begin{DoxyParamCaption}
+\item[{T}]{input}
+\end{DoxyParamCaption}
+)}}\label{namespace_transfer_functions_a7f603d213bbeb492c8362547cedab5a2}
+Step funcion that returns 0 or 1 It returns 1 for input grater than 0 It returns 0 in all the other cases 
+\begin{DoxyParams}{Parameters}
+{\em input} & value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the output of the function 
+\end{DoxyReturn}
+\hypertarget{namespace_transfer_functions_a0d83aec6536e9695890ebe13fc6126d0}{\index{Transfer\-Functions@{Transfer\-Functions}!Linear@{Linear}}
+\index{Linear@{Linear}!TransferFunctions@{Transfer\-Functions}}
+\subsubsection[{Linear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T Transfer\-Functions\-::\-Linear (
+\begin{DoxyParamCaption}
+\item[{T}]{input}
+\end{DoxyParamCaption}
+)}}\label{namespace_transfer_functions_a0d83aec6536e9695890ebe13fc6126d0}
+It returns the same value given as input 
+\begin{DoxyParams}{Parameters}
+{\em input} & value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the output of the function 
+\end{DoxyReturn}
+\hypertarget{namespace_transfer_functions_a779825bc04818589560e97f5749d5138}{\index{Transfer\-Functions@{Transfer\-Functions}!Multi\-Quadratic@{Multi\-Quadratic}}
+\index{Multi\-Quadratic@{Multi\-Quadratic}!TransferFunctions@{Transfer\-Functions}}
+\subsubsection[{Multi\-Quadratic}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T Transfer\-Functions\-::\-Multi\-Quadratic (
+\begin{DoxyParamCaption}
+\item[{T}]{input}
+\end{DoxyParamCaption}
+)}}\label{namespace_transfer_functions_a779825bc04818589560e97f5749d5138}
+used in Radial Basis Neurons 
+\begin{DoxyParams}{Parameters}
+{\em input} & value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the output of the function 
+\end{DoxyReturn}
+\hypertarget{namespace_transfer_functions_a20953b42a150ac8c6f482831cabb097f}{\index{Transfer\-Functions@{Transfer\-Functions}!Radial\-Basis@{Radial\-Basis}}
+\index{Radial\-Basis@{Radial\-Basis}!TransferFunctions@{Transfer\-Functions}}
+\subsubsection[{Radial\-Basis}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T Transfer\-Functions\-::\-Radial\-Basis (
+\begin{DoxyParamCaption}
+\item[{T}]{input}
+\end{DoxyParamCaption}
+)}}\label{namespace_transfer_functions_a20953b42a150ac8c6f482831cabb097f}
+used in Radial Basis Neurons 
+\begin{DoxyParams}{Parameters}
+{\em input} & value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the output of the function 
+\end{DoxyReturn}
+\hypertarget{namespace_transfer_functions_aa9cca800e59bdd837189466b39669191}{\index{Transfer\-Functions@{Transfer\-Functions}!Saturated\-Linear@{Saturated\-Linear}}
+\index{Saturated\-Linear@{Saturated\-Linear}!TransferFunctions@{Transfer\-Functions}}
+\subsubsection[{Saturated\-Linear}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T $>$ T Transfer\-Functions\-::\-Saturated\-Linear (
+\begin{DoxyParamCaption}
+\item[{T}]{input}
+\end{DoxyParamCaption}
+)}}\label{namespace_transfer_functions_aa9cca800e59bdd837189466b39669191}
+For input less than -\/1 it returns -\/1 For input greater than +1 it returns +1 For input in the range -\/1 +1 it returns the input value This activation function is used in Hopefield Networks 
+\begin{DoxyParams}{Parameters}
+{\em input} & value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the output of the function 
+\end{DoxyReturn}

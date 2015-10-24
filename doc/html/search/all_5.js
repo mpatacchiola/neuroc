@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['initfunctions',['InitFunctions',['../namespace_init_functions.html',1,'']]],
-  ['initialisexml',['InitialiseXML',['../class_parser.html#a318a8a1b41e2c61dc32ddc9dca8b3e0b',1,'Parser']]]
+  ['hardlimit',['HardLimit',['../namespace_transfer_functions.html#a7f603d213bbeb492c8362547cedab5a2',1,'TransferFunctions']]]
 ];

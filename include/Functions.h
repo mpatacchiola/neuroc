@@ -139,7 +139,7 @@ namespace InitFunctions{
 	    std::uniform_real_distribution<double> distribution_device(0.0,100.0);
 	    double number_extracted =  distribution_device(gen);
 
-	  double RangeMAX = 20.0;
+	  double RangeMAX = 10.0;
 	  double integer_weight = 0;
 	
 
@@ -285,6 +285,38 @@ namespace JoinFunctions{
  */
 namespace TransferFunctions{
 
+
+	/**
+	 * It returns the same value given as input
+	 * @param input value
+	 * @return the output of the function
+	*/
+	template<typename T>
+	T Linear(T input) {
+	 return input;
+	}	
+
+	template<typename T>
+	T PositiveLinear(T input) {
+	 if(input<0.0) return -input;
+	 else return input;
+	}
+
+	/**
+	 * For input less than -1 it returns -1
+	 * For input greater than +1 it returns +1
+	 * For input in the range -1 +1 it returns the input value
+	 * This activation function is used in Hopefield Networks
+	 * @param input value
+	 * @return the output of the function
+	*/
+	template<typename T>
+	T SaturatedLinear(T input) {
+         if(input > 1) return 1;
+	 else if (input < -1) return -1;
+	 else return input;	
+	}
+
 	template<typename T>
 	T Sigmoid(T input) {
 	T result =  ( 1.0 / (1.0 + std::exp(-input)) );
@@ -312,21 +344,42 @@ namespace TransferFunctions{
 	 return (1.0-std::tanh(input)) * (1.0+std::tanh(input));
 	}
 
-	template<typename T>
-	T Linear(T input) {
-	 return input;
-	}	
-
-	template<typename T>
-	T PositiveLinear(T input) {
-	 if(input<0.0) return -input;
-	 else return input;
-	}
-
+	/**
+	 * used in Radial Basis Neurons
+	 * @param input value
+	 * @return the output of the function
+	*/
 	template<typename T>
 	T RadialBasis(T input) {		
 	 return exp( -std::pow(input, 2) );
 	}
+
+	/**
+	 * used in Radial Basis Neurons
+	 * @param input value
+	 * @return the output of the function
+	*/
+	template<typename T>
+	T MultiQuadratic(T input) {
+	 double t1 = 1 + std::pow(input, 2);		
+	 return std::sqrt(t1);
+	}
+
+
+	/**
+	 * Step funcion that returns 0 or 1
+	 * It returns 1 for input grater than 0
+	 * It returns 0 in all the other cases
+	 * @param input value
+	 * @return the output of the function
+	*/
+	template<typename T>
+	T HardLimit(T input) {
+         if(input > 0) return 1;
+	 else return 0;	
+	}
+
+
 
 }
 

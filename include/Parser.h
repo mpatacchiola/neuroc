@@ -99,16 +99,18 @@ public:
         }
 
 	file_stream << "<network>" << '\n';
+	file_stream << "<size>" << rNetwork.Size() <<"</size>" << '\n';
 	file_stream << "<user_value>" << rNetwork.GetUserValue() <<"</user_value>" << '\n';	
 	for(unsigned int lay=0; lay<rNetwork.Size(); lay++){
 
 		file_stream << "<layer>" << '\n';
+		file_stream << "<size>" << rNetwork[lay].Size() <<"</size>" << '\n';
 		for(unsigned int neu=0; neu<rNetwork[lay].Size(); neu++){
 			file_stream << "<neuron>" << '\n';
 			file_stream << "<value>" << rNetwork[lay][neu].GetValue() <<"</value>" << '\n';
 			file_stream << "<error>" << rNetwork[lay][neu].GetError() <<"</error>" << '\n';
 			file_stream << "<bias>" << rNetwork[lay][neu].GetBias() <<"</bias>" << '\n';
-		
+			file_stream << "<size>" << rNetwork[lay][neu].Size() <<"</size>" << '\n';
 			file_stream << "<connections>";
 			for(unsigned int con=0; con<rNetwork[lay][neu].Size(); con++){
 			 file_stream << rNetwork[lay][neu][con] << ";";
@@ -140,12 +142,13 @@ public:
         }
 
 	file_stream << "<layer>" << '\n';
+	file_stream << "<size>" << rLayer.Size() <<"</size>" << '\n';
 		for(unsigned int neu=0; neu<rLayer.Size(); neu++){
 			file_stream << "<neuron>" << '\n';
 			file_stream << "<value>" << rLayer[neu].GetValue() <<"</value>" << '\n';
 			file_stream << "<error>" << rLayer[neu].GetError() <<"</error>" << '\n';
 			file_stream << "<bias>" << rLayer[neu].GetBias() <<"</bias>" << '\n';
-		
+			file_stream << "<size>" << rLayer[neu].Size() <<"</size>" << '\n';
 			file_stream << "<connections>";
 			for(unsigned int con=0; con<rLayer[neu].Size(); con++){
 			 file_stream << rLayer[neu][con] << ";";
@@ -179,7 +182,7 @@ public:
         file_stream << "<value>" << rNeuron.GetValue() <<"</value>" << '\n';
         file_stream << "<error>" << rNeuron.GetError() <<"</error>" << '\n';
         file_stream << "<bias>" << rNeuron.GetBias() <<"</bias>" << '\n';
-        
+        file_stream << "<size>" << rNeuron.Size() <<"</size>" << '\n';
 	file_stream << "<connections>";
 	for(unsigned int con=0; con<rNeuron.Size(); con++){
 	 file_stream << rNeuron[con] << ";";
