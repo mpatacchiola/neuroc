@@ -82,15 +82,15 @@ mNeuronsVector.clear();
 }
 
 /**
-* Operator overload [] it is used to return the smart pointer reference to the neuron stored inside the layer
-* It is possible to access the methods of the single neuron using the deferencing operator ->
-* Example: input_layer->Compute();  // It calls the Compute() method of the neuron returned
+* Operator overload [] it is used to return the reference to the neuron stored inside the layer
+* It is possible to access the methods of the single neuron.
+* Example: input_layer[2].Compute();  // It calls the Compute() method of the neuron returned
 * @param index the number of the element stored inside the layer
-* @return it returns a const reference to the neuron
+* @return it returns a reference to the neuron
 **/
 Neuron& Layer::operator[](unsigned int index) {
-if (index >= mNeuronsVector.size()) throw std::domain_error("Error: Out of Range index.");
-return mNeuronsVector[index];
+ if (index >= mNeuronsVector.size()) throw std::domain_error("Error: Out of Range index.");
+ return mNeuronsVector[index];
 }
 
 /**
@@ -205,8 +205,8 @@ return true;
 *
 * @return it returns the number of neurons
 **/
-inline unsigned int Layer::ReturnNumberOfNeurons() {
-return mNeuronsVector.size();
+unsigned int Layer::ReturnNumberOfNeurons() {
+ return mNeuronsVector.size();
 }
 
 

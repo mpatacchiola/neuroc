@@ -21,9 +21,8 @@
 #define DATASET_H
 
 #include <vector>
-#include <iostream> //printing functions
-#include <sstream>
-#include <initializer_list>
+#include <iostream> 
+
 
 namespace neuroc{
 
@@ -32,9 +31,8 @@ namespace neuroc{
 *
 * \brief This class permits to create complex datasets and use them to feed the network.
 *
-* This class provides two containers for Input and Target datas. The Dataset can be created using the Parser directly
-* from a CSV (Comma-Separeted Values) file or an XML file. During the backpropagation training it loads Input and Output values
-* and use them to feed the Network.
+* This class provides a vector of vector container, usefull for storing data.
+*
 *
 */
 class Dataset {
@@ -47,24 +45,32 @@ Dataset();
 
 ~Dataset();
 
+std::vector<double>& operator[](unsigned int index);
 
 bool PushBackData(std::vector<double> dataToPush);
 
 Dataset Split(unsigned int index);
 
+void Clear();
+
+bool DivideBy(double divisor);
+
 std::vector<double> GetData(unsigned int index);
 bool SetData(unsigned int index, std::vector<double> data);
-
 
 unsigned int ReturnNumberOfData();
 
 void PrintData(unsigned int index);
 
 std::string ReturnStringCSV();
+bool LoadFromCSV(std::string filePath);
+bool SaveAsCSV(std::string filePath);
 
 private:
 
 std::vector<std::vector<double>> mDataVector;
+bool FileExist (std::string name);
+
 
 };
 
