@@ -4,24 +4,23 @@ Neuroc: Lightweight and highly optimized C++ library for Neural Networks
 
 Welcome in the Neuroc repository! Neuroc is a modular library based on the idea of smart blocks. The neuron class is an object made of different functions, this approach allow the user to highly customize networks. The architecture is inspired by the *Matlab Neural Networks Toolbox*, you can find other details about neuroc design [here](ARCHITECTURE.md). Let's look now at the main features of Neuroc:
 
-- Essential and expandible
+- Modular and expandible
 - Safe memory management
 - Object Oriented approach
-- Can use float or double
-- All you can eat networks architecture
+- Zero external dependences (self-contained library)
+- All you can eat network architectures
 - Customizable Transfer Function, Weight Initialization 
-- You can save Networks, Layers and Neurons in XML files
 - Open source (GNU v.2 license)
+
+Neuroc uses the class std::function introduced in C++11 to build high customizable networks. 
 
 Prerequisites
 --------------
 
-To install the library you must have *make* and g++ already installed on your system.
+To install the library you must have "make" and "g++" already installed on your system.
 You can install them from a Unix system running the following commands from the terminal:
 
- `sudo apt-get install build-essential`
-
- `sudo apt-get install g++`
+ `sudo apt-get install g++ build-essential`
 
 
 Installation
@@ -74,8 +73,8 @@ An explenation of the logic behind the architecture can be found in this specifi
 License
 -------
 
-Neuroc - C++ Artificial Neural Networks library
-Copyright (C) 2015  Massimiliano Patacchiola
+Neuroc - C++ Artificial Neural Networks library.
+Copyright (C) 2015  Massimiliano Patacchiola.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
 This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.

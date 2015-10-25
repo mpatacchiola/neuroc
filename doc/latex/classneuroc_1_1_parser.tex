@@ -1,0 +1,141 @@
+\hypertarget{classneuroc_1_1_parser}{\section{neuroc\-:\-:Parser Class Reference}
+\label{classneuroc_1_1_parser}\index{neuroc\-::\-Parser@{neuroc\-::\-Parser}}
+}
+
+
+This class permits to save networks in X\-M\-L files.  
+
+
+
+
+{\ttfamily \#include $<$Parser.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classneuroc_1_1_parser_a58460a6e908e3e7690a7b85cd751c67b}{Initialise\-X\-M\-L} (std\-::string file\-Path)
+\item 
+bool \hyperlink{classneuroc_1_1_parser_ab4273cb1b6de10c86f2c60035a318d8b}{Finalise\-X\-M\-L} ()
+\item 
+\hypertarget{classneuroc_1_1_parser_a8aacc61a8f3d1d6f2afcdcc3dbd035c2}{bool {\bfseries Set\-Path} (std\-::string file\-Path)}\label{classneuroc_1_1_parser_a8aacc61a8f3d1d6f2afcdcc3dbd035c2}
+
+\item 
+\hypertarget{classneuroc_1_1_parser_a9478c163946c4e27c88e2a36f0ebf3c9}{std\-::string {\bfseries Get\-Path} ()}\label{classneuroc_1_1_parser_a9478c163946c4e27c88e2a36f0ebf3c9}
+
+\item 
+\hypertarget{classneuroc_1_1_parser_a1a04b45ac8010c431db0efc810e9cc6e}{bool {\bfseries Add\-Note} (std\-::string note, std\-::string title=\char`\"{}\char`\"{})}\label{classneuroc_1_1_parser_a1a04b45ac8010c431db0efc810e9cc6e}
+
+\item 
+\hypertarget{classneuroc_1_1_parser_a8429026329ecc911fa675d63ff84a877}{bool {\bfseries Save\-Network} (\hyperlink{classneuroc_1_1_network}{Network} \&r\-Network)}\label{classneuroc_1_1_parser_a8429026329ecc911fa675d63ff84a877}
+
+\item 
+\hypertarget{classneuroc_1_1_parser_a288ac0ae37c8b5a5739930179bb763bd}{bool {\bfseries Save\-Layer} (\hyperlink{classneuroc_1_1_layer}{Layer} \&r\-Layer)}\label{classneuroc_1_1_parser_a288ac0ae37c8b5a5739930179bb763bd}
+
+\item 
+\hypertarget{classneuroc_1_1_parser_a5a3d8803f938a5835110bae36ed9eb0a}{bool {\bfseries Save\-Neuron} (\hyperlink{classneuroc_1_1_neuron}{Neuron} \&r\-Neuron)}\label{classneuroc_1_1_parser_a5a3d8803f938a5835110bae36ed9eb0a}
+
+\item 
+\hypertarget{classneuroc_1_1_parser_af4212e1aad972d5111b314da2308edf6}{bool {\bfseries Fill\-Neuron} (\hyperlink{classneuroc_1_1_neuron}{Neuron} $\ast$p\-Neuron)}\label{classneuroc_1_1_parser_af4212e1aad972d5111b314da2308edf6}
+
+\item 
+\hypertarget{classneuroc_1_1_parser_ab607fbc5149fa1ba8de4ec54d8457642}{bool {\bfseries Save\-Dataset} (\hyperlink{classneuroc_1_1_dataset}{Dataset} \&r\-Dataset)}\label{classneuroc_1_1_parser_ab607fbc5149fa1ba8de4ec54d8457642}
+
+\item 
+\hypertarget{classneuroc_1_1_parser_a533d7a747570418461e3d258d2c73bdc}{bool {\bfseries Save\-Dataset\-As\-C\-S\-V} (\hyperlink{classneuroc_1_1_dataset}{Dataset} \&r\-Dataset, std\-::string file\-Path)}\label{classneuroc_1_1_parser_a533d7a747570418461e3d258d2c73bdc}
+
+\item 
+\hypertarget{classneuroc_1_1_parser_af47cbb4d40a2f68474e8da5da0f4a8f6}{bool {\bfseries Check\-Integrity} ()}\label{classneuroc_1_1_parser_af47cbb4d40a2f68474e8da5da0f4a8f6}
+
+\item 
+unsigned int \hyperlink{classneuroc_1_1_parser_ad1bbc7823d25f072816cf2785c37143f}{Return\-Number\-Of\-Networks} ()
+\item 
+unsigned int \hyperlink{classneuroc_1_1_parser_a87f627ea371f74ec2a559e7038231160}{Return\-Number\-Of\-Layers} ()
+\item 
+unsigned int \hyperlink{classneuroc_1_1_parser_a3cb0890dfcfc3c3a9d41b5a797a1269b}{Return\-Number\-Of\-Neurons} ()
+\item 
+unsigned int \hyperlink{classneuroc_1_1_parser_ab4b30e5ac79d94eb5afab500e5da8053}{Return\-Number\-Of\-Datasets} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class permits to save networks in X\-M\-L files. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classneuroc_1_1_parser_ab4273cb1b6de10c86f2c60035a318d8b}{\index{neuroc\-::\-Parser@{neuroc\-::\-Parser}!Finalise\-X\-M\-L@{Finalise\-X\-M\-L}}
+\index{Finalise\-X\-M\-L@{Finalise\-X\-M\-L}!neuroc::Parser@{neuroc\-::\-Parser}}
+\subsubsection[{Finalise\-X\-M\-L}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Parser\-::\-Finalise\-X\-M\-L (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_parser_ab4273cb1b6de10c86f2c60035a318d8b}
+It Finalises the X\-M\-L file adding a terminator index
+
+\begin{DoxyReturn}{Returns}
+it returns true in case of succes otherwise it returns false 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_parser_a58460a6e908e3e7690a7b85cd751c67b}{\index{neuroc\-::\-Parser@{neuroc\-::\-Parser}!Initialise\-X\-M\-L@{Initialise\-X\-M\-L}}
+\index{Initialise\-X\-M\-L@{Initialise\-X\-M\-L}!neuroc::Parser@{neuroc\-::\-Parser}}
+\subsubsection[{Initialise\-X\-M\-L}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Parser\-::\-Initialise\-X\-M\-L (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-Path}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_parser_a58460a6e908e3e7690a7b85cd751c67b}
+It Initialise the X\-M\-L file deleting all previous content and adding a the X\-M\-L declaration and the root node $<$neuroc$>$
+
+\begin{DoxyReturn}{Returns}
+it returns true in case of succes otherwise it returns false 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_parser_ab4b30e5ac79d94eb5afab500e5da8053}{\index{neuroc\-::\-Parser@{neuroc\-::\-Parser}!Return\-Number\-Of\-Datasets@{Return\-Number\-Of\-Datasets}}
+\index{Return\-Number\-Of\-Datasets@{Return\-Number\-Of\-Datasets}!neuroc::Parser@{neuroc\-::\-Parser}}
+\subsubsection[{Return\-Number\-Of\-Datasets}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int neuroc\-::\-Parser\-::\-Return\-Number\-Of\-Datasets (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_parser_ab4b30e5ac79d94eb5afab500e5da8053}
+It Returns the number of Datasets saved inside the X\-M\-L file
+
+\begin{DoxyReturn}{Returns}
+it returns an unsigned int representing the number of Datasets 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_parser_a87f627ea371f74ec2a559e7038231160}{\index{neuroc\-::\-Parser@{neuroc\-::\-Parser}!Return\-Number\-Of\-Layers@{Return\-Number\-Of\-Layers}}
+\index{Return\-Number\-Of\-Layers@{Return\-Number\-Of\-Layers}!neuroc::Parser@{neuroc\-::\-Parser}}
+\subsubsection[{Return\-Number\-Of\-Layers}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int neuroc\-::\-Parser\-::\-Return\-Number\-Of\-Layers (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_parser_a87f627ea371f74ec2a559e7038231160}
+It Returns the number of Layers saved inside the X\-M\-L file
+
+\begin{DoxyReturn}{Returns}
+it returns an unsigned int representing the number of Layers 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_parser_ad1bbc7823d25f072816cf2785c37143f}{\index{neuroc\-::\-Parser@{neuroc\-::\-Parser}!Return\-Number\-Of\-Networks@{Return\-Number\-Of\-Networks}}
+\index{Return\-Number\-Of\-Networks@{Return\-Number\-Of\-Networks}!neuroc::Parser@{neuroc\-::\-Parser}}
+\subsubsection[{Return\-Number\-Of\-Networks}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int neuroc\-::\-Parser\-::\-Return\-Number\-Of\-Networks (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_parser_ad1bbc7823d25f072816cf2785c37143f}
+It Returns the number of Networks saved inside the X\-M\-L file
+
+\begin{DoxyReturn}{Returns}
+it returns an unsigned int representing the number of Networks 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_parser_a3cb0890dfcfc3c3a9d41b5a797a1269b}{\index{neuroc\-::\-Parser@{neuroc\-::\-Parser}!Return\-Number\-Of\-Neurons@{Return\-Number\-Of\-Neurons}}
+\index{Return\-Number\-Of\-Neurons@{Return\-Number\-Of\-Neurons}!neuroc::Parser@{neuroc\-::\-Parser}}
+\subsubsection[{Return\-Number\-Of\-Neurons}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int neuroc\-::\-Parser\-::\-Return\-Number\-Of\-Neurons (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_parser_a3cb0890dfcfc3c3a9d41b5a797a1269b}
+It Returns the number of Neurons saved inside the X\-M\-L file
+
+\begin{DoxyReturn}{Returns}
+it returns an unsigned int representing the number of Neurons 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/Parser.\-h\item 
+src/Parser.\-cpp\end{DoxyCompactItemize}

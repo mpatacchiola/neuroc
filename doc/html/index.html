@@ -21,7 +21,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo_big.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_new_white.png"/></td>
  </tr>
  </tbody>
 </table>
@@ -74,19 +74,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <div class="textblock"><p>Welcome in the Neuroc repository! Neuroc is a modular library based on the idea of smart blocks. The neuron class is an object made of different functions, this approach allow the user to highly customize networks. The architecture is inspired by the <em>Matlab Neural Networks Toolbox</em>, you can find other details about neuroc design <a class="el" href="md__a_r_c_h_i_t_e_c_t_u_r_e.html">here</a>. Let's look now at the main features of Neuroc:</p>
 <ul>
-<li>Essential and expandible</li>
+<li>Modular and expandible</li>
 <li>Safe memory management</li>
 <li>Object Oriented approach</li>
-<li>Can use float or double</li>
-<li>All you can eat networks architecture</li>
+<li>Zero external dependences (self-contained library)</li>
+<li>All you can eat network architectures</li>
 <li>Customizable Transfer Function, Weight Initialization</li>
-<li>You can save Networks, Layers and Neurons in XML files</li>
 <li>Open source (GNU v.2 license)</li>
 </ul>
+<p>Neuroc uses the class std::function introduced in C++11 to build high customizable networks.</p>
 <h2>Prerequisites </h2>
-<p>To install the library you must have <em>make</em> and g++ already installed on your system. You can install them from a Unix system running the following commands from the terminal:</p>
-<p><code>sudo apt-get install build-essential</code></p>
-<p><code>sudo apt-get install g++</code></p>
+<p>To install the library you must have "make" and "g++" already installed on your system. You can install them from a Unix system running the following commands from the terminal:</p>
+<p><code>sudo apt-get install g++ build-essential</code></p>
 <h2>Installation </h2>
 <p>If you are using a Unix system you can install the library very easily:</p>
 <ol type="1">
@@ -106,16 +105,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p><code>g++ -std=c++11 -I/usr/local/include/neuroc -L/usr/local/lib -static mycode.cpp -o mycode -lneuroc</code></p>
 <p>In this case the library will be statically included inside your code. To integrate neuroc in a different environment (ex Eclipse, Code::Blocks, etc) follow the istructions given by the producer on how to integrate an external shared library or a static one.</p>
 <h2>Examples </h2>
-<p>Neuroc permits to create different kind of network. Every object is a container where you can push other objects or data. The class network is a container of Layers, the class Layers is a container of Neurons and the class <a class="el" href="class_dataset.html" title="This class permits to create complex datasets and use them to feed the network. ">Dataset</a> is a container of input/target values. Some examples are present in the folder <em>neuroc/examples</em>.</p>
+<p>Neuroc permits to create different kind of network. Every object is a container where you can push other objects or data. The class network is a container of Layers, the class Layers is a container of Neurons and the class Dataset is a container of input/target values. Some examples are present in the folder <em>neuroc/examples</em>.</p>
 <h2>Documentation </h2>
 <p>The documentation is produced with Doxygen and the HTML output can be found inside the folder <em>neuroc/doc/html</em>. An explenation of the logic behind the architecture can be found in this specific <a class="el" href="md__a_r_c_h_i_t_e_c_t_u_r_e.html">readme</a>.</p>
 <h2>License </h2>
-<p>Neuroc - C++ Artificial Neural Networks library Copyright (C) 2015 Massimiliano Patacchiola</p>
+<p>Neuroc - C++ Artificial Neural Networks library. Copyright (C) 2015 Massimiliano Patacchiola.</p>
 <p>This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 24 2015 15:04:27 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Oct 25 2015 14:23:31 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

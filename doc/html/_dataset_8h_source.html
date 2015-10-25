@@ -21,7 +21,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo_big.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_new_white.png"/></td>
  </tr>
  </tbody>
 </table>
@@ -112,228 +112,81 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;initializer_list&gt;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_dataset.html">   49</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_dataset.html">Dataset</a> {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_dataset.html#a3c1d2e0fa826798f46e0e84425f3d577">   58</a></span>&#160;    <a class="code" href="class_dataset.html#a3c1d2e0fa826798f46e0e84425f3d577">Dataset</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> datasetDimension) {</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        nInputsVector.reserve(datasetDimension);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        nTargetsVector.reserve(datasetDimension);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="class_dataset.html">Dataset</a>() {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="namespaceneuroc.html">   28</a></span>&#160;<span class="keyword">namespace </span>neuroc{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classneuroc_1_1_dataset.html">   40</a></span>&#160;<span class="keyword">class </span><a class="code" href="classneuroc_1_1_dataset.html">Dataset</a> {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<a class="code" href="classneuroc_1_1_dataset.html">Dataset</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> datasetDimension);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<a class="code" href="classneuroc_1_1_dataset.html">Dataset</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;~<a class="code" href="classneuroc_1_1_dataset.html">Dataset</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#ae1bb7d512438456bc0bb868e4c03f41f">PushBackInputAndTarget</a>(std::initializer_list&lt;double&gt; inputList, std::initializer_list&lt;double&gt; targetList);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#ae1bb7d512438456bc0bb868e4c03f41f">PushBackInputAndTarget</a>(std::vector&lt;double&gt; inputDataToPush, std::vector&lt;double&gt; targetDataToPush);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a6dc0e96a90fcd6318985fe5914f1fa36">PushBackInput</a>(std::vector&lt;double&gt; dataToPush);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a6dc0e96a90fcd6318985fe5914f1fa36">PushBackInput</a>(std::initializer_list&lt;double&gt; inputList);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;std::vector&lt;double&gt; <a class="code" href="classneuroc_1_1_dataset.html#a69ded99bf2879a71ae8734a4ae7519be">GetInput</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a63152318ab651c1022f695780cf22a7a">SetInput</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index, std::vector&lt;double&gt; data);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classneuroc_1_1_dataset.html#ab81cbb4ca81442ade12eca43981d105b">ReturnNumberOfInputs</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a87614de72546b8201b953b950f623b4a">PushBackTarget</a>(std::vector&lt;double&gt; dataToPush) ;</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    ~<a class="code" href="class_dataset.html">Dataset</a>() {</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        nInputsVector.clear();</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        nTargetsVector.clear();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a87614de72546b8201b953b950f623b4a">PushBackTarget</a>(std::initializer_list&lt;double&gt; targetList);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;std::vector&lt;double&gt; <a class="code" href="classneuroc_1_1_dataset.html#a7e910db95ee24bc49c562a47a2905490">GetTarget</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_dataset.html#a6be5cd1a0217450a47895ec191becb8d">   78</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_dataset.html#a6be5cd1a0217450a47895ec191becb8d">PushBackInputAndTarget</a>(std::initializer_list&lt;T&gt; inputList, std::initializer_list&lt;T&gt; targetList) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <a class="code" href="class_dataset.html#abdbd78b795d4466da2b9435793d18977">PushBackInput</a>( inputList);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <a class="code" href="class_dataset.html#af395132a97084aad5113ab16885f4ad2">PushBackTarget</a>(targetList);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#abcf67825453ff308f23c1e9c10d16138">SetTarget</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index, std::vector&lt;double&gt; data);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classneuroc_1_1_dataset.html#a9d27f7fd797555dd9dce53c9fe3e4a18">ReturnNumberOfTargets</a>();</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a6478598af89c87c39ae08ac7b9c246f8">CheckIntegrity</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">void</span> PrintInput(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> PrintTarget(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;std::string ReturnStringXML();</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_dataset.html#af3cf63ef5a12c9c84dd7230ca4c0e4f3">   89</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_dataset.html#af3cf63ef5a12c9c84dd7230ca4c0e4f3">PushBackInputAndTarget</a>(std::vector&lt;T&gt; inputDataToPush, std::vector&lt;T&gt; targetDataToPush) {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        nInputsVector.push_back(inputDataToPush);</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        nTargetsVector.push_back(targetDataToPush);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;std::string ReturnStringCSV();</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;std::vector&lt;std::vector&lt;double&gt;&gt; nInputsVector;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;std::vector&lt;std::vector&lt;double&gt;&gt; nTargetsVector;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="class_dataset.html#abdbd78b795d4466da2b9435793d18977">  100</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_dataset.html#abdbd78b795d4466da2b9435793d18977">PushBackInput</a>(std::vector&lt;T&gt; dataToPush) {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        nInputsVector.push_back(dataToPush);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="class_dataset.html#add6309542e511497b33667d7244e6993">  110</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_dataset.html#add6309542e511497b33667d7244e6993">PushBackInput</a>(std::initializer_list&lt;T&gt; inputList) {</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        std::vector&lt;T&gt; temp_vector;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <span class="keywordflow">for</span> ( <span class="keyword">auto</span> it=inputList.begin(); it!=inputList.end(); ++it) {</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;            temp_vector.push_back(*it);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        }</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        nInputsVector.push_back(temp_vector);</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    }</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="class_dataset.html#a89d16a207a6852f6fd5585d9c015c3b3">  127</a></span>&#160;    std::vector&lt;T&gt; <a class="code" href="class_dataset.html#a89d16a207a6852f6fd5585d9c015c3b3">GetInput</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index) {</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        <span class="keywordflow">return</span> nInputsVector[index];</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="class_dataset.html#a3ccdc91604800a3a7ee30d05d984e27f">  136</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_dataset.html#a3ccdc91604800a3a7ee30d05d984e27f">SetInput</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index, std::vector&lt;T&gt; data) {</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;            nInputsVector[index] = data;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        } <span class="keywordflow">catch</span>(...) {</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;            std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: out of Range error.&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        }</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    }</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="class_dataset.html#a832fcfa74d58b6f896cbe92c9fd77741">  151</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_dataset.html#a832fcfa74d58b6f896cbe92c9fd77741">ReturnNumberOfInputs</a>() {</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="keywordflow">return</span> nInputsVector.size();</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    }</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
-<div class="line"><a name="l00160"></a><span class="lineno"><a class="line" href="class_dataset.html#af395132a97084aad5113ab16885f4ad2">  160</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_dataset.html#af395132a97084aad5113ab16885f4ad2">PushBackTarget</a>(std::vector&lt;T&gt; dataToPush) {</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        nTargetsVector.push_back(dataToPush);</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;    }</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="class_dataset.html#a5f9e4e1d76d2100dcf5985f67790d5bb">  170</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_dataset.html#a5f9e4e1d76d2100dcf5985f67790d5bb">PushBackTarget</a>(std::initializer_list&lt;T&gt; targetList) {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        std::vector&lt;T&gt; temp_vector;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        <span class="keywordflow">for</span> ( <span class="keyword">auto</span> it=targetList.begin(); it!=targetList.end(); ++it) {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;            temp_vector.push_back(*it);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        }</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        nTargetsVector.push_back(temp_vector);</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    }</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
-<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="class_dataset.html#ab72961bcb2ff0152977dbe1ae3ec670a">  186</a></span>&#160;    std::vector&lt;T&gt; <a class="code" href="class_dataset.html#ab72961bcb2ff0152977dbe1ae3ec670a">GetTarget</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index) {</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="keywordflow">return</span> nTargetsVector[index];</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
-<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="class_dataset.html#a04bb918c29600b1a681b5d079a941401">  195</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_dataset.html#a04bb918c29600b1a681b5d079a941401">SetTarget</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index, T data) {</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;            nTargetsVector[index] = data;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        } <span class="keywordflow">catch</span>(...) {</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            std::cerr &lt;&lt; <span class="stringliteral">&quot;Error: out of Range error.&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        }</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;    }</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00210"></a><span class="lineno"><a class="line" href="class_dataset.html#a8b77104d037f1895a15803a4d0d8c06b">  210</a></span>&#160;    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_dataset.html#a8b77104d037f1895a15803a4d0d8c06b">ReturnNumberOfTargets</a>() {</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">return</span> nTargetsVector.size();</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    }</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
-<div class="line"><a name="l00219"></a><span class="lineno"><a class="line" href="class_dataset.html#a672561f00cfd9018df2555974389b816">  219</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_dataset.html#a672561f00cfd9018df2555974389b816">CheckIntegrity</a>() {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        <span class="keywordflow">if</span>(nInputsVector.empty()==<span class="keyword">true</span> || nTargetsVector.empty()==<span class="keyword">true</span>) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        <span class="keywordflow">if</span>(nInputsVector.size() != nTargetsVector.size()) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> input_size = nInputsVector[0].size();</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> target_size = nTargetsVector[0].size();</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;nInputsVector.size(); i++) {</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;            <span class="keywordflow">if</span> (nInputsVector[i].size() != input_size) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;            <span class="keywordflow">if</span> (nTargetsVector[i].size() != target_size) <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        }</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    }</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;<span class="keywordtype">void</span> PrintInput(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index){</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;std::vector&lt;T&gt; temp_vector;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;temp_vector = nInputsVector[index];</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;std::cout &lt;&lt; <span class="stringliteral">&quot;INPUT: &quot;</span>;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;temp_vector.size(); i++){</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;std::cout &lt;&lt; temp_vector[i] &lt;&lt; <span class="stringliteral">&quot;; &quot;</span>;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;}</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;<span class="keywordtype">void</span> PrintTarget(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index){</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;std::vector&lt;T&gt; temp_vector;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;temp_vector = nTargetsVector[index];</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;std::cout &lt;&lt; <span class="stringliteral">&quot;TARGET: &quot;</span>;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;temp_vector.size(); i++){</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;std::cout &lt;&lt; temp_vector[i] &lt;&lt; <span class="stringliteral">&quot;; &quot;</span>;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;}</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;}</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    std::string ReturnStringXML() {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;        std::ostringstream string_stream;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        string_stream &lt;&lt; <span class="stringliteral">&quot;&lt;dataset&gt;&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        string_stream &lt;&lt; <span class="stringliteral">&quot;&lt;id&gt;&quot;</span> &lt;&lt; <span class="keyword">this</span> &lt;&lt; <span class="stringliteral">&quot;&lt;/id&gt;&quot;</span>&lt;&lt;  <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        string_stream &lt;&lt; <span class="stringliteral">&quot;&lt;size&gt;&quot;</span> &lt;&lt; nInputsVector.size() &lt;&lt; <span class="stringliteral">&quot;&lt;/size&gt;&quot;</span>&lt;&lt;  <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;nInputsVector.size(); i++) {</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;            std::vector&lt;T&gt; temp_vector_input(nInputsVector[i]);</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;            std::vector&lt;T&gt; temp_vector_target(nTargetsVector[i]);</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;            string_stream &lt;&lt; <span class="stringliteral">&quot;&lt;input_values&gt;&quot;</span>;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j=0; j&lt;temp_vector_input.size(); j++) {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                string_stream &lt;&lt; temp_vector_input[j] &lt;&lt; <span class="stringliteral">&quot;;&quot;</span>;</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;            }</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;            string_stream &lt;&lt; <span class="stringliteral">&quot;&lt;/input_values&gt;&quot;</span> &lt;&lt;  <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;            string_stream &lt;&lt; <span class="stringliteral">&quot;&lt;target_values&gt;&quot;</span>;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j=0; j&lt;temp_vector_target.size(); j++) {</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                string_stream &lt;&lt; temp_vector_target[j] &lt;&lt; <span class="stringliteral">&quot;;&quot;</span>;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;            }</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;            string_stream &lt;&lt; <span class="stringliteral">&quot;&lt;/target_values&gt;&quot;</span> &lt;&lt;  <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        }</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;        string_stream &lt;&lt; <span class="stringliteral">&quot;&lt;/dataset&gt;&quot;</span> &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;        <span class="keywordflow">return</span> string_stream.str();</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    }</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    std::string ReturnStringCSV() {</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;        std::ostringstream string_stream;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;        string_stream &lt;&lt; nInputsVector.size() &lt;&lt; <span class="stringliteral">&quot;,&quot;</span> &lt;&lt; nTargetsVector.size() &lt;&lt;   <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;        string_stream &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;        <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i=0; i&lt;nInputsVector.size(); i++) {</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;            std::vector&lt;T&gt; temp_vector_input(nInputsVector[i]);</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;            std::vector&lt;T&gt; temp_vector_target(nTargetsVector[i]);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j=0; j&lt;temp_vector_input.size(); j++) {</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;                string_stream &lt;&lt; temp_vector_input[j] &lt;&lt; <span class="stringliteral">&quot;,&quot;</span>;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;            }</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;            <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j=0; j&lt;temp_vector_target.size(); j++) {</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;                string_stream &lt;&lt; temp_vector_target[j] &lt;&lt; <span class="stringliteral">&quot;,&quot;</span>;</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            }</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            string_stream &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;        }</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div>
-<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;        <span class="keywordflow">return</span> string_stream.str();</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;    }</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    std::vector&lt;std::vector&lt;T&gt;&gt; nInputsVector;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;    std::vector&lt;std::vector&lt;T&gt;&gt; nTargetsVector;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;};</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="preprocessor">#endif // DATASET_H</span></div>
-<div class="ttc" id="class_dataset_html_af3cf63ef5a12c9c84dd7230ca4c0e4f3"><div class="ttname"><a href="class_dataset.html#af3cf63ef5a12c9c84dd7230ca4c0e4f3">Dataset::PushBackInputAndTarget</a></div><div class="ttdeci">bool PushBackInputAndTarget(std::vector&lt; T &gt; inputDataToPush, std::vector&lt; T &gt; targetDataToPush)</div><div class="ttdef"><b>Definition:</b> Dataset.h:89</div></div>
-<div class="ttc" id="class_dataset_html_a3c1d2e0fa826798f46e0e84425f3d577"><div class="ttname"><a href="class_dataset.html#a3c1d2e0fa826798f46e0e84425f3d577">Dataset::Dataset</a></div><div class="ttdeci">Dataset(unsigned int datasetDimension)</div><div class="ttdef"><b>Definition:</b> Dataset.h:58</div></div>
-<div class="ttc" id="class_dataset_html_a5f9e4e1d76d2100dcf5985f67790d5bb"><div class="ttname"><a href="class_dataset.html#a5f9e4e1d76d2100dcf5985f67790d5bb">Dataset::PushBackTarget</a></div><div class="ttdeci">bool PushBackTarget(std::initializer_list&lt; T &gt; targetList)</div><div class="ttdef"><b>Definition:</b> Dataset.h:170</div></div>
-<div class="ttc" id="class_dataset_html_ab72961bcb2ff0152977dbe1ae3ec670a"><div class="ttname"><a href="class_dataset.html#ab72961bcb2ff0152977dbe1ae3ec670a">Dataset::GetTarget</a></div><div class="ttdeci">std::vector&lt; T &gt; GetTarget(unsigned int index)</div><div class="ttdef"><b>Definition:</b> Dataset.h:186</div></div>
-<div class="ttc" id="class_dataset_html_a89d16a207a6852f6fd5585d9c015c3b3"><div class="ttname"><a href="class_dataset.html#a89d16a207a6852f6fd5585d9c015c3b3">Dataset::GetInput</a></div><div class="ttdeci">std::vector&lt; T &gt; GetInput(unsigned int index)</div><div class="ttdef"><b>Definition:</b> Dataset.h:127</div></div>
-<div class="ttc" id="class_dataset_html_a832fcfa74d58b6f896cbe92c9fd77741"><div class="ttname"><a href="class_dataset.html#a832fcfa74d58b6f896cbe92c9fd77741">Dataset::ReturnNumberOfInputs</a></div><div class="ttdeci">unsigned int ReturnNumberOfInputs()</div><div class="ttdef"><b>Definition:</b> Dataset.h:151</div></div>
-<div class="ttc" id="class_dataset_html_a6be5cd1a0217450a47895ec191becb8d"><div class="ttname"><a href="class_dataset.html#a6be5cd1a0217450a47895ec191becb8d">Dataset::PushBackInputAndTarget</a></div><div class="ttdeci">bool PushBackInputAndTarget(std::initializer_list&lt; T &gt; inputList, std::initializer_list&lt; T &gt; targetList)</div><div class="ttdef"><b>Definition:</b> Dataset.h:78</div></div>
-<div class="ttc" id="class_dataset_html_a3ccdc91604800a3a7ee30d05d984e27f"><div class="ttname"><a href="class_dataset.html#a3ccdc91604800a3a7ee30d05d984e27f">Dataset::SetInput</a></div><div class="ttdeci">bool SetInput(unsigned int index, std::vector&lt; T &gt; data)</div><div class="ttdef"><b>Definition:</b> Dataset.h:136</div></div>
-<div class="ttc" id="class_dataset_html_a8b77104d037f1895a15803a4d0d8c06b"><div class="ttname"><a href="class_dataset.html#a8b77104d037f1895a15803a4d0d8c06b">Dataset::ReturnNumberOfTargets</a></div><div class="ttdeci">unsigned int ReturnNumberOfTargets()</div><div class="ttdef"><b>Definition:</b> Dataset.h:210</div></div>
-<div class="ttc" id="class_dataset_html_a04bb918c29600b1a681b5d079a941401"><div class="ttname"><a href="class_dataset.html#a04bb918c29600b1a681b5d079a941401">Dataset::SetTarget</a></div><div class="ttdeci">bool SetTarget(unsigned int index, T data)</div><div class="ttdef"><b>Definition:</b> Dataset.h:195</div></div>
-<div class="ttc" id="class_dataset_html_abdbd78b795d4466da2b9435793d18977"><div class="ttname"><a href="class_dataset.html#abdbd78b795d4466da2b9435793d18977">Dataset::PushBackInput</a></div><div class="ttdeci">bool PushBackInput(std::vector&lt; T &gt; dataToPush)</div><div class="ttdef"><b>Definition:</b> Dataset.h:100</div></div>
-<div class="ttc" id="class_dataset_html_a672561f00cfd9018df2555974389b816"><div class="ttname"><a href="class_dataset.html#a672561f00cfd9018df2555974389b816">Dataset::CheckIntegrity</a></div><div class="ttdeci">bool CheckIntegrity()</div><div class="ttdef"><b>Definition:</b> Dataset.h:219</div></div>
-<div class="ttc" id="class_dataset_html"><div class="ttname"><a href="class_dataset.html">Dataset</a></div><div class="ttdoc">This class permits to create complex datasets and use them to feed the network. </div><div class="ttdef"><b>Definition:</b> Dataset.h:49</div></div>
-<div class="ttc" id="class_dataset_html_af395132a97084aad5113ab16885f4ad2"><div class="ttname"><a href="class_dataset.html#af395132a97084aad5113ab16885f4ad2">Dataset::PushBackTarget</a></div><div class="ttdeci">bool PushBackTarget(std::vector&lt; T &gt; dataToPush)</div><div class="ttdef"><b>Definition:</b> Dataset.h:160</div></div>
-<div class="ttc" id="class_dataset_html_add6309542e511497b33667d7244e6993"><div class="ttname"><a href="class_dataset.html#add6309542e511497b33667d7244e6993">Dataset::PushBackInput</a></div><div class="ttdeci">bool PushBackInput(std::initializer_list&lt; T &gt; inputList)</div><div class="ttdef"><b>Definition:</b> Dataset.h:110</div></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;} <span class="comment">//namespace</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif // DATASET_H</span></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a87614de72546b8201b953b950f623b4a"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a87614de72546b8201b953b950f623b4a">neuroc::Dataset::PushBackTarget</a></div><div class="ttdeci">bool PushBackTarget(std::vector&lt; double &gt; dataToPush)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:131</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a7e910db95ee24bc49c562a47a2905490"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a7e910db95ee24bc49c562a47a2905490">neuroc::Dataset::GetTarget</a></div><div class="ttdeci">std::vector&lt; double &gt; GetTarget(unsigned int index)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:157</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a69ded99bf2879a71ae8734a4ae7519be"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a69ded99bf2879a71ae8734a4ae7519be">neuroc::Dataset::GetInput</a></div><div class="ttdeci">std::vector&lt; double &gt; GetInput(unsigned int index)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:98</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html"><div class="ttname"><a href="classneuroc_1_1_dataset.html">neuroc::Dataset</a></div><div class="ttdoc">This class permits to create complex datasets and use them to feed the network. </div><div class="ttdef"><b>Definition:</b> Dataset.h:40</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a63152318ab651c1022f695780cf22a7a"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a63152318ab651c1022f695780cf22a7a">neuroc::Dataset::SetInput</a></div><div class="ttdeci">bool SetInput(unsigned int index, std::vector&lt; double &gt; data)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:107</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a6478598af89c87c39ae08ac7b9c246f8"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a6478598af89c87c39ae08ac7b9c246f8">neuroc::Dataset::CheckIntegrity</a></div><div class="ttdeci">bool CheckIntegrity()</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:190</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a6dc0e96a90fcd6318985fe5914f1fa36"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a6dc0e96a90fcd6318985fe5914f1fa36">neuroc::Dataset::PushBackInput</a></div><div class="ttdeci">bool PushBackInput(std::vector&lt; double &gt; dataToPush)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:71</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_ae1bb7d512438456bc0bb868e4c03f41f"><div class="ttname"><a href="classneuroc_1_1_dataset.html#ae1bb7d512438456bc0bb868e4c03f41f">neuroc::Dataset::PushBackInputAndTarget</a></div><div class="ttdeci">bool PushBackInputAndTarget(std::initializer_list&lt; double &gt; inputList, std::initializer_list&lt; double &gt; targetList)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:49</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_ab81cbb4ca81442ade12eca43981d105b"><div class="ttname"><a href="classneuroc_1_1_dataset.html#ab81cbb4ca81442ade12eca43981d105b">neuroc::Dataset::ReturnNumberOfInputs</a></div><div class="ttdeci">unsigned int ReturnNumberOfInputs()</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:122</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a9d27f7fd797555dd9dce53c9fe3e4a18"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a9d27f7fd797555dd9dce53c9fe3e4a18">neuroc::Dataset::ReturnNumberOfTargets</a></div><div class="ttdeci">unsigned int ReturnNumberOfTargets()</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:181</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_abcf67825453ff308f23c1e9c10d16138"><div class="ttname"><a href="classneuroc_1_1_dataset.html#abcf67825453ff308f23c1e9c10d16138">neuroc::Dataset::SetTarget</a></div><div class="ttdeci">bool SetTarget(unsigned int index, std::vector&lt; double &gt; data)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:166</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 24 2015 15:04:27 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Oct 25 2015 14:23:30 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

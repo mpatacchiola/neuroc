@@ -31,18 +31,22 @@ compile:
 	g++ $(CFLAGS) -Iinclude -c ./src/Neuron.cpp -o ./bin/obj/Neuron.o
 	g++ $(CFLAGS) -Iinclude -c ./src/Layer.cpp -o ./bin/obj/Layer.o
 	g++ $(CFLAGS) -Iinclude -c ./src/Network.cpp -o ./bin/obj/Network.o
-	g++ $(CFLAGS) -Iinclude -c ./src/Trainer.cpp -o ./bin/obj/Trainer.o
 	g++ $(CFLAGS) -Iinclude -c ./src/Parser.cpp -o ./bin/obj/Parser.o
 	g++ $(CFLAGS) -Iinclude -c ./src/Dataset.cpp -o ./bin/obj/Dataset.o
-	g++ $(CFLAGS) -Iinclude -c ./src/Functions.cpp -o ./bin/obj/Functions.o
+	g++ $(CFLAGS) -Iinclude -c ./src/InitFunctions.cpp -o ./bin/obj/InitFunctions.o
+	g++ $(CFLAGS) -Iinclude -c ./src/WeightFunctions.cpp -o ./bin/obj/WeightFunctions.o
+	g++ $(CFLAGS) -Iinclude -c ./src/JointFunctions.cpp -o ./bin/obj/JointFunctions.o
+	g++ $(CFLAGS) -Iinclude -c ./src/TransferFunctions.cpp -o ./bin/obj/TransferFunctions.o
+	g++ $(CFLAGS) -Iinclude -c ./src/RandomFunctions.cpp -o ./bin/obj/RandomFunctions.o
+
 
 	@echo
-	@echo "=== Starting creation of Shared Library ==="
-	g++ -fPIC -shared -Wl,-soname,libneuroc.so.1 -o ./bin/lib/libneuroc.so.1.0 ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Trainer.o ./bin/obj/Parser.o ./bin/obj/Dataset.o ./bin/obj/Functions.o
+	@echo "=== Creating the Shared Library ==="
+	g++ -fPIC -shared -Wl,-soname,libneuroc.so.1 -o ./bin/lib/libneuroc.so.1.0 ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o  ./bin/obj/Parser.o ./bin/obj/Dataset.o ./bin/obj/InitFunctions.o ./bin/obj/WeightFunctions.o ./bin/obj/JointFunctions.o ./bin/obj/TransferFunctions.o ./bin/obj/RandomFunctions.o
 
 	@echo
 	@echo "=== Creating the Static Library ==="
-	ar rcs ./bin/lib/libneuroc.a ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Trainer.o ./bin/obj/Parser.o ./bin/obj/Dataset.o ./bin/obj/Functions.o
+	ar rcs ./bin/lib/libneuroc.a ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o ./bin/obj/Dataset.o ./bin/obj/InitFunctions.o ./bin/obj/WeightFunctions.o ./bin/obj/JointFunctions.o ./bin/obj/TransferFunctions.o ./bin/obj/RandomFunctions.o
 	@echo
 
 install:
@@ -65,14 +69,14 @@ install:
 clean:
 	@echo
 	@echo "=== Cleaning unnecessary files  ==="
-	rm ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Trainer.o ./bin/obj/Parser.o ./bin/obj/Dataset.o ./bin/obj/Functions.o
+	rm ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o ./bin/obj/Dataset.o ./bin/obj/InitFunctions.o ./bin/obj/WeightFunctions.o ./bin/obj/JointFunctions.o ./bin/obj/TransferFunctions.o ./bin/obj/RandomFunctions.o
 	@echo
 
 remove:
 	@echo
 	@echo "=== Removing files in the system folders ==="
 	rm -r /usr/local/include/neuroc
-	rm ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Trainer.o ./bin/obj/Parser.o ./bin/obj/Dataset.o ./bin/obj/Functions.o
+	rm ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Parser.o ./bin/obj/Dataset.o ./bin/obj/InitFunctions.o ./bin/obj/WeightFunctions.o ./bin/obj/JointFunctions.o ./bin/obj/TransferFunctions.o ./bin/obj/RandomFunctions.o
 	rm ./bin/lib/libneuroc.a 
 	rm ./bin/lib/libneuroc.so.1.0
 	rm /usr/local/lib/libneuroc.so.1 

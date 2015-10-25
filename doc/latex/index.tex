@@ -2,23 +2,22 @@ Welcome in the Neuroc repository! Neuroc is a modular library based on the idea 
 
 
 \begin{DoxyItemize}
-\item Essential and expandible
+\item Modular and expandible
 \item Safe memory management
 \item Object Oriented approach
-\item Can use float or double
-\item All you can eat networks architecture
+\item Zero external dependences (self-\/contained library)
+\item All you can eat network architectures
 \item Customizable Transfer Function, Weight Initialization
-\item You can save Networks, Layers and Neurons in X\-M\-L files
 \item Open source (G\-N\-U v.\-2 license)
 \end{DoxyItemize}
 
+Neuroc uses the class std\-::function introduced in C++11 to build high customizable networks.
+
 \subsection*{Prerequisites }
 
-To install the library you must have {\itshape make} and g++ already installed on your system. You can install them from a Unix system running the following commands from the terminal\-:
+To install the library you must have \char`\"{}make\char`\"{} and \char`\"{}g++\char`\"{} already installed on your system. You can install them from a Unix system running the following commands from the terminal\-:
 
-{\ttfamily sudo apt-\/get install build-\/essential}
-
-{\ttfamily sudo apt-\/get install g++}
+{\ttfamily sudo apt-\/get install g++ build-\/essential}
 
 \subsection*{Installation }
 
@@ -50,7 +49,7 @@ In this case the library will be statically included inside your code. To integr
 
 \subsection*{Examples }
 
-Neuroc permits to create different kind of network. Every object is a container where you can push other objects or data. The class network is a container of Layers, the class Layers is a container of Neurons and the class \hyperlink{class_dataset}{Dataset} is a container of input/target values. Some examples are present in the folder {\itshape neuroc/examples}.
+Neuroc permits to create different kind of network. Every object is a container where you can push other objects or data. The class network is a container of Layers, the class Layers is a container of Neurons and the class Dataset is a container of input/target values. Some examples are present in the folder {\itshape neuroc/examples}.
 
 \subsection*{Documentation }
 
@@ -58,6 +57,6 @@ The documentation is produced with Doxygen and the H\-T\-M\-L output can be foun
 
 \subsection*{License }
 
-Neuroc -\/ C++ Artificial Neural Networks library Copyright (C) 2015 Massimiliano Patacchiola
+Neuroc -\/ C++ Artificial Neural Networks library. Copyright (C) 2015 Massimiliano Patacchiola.
 
 This program is free software; you can redistribute it and/or modify it under the terms of the G\-N\-U General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but W\-I\-T\-H\-O\-U\-T A\-N\-Y W\-A\-R\-R\-A\-N\-T\-Y; without even the implied warranty of M\-E\-R\-C\-H\-A\-N\-T\-A\-B\-I\-L\-I\-T\-Y or F\-I\-T\-N\-E\-S\-S F\-O\-R A P\-A\-R\-T\-I\-C\-U\-L\-A\-R P\-U\-R\-P\-O\-S\-E. See the G\-N\-U General Public License for more details. You should have received a copy of the G\-N\-U General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, M\-A 02110-\/1301, U\-S\-A. 

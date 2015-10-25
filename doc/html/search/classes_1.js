@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['layer',['Layer',['../class_layer.html',1,'']]]
+  ['layer',['Layer',['../classneuroc_1_1_layer.html',1,'neuroc']]]
 ];

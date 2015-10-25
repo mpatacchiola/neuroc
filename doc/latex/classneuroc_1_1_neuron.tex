@@ -1,0 +1,270 @@
+\hypertarget{classneuroc_1_1_neuron}{\section{neuroc\-:\-:Neuron Class Reference}
+\label{classneuroc_1_1_neuron}\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}}
+}
+
+
+This is the lowest class and it represents the \hyperlink{classneuroc_1_1_neuron}{Neuron} object.  
+
+
+
+
+{\ttfamily \#include $<$Neuron.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classneuroc_1_1_neuron_a5daa71d6894902abd4d176fb98b2a1a3}{Neuron} (const \hyperlink{classneuroc_1_1_neuron}{Neuron} \&r\-Neuron)
+\item 
+\hyperlink{classneuroc_1_1_neuron_afca9457b9302079c19680fc3d75d080a}{Neuron} (const std\-::vector$<$ double $>$ \&connections\-Vector, std\-::function$<$ double(std\-::vector$<$ double $>$, std\-::vector$<$ double $>$)$>$ weight\-Function, std\-::function$<$ double(double, double)$>$ join\-Function, std\-::function$<$ double(double)$>$ transfer\-Function, double bias\-Weight=0)
+\item 
+\hyperlink{classneuroc_1_1_neuron}{Neuron} \hyperlink{classneuroc_1_1_neuron_a50f9501ff50f8cba29509adf982d276e}{operator=} (const \hyperlink{classneuroc_1_1_neuron}{Neuron} \&r\-Neuron)
+\item 
+const double \& \hyperlink{classneuroc_1_1_neuron_aebf0a0ac505ed3d030a2317f7e8db166}{operator\mbox{[}$\,$\mbox{]}} (const unsigned int index) const 
+\item 
+unsigned int \hyperlink{classneuroc_1_1_neuron_a015376f3e8345e7d831298d4342eef3f}{Size} ()
+\item 
+double \hyperlink{classneuroc_1_1_neuron_aeb1a05ddba04af38d8ab9fd88d74ba69}{Compute} (std\-::vector$<$ double $>$ input\-Vector)
+\item 
+void \hyperlink{classneuroc_1_1_neuron_a9fbb34828b715886d122765d9889f000}{Randomize\-Connection\-Vector} (std\-::function$<$ double(double)$>$ init\-Function)
+\item 
+void \hyperlink{classneuroc_1_1_neuron_a66bfce757756e313b9d206340f559657}{Set\-Connection\-Vector} (const std\-::vector$<$ double $>$ \&connection\-Vector)
+\item 
+const std\-::vector$<$ double $>$ \& \hyperlink{classneuroc_1_1_neuron_a7a231655df819faf9490d3dbe0c8abb6}{Get\-Connection\-Vector} () const 
+\item 
+void \hyperlink{classneuroc_1_1_neuron_a9372e181e5ee1c8fc28bc4f859c1f537}{Set\-Value} (double value)
+\item 
+double \hyperlink{classneuroc_1_1_neuron_aba0b60c841fd2a6d9c509863766d6977}{Get\-Value} ()
+\item 
+void \hyperlink{classneuroc_1_1_neuron_a594dc169c67e35cb00bcd14a7521c20c}{Set\-Error} (double value)
+\item 
+double \hyperlink{classneuroc_1_1_neuron_a8cee80076705f1f349aaf0feafe2d8f1}{Get\-Error} ()
+\item 
+void \hyperlink{classneuroc_1_1_neuron_ade5254b17adc7c152dc35ced4181506d}{Set\-Bias} (double value)
+\item 
+double \hyperlink{classneuroc_1_1_neuron_a60af8c8e64f908cc036694df4ae0489a}{Get\-Bias} ()
+\item 
+void \hyperlink{classneuroc_1_1_neuron_ae23265025b8d02844e1d874138fe5fcc}{Print} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the lowest class and it represents the \hyperlink{classneuroc_1_1_neuron}{Neuron} object. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classneuroc_1_1_neuron_a5daa71d6894902abd4d176fb98b2a1a3}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Neuron@{Neuron}}
+\index{Neuron@{Neuron}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Neuron}]{\setlength{\rightskip}{0pt plus 5cm}neuroc\-::\-Neuron\-::\-Neuron (
+\begin{DoxyParamCaption}
+\item[{const {\bf Neuron} \&}]{r\-Neuron}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_a5daa71d6894902abd4d176fb98b2a1a3}
+Copy constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em r\-Neuron} & reference to an existing \hyperlink{classneuroc_1_1_neuron}{Neuron} \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_neuron_afca9457b9302079c19680fc3d75d080a}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Neuron@{Neuron}}
+\index{Neuron@{Neuron}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Neuron}]{\setlength{\rightskip}{0pt plus 5cm}neuroc\-::\-Neuron\-::\-Neuron (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ double $>$ \&}]{connections\-Vector, }
+\item[{std\-::function$<$ double(std\-::vector$<$ double $>$, std\-::vector$<$ double $>$)$>$}]{weight\-Function, }
+\item[{std\-::function$<$ double(double, double)$>$}]{join\-Function, }
+\item[{std\-::function$<$ double(double)$>$}]{transfer\-Function, }
+\item[{double}]{bias\-Weight = {\ttfamily 0}}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_afca9457b9302079c19680fc3d75d080a}
+It creates an object of type \hyperlink{classneuroc_1_1_neuron}{Neuron}
+
+
+\begin{DoxyParams}{Parameters}
+{\em bias\-Weight} & it is the value of the weight of the bias neuron \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classneuroc_1_1_neuron_aeb1a05ddba04af38d8ab9fd88d74ba69}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Compute@{Compute}}
+\index{Compute@{Compute}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Compute}]{\setlength{\rightskip}{0pt plus 5cm}double neuroc\-::\-Neuron\-::\-Compute (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ double $>$}]{input\-Vector}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_aeb1a05ddba04af38d8ab9fd88d74ba69}
+It gives the value of the \hyperlink{classneuroc_1_1_neuron}{Neuron} after one computation after that the internal value of the neuron is changed
+
+\begin{DoxyReturn}{Returns}
+it returns the value of the neuron after the computation 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_neuron_a60af8c8e64f908cc036694df4ae0489a}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Get\-Bias@{Get\-Bias}}
+\index{Get\-Bias@{Get\-Bias}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Get\-Bias}]{\setlength{\rightskip}{0pt plus 5cm}double neuroc\-::\-Neuron\-::\-Get\-Bias (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_a60af8c8e64f908cc036694df4ae0489a}
+Get the value of the Bias Connection
+
+\begin{DoxyReturn}{Returns}
+it returns the current value of the Bias Connection 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_neuron_a7a231655df819faf9490d3dbe0c8abb6}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Get\-Connection\-Vector@{Get\-Connection\-Vector}}
+\index{Get\-Connection\-Vector@{Get\-Connection\-Vector}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Get\-Connection\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}const std\-::vector$<$ double $>$ \& neuroc\-::\-Neuron\-::\-Get\-Connection\-Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classneuroc_1_1_neuron_a7a231655df819faf9490d3dbe0c8abb6}
+Returning a vector containing the values of the neuron connections The vector start with the first incoming connection and it ends with the last incoming connection If the \hyperlink{classneuroc_1_1_neuron}{Neuron} has a Bias Unit then the first connection of the neuron is the Bias incoming connection \begin{DoxyReturn}{Returns}
+it returns a vector of values 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_neuron_a8cee80076705f1f349aaf0feafe2d8f1}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Get\-Error@{Get\-Error}}
+\index{Get\-Error@{Get\-Error}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Get\-Error}]{\setlength{\rightskip}{0pt plus 5cm}double neuroc\-::\-Neuron\-::\-Get\-Error (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_a8cee80076705f1f349aaf0feafe2d8f1}
+Get the value of the neuron
+
+\begin{DoxyReturn}{Returns}
+it returns the current value of the neuron 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_neuron_aba0b60c841fd2a6d9c509863766d6977}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Get\-Value@{Get\-Value}}
+\index{Get\-Value@{Get\-Value}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double neuroc\-::\-Neuron\-::\-Get\-Value (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_aba0b60c841fd2a6d9c509863766d6977}
+Get the value of the neuron
+
+\begin{DoxyReturn}{Returns}
+it returns the current value of the neuron 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_neuron_a50f9501ff50f8cba29509adf982d276e}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!operator=@{operator=}}
+\index{operator=@{operator=}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron} neuroc\-::\-Neuron\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Neuron} \&}]{r\-Neuron}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_a50f9501ff50f8cba29509adf982d276e}
+Overload of the assignment operator
+
+
+\begin{DoxyParams}{Parameters}
+{\em r\-Neuron} & reference to an existing \hyperlink{classneuroc_1_1_neuron}{Neuron} \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_neuron_aebf0a0ac505ed3d030a2317f7e8db166}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}const double \& neuroc\-::\-Neuron\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{const unsigned int}]{index}
+\end{DoxyParamCaption}
+) const}}\label{classneuroc_1_1_neuron_aebf0a0ac505ed3d030a2317f7e8db166}
+Operator overload \mbox{[}\mbox{]} it is used to return the connection weight stored inside the neuron 
+\begin{DoxyParams}{Parameters}
+{\em index} & the number of the element stored inside the layer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns a reference to the weight 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_neuron_ae23265025b8d02844e1d874138fe5fcc}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Print@{Print}}
+\index{Print@{Print}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Print}]{\setlength{\rightskip}{0pt plus 5cm}void neuroc\-::\-Neuron\-::\-Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_ae23265025b8d02844e1d874138fe5fcc}
+Print on terminal informations about the neuron. \hypertarget{classneuroc_1_1_neuron_a9fbb34828b715886d122765d9889f000}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Randomize\-Connection\-Vector@{Randomize\-Connection\-Vector}}
+\index{Randomize\-Connection\-Vector@{Randomize\-Connection\-Vector}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Randomize\-Connection\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}void neuroc\-::\-Neuron\-::\-Randomize\-Connection\-Vector (
+\begin{DoxyParamCaption}
+\item[{std\-::function$<$ double(double)$>$}]{init\-Function}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_a9fbb34828b715886d122765d9889f000}
+Randomize all the connection of the neuron using a Init Function. The function to use must take a value as input and return a value as output. The returned value will be assigned to the weight.
+
+
+\begin{DoxyParams}{Parameters}
+{\em init\-Function} & this function is used for modifying all the weights of the neuron \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_neuron_ade5254b17adc7c152dc35ced4181506d}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Set\-Bias@{Set\-Bias}}
+\index{Set\-Bias@{Set\-Bias}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Set\-Bias}]{\setlength{\rightskip}{0pt plus 5cm}void neuroc\-::\-Neuron\-::\-Set\-Bias (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_ade5254b17adc7c152dc35ced4181506d}
+Set the value of the bias
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to set \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_neuron_a66bfce757756e313b9d206340f559657}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Set\-Connection\-Vector@{Set\-Connection\-Vector}}
+\index{Set\-Connection\-Vector@{Set\-Connection\-Vector}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Set\-Connection\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}void neuroc\-::\-Neuron\-::\-Set\-Connection\-Vector (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ double $>$ \&}]{connection\-Vector}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_a66bfce757756e313b9d206340f559657}
+It permits to set the vector of the incoming connections to the neuron
+
+
+\begin{DoxyParams}{Parameters}
+{\em connections\-Vector} & a vector of floating point numbers \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_neuron_a594dc169c67e35cb00bcd14a7521c20c}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Set\-Error@{Set\-Error}}
+\index{Set\-Error@{Set\-Error}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Set\-Error}]{\setlength{\rightskip}{0pt plus 5cm}void neuroc\-::\-Neuron\-::\-Set\-Error (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_a594dc169c67e35cb00bcd14a7521c20c}
+Set the value of the neuron
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to set, it is used for input neurons \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_neuron_a9372e181e5ee1c8fc28bc4f859c1f537}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Set\-Value@{Set\-Value}}
+\index{Set\-Value@{Set\-Value}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Set\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void neuroc\-::\-Neuron\-::\-Set\-Value (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_a9372e181e5ee1c8fc28bc4f859c1f537}
+Set the value of the neuron
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & the value to set, it is used for input neurons \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_neuron_a015376f3e8345e7d831298d4342eef3f}{\index{neuroc\-::\-Neuron@{neuroc\-::\-Neuron}!Size@{Size}}
+\index{Size@{Size}!neuroc::Neuron@{neuroc\-::\-Neuron}}
+\subsubsection[{Size}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int neuroc\-::\-Neuron\-::\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_neuron_a015376f3e8345e7d831298d4342eef3f}
+It gives the size of the connections container
+
+\begin{DoxyReturn}{Returns}
+it returns the number of connection of the neuron 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/Neuron.\-h\item 
+src/Neuron.\-cpp\end{DoxyCompactItemize}

@@ -1,0 +1,273 @@
+\hypertarget{classneuroc_1_1_layer}{\section{neuroc\-:\-:Layer Class Reference}
+\label{classneuroc_1_1_layer}\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}}
+}
+
+
+This class is the middle level of the neural network library. It is a container for neurons. It allows the use of different floating points.  
+
+
+
+
+{\ttfamily \#include $<$Layer.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classneuroc_1_1_layer_af6c8e29004e6da131d5b22e475c0e92a}{Layer} (const \hyperlink{classneuroc_1_1_layer}{Layer} \&r\-Layer)
+\item 
+\hyperlink{classneuroc_1_1_layer_a3be19d5c1aaabb35cba0e07b33913ba9}{Layer} (\hyperlink{classneuroc_1_1_neuron}{Neuron} neuron\-Prototype, unsigned int dimension)
+\item 
+\hyperlink{classneuroc_1_1_layer_ab033a91582f5f6b7db961d516d2e7f7e}{Layer} (std\-::initializer\-\_\-list$<$ \hyperlink{classneuroc_1_1_neuron}{Neuron} $>$ neuron\-List)
+\item 
+\hyperlink{classneuroc_1_1_layer}{Layer} \hyperlink{classneuroc_1_1_layer_aa198f0235496dadff15a8b80bfa564d6}{operator=} (const \hyperlink{classneuroc_1_1_layer}{Layer} \&r\-Layer)
+\item 
+\hyperlink{classneuroc_1_1_neuron}{Neuron} \& \hyperlink{classneuroc_1_1_layer_ae82161250ed86f8965d239449c87d734}{operator\mbox{[}$\,$\mbox{]}} (unsigned int index)
+\item 
+const unsigned int \hyperlink{classneuroc_1_1_layer_aa80735d22f8f35c5ec35e059677ab733}{Size} () const 
+\item 
+std\-::vector$<$ double $>$ \hyperlink{classneuroc_1_1_layer_a4d879665e9fd0738fea6a5200c70296a}{Compute} (std\-::vector$<$ double $>$ input\-Vector)
+\item 
+void \hyperlink{classneuroc_1_1_layer_ac00e3384d6e22bf87b4359c43cb4461e}{Randomize\-Connection\-Matrix} (std\-::function$<$ double(double)$>$ init\-Function)
+\item 
+std\-::vector$<$ double $>$ \hyperlink{classneuroc_1_1_layer_a14fd8d60709fbe79059574b090f9531a}{Get\-Value\-Vector} ()
+\item 
+bool \hyperlink{classneuroc_1_1_layer_ada5237f8e9211d3dc308fa2e083b2b44}{Set\-Bias\-Vector} (std\-::vector$<$ double $>$ bias\-Vector)
+\item 
+bool \hyperlink{classneuroc_1_1_layer_a8e232dadedf86bfa7dafa106e97ade05}{Set\-Value\-Vector} (std\-::vector$<$ double $>$ value\-Vector)
+\item 
+bool \hyperlink{classneuroc_1_1_layer_a8e60b80bc457e7f82dc24fffc94fb9f0}{Set\-Error\-Vector} (std\-::vector$<$ double $>$ error\-Vector)
+\item 
+unsigned int \hyperlink{classneuroc_1_1_layer_af2e9d4a30544bf754a06e0e2b98fe60f}{Return\-Number\-Of\-Neurons} ()
+\item 
+std\-::vector$<$ std\-::vector\\*
+$<$ double $>$ $>$ \hyperlink{classneuroc_1_1_layer_ab8653bbed4c2b26ec18b00be1dde8000}{Get\-Connection\-Matrix} ()
+\item 
+void \hyperlink{classneuroc_1_1_layer_a30ffd9156bc08a96474d48a3ec661cd9}{Print} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class is the middle level of the neural network library. It is a container for neurons. It allows the use of different floating points. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classneuroc_1_1_layer_af6c8e29004e6da131d5b22e475c0e92a}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Layer@{Layer}}
+\index{Layer@{Layer}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Layer}]{\setlength{\rightskip}{0pt plus 5cm}neuroc\-::\-Layer\-::\-Layer (
+\begin{DoxyParamCaption}
+\item[{const {\bf Layer} \&}]{r\-Layer}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_af6c8e29004e6da131d5b22e475c0e92a}
+Copy constructor
+
+
+\begin{DoxyParams}{Parameters}
+{\em r\-Layer} & reference to an existing \hyperlink{classneuroc_1_1_layer}{Layer} \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_layer_a3be19d5c1aaabb35cba0e07b33913ba9}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Layer@{Layer}}
+\index{Layer@{Layer}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Layer}]{\setlength{\rightskip}{0pt plus 5cm}neuroc\-::\-Layer\-::\-Layer (
+\begin{DoxyParamCaption}
+\item[{{\bf Neuron}}]{neuron\-Prototype, }
+\item[{unsigned int}]{dimension}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_a3be19d5c1aaabb35cba0e07b33913ba9}
+It creates a new \hyperlink{classneuroc_1_1_layer}{Layer} containing similar neurons.
+
+
+\begin{DoxyParams}{Parameters}
+{\em neuron\-Prototype} & it is a prototype and will be used to create copies inside the layer. \\
+\hline
+{\em dimension} & the size of the layer \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_layer_ab033a91582f5f6b7db961d516d2e7f7e}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Layer@{Layer}}
+\index{Layer@{Layer}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Layer}]{\setlength{\rightskip}{0pt plus 5cm}neuroc\-::\-Layer\-::\-Layer (
+\begin{DoxyParamCaption}
+\item[{std\-::initializer\-\_\-list$<$ {\bf Neuron} $>$}]{neuron\-List}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_ab033a91582f5f6b7db961d516d2e7f7e}
+It creates a new \hyperlink{classneuroc_1_1_layer}{Layer}.
+
+
+\begin{DoxyParams}{Parameters}
+{\em neuron\-List} & a list of existing neurons \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classneuroc_1_1_layer_a4d879665e9fd0738fea6a5200c70296a}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Compute@{Compute}}
+\index{Compute@{Compute}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Compute}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ double $>$ neuroc\-::\-Layer\-::\-Compute (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ double $>$}]{input\-Vector}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_a4d879665e9fd0738fea6a5200c70296a}
+Compute all the neurons of the layer and return a vector containing the values of these neurons
+
+\begin{DoxyReturn}{Returns}
+it returns the vector containing the double, in case of problems it returns an empty vector and print an error 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_layer_ab8653bbed4c2b26ec18b00be1dde8000}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Get\-Connection\-Matrix@{Get\-Connection\-Matrix}}
+\index{Get\-Connection\-Matrix@{Get\-Connection\-Matrix}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Get\-Connection\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ std\-::vector$<$ double $>$ $>$ neuroc\-::\-Layer\-::\-Get\-Connection\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_ab8653bbed4c2b26ec18b00be1dde8000}
+Returning a vector of vectors Matrix containing neurons connections The vector start with the first incoming connection of the first neuron and it ends with the last incoming connection of the last neuron If the \hyperlink{classneuroc_1_1_layer}{Layer} has a Bias Unit then the first connection of the neurons is the Bias incoming connection \begin{DoxyReturn}{Returns}
+it returns a vector of double or float 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_layer_a14fd8d60709fbe79059574b090f9531a}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Get\-Value\-Vector@{Get\-Value\-Vector}}
+\index{Get\-Value\-Vector@{Get\-Value\-Vector}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Get\-Value\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ double $>$ neuroc\-::\-Layer\-::\-Get\-Value\-Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_a14fd8d60709fbe79059574b090f9531a}
+Get the values of all the neurons inside the layer
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-Values} & vector of doubles of the same size of the layer. Every double is given as input to the neurons inside the layer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns true if it is all right, otherwise false 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_layer_aa198f0235496dadff15a8b80bfa564d6}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!operator=@{operator=}}
+\index{operator=@{operator=}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Layer} neuroc\-::\-Layer\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Layer} \&}]{r\-Layer}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_aa198f0235496dadff15a8b80bfa564d6}
+Overload of the assignment operator
+
+
+\begin{DoxyParams}{Parameters}
+{\em r\-Layer} & reference to an existing \hyperlink{classneuroc_1_1_layer}{Layer} \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_layer_ae82161250ed86f8965d239449c87d734}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron} \& neuroc\-::\-Layer\-::operator\mbox{[}$\,$\mbox{]} (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{index}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_ae82161250ed86f8965d239449c87d734}
+Operator overload \mbox{[}\mbox{]} it is used to return the smart pointer reference to the neuron stored inside the layer It is possible to access the methods of the single neuron using the deferencing operator -\/$>$ Example\-: input\-\_\-layer-\/$>$\hyperlink{classneuroc_1_1_layer_a4d879665e9fd0738fea6a5200c70296a}{Compute()}; // It calls the \hyperlink{classneuroc_1_1_layer_a4d879665e9fd0738fea6a5200c70296a}{Compute()} method of the neuron returned 
+\begin{DoxyParams}{Parameters}
+{\em index} & the number of the element stored inside the layer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns a const reference to the neuron 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_layer_a30ffd9156bc08a96474d48a3ec661cd9}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Print@{Print}}
+\index{Print@{Print}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Print}]{\setlength{\rightskip}{0pt plus 5cm}void neuroc\-::\-Layer\-::\-Print (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_a30ffd9156bc08a96474d48a3ec661cd9}
+Print information about all the neurons contained inside the \hyperlink{classneuroc_1_1_layer}{Layer} \hypertarget{classneuroc_1_1_layer_ac00e3384d6e22bf87b4359c43cb4461e}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Randomize\-Connection\-Matrix@{Randomize\-Connection\-Matrix}}
+\index{Randomize\-Connection\-Matrix@{Randomize\-Connection\-Matrix}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Randomize\-Connection\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}void neuroc\-::\-Layer\-::\-Randomize\-Connection\-Matrix (
+\begin{DoxyParamCaption}
+\item[{std\-::function$<$ double(double)$>$}]{init\-Function}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_ac00e3384d6e22bf87b4359c43cb4461e}
+Randomize all the connections of the neurons inside the layer It is possible to specify a minimum and maximum range for the random generator.
+
+
+\begin{DoxyParams}{Parameters}
+{\em init\-Function} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool it returns true if everything is all right, otherwise false. 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_layer_af2e9d4a30544bf754a06e0e2b98fe60f}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Return\-Number\-Of\-Neurons@{Return\-Number\-Of\-Neurons}}
+\index{Return\-Number\-Of\-Neurons@{Return\-Number\-Of\-Neurons}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Return\-Number\-Of\-Neurons}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int neuroc\-::\-Layer\-::\-Return\-Number\-Of\-Neurons (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classneuroc_1_1_layer_af2e9d4a30544bf754a06e0e2b98fe60f}
+It returns the number of neuron contained inside the layer
+
+\begin{DoxyReturn}{Returns}
+it returns the number of neurons 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_layer_ada5237f8e9211d3dc308fa2e083b2b44}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Set\-Bias\-Vector@{Set\-Bias\-Vector}}
+\index{Set\-Bias\-Vector@{Set\-Bias\-Vector}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Set\-Bias\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Layer\-::\-Set\-Bias\-Vector (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ double $>$}]{bias\-Vector}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_ada5237f8e9211d3dc308fa2e083b2b44}
+Set the values of all the bias inside the layer
+
+
+\begin{DoxyParams}{Parameters}
+{\em bias\-Vector} & vector of values with the same size of the layer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns true if it is all right, otherwise false 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_layer_a8e60b80bc457e7f82dc24fffc94fb9f0}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Set\-Error\-Vector@{Set\-Error\-Vector}}
+\index{Set\-Error\-Vector@{Set\-Error\-Vector}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Set\-Error\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Layer\-::\-Set\-Error\-Vector (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ double $>$}]{error\-Vector}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_a8e60b80bc457e7f82dc24fffc94fb9f0}
+Set the values of all the Error associated with the neurons inside the layer
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & vector of the same size of the layer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns true if it is all right, otherwise false 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_layer_a8e232dadedf86bfa7dafa106e97ade05}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Set\-Value\-Vector@{Set\-Value\-Vector}}
+\index{Set\-Value\-Vector@{Set\-Value\-Vector}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Set\-Value\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Layer\-::\-Set\-Value\-Vector (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ double $>$}]{value\-Vector}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_a8e232dadedf86bfa7dafa106e97ade05}
+Set the values of all the neurons inside the layer
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\-Values} & vector of doubles of the same size of the layer. Every double is given as input to the neurons inside the layer. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns true if it is all right, otherwise false 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_layer_aa80735d22f8f35c5ec35e059677ab733}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Size@{Size}}
+\index{Size@{Size}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Size}]{\setlength{\rightskip}{0pt plus 5cm}const unsigned int neuroc\-::\-Layer\-::\-Size (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classneuroc_1_1_layer_aa80735d22f8f35c5ec35e059677ab733}
+It gives the size of the connections container
+
+\begin{DoxyReturn}{Returns}
+it returns the number of connection of the neuron 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/Layer.\-h\item 
+src/Layer.\-cpp\end{DoxyCompactItemize}

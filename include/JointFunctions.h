@@ -1,8 +1,8 @@
-/* 
+/*
  * neuroc - c++11 Artificial Neural Networks library
  * Copyright (C) 2015  Massimiliano Patacchiola
  * Author: Massimiliano Patacchiola
- * email:  
+ * email:
  * This program is free software; you can redistribute it and/or
  * modify it under the terms of the GNU General Public License
  * as published by the Free Software Foundation; either version 2
@@ -17,4 +17,23 @@
  *
 */
 
-#include<Trainer.h>
+#ifndef JOINTFUNCTIONS_H
+#define JOINTFUNCTIONS_H
+
+
+namespace neuroc{
+/**
+ * \namespace JoinFunctions
+ *
+ * It contains functions used by the neuron in the second computational step
+ * All the functions of this namespace must take two values and return a single value
+ */
+namespace JointFunctions{
+
+double Sum(double weightFunctionOutput, double biasWeight);
+double Multiplication(double weightFunctionOutput, double biasWeight);
+
+}
+}
+
+#endif // JOINTFUNCTIONS_H

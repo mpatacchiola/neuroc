@@ -18,8 +18,10 @@
 */
 
 #include"Parser.h"
-
 #include <fstream> //save in XML
+
+
+namespace neuroc{
 
 Parser::Parser(){
   mInitialised = false;
@@ -74,6 +76,198 @@ bool Parser::FinaliseXML(){
  file_stream << "</neuroc>" <<  '\n';
  file_stream.close();
  return true;
+}
+
+
+bool Parser::SetPath(std::string filePath) {
+mFilePath=filePath;
+return true;
+}
+
+std::string Parser::GetPath() {
+return mFilePath;
+}
+
+
+bool Parser::AddNote(std::string note, std::string title) {
+
+if(mInitialised == false) {
+std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
+return false;
+}
+
+std::ofstream file_stream(mFilePath, std::fstream::app);
+
+if(!file_stream) {
+std::cerr<<"Error: Cannot open the output file."<<std::endl;
+return false;
+}
+
+if(title == "") file_stream << "<note>" << note << "</note>" << '\n';
+else file_stream << "<note " << "title:'" << title << "'>" << note << "</note>" << '\n';
+
+return true;
+}
+
+
+bool Parser::SaveNetwork(Network& rNetwork) {
+
+if(mInitialised == false) {
+std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
+return false;
+}
+
+std::ofstream file_stream(mFilePath, std::fstream::app);
+
+if(!file_stream) {
+std::cerr<<"Error: Cannot open the output file."<<std::endl;
+return false;
+}
+
+file_stream << "<network>" << '\n';
+file_stream << "<size>" << rNetwork.Size() <<"</size>" << '\n';
+file_stream << "<user_value>" << rNetwork.GetUserValue() <<"</user_value>" << '\n';	
+for(unsigned int lay=0; lay<rNetwork.Size(); lay++){
+
+file_stream << "<layer>" << '\n';
+file_stream << "<size>" << rNetwork[lay].Size() <<"</size>" << '\n';
+for(unsigned int neu=0; neu<rNetwork[lay].Size(); neu++){
+	file_stream << "<neuron>" << '\n';
+	file_stream << "<value>" << rNetwork[lay][neu].GetValue() <<"</value>" << '\n';
+	file_stream << "<error>" << rNetwork[lay][neu].GetError() <<"</error>" << '\n';
+	file_stream << "<bias>" << rNetwork[lay][neu].GetBias() <<"</bias>" << '\n';
+	file_stream << "<size>" << rNetwork[lay][neu].Size() <<"</size>" << '\n';
+	file_stream << "<connections>";
+	for(unsigned int con=0; con<rNetwork[lay][neu].Size(); con++){
+	 file_stream << rNetwork[lay][neu][con] << ";";
+	}
+	file_stream <<"</connections>" << '\n';
+	file_stream << "</neuron>" << '\n';
+}
+file_stream << "</layer>" << '\n';
+}
+file_stream << "</network>" << '\n';
+
+file_stream.close();
+return true;
+}
+
+
+bool Parser::SaveLayer( Layer& rLayer) {
+
+if(mInitialised == false) {
+std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
+return false;
+}
+
+std::ofstream file_stream(mFilePath, std::fstream::app);
+
+if(!file_stream) {
+std::cerr<<"Error: Cannot open the output file."<<std::endl;
+return false;
+}
+
+file_stream << "<layer>" << '\n';
+file_stream << "<size>" << rLayer.Size() <<"</size>" << '\n';
+for(unsigned int neu=0; neu<rLayer.Size(); neu++){
+	file_stream << "<neuron>" << '\n';
+	file_stream << "<value>" << rLayer[neu].GetValue() <<"</value>" << '\n';
+	file_stream << "<error>" << rLayer[neu].GetError() <<"</error>" << '\n';
+	file_stream << "<bias>" << rLayer[neu].GetBias() <<"</bias>" << '\n';
+	file_stream << "<size>" << rLayer[neu].Size() <<"</size>" << '\n';
+	file_stream << "<connections>";
+	for(unsigned int con=0; con<rLayer[neu].Size(); con++){
+	 file_stream << rLayer[neu][con] << ";";
+	}
+	file_stream <<"</connections>" << '\n';
+	file_stream << "</neuron>" << '\n';
+}
+file_stream << "</layer>" << '\n';
+
+file_stream.close();
+return true;
+
+}
+
+
+bool Parser::SaveNeuron( Neuron& rNeuron) {
+
+if(mInitialised == false) {
+std::cerr<<"Error: the XML Parser was not Initialised."<<std::endl;
+return false;
+}
+
+std::ofstream file_stream(mFilePath, std::fstream::app);
+
+if(!file_stream) {
+std::cerr<<"Error: Cannot open the output file."<<std::endl;
+return false;
+}
+
+file_stream << "<neuron>" << '\n';
+file_stream << "<value>" << rNeuron.GetValue() <<"</value>" << '\n';
+file_stream << "<error>" << rNeuron.GetError() <<"</error>" << '\n';
+file_stream << "<bias>" << rNeuron.GetBias() <<"</bias>" << '\n';
+file_stream << "<size>" << rNeuron.Size() <<"</size>" << '\n';
+file_stream << "<connections>";
+for(unsigned int con=0; con<rNeuron.Size(); con++){
+file_stream << rNeuron[con] << ";";
+}
+file_stream <<"</connections>" << '\n';
+file_stream << "</neuron>" << '\n';
+
+file_stream.close();
+return true;
+}
+
+
+bool Parser::FillNeuron(Neuron* pNeuron) {
+return false;
+}
+
+
+bool Parser::SaveDataset(Dataset& rDataset) {
+
+if(mInitialised == false) {
+std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
+return false;
+}
+
+if(rDataset.CheckIntegrity() == false) {
+std::cerr<<"Error: The dataset is bad formed."<<std::endl;
+return false;
+}
+std::ofstream file_stream(mFilePath, std::fstream::app);
+
+if(!file_stream) {
+std::cerr<<"Error: Cannot open the output file."<<std::endl;
+return false;
+}
+
+file_stream << rDataset.ReturnStringXML();
+
+file_stream.close();
+return true;
+}
+
+
+bool Parser::SaveDatasetAsCSV(Dataset& rDataset, std::string filePath) {
+
+if(rDataset.CheckIntegrity() == false) {
+std::cerr<<"Error: The dataset is bad formed."<<std::endl;
+return false;
+}
+std::ofstream file_stream(filePath, std::fstream::app);
+
+if(!file_stream) {
+std::cerr<<"Error: Cannot open the output file."<<std::endl;
+return false;
+}
+
+file_stream << rDataset.ReturnStringCSV();
+
+file_stream.close();
+return true;
 }
 
 /**
@@ -191,3 +385,8 @@ std::string Parser::GetFirstLine(std::string filePath)
   std::getline(in, line);
   return line;
 }
+
+
+}  //namespace
+
+

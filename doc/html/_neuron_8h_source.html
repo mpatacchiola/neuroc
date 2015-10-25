@@ -21,7 +21,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="logo_big.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo_new_white.png"/></td>
  </tr>
  </tbody>
 </table>
@@ -116,189 +116,72 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#include &lt;fstream&gt;</span> <span class="comment">//save in XML</span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_neuron.html">   51</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_neuron.html">Neuron</a> {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_neuron.html#a54a06b1dd7b89dd044cd14a406ff78a4">   59</a></span>&#160;    <a class="code" href="class_neuron.html#a54a06b1dd7b89dd044cd14a406ff78a4">Neuron</a>(<span class="keyword">const</span> <a class="code" href="class_neuron.html">Neuron&lt;T&gt;</a> &amp;rNeuron)</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        mConnectionsVector = rNeuron.mConnectionsVector;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        mValue = rNeuron.mValue;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        mError = rNeuron.mError;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        mBias = rNeuron.mBias;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        WeightFunction = rNeuron.WeightFunction;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        JoinFunction = rNeuron.JoinFunction;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        TransferFunction = rNeuron.TransferFunction;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_neuron.html#affff6501384d5b775d82b256fa890e54">   76</a></span>&#160;    <a class="code" href="class_neuron.html#affff6501384d5b775d82b256fa890e54">Neuron</a>(<span class="keyword">const</span> std::vector&lt;T&gt;&amp; connectionsVector, std::function&lt;T(std::vector&lt;T&gt;, std::vector&lt;T&gt;)&gt; weightFunction, std::function&lt;T(T, T)&gt; joinFunction, std::function&lt;T(T)&gt; transferFunction, T biasWeight=0)</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    {</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="comment">// test it on: http://webcompiler.cloudapp.net/</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="comment">// probably it needs #include &lt;type_traits&gt; to use the function is_floating_point       </span></div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        static_assert(std::is_floating_point&lt;T&gt;::value,</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                      <span class="stringliteral">&quot;Neuron class Neuron can only be instantiated with floating point types&quot;</span>); <span class="comment">// Compiler error when the class is instantiated with something different from double or float</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        mBias = biasWeight;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        WeightFunction = weightFunction;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        JoinFunction = joinFunction;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        TransferFunction = transferFunction;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        mConnectionsVector.reserve(connectionsVector.size()); <span class="comment">//ATTENTION: it is necessary to initialise the connectionVector here</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        mConnectionsVector = connectionsVector;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno"><a class="line" href="class_neuron.html#a7c3dca11875d3750232572b9dbaa3f92">   96</a></span>&#160;    <a class="code" href="class_neuron.html">Neuron&lt;T&gt;</a> <a class="code" href="class_neuron.html#a7c3dca11875d3750232572b9dbaa3f92">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_neuron.html">Neuron&lt;T&gt;</a> &amp;rNeuron)</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordflow">if</span> (<span class="keyword">this</span> == &amp;rNeuron) <span class="keywordflow">return</span> *<span class="keyword">this</span>;  <span class="comment">// check for self-assignment </span></div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        mConnectionsVector = rNeuron.mConnectionsVector;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        mValue = rNeuron.mValue;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        mError = rNeuron.mError;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        mBias = rNeuron.mBias;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        WeightFunction = rNeuron.WeightFunction;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        JoinFunction = rNeuron.JoinFunction;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        TransferFunction = rNeuron.TransferFunction;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00117"></a><span class="lineno"><a class="line" href="class_neuron.html#a1d18d688f5f310ec29f93c38b9d5e6e3">  117</a></span>&#160;    <span class="keyword">const</span> T&amp; <a class="code" href="class_neuron.html#a1d18d688f5f310ec29f93c38b9d5e6e3">operator[]</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        <span class="keywordflow">if</span> (index &gt;= mConnectionsVector.size()) <span class="keywordflow">throw</span> std::domain_error(<span class="stringliteral">&quot;Error: Out of Range index.&quot;</span>);</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        <span class="keywordflow">return</span> mConnectionsVector[index];</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    }</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00127"></a><span class="lineno"><a class="line" href="class_neuron.html#a58d46a89339b5d1a2987159d56adaeca">  127</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_neuron.html#a58d46a89339b5d1a2987159d56adaeca">Size</a>()<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    <span class="keywordflow">return</span> mConnectionsVector.size();</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    }</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="class_neuron.html#a38bba6f81fde2ce7df32372cade0fb87">  138</a></span>&#160;    T <a class="code" href="class_neuron.html#a38bba6f81fde2ce7df32372cade0fb87">Compute</a>(std::vector&lt;T&gt; inputVector) {</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;    <span class="comment">//1- Applying Weight Function</span></div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    T weight_function_output = WeightFunction(inputVector, mConnectionsVector);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">    #ifdef DEBUG </span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="preprocessor"></span>    std::cout &lt;&lt; <span class="stringliteral">&quot;weight_function_output: &quot;</span> &lt;&lt; weight_function_output &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;<span class="preprocessor">    #endif</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="comment">//2- Applying the Join Function</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    T join_function_output = JoinFunction(weight_function_output, mBias);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="preprocessor">    #ifdef DEBUG </span></div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor"></span>    std::cout &lt;&lt; <span class="stringliteral">&quot;join_function_output: &quot;</span> &lt;&lt; join_function_output &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="preprocessor">    #endif</span></div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="comment">//3- Applying the Transfer Function</span></div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    T neuron_output = TransferFunction(join_function_output);</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">    #ifdef DEBUG </span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;<span class="preprocessor"></span>    std::cout &lt;&lt; <span class="stringliteral">&quot;neuron_output: &quot;</span> &lt;&lt; neuron_output &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;<span class="preprocessor">    #endif</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;    <span class="comment">//4- Returning the result</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    mValue = neuron_output;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    <span class="keywordflow">return</span> neuron_output;</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    }</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno"><a class="line" href="class_neuron.html#af98248f8266d73307ff2b6820038a0c4">  170</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_neuron.html#af98248f8266d73307ff2b6820038a0c4">RandomizeConnectionVector</a>(std::function&lt;T(T)&gt; initFunction) {</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span> it=mConnectionsVector.begin(); it!=mConnectionsVector.end(); it++){</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    *it = initFunction(*it);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    }</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    mBias = initFunction(mBias);</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    }</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
-<div class="line"><a name="l00186"></a><span class="lineno"><a class="line" href="class_neuron.html#a9090ebb7bbaea65059bbdb0b2d01e004">  186</a></span>&#160;    <span class="keyword">const</span> std::vector&lt;T&gt;&amp; <a class="code" href="class_neuron.html#a9090ebb7bbaea65059bbdb0b2d01e004">GetConnectionVector</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;    <span class="keywordflow">return</span> mConnectionsVector;</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;    }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
-<div class="line"><a name="l00195"></a><span class="lineno"><a class="line" href="class_neuron.html#a535b1f8371c08845f0b2a6a2cb35e869">  195</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_neuron.html#a535b1f8371c08845f0b2a6a2cb35e869">SetConnectionVector</a>(<span class="keyword">const</span> std::vector&lt;T&gt;&amp; connectionVector) {</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;    mConnectionsVector.clear;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    mConnectionsVector = connectionVector;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    }</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
-<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="class_neuron.html#a8ec9e10ab930126918685eafb176ebf4">  205</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_neuron.html#a8ec9e10ab930126918685eafb176ebf4">Print</a>() {</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Value ..... &quot;</span> &lt;&lt; mValue &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Error ..... &quot;</span> &lt;&lt; mError &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Bias ..... &quot;</span> &lt;&lt; mBias &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;Connections ..... &quot;</span> &lt;&lt; mConnectionsVector.size() &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0; i &lt; mConnectionsVector.size(); i++) {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;           std::cout &lt;&lt; <span class="stringliteral">&quot;Connection[&quot;</span> &lt;&lt; i &lt;&lt; <span class="stringliteral">&quot;] ..... &quot;</span> &lt;&lt; mConnectionsVector[i] &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        }</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;    }</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
-<div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="class_neuron.html#a66d4ef8439d816a6101e6df51c81f9d2">  224</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_neuron.html#a66d4ef8439d816a6101e6df51c81f9d2">SetValue</a>(T value) {</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        mValue = value; <span class="comment">//it set the current value</span></div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    }</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
-<div class="line"><a name="l00233"></a><span class="lineno"><a class="line" href="class_neuron.html#a30efca244cc827db1f66907e77c5d651">  233</a></span>&#160;    <span class="keyword">const</span> T <a class="code" href="class_neuron.html#a30efca244cc827db1f66907e77c5d651">GetValue</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        <span class="keywordflow">return</span> mValue;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;    }</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
-<div class="line"><a name="l00242"></a><span class="lineno"><a class="line" href="class_neuron.html#a5328571eb332fabe1c81136a809d8ad9">  242</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_neuron.html#a5328571eb332fabe1c81136a809d8ad9">SetError</a>(T value) {</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        mError = value;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    }</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
-<div class="line"><a name="l00251"></a><span class="lineno"><a class="line" href="class_neuron.html#a74d809b4b33e36eda9249d372311f69c">  251</a></span>&#160;    <span class="keyword">const</span> T <a class="code" href="class_neuron.html#a74d809b4b33e36eda9249d372311f69c">GetError</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;        <span class="keywordflow">return</span> mError;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    }</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
-<div class="line"><a name="l00260"></a><span class="lineno"><a class="line" href="class_neuron.html#aa339dd785e46a7d7eb0fa43284acc690">  260</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_neuron.html#aa339dd785e46a7d7eb0fa43284acc690">SetBias</a>(T value) {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        mBias = value; <span class="comment">//it set the current value</span></div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;    }</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;</div>
-<div class="line"><a name="l00269"></a><span class="lineno"><a class="line" href="class_neuron.html#a572bd4cfd686214a4f563e4a4203c14e">  269</a></span>&#160;    <span class="keyword">const</span> T <a class="code" href="class_neuron.html#a572bd4cfd686214a4f563e4a4203c14e">GetBias</a>()<span class="keyword"> const</span>{</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;        <span class="keywordflow">return</span> mBias;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    }</div>
-<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    T mValue = 0;  <span class="comment">//value obtained after the computation </span></div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    T mError = 0;  <span class="comment">//error obtained after the error backpropagation </span></div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    T mBias = 0;   <span class="comment">//value of the bias connection</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    std::vector&lt;T&gt; mConnectionsVector;  <span class="comment">//container of the connections values</span></div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    std::function&lt;T(std::vector&lt;T&gt;, std::vector&lt;T&gt;)&gt; WeightFunction;</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    std::function&lt;T(T, T)&gt; JoinFunction;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    std::function&lt;T(T)&gt; TransferFunction;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;};  <span class="comment">// Class Neuron</span></div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="preprocessor">#endif // NEURON_H</span></div>
-<div class="ttc" id="class_neuron_html_aa339dd785e46a7d7eb0fa43284acc690"><div class="ttname"><a href="class_neuron.html#aa339dd785e46a7d7eb0fa43284acc690">Neuron::SetBias</a></div><div class="ttdeci">void SetBias(T value)</div><div class="ttdef"><b>Definition:</b> Neuron.h:260</div></div>
-<div class="ttc" id="class_neuron_html_a74d809b4b33e36eda9249d372311f69c"><div class="ttname"><a href="class_neuron.html#a74d809b4b33e36eda9249d372311f69c">Neuron::GetError</a></div><div class="ttdeci">const T GetError() const </div><div class="ttdef"><b>Definition:</b> Neuron.h:251</div></div>
-<div class="ttc" id="class_neuron_html_a9090ebb7bbaea65059bbdb0b2d01e004"><div class="ttname"><a href="class_neuron.html#a9090ebb7bbaea65059bbdb0b2d01e004">Neuron::GetConnectionVector</a></div><div class="ttdeci">const std::vector&lt; T &gt; &amp; GetConnectionVector() const </div><div class="ttdef"><b>Definition:</b> Neuron.h:186</div></div>
-<div class="ttc" id="class_neuron_html_a535b1f8371c08845f0b2a6a2cb35e869"><div class="ttname"><a href="class_neuron.html#a535b1f8371c08845f0b2a6a2cb35e869">Neuron::SetConnectionVector</a></div><div class="ttdeci">bool SetConnectionVector(const std::vector&lt; T &gt; &amp;connectionVector)</div><div class="ttdef"><b>Definition:</b> Neuron.h:195</div></div>
-<div class="ttc" id="class_neuron_html_a8ec9e10ab930126918685eafb176ebf4"><div class="ttname"><a href="class_neuron.html#a8ec9e10ab930126918685eafb176ebf4">Neuron::Print</a></div><div class="ttdeci">void Print()</div><div class="ttdef"><b>Definition:</b> Neuron.h:205</div></div>
-<div class="ttc" id="class_neuron_html"><div class="ttname"><a href="class_neuron.html">Neuron</a></div><div class="ttdoc">This is the lowest class and it represents the Neuron object. </div><div class="ttdef"><b>Definition:</b> Neuron.h:51</div></div>
-<div class="ttc" id="class_neuron_html_af98248f8266d73307ff2b6820038a0c4"><div class="ttname"><a href="class_neuron.html#af98248f8266d73307ff2b6820038a0c4">Neuron::RandomizeConnectionVector</a></div><div class="ttdeci">void RandomizeConnectionVector(std::function&lt; T(T)&gt; initFunction)</div><div class="ttdef"><b>Definition:</b> Neuron.h:170</div></div>
-<div class="ttc" id="class_neuron_html_a5328571eb332fabe1c81136a809d8ad9"><div class="ttname"><a href="class_neuron.html#a5328571eb332fabe1c81136a809d8ad9">Neuron::SetError</a></div><div class="ttdeci">void SetError(T value)</div><div class="ttdef"><b>Definition:</b> Neuron.h:242</div></div>
-<div class="ttc" id="class_neuron_html_a7c3dca11875d3750232572b9dbaa3f92"><div class="ttname"><a href="class_neuron.html#a7c3dca11875d3750232572b9dbaa3f92">Neuron::operator=</a></div><div class="ttdeci">Neuron&lt; T &gt; operator=(const Neuron&lt; T &gt; &amp;rNeuron)</div><div class="ttdef"><b>Definition:</b> Neuron.h:96</div></div>
-<div class="ttc" id="class_neuron_html_a572bd4cfd686214a4f563e4a4203c14e"><div class="ttname"><a href="class_neuron.html#a572bd4cfd686214a4f563e4a4203c14e">Neuron::GetBias</a></div><div class="ttdeci">const T GetBias() const </div><div class="ttdef"><b>Definition:</b> Neuron.h:269</div></div>
-<div class="ttc" id="class_neuron_html_a66d4ef8439d816a6101e6df51c81f9d2"><div class="ttname"><a href="class_neuron.html#a66d4ef8439d816a6101e6df51c81f9d2">Neuron::SetValue</a></div><div class="ttdeci">void SetValue(T value)</div><div class="ttdef"><b>Definition:</b> Neuron.h:224</div></div>
-<div class="ttc" id="class_neuron_html_affff6501384d5b775d82b256fa890e54"><div class="ttname"><a href="class_neuron.html#affff6501384d5b775d82b256fa890e54">Neuron::Neuron</a></div><div class="ttdeci">Neuron(const std::vector&lt; T &gt; &amp;connectionsVector, std::function&lt; T(std::vector&lt; T &gt;, std::vector&lt; T &gt;)&gt; weightFunction, std::function&lt; T(T, T)&gt; joinFunction, std::function&lt; T(T)&gt; transferFunction, T biasWeight=0)</div><div class="ttdef"><b>Definition:</b> Neuron.h:76</div></div>
-<div class="ttc" id="class_neuron_html_a58d46a89339b5d1a2987159d56adaeca"><div class="ttname"><a href="class_neuron.html#a58d46a89339b5d1a2987159d56adaeca">Neuron::Size</a></div><div class="ttdeci">const unsigned int Size() const </div><div class="ttdef"><b>Definition:</b> Neuron.h:127</div></div>
-<div class="ttc" id="class_neuron_html_a54a06b1dd7b89dd044cd14a406ff78a4"><div class="ttname"><a href="class_neuron.html#a54a06b1dd7b89dd044cd14a406ff78a4">Neuron::Neuron</a></div><div class="ttdeci">Neuron(const Neuron&lt; T &gt; &amp;rNeuron)</div><div class="ttdef"><b>Definition:</b> Neuron.h:59</div></div>
-<div class="ttc" id="class_neuron_html_a38bba6f81fde2ce7df32372cade0fb87"><div class="ttname"><a href="class_neuron.html#a38bba6f81fde2ce7df32372cade0fb87">Neuron::Compute</a></div><div class="ttdeci">T Compute(std::vector&lt; T &gt; inputVector)</div><div class="ttdef"><b>Definition:</b> Neuron.h:138</div></div>
-<div class="ttc" id="class_neuron_html_a30efca244cc827db1f66907e77c5d651"><div class="ttname"><a href="class_neuron.html#a30efca244cc827db1f66907e77c5d651">Neuron::GetValue</a></div><div class="ttdeci">const T GetValue() const </div><div class="ttdef"><b>Definition:</b> Neuron.h:233</div></div>
-<div class="ttc" id="class_neuron_html_a1d18d688f5f310ec29f93c38b9d5e6e3"><div class="ttname"><a href="class_neuron.html#a1d18d688f5f310ec29f93c38b9d5e6e3">Neuron::operator[]</a></div><div class="ttdeci">const T &amp; operator[](const unsigned int index) const </div><div class="ttdef"><b>Definition:</b> Neuron.h:117</div></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">namespace </span>neuroc{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classneuroc_1_1_neuron.html">   41</a></span>&#160;<span class="keyword">class </span><a class="code" href="classneuroc_1_1_neuron.html">Neuron</a> {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<a class="code" href="classneuroc_1_1_neuron.html#a5daa71d6894902abd4d176fb98b2a1a3">Neuron</a>(<span class="keyword">const</span> <a class="code" href="classneuroc_1_1_neuron.html">Neuron</a> &amp;rNeuron);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<a class="code" href="classneuroc_1_1_neuron.html#a5daa71d6894902abd4d176fb98b2a1a3">Neuron</a>(<span class="keyword">const</span> std::vector&lt;double&gt;&amp; connectionsVector, std::function&lt;<span class="keywordtype">double</span>(std::vector&lt;double&gt;, std::vector&lt;double&gt;)&gt; weightFunction, std::function&lt;<span class="keywordtype">double</span>(<span class="keywordtype">double</span>, <span class="keywordtype">double</span>)&gt; joinFunction, std::function&lt;<span class="keywordtype">double</span>(<span class="keywordtype">double</span>)&gt; transferFunction, <span class="keywordtype">double</span> biasWeight=0);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<a class="code" href="classneuroc_1_1_neuron.html">Neuron</a> <a class="code" href="classneuroc_1_1_neuron.html#a50f9501ff50f8cba29509adf982d276e">operator=</a>(<span class="keyword">const</span> <a class="code" href="classneuroc_1_1_neuron.html">Neuron</a> &amp;rNeuron);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="keyword">const</span> <span class="keywordtype">double</span>&amp; <a class="code" href="classneuroc_1_1_neuron.html#aebf0a0ac505ed3d030a2317f7e8db166">operator[]</a>(<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classneuroc_1_1_neuron.html#a015376f3e8345e7d831298d4342eef3f">Size</a>();</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keywordtype">double</span> <a class="code" href="classneuroc_1_1_neuron.html#aeb1a05ddba04af38d8ab9fd88d74ba69">Compute</a>(std::vector&lt;double&gt; inputVector);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classneuroc_1_1_neuron.html#a9fbb34828b715886d122765d9889f000">RandomizeConnectionVector</a>(std::function&lt;<span class="keywordtype">double</span>(<span class="keywordtype">double</span>)&gt; initFunction);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classneuroc_1_1_neuron.html#a66bfce757756e313b9d206340f559657">SetConnectionVector</a>(<span class="keyword">const</span> std::vector&lt;double&gt;&amp; connectionVector);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">const</span> std::vector&lt;double&gt;&amp; <a class="code" href="classneuroc_1_1_neuron.html#a7a231655df819faf9490d3dbe0c8abb6">GetConnectionVector</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classneuroc_1_1_neuron.html#a9372e181e5ee1c8fc28bc4f859c1f537">SetValue</a>(<span class="keywordtype">double</span> value);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">double</span> <a class="code" href="classneuroc_1_1_neuron.html#aba0b60c841fd2a6d9c509863766d6977">GetValue</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classneuroc_1_1_neuron.html#a594dc169c67e35cb00bcd14a7521c20c">SetError</a>(<span class="keywordtype">double</span> value);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">double</span> <a class="code" href="classneuroc_1_1_neuron.html#a8cee80076705f1f349aaf0feafe2d8f1">GetError</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classneuroc_1_1_neuron.html#ade5254b17adc7c152dc35ced4181506d">SetBias</a>(<span class="keywordtype">double</span> value);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">double</span> <a class="code" href="classneuroc_1_1_neuron.html#a60af8c8e64f908cc036694df4ae0489a">GetBias</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classneuroc_1_1_neuron.html#ae23265025b8d02844e1d874138fe5fcc">Print</a>();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">double</span> mValue = 0;  <span class="comment">//value obtained after the computation </span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">double</span> mError = 0;  <span class="comment">//error obtained after the error backpropagation </span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">double</span> mBias = 0;   <span class="comment">//value of the bias connection</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;std::vector&lt;double&gt; mConnectionsVector;  <span class="comment">//container of the connections values</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;std::function&lt;double(std::vector&lt;double&gt;, std::vector&lt;double&gt;)&gt; WeightFunction;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;std::function&lt;double(double, double)&gt; JoinFunction;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;std::function&lt;double(double)&gt; TransferFunction;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};  <span class="comment">// Class Neuron</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}<span class="comment">//namespace</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="preprocessor">#endif // NEURON_H</span></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_a9fbb34828b715886d122765d9889f000"><div class="ttname"><a href="classneuroc_1_1_neuron.html#a9fbb34828b715886d122765d9889f000">neuroc::Neuron::RandomizeConnectionVector</a></div><div class="ttdeci">void RandomizeConnectionVector(std::function&lt; double(double)&gt; initFunction)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:136</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_ade5254b17adc7c152dc35ced4181506d"><div class="ttname"><a href="classneuroc_1_1_neuron.html#ade5254b17adc7c152dc35ced4181506d">neuroc::Neuron::SetBias</a></div><div class="ttdeci">void SetBias(double value)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:226</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_a015376f3e8345e7d831298d4342eef3f"><div class="ttname"><a href="classneuroc_1_1_neuron.html#a015376f3e8345e7d831298d4342eef3f">neuroc::Neuron::Size</a></div><div class="ttdeci">unsigned int Size()</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:93</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html"><div class="ttname"><a href="classneuroc_1_1_neuron.html">neuroc::Neuron</a></div><div class="ttdoc">This is the lowest class and it represents the Neuron object. </div><div class="ttdef"><b>Definition:</b> Neuron.h:41</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_a8cee80076705f1f349aaf0feafe2d8f1"><div class="ttname"><a href="classneuroc_1_1_neuron.html#a8cee80076705f1f349aaf0feafe2d8f1">neuroc::Neuron::GetError</a></div><div class="ttdeci">double GetError()</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:217</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_a5daa71d6894902abd4d176fb98b2a1a3"><div class="ttname"><a href="classneuroc_1_1_neuron.html#a5daa71d6894902abd4d176fb98b2a1a3">neuroc::Neuron::Neuron</a></div><div class="ttdeci">Neuron(const Neuron &amp;rNeuron)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:29</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_aba0b60c841fd2a6d9c509863766d6977"><div class="ttname"><a href="classneuroc_1_1_neuron.html#aba0b60c841fd2a6d9c509863766d6977">neuroc::Neuron::GetValue</a></div><div class="ttdeci">double GetValue()</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:199</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_a7a231655df819faf9490d3dbe0c8abb6"><div class="ttname"><a href="classneuroc_1_1_neuron.html#a7a231655df819faf9490d3dbe0c8abb6">neuroc::Neuron::GetConnectionVector</a></div><div class="ttdeci">const std::vector&lt; double &gt; &amp; GetConnectionVector() const </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:152</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_a50f9501ff50f8cba29509adf982d276e"><div class="ttname"><a href="classneuroc_1_1_neuron.html#a50f9501ff50f8cba29509adf982d276e">neuroc::Neuron::operator=</a></div><div class="ttdeci">Neuron operator=(const Neuron &amp;rNeuron)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:62</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_ae23265025b8d02844e1d874138fe5fcc"><div class="ttname"><a href="classneuroc_1_1_neuron.html#ae23265025b8d02844e1d874138fe5fcc">neuroc::Neuron::Print</a></div><div class="ttdeci">void Print()</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:171</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_aebf0a0ac505ed3d030a2317f7e8db166"><div class="ttname"><a href="classneuroc_1_1_neuron.html#aebf0a0ac505ed3d030a2317f7e8db166">neuroc::Neuron::operator[]</a></div><div class="ttdeci">const double &amp; operator[](const unsigned int index) const </div><div class="ttdef"><b>Definition:</b> Neuron.cpp:83</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_a9372e181e5ee1c8fc28bc4f859c1f537"><div class="ttname"><a href="classneuroc_1_1_neuron.html#a9372e181e5ee1c8fc28bc4f859c1f537">neuroc::Neuron::SetValue</a></div><div class="ttdeci">void SetValue(double value)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:190</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_a594dc169c67e35cb00bcd14a7521c20c"><div class="ttname"><a href="classneuroc_1_1_neuron.html#a594dc169c67e35cb00bcd14a7521c20c">neuroc::Neuron::SetError</a></div><div class="ttdeci">void SetError(double value)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:208</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_a60af8c8e64f908cc036694df4ae0489a"><div class="ttname"><a href="classneuroc_1_1_neuron.html#a60af8c8e64f908cc036694df4ae0489a">neuroc::Neuron::GetBias</a></div><div class="ttdeci">double GetBias()</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:235</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_a66bfce757756e313b9d206340f559657"><div class="ttname"><a href="classneuroc_1_1_neuron.html#a66bfce757756e313b9d206340f559657">neuroc::Neuron::SetConnectionVector</a></div><div class="ttdeci">void SetConnectionVector(const std::vector&lt; double &gt; &amp;connectionVector)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:161</div></div>
+<div class="ttc" id="classneuroc_1_1_neuron_html_aeb1a05ddba04af38d8ab9fd88d74ba69"><div class="ttname"><a href="classneuroc_1_1_neuron.html#aeb1a05ddba04af38d8ab9fd88d74ba69">neuroc::Neuron::Compute</a></div><div class="ttdeci">double Compute(std::vector&lt; double &gt; inputVector)</div><div class="ttdef"><b>Definition:</b> Neuron.cpp:104</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Oct 24 2015 15:04:27 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sun Oct 25 2015 14:23:30 by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

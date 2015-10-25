@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['transferfunctions',['TransferFunctions',['../namespace_transfer_functions.html',1,'']]]
+  ['randomfunctions',['RandomFunctions',['../namespace_random_functions.html',1,'']]]
 ];

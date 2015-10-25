@@ -13,15 +13,15 @@ Neuron
 The Neuron is an object with three functions inside:
 
 1. Weight Function
-2. join Function
+2. joint Function
 3. Transfer Function
 
-There are different type of Weight, Join and Transfer functions, creating a neuron it is necessary to define which function to use. 
-Every neuron contains also a connection matrix, that in the specific case of the neuron is composed of a single vector. The connection vector represents the set of values that are multiplied by an input vector. The output of the neuron is a single value obtained from the dot product of the input vector and the connection vector. 
+There are different type of Weight, Joint and Transfer functions, creating a neuron it is necessary to define which function to use. 
+Every neuron contains also a connection vector, representing the weights (incoming connections). The output of the neuron is a single value obtained from the dot product of the input vector and the connection vector. 
 
 Example: A neuron with 4 input will have a connection vector with 4 elements, each one of this values is a weight
 
-Once the neuron is created it is possible to have the output using the fucntion **Compute()** that take as input a vector or a list and produce as output a single value.
+Once the neuron is created it is possible to compute the output using the fucntion **Compute()** that take as input a vector and produce as output a single value.
 This function is a sequence of operations, the following list is an example of operations taken from a standard neuron:
 
 1- Neuron-input = input_vector

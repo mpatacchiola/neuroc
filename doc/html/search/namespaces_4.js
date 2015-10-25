@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['weightfunctions',['WeightFunctions',['../namespace_weight_functions.html',1,'']]]
+  ['transferfunctions',['TransferFunctions',['../namespace_transfer_functions.html',1,'']]]
 ];

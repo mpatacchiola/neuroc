@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dataset',['Dataset',['../class_dataset.html',1,'']]]
+  ['dataset',['Dataset',['../classneuroc_1_1_dataset.html',1,'neuroc']]]
 ];
