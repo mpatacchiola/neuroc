@@ -47,47 +47,24 @@ Dataset();
 
 ~Dataset();
 
-bool PushBackInputAndTarget(std::initializer_list<double> inputList, std::initializer_list<double> targetList);
 
-bool PushBackInputAndTarget(std::vector<double> inputDataToPush, std::vector<double> targetDataToPush);
+bool PushBackData(std::vector<double> dataToPush);
 
-bool PushBackInput(std::vector<double> dataToPush);
+Dataset Split(unsigned int index);
 
-bool PushBackInput(std::initializer_list<double> inputList);
-
-std::vector<double> GetInput(unsigned int index);
-
-bool SetInput(unsigned int index, std::vector<double> data);
-
-unsigned int ReturnNumberOfInputs();
-
-bool PushBackTarget(std::vector<double> dataToPush) ;
+std::vector<double> GetData(unsigned int index);
+bool SetData(unsigned int index, std::vector<double> data);
 
 
-bool PushBackTarget(std::initializer_list<double> targetList);
+unsigned int ReturnNumberOfData();
 
-std::vector<double> GetTarget(unsigned int index);
-
-bool SetTarget(unsigned int index, std::vector<double> data);
-
-unsigned int ReturnNumberOfTargets();
-
-bool CheckIntegrity();
-
-
-void PrintInput(unsigned int index);
-
-void PrintTarget(unsigned int index);
-
-std::string ReturnStringXML();
-
+void PrintData(unsigned int index);
 
 std::string ReturnStringCSV();
 
 private:
 
-std::vector<std::vector<double>> nInputsVector;
-std::vector<std::vector<double>> nTargetsVector;
+std::vector<std::vector<double>> mDataVector;
 
 };
 

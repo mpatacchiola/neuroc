@@ -57,8 +57,6 @@ public:
 
  bool FillNeuron(Neuron* pNeuron);
 
-
- bool SaveDataset(Dataset& rDataset);
  bool SaveDatasetAsCSV(Dataset& rDataset, std::string filePath);
 
  bool CheckIntegrity();

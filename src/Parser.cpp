@@ -226,37 +226,9 @@ return false;
 }
 
 
-bool Parser::SaveDataset(Dataset& rDataset) {
-
-if(mInitialised == false) {
-std::cerr<<"Error: the Parser was not Initialised."<<std::endl;
-return false;
-}
-
-if(rDataset.CheckIntegrity() == false) {
-std::cerr<<"Error: The dataset is bad formed."<<std::endl;
-return false;
-}
-std::ofstream file_stream(mFilePath, std::fstream::app);
-
-if(!file_stream) {
-std::cerr<<"Error: Cannot open the output file."<<std::endl;
-return false;
-}
-
-file_stream << rDataset.ReturnStringXML();
-
-file_stream.close();
-return true;
-}
-
 
 bool Parser::SaveDatasetAsCSV(Dataset& rDataset, std::string filePath) {
 
-if(rDataset.CheckIntegrity() == false) {
-std::cerr<<"Error: The dataset is bad formed."<<std::endl;
-return false;
-}
 std::ofstream file_stream(filePath, std::fstream::app);
 
 if(!file_stream) {
