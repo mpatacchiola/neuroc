@@ -42,30 +42,36 @@ class Neuron {
 public:
 
 Neuron(const Neuron &rNeuron);
-Neuron(const std::vector<double>& connectionsVector, std::function<double(std::vector<double>, std::vector<double>)> weightFunction, std::function<double(double, double)> joinFunction, std::function<double(double)> transferFunction, double biasWeight=0);
+Neuron(const std::vector<double>& connectionsVector, std::function<double(std::vector<double>, std::vector<double>)> weightFunction, std::function<double(double, double)> joinFunction, std::function<double(double)> transferFunction, std::function<double(double)> derivativeFunction, double biasWeight=0);
 
 Neuron operator=(const Neuron &rNeuron);
 const double& operator[](const unsigned int index) const;
 unsigned int Size();
 
 double Compute(std::vector<double> inputVector);
+double ComputeDerivative(std::vector<double> inputVector);
 
 void RandomizeConnectionVector(std::function<double(double)> initFunction);
 
 void SetConnectionVector(const std::vector<double>& connectionVector);
-const std::vector<double>& GetConnectionVector() const;
+std::vector<double> GetConnectionVector() const;
 void SetValue(double value);
 double GetValue();
+void SetDerivative(double value);
+double GetDerivative();
 void SetError(double value);
 double GetError();
 void SetBias(double value);
 double GetBias();
 
+
+
 void Print();
 
 private:
 
-double mValue = 0;  //value obtained after the computation 
+double mValue = 0;  //value obtained after the computation
+double mDerivative = 0;
 double mError = 0;  //error obtained after the error backpropagation 
 double mBias = 0;   //value of the bias connection
 
@@ -74,7 +80,7 @@ std::vector<double> mConnectionsVector;  //container of the connections values
 std::function<double(std::vector<double>, std::vector<double>)> WeightFunction;
 std::function<double(double, double)> JoinFunction;
 std::function<double(double)> TransferFunction;
-
+std::function<double(double)> DerivativeFunction;
 
 };  // Class Neuron
 

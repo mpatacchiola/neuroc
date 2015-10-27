@@ -63,6 +63,7 @@ bool operator > (const Network& rhs) const;
 unsigned int Size();
 
 std::vector<double> Compute(const std::vector<double>& InputVector);
+std::vector<double> ComputeDerivative(const std::vector<double>& InputVector);
 
 const std::vector<Layer>& ReturReferenceToLayersVector() ;
 

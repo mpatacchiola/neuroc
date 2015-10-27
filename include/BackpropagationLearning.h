@@ -45,9 +45,9 @@ Network StartLearning(Network net, Dataset& inputDataset, Dataset& targetDataset
 void SetLearningRate(double value);
 double GetLearningRate();
 
-void Forward(Network* net, std::vector<double> inputVector);
-void ErrorBackpropagation(Network* net, std::vector<double> inputVector);
-void UpdateWheights(Network* net);
+void Forward(std::vector<double> inputVector);
+void ErrorBackpropagation(std::vector<double> targetDataset);
+void UpdateWheights(std::vector<double> inputVector);
 
 
 private:
@@ -55,11 +55,12 @@ private:
 Network mNet;
 double learningRate;
 
-struct layerParamStruct{
-
-
-};
-
+std::vector<std::vector<double>> TransposeMatrix( std::vector<std::vector<double>> matrix);
+std::vector<double> HadamardProduct(std::vector<double> firstVector, std::vector<double> secondVector);
+std::vector<double> MatrixVectorMultiplication(std::vector<std::vector<double>> matrix, std::vector<double> inputVector);
+std::vector<std::vector<double>> MatrixScalarMultiplication(std::vector<std::vector<double>> matrix, double scalar);
+std::vector<double> SubtractVectors(std::vector<double> firstVector, std::vector<double> secondVector);
+double DotProduct(std::vector<double> firstVector, std::vector<double> secondVector);
 
 
 };  // Class BackpropagationLearning

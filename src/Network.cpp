@@ -134,6 +134,26 @@ return mLayersVector[mLayersVector.size()-1].GetValueVector();
 }
 
 /**
+* Compute all the neurons of the layer and return a vector containing the values of these neurons
+*
+* @return it returns the vector containing the double, in case of problems it returns an empty vector and print an error
+**/
+std::vector<double> Network::ComputeDerivative(const std::vector<double>& InputVector) {
+
+//1- Set the values of the input layer
+mLayersVector[0].ComputeDerivative(InputVector);
+
+//2- Compute all the hidden Layer
+
+for (unsigned int i=1; i<mLayersVector.size(); i++ ) {
+mLayersVector[i].ComputeDerivative(mLayersVector[i-1].GetValueVector());
+}
+
+//3- Return the result of the Output Layer
+return mLayersVector[mLayersVector.size()-1].GetDerivativeVector();
+}
+
+/**
 * It returns a reference to the vector that contain the neurons
 * 
 * @return a const reference to the vector

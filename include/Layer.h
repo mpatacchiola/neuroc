@@ -53,21 +53,24 @@ Neuron& operator[](unsigned int index);
 const unsigned int Size() const;
 
 std::vector<double> Compute(std::vector<double> inputVector);
+std::vector<double> ComputeDerivative(std::vector<double> inputVector);
 
 void RandomizeConnectionMatrix(std::function<double(double)> initFunction);
 
-
+bool SetValueVector(std::vector<double> valueVector);
 std::vector<double> GetValueVector();
 
-bool SetBiasVector(std::vector<double> biasVector);
+std::vector<double> GetDerivativeVector();
 
-bool SetValueVector(std::vector<double> valueVector);
+bool SetBiasVector(std::vector<double> biasVector);
+std::vector<double> GetBiasVector();
 
 bool SetErrorVector(std::vector<double> errorVector);
+std::vector<double> GetErrorVector();
 
 unsigned int ReturnNumberOfNeurons();
 
-
+bool SetConnectionMatrix(std::vector< std::vector<double> >);
 std::vector< std::vector<double> > GetConnectionMatrix();
 
 void Print();

@@ -119,6 +119,19 @@ output_vector.push_back(mNeuronsVector[i].Compute(inputVector));
 return output_vector;
 }
 
+/**
+* Compute the derivative value for all the neurons of the layer and return a vector containing the  derivative values of these neurons
+*
+* @return it returns the vector containing the derivative values of the layer
+**/
+std::vector<double> Layer::ComputeDerivative(std::vector<double> inputVector){
+ std::vector<double> output_vector;
+ output_vector.reserve(mNeuronsVector.size());
+ for(auto it=mNeuronsVector.begin(); it!=mNeuronsVector.end(); ++it){
+  output_vector.push_back(it->ComputeDerivative(inputVector));
+ }
+ return output_vector;
+}
 
 /**
 * Randomize all the connections of the neurons inside the layer
@@ -136,7 +149,6 @@ mNeuronsVector[i].RandomizeConnectionVector(initFunction);
 /**
 * Get the values of all the neurons inside the layer
 *
-* @param inputValues vector of doubles of the same size of the layer. Every double is given as input to the neurons inside the layer.
 * @return it returns true if it is all right, otherwise false
 **/
 std::vector<double> Layer::GetValueVector(){
@@ -148,6 +160,36 @@ for(unsigned int i = 0; i < mNeuronsVector.size(); i++)
 outputVector.push_back(mNeuronsVector[i].GetValue());
 
 return outputVector;
+}
+
+/**
+* Set the values of all the neurons inside the layer
+*
+* @param inputValues vector of doubles of the same size of the layer. Every double is given as input to the neurons inside the layer.
+* @return it returns true if it is all right, otherwise false
+**/
+bool Layer::SetValueVector(std::vector<double> valueVector) {
+ if(valueVector.size() != mNeuronsVector.size()) return false;
+ for(unsigned int i = 0; i < mNeuronsVector.size(); i++){
+  mNeuronsVector[i].SetValue(valueVector[i]);
+ }
+ return true;
+}
+
+/**
+* Get the derivative values of all the neurons inside the layer
+*
+* @return it returns true if it is all right, otherwise false
+**/
+std::vector<double> Layer::GetDerivativeVector(){
+
+ std::vector<double> outputVector;
+ outputVector.reserve(mNeuronsVector.size());
+
+ for(unsigned int i = 0; i < mNeuronsVector.size(); i++)
+  outputVector.push_back(mNeuronsVector[i].GetDerivative());
+
+ return outputVector;
 }
 
 /**
@@ -167,22 +209,17 @@ return true;
 }
 
 /**
-* Set the values of all the neurons inside the layer
+* Get the values of all the bias inside the layer
 *
-* @param inputValues vector of doubles of the same size of the layer. Every double is given as input to the neurons inside the layer.
-* @return it returns true if it is all right, otherwise false
+* @return it returns a vector with the bias values
 **/
-bool Layer::SetValueVector(std::vector<double> valueVector) {
-
-if(valueVector.size() != mNeuronsVector.size()) return false;
-
-for(unsigned int i = 0; i < mNeuronsVector.size(); i++)
-mNeuronsVector[i].SetValue(valueVector[i]);
-
-return true;
+std::vector<double> Layer::GetBiasVector(){
+ std::vector<double> vector_to_return;
+ for(auto it=mNeuronsVector.begin(); it!=mNeuronsVector.end(); ++it){
+  vector_to_return.push_back(it->GetBias());
+ }
+ return vector_to_return;
 }
-
-
 
 /**
 * Set the values of all the Error associated with the neurons inside the layer
@@ -191,12 +228,20 @@ return true;
 * @return it returns true if it is all right, otherwise false
 **/
 bool Layer::SetErrorVector(std::vector<double> errorVector) {
-if(errorVector.size() != mNeuronsVector.size()) return false;
+ if(errorVector.size() != mNeuronsVector.size()) return false;
 
-for(unsigned int i = 0; i < errorVector.size(); i++)
-mNeuronsVector[i].SetError(errorVector[i]);
+ for(unsigned int i = 0; i < errorVector.size(); i++){
+  mNeuronsVector[i].SetError(errorVector[i]);
+ }
+ return true;
+}
 
-return true;
+std::vector<double> Layer::GetErrorVector(){
+ std::vector<double> vector_to_return;
+ for(auto it=mNeuronsVector.begin(); it!=mNeuronsVector.end(); ++it){
+  vector_to_return.push_back(it->GetError());
+ }
+ return vector_to_return;
 }
 
 
@@ -209,6 +254,24 @@ unsigned int Layer::ReturnNumberOfNeurons() {
  return mNeuronsVector.size();
 }
 
+/**
+* It sets the connection vector for each neuron inside the layer.
+*
+* @return it returns true if everything is correct
+**/
+bool Layer::SetConnectionMatrix(std::vector< std::vector<double> > connectionMatrix){
+ if(connectionMatrix.size() != mNeuronsVector.size()){
+  std::cerr << "Neuroc Error: the number of vector in the connection matrix must be equal to the neurons in the network" << std::endl;
+  return false;
+ }
+
+ unsigned int counter=0;
+ for(auto it=mNeuronsVector.begin(); it!=mNeuronsVector.end(); ++it){
+  it->SetConnectionVector(connectionMatrix[counter]);
+  counter++;
+ }
+ return true;
+}
 
 /**
 * Returning a vector of vectors Matrix containing neurons connections
@@ -218,18 +281,11 @@ unsigned int Layer::ReturnNumberOfNeurons() {
 * @return it returns a vector of double or float
 **/
 std::vector< std::vector<double> > Layer::GetConnectionMatrix() {
-
-std::vector<std::vector<double>> output_vector;
-
-//for (unsigned int i=0; i<mNeuronsVector.size(); i++) {
-// std::vector<T> vector_copy(mNeuronsVector[i]->GetVectorOfConnections());
-//unsigned int neuron_vector_size = vector_copy.size();
-
-//for (unsigned int j=0; j<neuron_vector_size; j++) {
-//    output_vector.push_back( vector_copy[j] );
-// }
-//}
-return output_vector;
+ std::vector<std::vector<double>> output_vector;
+ for(auto it=mNeuronsVector.begin(); it!=mNeuronsVector.end(); ++it){
+  output_vector.push_back(it->GetConnectionVector());
+ }
+ return output_vector;
 }
 
 

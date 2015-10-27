@@ -43,12 +43,13 @@ TransferFunction = rNeuron.TransferFunction;
 *
 * @param biasWeight it is the value of the weight of the bias neuron
 */
-Neuron::Neuron(const std::vector<double>& connectionsVector, std::function<double(std::vector<double>, std::vector<double>)> weightFunction, std::function<double(double, double)> joinFunction, std::function<double(double)> transferFunction, double biasWeight)
+Neuron::Neuron(const std::vector<double>& connectionsVector, std::function<double(std::vector<double>, std::vector<double>)> weightFunction, std::function<double(double, double)> joinFunction, std::function<double(double)> transferFunction,  std::function<double(double)> derivativeFunction, double biasWeight)
 {
 mBias = biasWeight;
 WeightFunction = weightFunction;
 JoinFunction = joinFunction;
 TransferFunction = transferFunction;
+DerivativeFunction = derivativeFunction;
 
 mConnectionsVector.reserve(connectionsVector.size()); //ATTENTION: it is necessary to initialise the connectionVector here
 mConnectionsVector = connectionsVector;
@@ -66,12 +67,13 @@ if (this == &rNeuron) return *this;  // check for self-assignment
 
 mConnectionsVector = rNeuron.mConnectionsVector;
 mValue = rNeuron.mValue;
+mDerivative = rNeuron.mDerivative;
 mError = rNeuron.mError;
 mBias = rNeuron.mBias;
 WeightFunction = rNeuron.WeightFunction;
 JoinFunction = rNeuron.JoinFunction;
 TransferFunction = rNeuron.TransferFunction;
-
+DerivativeFunction = rNeuron.DerivativeFunction;
 return *this;
 }
 
@@ -115,7 +117,7 @@ double join_function_output = JoinFunction(weight_function_output, mBias);
 std::cout << "join_function_output: " << join_function_output << std::endl;
 #endif
 
-//3- Applying the doubleransfer Function
+//3- Applying the Transfer Function
 double neuron_output = TransferFunction(join_function_output);
 #ifdef DEBUG 
 std::cout << "neuron_output: " << neuron_output << std::endl;
@@ -124,6 +126,37 @@ std::cout << "neuron_output: " << neuron_output << std::endl;
 //4- Returning the result
 mValue = neuron_output;
 return neuron_output;
+}
+
+/**
+* Return the value of the neuron but instead using the Transfer Function
+* it uses the Derivative function specified in the creation step.
+*
+* @return it returns the value of the computation
+**/
+double Neuron::ComputeDerivative(std::vector<double> inputVector){
+
+//1- Applying Weight Function
+double weight_function_output = WeightFunction(inputVector, mConnectionsVector);
+#ifdef DEBUG 
+std::cout << "weight_function_output: " << weight_function_output << std::endl;
+#endif
+
+//2- Applying the Join Function
+double join_function_output = JoinFunction(weight_function_output, mBias);
+#ifdef DEBUG 
+std::cout << "join_function_output: " << join_function_output << std::endl;
+#endif
+
+//3- Applying the Derivative Function
+double derivative_output = DerivativeFunction(join_function_output);
+#ifdef DEBUG 
+std::cout << "derivative_output: " << derivative_output << std::endl;
+#endif
+
+//4- Returning the result
+ mDerivative = derivative_output;
+ return derivative_output;
 }
 
 /**
@@ -149,7 +182,7 @@ mBias = initFunction(mBias);
 * If the Neuron has a Bias Unit then the first connection of the neuron is the Bias incoming connection
 * @return it returns a vector of values
 **/
-const std::vector<double>& Neuron::GetConnectionVector() const {
+std::vector<double> Neuron::GetConnectionVector() const {
 return mConnectionsVector;
 }
 
@@ -161,24 +194,6 @@ return mConnectionsVector;
 void Neuron::SetConnectionVector(const std::vector<double>& connectionVector) {
 mConnectionsVector.clear();
 mConnectionsVector = connectionVector;
-}
-
-
-/**
-* Print on terminal informations about the neuron.
-*
-*/
-void Neuron::Print() {
-std::cout << "Value ..... " << mValue << '\n';
-std::cout << "Error ..... " << mError << '\n';
-std::cout << "Bias ..... " << mBias << '\n';
-std::cout << "Connections ..... " << mConnectionsVector.size() << '\n';
-
-for (unsigned i = 0; i < mConnectionsVector.size(); i++) {
-std::cout << "Connection[" << i << "] ..... " << mConnectionsVector[i] << '\n';
-}
-
-std::cout << std::endl;
 }
 
 
@@ -198,6 +213,24 @@ mValue = value; //it set the current value
 **/
 double Neuron::GetValue() {
 return mValue;
+}
+
+/**
+* Set the value of the neuron
+*
+* @param value the value to set, it is used for input neurons
+*/
+void Neuron::SetDerivative(double value) {
+mDerivative = value; //it set the current value
+}
+
+/**
+* Get the value of the neuron
+*
+* @return it returns the current value of the neuron
+**/
+double Neuron::GetDerivative() {
+return mDerivative;
 }
 
 /**
@@ -237,6 +270,22 @@ return mBias;
 }
 
 
+/**
+* Print on terminal informations about the neuron.
+*
+*/
+void Neuron::Print() {
+std::cout << "Value ..... " << mValue << '\n';
+std::cout << "Error ..... " << mError << '\n';
+std::cout << "Bias ..... " << mBias << '\n';
+std::cout << "Connections ..... " << mConnectionsVector.size() << '\n';
+
+for (unsigned i = 0; i < mConnectionsVector.size(); i++) {
+std::cout << "Connection[" << i << "] ..... " << mConnectionsVector[i] << '\n';
+}
+
+std::cout << std::endl;
+}
 
 }
 
