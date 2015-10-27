@@ -19,6 +19,7 @@
 
 #include "Neuron.h"
 
+
 namespace neuroc{
 
 /**
@@ -33,8 +34,9 @@ mValue = rNeuron.mValue;
 mError = rNeuron.mError;
 mBias = rNeuron.mBias;
 WeightFunction = rNeuron.WeightFunction;
-JoinFunction = rNeuron.JoinFunction;
+JointFunction = rNeuron.JointFunction;
 TransferFunction = rNeuron.TransferFunction;
+DerivativeFunction = rNeuron.DerivativeFunction;
 }
 
 
@@ -43,11 +45,11 @@ TransferFunction = rNeuron.TransferFunction;
 *
 * @param biasWeight it is the value of the weight of the bias neuron
 */
-Neuron::Neuron(const std::vector<double>& connectionsVector, std::function<double(std::vector<double>, std::vector<double>)> weightFunction, std::function<double(double, double)> joinFunction, std::function<double(double)> transferFunction,  std::function<double(double)> derivativeFunction, double biasWeight)
+Neuron::Neuron(const std::vector<double>& connectionsVector, std::function<double(std::vector<double>, std::vector<double>)> weightFunction, std::function<double(double, double)> jointFunction, std::function<double(double)> transferFunction,  std::function<double(double)> derivativeFunction, double biasWeight)
 {
 mBias = biasWeight;
 WeightFunction = weightFunction;
-JoinFunction = joinFunction;
+JointFunction = jointFunction;
 TransferFunction = transferFunction;
 DerivativeFunction = derivativeFunction;
 
@@ -71,7 +73,7 @@ mDerivative = rNeuron.mDerivative;
 mError = rNeuron.mError;
 mBias = rNeuron.mBias;
 WeightFunction = rNeuron.WeightFunction;
-JoinFunction = rNeuron.JoinFunction;
+JointFunction = rNeuron.JointFunction;
 TransferFunction = rNeuron.TransferFunction;
 DerivativeFunction = rNeuron.DerivativeFunction;
 return *this;
@@ -111,14 +113,14 @@ double weight_function_output = WeightFunction(inputVector, mConnectionsVector);
 std::cout << "weight_function_output: " << weight_function_output << std::endl;
 #endif
 
-//2- Applying the Join Function
-double join_function_output = JoinFunction(weight_function_output, mBias);
+//2- Applying the Joint Function
+double joint_function_output = JointFunction(weight_function_output, mBias);
 #ifdef DEBUG 
-std::cout << "join_function_output: " << join_function_output << std::endl;
+std::cout << "join_function_output: " << joint_function_output << std::endl;
 #endif
 
 //3- Applying the Transfer Function
-double neuron_output = TransferFunction(join_function_output);
+double neuron_output = TransferFunction(joint_function_output);
 #ifdef DEBUG 
 std::cout << "neuron_output: " << neuron_output << std::endl;
 #endif
@@ -143,13 +145,16 @@ std::cout << "weight_function_output: " << weight_function_output << std::endl;
 #endif
 
 //2- Applying the Join Function
-double join_function_output = JoinFunction(weight_function_output, mBias);
+double joint_function_output = JointFunction(weight_function_output, mBias);
 #ifdef DEBUG 
-std::cout << "join_function_output: " << join_function_output << std::endl;
+std::cout << "join_function_output: " << joint_function_output << std::endl;
 #endif
 
 //3- Applying the Derivative Function
-double derivative_output = DerivativeFunction(join_function_output);
+#ifdef DEBUG 
+std::cout << "Starting derivative computation..." << std::endl;
+#endif
+double derivative_output = DerivativeFunction(joint_function_output);
 #ifdef DEBUG 
 std::cout << "derivative_output: " << derivative_output << std::endl;
 #endif

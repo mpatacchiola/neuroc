@@ -42,7 +42,7 @@ class Neuron {
 public:
 
 Neuron(const Neuron &rNeuron);
-Neuron(const std::vector<double>& connectionsVector, std::function<double(std::vector<double>, std::vector<double>)> weightFunction, std::function<double(double, double)> joinFunction, std::function<double(double)> transferFunction, std::function<double(double)> derivativeFunction, double biasWeight=0);
+Neuron(const std::vector<double>& connectionsVector, std::function<double(std::vector<double>, std::vector<double>)> weightFunction, std::function<double(double, double)> jointFunction, std::function<double(double)> transferFunction, std::function<double(double)> derivativeFunction, double biasWeight=0);
 
 Neuron operator=(const Neuron &rNeuron);
 const double& operator[](const unsigned int index) const;
@@ -78,7 +78,7 @@ double mBias = 0;   //value of the bias connection
 std::vector<double> mConnectionsVector;  //container of the connections values
 
 std::function<double(std::vector<double>, std::vector<double>)> WeightFunction;
-std::function<double(double, double)> JoinFunction;
+std::function<double(double, double)> JointFunction;
 std::function<double(double)> TransferFunction;
 std::function<double(double)> DerivativeFunction;
 

@@ -18,6 +18,8 @@
 */
 
 #include "BackpropagationLearning.h"
+#define DEBUG
+
 
 namespace neuroc{
 
@@ -55,15 +57,30 @@ Network BackpropagationLearning::StartLearning(Network net, Dataset& inputDatase
  //Main Cycle, for all data in dataset
  for(unsigned int i_set=0; i_set<inputDataset.ReturnNumberOfData(); i_set++){
 
+  #ifdef DEBUG 
+   std::cout << "Backpropagation Learning started... " << std::endl;
+  #endif
+
   //1- Forward computation
+  #ifdef DEBUG 
+   std::cout << "Forward phase... " << std::endl;
+  #endif
   Forward(inputDataset[i_set]);
 
+
   //2- Error backpropagation
+  #ifdef DEBUG 
+   std::cout << "ErrorBackpropagation phase... " << std::endl;
+  #endif
   ErrorBackpropagation(targetDataset[i_set]);
 
+
   //3- Update the wheights
+  #ifdef DEBUG 
+   std::cout << "UpdateWheights phase... " << std::endl;
+  #endif
   UpdateWheights(inputDataset[i_set]);
-  
+ 
 
  }//main cycle
 
@@ -95,7 +112,6 @@ void BackpropagationLearning::ErrorBackpropagation(std::vector<double> targetVec
   //Iteration through all the layers of the network
   //starting from the last one
   for(int i_layer=tot_layers; i_layer>-1; i_layer--){
-   
    //This is the case for the OUTPUT layer
    if(i_layer==tot_layers){
     delta_vector = SubtractVectors(mNet[i_layer].GetValueVector(), targetVector);
@@ -173,7 +189,7 @@ std::vector<std::vector<double>> BackpropagationLearning::TransposeMatrix( std::
 **/
 std::vector<double> BackpropagationLearning::HadamardProduct(std::vector<double> firstVector, std::vector<double> secondVector){
  std::vector<double> vector_to_return;
- if(firstVector.size() == secondVector.size()){
+ if(firstVector.size() != secondVector.size()){
   std::cerr << "Neuroc Error: Hadamard Product not allowed if vectors have different size" << std::endl;
   return vector_to_return;
  }
@@ -233,8 +249,8 @@ std::vector<std::vector<double>> BackpropagationLearning::MatrixScalarMultiplica
 **/
 std::vector<double> BackpropagationLearning::SubtractVectors(std::vector<double> firstVector, std::vector<double> secondVector){
  std::vector<double> vector_to_return;
- if(firstVector.size() == secondVector.size()){
-  std::cerr << "Neuroc Error: Subtraction not allowed if vectors have different size" << std::endl;
+ if(firstVector.size() != secondVector.size()){
+  std::cerr << "Neuroc Error: Subtraction not allowed if vectors have different size. First: " << firstVector.size() << "; Second: " << secondVector.size() << std::endl;
   return vector_to_return;
  }
 
@@ -249,7 +265,7 @@ std::vector<double> BackpropagationLearning::SubtractVectors(std::vector<double>
 *
 **/
 double BackpropagationLearning::DotProduct(std::vector<double> firstVector, std::vector<double> secondVector){
- if(firstVector.size() != secondVector.size()) throw std::domain_error("Error: DotProduct requires equal length vectors");
+ if(firstVector.size() != secondVector.size()) throw std::domain_error("Neuroc Error: DotProduct requires equal length vectors");
  double accumulator = 0;
  for(unsigned int i=0; i<firstVector.size(); i++){
   accumulator +=firstVector[i] * secondVector[i];

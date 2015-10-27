@@ -54,7 +54,9 @@ return input / (1.0 + std::abs(input));
 }
 
 double SigmoidDerivative(double input) {
-return (1.0 / (1.0 + std::exp(-input))) * (1.0 - (1.0 / (1.0 + std::exp(-input))));
+double result = (1.0 / (1.0 + std::exp(-input))) * (1.0 - (1.0 / (1.0 + std::exp(-input))));
+if( std::isnan(result) == true ) return 0; //protection against large negative number
+return result;
 }
 
 double Tanh(double input) {
@@ -62,7 +64,10 @@ return tanh(input);
 }	
 
 double TanhDerivative(double input) {
-return (1.0-std::tanh(input)) * (1.0+std::tanh(input));
+//std::cout << "OOOOOOOOO" << std::endl;
+double result = (1.0-std::tanh(input)) * (1.0+std::tanh(input));
+if( std::isnan(result) == true ) return 0; //protection against large negative number
+return result;
 }
 
 /**

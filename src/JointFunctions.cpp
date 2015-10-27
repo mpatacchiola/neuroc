@@ -3,7 +3,7 @@
 
 namespace neuroc{
 
-namespace JoinsFunctions{
+namespace JointFunctions{
 
 double Sum(double weightFunctionOutput, double biasWeight){
  return weightFunctionOutput + biasWeight;

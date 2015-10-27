@@ -19,6 +19,7 @@
 
 #include "Network.h"
 
+
 namespace neuroc{
 
 /**
@@ -120,14 +121,33 @@ return mLayersVector.size();
 **/
 std::vector<double> Network::Compute(const std::vector<double>& InputVector) {
 
+std::vector<double> void_vector;
+
+if(mLayersVector.size()==0){
+std::cerr << "Neuroc Error: Network Computation is not possible if the network is empty" << std::endl;
+return void_vector;
+}
+if(InputVector.size()==0){
+std::cerr << "Neuroc Error: Network Computation is not possible if the input vector is empty" << std::endl;
+return void_vector;
+}
+if(InputVector.size() != mLayersVector[0][0].GetConnectionVector().size()){
+std::cerr << "Neuroc Error: Network Computation is not possible if the input vector size is different from the input size of the first layer" << std::endl;
+return void_vector;
+}
+
 //1- Set the values of the input layer
 mLayersVector[0].Compute(InputVector);
+
+
 
 //2- Compute all the hidden Layer
 
 for (unsigned int i=1; i<mLayersVector.size(); i++ ) {
 mLayersVector[i].Compute(mLayersVector[i-1].GetValueVector());
 }
+
+
 
 //3- Return the result of the Output Layer
 return mLayersVector[mLayersVector.size()-1].GetValueVector();
@@ -142,6 +162,10 @@ std::vector<double> Network::ComputeDerivative(const std::vector<double>& InputV
 
 //1- Set the values of the input layer
 mLayersVector[0].ComputeDerivative(InputVector);
+
+#ifdef DEBUG 
+ std::cout << "Network Computation... " << std::endl;
+#endif
 
 //2- Compute all the hidden Layer
 
