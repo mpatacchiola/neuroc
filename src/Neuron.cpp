@@ -31,8 +31,10 @@ Neuron::Neuron(const Neuron &rNeuron)
 {
 mConnectionsVector = rNeuron.mConnectionsVector;
 mValue = rNeuron.mValue;
+mDerivative = rNeuron.mDerivative;
 mError = rNeuron.mError;
 mBias = rNeuron.mBias;
+mJointValue = rNeuron.mJointValue;
 WeightFunction = rNeuron.WeightFunction;
 JointFunction = rNeuron.JointFunction;
 TransferFunction = rNeuron.TransferFunction;
@@ -72,6 +74,7 @@ mValue = rNeuron.mValue;
 mDerivative = rNeuron.mDerivative;
 mError = rNeuron.mError;
 mBias = rNeuron.mBias;
+mJointValue = rNeuron.mJointValue;
 WeightFunction = rNeuron.WeightFunction;
 JointFunction = rNeuron.JointFunction;
 TransferFunction = rNeuron.TransferFunction;
@@ -126,6 +129,7 @@ std::cout << "neuron_output: " << neuron_output << std::endl;
 #endif
 
 //4- Returning the result
+mJointValue = joint_function_output;
 mValue = neuron_output;
 return neuron_output;
 }
@@ -281,6 +285,8 @@ return mBias;
 */
 void Neuron::Print() {
 std::cout << "Value ..... " << mValue << '\n';
+std::cout << "Derivative ..... " << mDerivative << '\n';
+std::cout << "Joint ..... " << mJointValue << '\n';
 std::cout << "Error ..... " << mError << '\n';
 std::cout << "Bias ..... " << mBias << '\n';
 std::cout << "Connections ..... " << mConnectionsVector.size() << '\n';

@@ -1,0 +1,108 @@
+\hypertarget{classneuroc_1_1_backpropagation_learning}{\section{neuroc\-:\-:Backpropagation\-Learning Class Reference}
+\label{classneuroc_1_1_backpropagation_learning}\index{neuroc\-::\-Backpropagation\-Learning@{neuroc\-::\-Backpropagation\-Learning}}
+}
+
+
+Implementation of the Error-\/\-Backpropagation Learning algorithm.  
+
+
+
+
+{\ttfamily \#include $<$Backpropagation\-Learning.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classneuroc_1_1_backpropagation_learning_abcce7c127fec944f38b161f120a5baf0}{Backpropagation\-Learning} ()
+\item 
+\hyperlink{classneuroc_1_1_backpropagation_learning_a4b95862aa9464c4bdc1e3d6717c87896}{$\sim$\-Backpropagation\-Learning} ()
+\item 
+\hyperlink{classneuroc_1_1_network}{Network} \hyperlink{classneuroc_1_1_backpropagation_learning_a70f879c3b73087bb91a18debc4f0c510}{Start\-Online\-Learning} (\hyperlink{classneuroc_1_1_network}{Network} net, \hyperlink{classneuroc_1_1_dataset}{Dataset} \&input\-Dataset, \hyperlink{classneuroc_1_1_dataset}{Dataset} \&target\-Dataset, unsigned int cycles, bool print=true)
+\item 
+void \hyperlink{classneuroc_1_1_backpropagation_learning_a07c4400e12f967ec7af88035a3b5d6ea}{Start\-Test} (\hyperlink{classneuroc_1_1_network}{Network} \&net, \hyperlink{classneuroc_1_1_dataset}{Dataset} \&input\-Dataset, \hyperlink{classneuroc_1_1_dataset}{Dataset} \&target\-Dataset, bool print=true)
+\item 
+void \hyperlink{classneuroc_1_1_backpropagation_learning_a09a5f7fe5d6e983f80828f2eb146ca57}{Set\-Learning\-Rate} (double value)
+\item 
+double \hyperlink{classneuroc_1_1_backpropagation_learning_ad826c78e592949805883117789cb0133}{Get\-Learning\-Rate} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Implementation of the Error-\/\-Backpropagation Learning algorithm. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classneuroc_1_1_backpropagation_learning_abcce7c127fec944f38b161f120a5baf0}{\index{neuroc\-::\-Backpropagation\-Learning@{neuroc\-::\-Backpropagation\-Learning}!Backpropagation\-Learning@{Backpropagation\-Learning}}
+\index{Backpropagation\-Learning@{Backpropagation\-Learning}!neuroc::BackpropagationLearning@{neuroc\-::\-Backpropagation\-Learning}}
+\subsubsection[{Backpropagation\-Learning}]{\setlength{\rightskip}{0pt plus 5cm}neuroc\-::\-Backpropagation\-Learning\-::\-Backpropagation\-Learning (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_backpropagation_learning_abcce7c127fec944f38b161f120a5baf0}
+Class constructor. \hypertarget{classneuroc_1_1_backpropagation_learning_a4b95862aa9464c4bdc1e3d6717c87896}{\index{neuroc\-::\-Backpropagation\-Learning@{neuroc\-::\-Backpropagation\-Learning}!$\sim$\-Backpropagation\-Learning@{$\sim$\-Backpropagation\-Learning}}
+\index{$\sim$\-Backpropagation\-Learning@{$\sim$\-Backpropagation\-Learning}!neuroc::BackpropagationLearning@{neuroc\-::\-Backpropagation\-Learning}}
+\subsubsection[{$\sim$\-Backpropagation\-Learning}]{\setlength{\rightskip}{0pt plus 5cm}neuroc\-::\-Backpropagation\-Learning\-::$\sim$\-Backpropagation\-Learning (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_backpropagation_learning_a4b95862aa9464c4bdc1e3d6717c87896}
+Class destructor. 
+
+\subsection{Member Function Documentation}
+\hypertarget{classneuroc_1_1_backpropagation_learning_ad826c78e592949805883117789cb0133}{\index{neuroc\-::\-Backpropagation\-Learning@{neuroc\-::\-Backpropagation\-Learning}!Get\-Learning\-Rate@{Get\-Learning\-Rate}}
+\index{Get\-Learning\-Rate@{Get\-Learning\-Rate}!neuroc::BackpropagationLearning@{neuroc\-::\-Backpropagation\-Learning}}
+\subsubsection[{Get\-Learning\-Rate}]{\setlength{\rightskip}{0pt plus 5cm}double neuroc\-::\-Backpropagation\-Learning\-::\-Get\-Learning\-Rate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_backpropagation_learning_ad826c78e592949805883117789cb0133}
+Get the learing rate \hypertarget{classneuroc_1_1_backpropagation_learning_a09a5f7fe5d6e983f80828f2eb146ca57}{\index{neuroc\-::\-Backpropagation\-Learning@{neuroc\-::\-Backpropagation\-Learning}!Set\-Learning\-Rate@{Set\-Learning\-Rate}}
+\index{Set\-Learning\-Rate@{Set\-Learning\-Rate}!neuroc::BackpropagationLearning@{neuroc\-::\-Backpropagation\-Learning}}
+\subsubsection[{Set\-Learning\-Rate}]{\setlength{\rightskip}{0pt plus 5cm}void neuroc\-::\-Backpropagation\-Learning\-::\-Set\-Learning\-Rate (
+\begin{DoxyParamCaption}
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_backpropagation_learning_a09a5f7fe5d6e983f80828f2eb146ca57}
+Set the learing rate
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_backpropagation_learning_a70f879c3b73087bb91a18debc4f0c510}{\index{neuroc\-::\-Backpropagation\-Learning@{neuroc\-::\-Backpropagation\-Learning}!Start\-Online\-Learning@{Start\-Online\-Learning}}
+\index{Start\-Online\-Learning@{Start\-Online\-Learning}!neuroc::BackpropagationLearning@{neuroc\-::\-Backpropagation\-Learning}}
+\subsubsection[{Start\-Online\-Learning}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Network} neuroc\-::\-Backpropagation\-Learning\-::\-Start\-Online\-Learning (
+\begin{DoxyParamCaption}
+\item[{{\bf Network}}]{net, }
+\item[{{\bf Dataset} \&}]{input\-Dataset, }
+\item[{{\bf Dataset} \&}]{target\-Dataset, }
+\item[{unsigned int}]{cycles, }
+\item[{bool}]{print = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_backpropagation_learning_a70f879c3b73087bb91a18debc4f0c510}
+Start the learning algorithm for the specified number of cycles.
+
+\begin{DoxyReturn}{Returns}
+it returns the trained version of the network 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_backpropagation_learning_a07c4400e12f967ec7af88035a3b5d6ea}{\index{neuroc\-::\-Backpropagation\-Learning@{neuroc\-::\-Backpropagation\-Learning}!Start\-Test@{Start\-Test}}
+\index{Start\-Test@{Start\-Test}!neuroc::BackpropagationLearning@{neuroc\-::\-Backpropagation\-Learning}}
+\subsubsection[{Start\-Test}]{\setlength{\rightskip}{0pt plus 5cm}void neuroc\-::\-Backpropagation\-Learning\-::\-Start\-Test (
+\begin{DoxyParamCaption}
+\item[{{\bf Network} \&}]{net, }
+\item[{{\bf Dataset} \&}]{input\-Dataset, }
+\item[{{\bf Dataset} \&}]{target\-Dataset, }
+\item[{bool}]{print = {\ttfamily true}}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_backpropagation_learning_a07c4400e12f967ec7af88035a3b5d6ea}
+Test the network on the dataset specified.
+
+\begin{DoxyReturn}{Returns}
+it returns the trained version of the network 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/Backpropagation\-Learning.\-h\item 
+src/Backpropagation\-Learning.\-cpp\end{DoxyCompactItemize}

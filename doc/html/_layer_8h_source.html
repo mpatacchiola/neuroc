@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>include/Layer.h Source File</title>
+<title>My Project: include/Layer.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,6 +22,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo_new_white.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
  </tr>
  </tbody>
 </table>
@@ -136,54 +140,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classneuroc_1_1_layer.html#aa80735d22f8f35c5ec35e059677ab733">Size</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;std::vector&lt;double&gt; <a class="code" href="classneuroc_1_1_layer.html#a4d879665e9fd0738fea6a5200c70296a">Compute</a>(std::vector&lt;double&gt; inputVector);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classneuroc_1_1_layer.html#ac00e3384d6e22bf87b4359c43cb4461e">RandomizeConnectionMatrix</a>(std::function&lt;<span class="keywordtype">double</span>(<span class="keywordtype">double</span>)&gt; initFunction);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;std::vector&lt;double&gt; <a class="code" href="classneuroc_1_1_layer.html#afdb93accd5a1cd5bb7e611fe2048a890">ComputeDerivative</a>(std::vector&lt;double&gt; inputVector);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classneuroc_1_1_layer.html#ac00e3384d6e22bf87b4359c43cb4461e">RandomizeConnectionMatrix</a>(std::function&lt;<span class="keywordtype">double</span>(<span class="keywordtype">double</span>)&gt; initFunction);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;std::vector&lt;double&gt; <a class="code" href="classneuroc_1_1_layer.html#a14fd8d60709fbe79059574b090f9531a">GetValueVector</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_layer.html#ada5237f8e9211d3dc308fa2e083b2b44">SetBiasVector</a>(std::vector&lt;double&gt; biasVector);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_layer.html#a8e232dadedf86bfa7dafa106e97ade05">SetValueVector</a>(std::vector&lt;double&gt; valueVector);</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_layer.html#a8e60b80bc457e7f82dc24fffc94fb9f0">SetErrorVector</a>(std::vector&lt;double&gt; errorVector);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_layer.html#a8e232dadedf86bfa7dafa106e97ade05">SetValueVector</a>(std::vector&lt;double&gt; valueVector);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;std::vector&lt;double&gt; <a class="code" href="classneuroc_1_1_layer.html#a14fd8d60709fbe79059574b090f9531a">GetValueVector</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;std::vector&lt;double&gt; <a class="code" href="classneuroc_1_1_layer.html#ab413f32620308964d8cc2ba480b460e2">GetDerivativeVector</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_layer.html#ada5237f8e9211d3dc308fa2e083b2b44">SetBiasVector</a>(std::vector&lt;double&gt; biasVector);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;std::vector&lt;double&gt; <a class="code" href="classneuroc_1_1_layer.html#aaa40443732765acc4ac8ea6a8441c471">GetBiasVector</a>();</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classneuroc_1_1_layer.html#af2e9d4a30544bf754a06e0e2b98fe60f">ReturnNumberOfNeurons</a>();</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_layer.html#a8e60b80bc457e7f82dc24fffc94fb9f0">SetErrorVector</a>(std::vector&lt;double&gt; errorVector);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;std::vector&lt;double&gt; GetErrorVector();</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;std::vector&lt; std::vector&lt;double&gt; &gt; <a class="code" href="classneuroc_1_1_layer.html#ab8653bbed4c2b26ec18b00be1dde8000">GetConnectionMatrix</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classneuroc_1_1_layer.html#af2e9d4a30544bf754a06e0e2b98fe60f">ReturnNumberOfNeurons</a>();</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classneuroc_1_1_layer.html#a30ffd9156bc08a96474d48a3ec661cd9">Print</a>();</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_layer.html#af78c06c9368bc4076d3031f5d78ae141">SetConnectionMatrix</a>(std::vector&lt; std::vector&lt;double&gt; &gt;);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;std::vector&lt; std::vector&lt;double&gt; &gt; <a class="code" href="classneuroc_1_1_layer.html#ab8653bbed4c2b26ec18b00be1dde8000">GetConnectionMatrix</a>();</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    std::vector&lt;Neuron&gt; mNeuronsVector; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;};</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;} <span class="comment">//namespace</span></div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classneuroc_1_1_layer.html#a30ffd9156bc08a96474d48a3ec661cd9">Print</a>();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    std::vector&lt;Neuron&gt; mNeuronsVector; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;};</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#endif // LAYER_H</span></div>
-<div class="ttc" id="classneuroc_1_1_layer_html_a14fd8d60709fbe79059574b090f9531a"><div class="ttname"><a href="classneuroc_1_1_layer.html#a14fd8d60709fbe79059574b090f9531a">neuroc::Layer::GetValueVector</a></div><div class="ttdeci">std::vector&lt; double &gt; GetValueVector()</div><div class="ttdef"><b>Definition:</b> Layer.cpp:142</div></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;} <span class="comment">//namespace</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif // LAYER_H</span></div>
+<div class="ttc" id="classneuroc_1_1_layer_html_a14fd8d60709fbe79059574b090f9531a"><div class="ttname"><a href="classneuroc_1_1_layer.html#a14fd8d60709fbe79059574b090f9531a">neuroc::Layer::GetValueVector</a></div><div class="ttdeci">std::vector&lt; double &gt; GetValueVector()</div><div class="ttdef"><b>Definition:</b> Layer.cpp:154</div></div>
 <div class="ttc" id="classneuroc_1_1_layer_html"><div class="ttname"><a href="classneuroc_1_1_layer.html">neuroc::Layer</a></div><div class="ttdoc">This class is the middle level of the neural network library. It is a container for neurons...</div><div class="ttdef"><b>Definition:</b> Layer.h:35</div></div>
-<div class="ttc" id="classneuroc_1_1_layer_html_a30ffd9156bc08a96474d48a3ec661cd9"><div class="ttname"><a href="classneuroc_1_1_layer.html#a30ffd9156bc08a96474d48a3ec661cd9">neuroc::Layer::Print</a></div><div class="ttdeci">void Print()</div><div class="ttdef"><b>Definition:</b> Layer.cpp:242</div></div>
+<div class="ttc" id="classneuroc_1_1_layer_html_a30ffd9156bc08a96474d48a3ec661cd9"><div class="ttname"><a href="classneuroc_1_1_layer.html#a30ffd9156bc08a96474d48a3ec661cd9">neuroc::Layer::Print</a></div><div class="ttdeci">void Print()</div><div class="ttdef"><b>Definition:</b> Layer.cpp:298</div></div>
 <div class="ttc" id="classneuroc_1_1_neuron_html"><div class="ttname"><a href="classneuroc_1_1_neuron.html">neuroc::Neuron</a></div><div class="ttdoc">This is the lowest class and it represents the Neuron object. </div><div class="ttdef"><b>Definition:</b> Neuron.h:41</div></div>
 <div class="ttc" id="classneuroc_1_1_layer_html_aa198f0235496dadff15a8b80bfa564d6"><div class="ttname"><a href="classneuroc_1_1_layer.html#aa198f0235496dadff15a8b80bfa564d6">neuroc::Layer::operator=</a></div><div class="ttdeci">Layer operator=(const Layer &amp;rLayer)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:71</div></div>
+<div class="ttc" id="classneuroc_1_1_layer_html_afdb93accd5a1cd5bb7e611fe2048a890"><div class="ttname"><a href="classneuroc_1_1_layer.html#afdb93accd5a1cd5bb7e611fe2048a890">neuroc::Layer::ComputeDerivative</a></div><div class="ttdeci">std::vector&lt; double &gt; ComputeDerivative(std::vector&lt; double &gt; inputVector)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:127</div></div>
 <div class="ttc" id="classneuroc_1_1_layer_html_a4d879665e9fd0738fea6a5200c70296a"><div class="ttname"><a href="classneuroc_1_1_layer.html#a4d879665e9fd0738fea6a5200c70296a">neuroc::Layer::Compute</a></div><div class="ttdeci">std::vector&lt; double &gt; Compute(std::vector&lt; double &gt; inputVector)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:111</div></div>
-<div class="ttc" id="classneuroc_1_1_layer_html_ab8653bbed4c2b26ec18b00be1dde8000"><div class="ttname"><a href="classneuroc_1_1_layer.html#ab8653bbed4c2b26ec18b00be1dde8000">neuroc::Layer::GetConnectionMatrix</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; double &gt; &gt; GetConnectionMatrix()</div><div class="ttdef"><b>Definition:</b> Layer.cpp:220</div></div>
+<div class="ttc" id="classneuroc_1_1_layer_html_ab8653bbed4c2b26ec18b00be1dde8000"><div class="ttname"><a href="classneuroc_1_1_layer.html#ab8653bbed4c2b26ec18b00be1dde8000">neuroc::Layer::GetConnectionMatrix</a></div><div class="ttdeci">std::vector&lt; std::vector&lt; double &gt; &gt; GetConnectionMatrix()</div><div class="ttdef"><b>Definition:</b> Layer.cpp:283</div></div>
 <div class="ttc" id="classneuroc_1_1_layer_html_aa80735d22f8f35c5ec35e059677ab733"><div class="ttname"><a href="classneuroc_1_1_layer.html#aa80735d22f8f35c5ec35e059677ab733">neuroc::Layer::Size</a></div><div class="ttdeci">const unsigned int Size() const </div><div class="ttdef"><b>Definition:</b> Layer.cpp:101</div></div>
-<div class="ttc" id="classneuroc_1_1_layer_html_a8e232dadedf86bfa7dafa106e97ade05"><div class="ttname"><a href="classneuroc_1_1_layer.html#a8e232dadedf86bfa7dafa106e97ade05">neuroc::Layer::SetValueVector</a></div><div class="ttdeci">bool SetValueVector(std::vector&lt; double &gt; valueVector)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:175</div></div>
-<div class="ttc" id="classneuroc_1_1_layer_html_ada5237f8e9211d3dc308fa2e083b2b44"><div class="ttname"><a href="classneuroc_1_1_layer.html#ada5237f8e9211d3dc308fa2e083b2b44">neuroc::Layer::SetBiasVector</a></div><div class="ttdeci">bool SetBiasVector(std::vector&lt; double &gt; biasVector)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:159</div></div>
+<div class="ttc" id="classneuroc_1_1_layer_html_a8e232dadedf86bfa7dafa106e97ade05"><div class="ttname"><a href="classneuroc_1_1_layer.html#a8e232dadedf86bfa7dafa106e97ade05">neuroc::Layer::SetValueVector</a></div><div class="ttdeci">bool SetValueVector(std::vector&lt; double &gt; valueVector)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:171</div></div>
+<div class="ttc" id="classneuroc_1_1_layer_html_ada5237f8e9211d3dc308fa2e083b2b44"><div class="ttname"><a href="classneuroc_1_1_layer.html#ada5237f8e9211d3dc308fa2e083b2b44">neuroc::Layer::SetBiasVector</a></div><div class="ttdeci">bool SetBiasVector(std::vector&lt; double &gt; biasVector)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:201</div></div>
 <div class="ttc" id="classneuroc_1_1_layer_html_ae82161250ed86f8965d239449c87d734"><div class="ttname"><a href="classneuroc_1_1_layer.html#ae82161250ed86f8965d239449c87d734">neuroc::Layer::operator[]</a></div><div class="ttdeci">Neuron &amp; operator[](unsigned int index)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:91</div></div>
-<div class="ttc" id="classneuroc_1_1_layer_html_af2e9d4a30544bf754a06e0e2b98fe60f"><div class="ttname"><a href="classneuroc_1_1_layer.html#af2e9d4a30544bf754a06e0e2b98fe60f">neuroc::Layer::ReturnNumberOfNeurons</a></div><div class="ttdeci">unsigned int ReturnNumberOfNeurons()</div><div class="ttdef"><b>Definition:</b> Layer.cpp:208</div></div>
-<div class="ttc" id="classneuroc_1_1_layer_html_ac00e3384d6e22bf87b4359c43cb4461e"><div class="ttname"><a href="classneuroc_1_1_layer.html#ac00e3384d6e22bf87b4359c43cb4461e">neuroc::Layer::RandomizeConnectionMatrix</a></div><div class="ttdeci">void RandomizeConnectionMatrix(std::function&lt; double(double)&gt; initFunction)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:130</div></div>
-<div class="ttc" id="classneuroc_1_1_layer_html_a8e60b80bc457e7f82dc24fffc94fb9f0"><div class="ttname"><a href="classneuroc_1_1_layer.html#a8e60b80bc457e7f82dc24fffc94fb9f0">neuroc::Layer::SetErrorVector</a></div><div class="ttdeci">bool SetErrorVector(std::vector&lt; double &gt; errorVector)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:193</div></div>
+<div class="ttc" id="classneuroc_1_1_layer_html_af78c06c9368bc4076d3031f5d78ae141"><div class="ttname"><a href="classneuroc_1_1_layer.html#af78c06c9368bc4076d3031f5d78ae141">neuroc::Layer::SetConnectionMatrix</a></div><div class="ttdeci">bool SetConnectionMatrix(std::vector&lt; std::vector&lt; double &gt; &gt;)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:262</div></div>
+<div class="ttc" id="classneuroc_1_1_layer_html_af2e9d4a30544bf754a06e0e2b98fe60f"><div class="ttname"><a href="classneuroc_1_1_layer.html#af2e9d4a30544bf754a06e0e2b98fe60f">neuroc::Layer::ReturnNumberOfNeurons</a></div><div class="ttdeci">unsigned int ReturnNumberOfNeurons()</div><div class="ttdef"><b>Definition:</b> Layer.cpp:253</div></div>
+<div class="ttc" id="classneuroc_1_1_layer_html_ac00e3384d6e22bf87b4359c43cb4461e"><div class="ttname"><a href="classneuroc_1_1_layer.html#ac00e3384d6e22bf87b4359c43cb4461e">neuroc::Layer::RandomizeConnectionMatrix</a></div><div class="ttdeci">void RandomizeConnectionMatrix(std::function&lt; double(double)&gt; initFunction)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:143</div></div>
+<div class="ttc" id="classneuroc_1_1_layer_html_aaa40443732765acc4ac8ea6a8441c471"><div class="ttname"><a href="classneuroc_1_1_layer.html#aaa40443732765acc4ac8ea6a8441c471">neuroc::Layer::GetBiasVector</a></div><div class="ttdeci">std::vector&lt; double &gt; GetBiasVector()</div><div class="ttdef"><b>Definition:</b> Layer.cpp:216</div></div>
+<div class="ttc" id="classneuroc_1_1_layer_html_ab413f32620308964d8cc2ba480b460e2"><div class="ttname"><a href="classneuroc_1_1_layer.html#ab413f32620308964d8cc2ba480b460e2">neuroc::Layer::GetDerivativeVector</a></div><div class="ttdeci">std::vector&lt; double &gt; GetDerivativeVector()</div><div class="ttdef"><b>Definition:</b> Layer.cpp:184</div></div>
+<div class="ttc" id="classneuroc_1_1_layer_html_a8e60b80bc457e7f82dc24fffc94fb9f0"><div class="ttname"><a href="classneuroc_1_1_layer.html#a8e60b80bc457e7f82dc24fffc94fb9f0">neuroc::Layer::SetErrorVector</a></div><div class="ttdeci">bool SetErrorVector(std::vector&lt; double &gt; errorVector)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:230</div></div>
 <div class="ttc" id="classneuroc_1_1_layer_html_af6c8e29004e6da131d5b22e475c0e92a"><div class="ttname"><a href="classneuroc_1_1_layer.html#af6c8e29004e6da131d5b22e475c0e92a">neuroc::Layer::Layer</a></div><div class="ttdeci">Layer(const Layer &amp;rLayer)</div><div class="ttdef"><b>Definition:</b> Layer.cpp:33</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 25 2015 14:23:30 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 28 2015 17:36:56 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -43,19 +43,38 @@ else if (input < -1) return -1;
 else return input;	
 }
 
+/**
+* The shape of the sigmoid function is a S.
+* The output values are between 0 and 1.
+* @param input value
+* @return the output of the function
+*/
 double Sigmoid(double input) {
-double result =  ( 1.0 / (1.0 + std::exp(-input)) );
+double divisor = 1.0 + std::exp(-input);
+double result =  1.0 / divisor;
 if( std::isnan(result) == true ) return 0; //protection against large negative number
 return result;
 }
 
+/**
+* The shape of the sigmoid function is a S.
+* The output values are between 0 and 1.
+* This is the fast version of the classic
+* sigmoid function. It does not use the
+* exp() function for calculating the output.
+* @param input value
+* @return the output of the function
+*/
 double FastSigmoid(double input) {
 return input / (1.0 + std::abs(input));
 }
 
 double SigmoidDerivative(double input) {
-double result = (1.0 / (1.0 + std::exp(-input))) * (1.0 - (1.0 / (1.0 + std::exp(-input))));
-if( std::isnan(result) == true ) return 0; //protection against large negative number
+//dy/dx = f(x)' = f(x) * (1 - f(x))
+//double result = (1.0 / (1.0 + std::exp(-input))) * (1.0 - (1.0 / (1.0 + std::exp(-input))));
+//if( std::isnan(result) == true ) return 0; //protection against large negative number
+double result = (std::exp(-input))/ std::pow( (1+std::exp(-input)), 2);
+//if( std::isnan(result) == true ) return 0; //protection against large negative number
 return result;
 }
 
@@ -64,7 +83,6 @@ return tanh(input);
 }	
 
 double TanhDerivative(double input) {
-//std::cout << "OOOOOOOOO" << std::endl;
 double result = (1.0-std::tanh(input)) * (1.0+std::tanh(input));
 if( std::isnan(result) == true ) return 0; //protection against large negative number
 return result;

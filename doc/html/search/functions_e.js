@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['testnetwork',['TestNetwork',['../class_trainer.html#aa3c60fb2a4853a1adfe5b34c243ccbf6',1,'Trainer']]]
+  ['transposematrix',['TransposeMatrix',['../classneuroc_1_1_backpropagation_learning.html#afa23495a9eb43dcbc773b1fc9bf9a3d8',1,'neuroc::BackpropagationLearning']]]
 ];

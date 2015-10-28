@@ -15,50 +15,40 @@ This class permits to create complex datasets and use them to feed the network.
 \item 
 \hyperlink{classneuroc_1_1_dataset_a58c2264c9b5d1b921f0220e334663773}{Dataset} (unsigned int dataset\-Dimension)
 \item 
-bool \hyperlink{classneuroc_1_1_dataset_ae1bb7d512438456bc0bb868e4c03f41f}{Push\-Back\-Input\-And\-Target} (std\-::initializer\-\_\-list$<$ double $>$ input\-List, std\-::initializer\-\_\-list$<$ double $>$ target\-List)
+\hyperlink{classneuroc_1_1_dataset_a9d337786be09e336d74fb85c5ba7a176}{Dataset} ()
 \item 
-bool \hyperlink{classneuroc_1_1_dataset_a8cf8d995f7f3140970e88c1663a6d3b6}{Push\-Back\-Input\-And\-Target} (std\-::vector$<$ double $>$ input\-Data\-To\-Push, std\-::vector$<$ double $>$ target\-Data\-To\-Push)
+\hyperlink{classneuroc_1_1_dataset_ab2adb60669c1b81880c185a5e018089b}{$\sim$\-Dataset} ()
 \item 
-bool \hyperlink{classneuroc_1_1_dataset_a6dc0e96a90fcd6318985fe5914f1fa36}{Push\-Back\-Input} (std\-::vector$<$ double $>$ data\-To\-Push)
+std\-::vector$<$ double $>$ \& \hyperlink{classneuroc_1_1_dataset_a4ff3b2849a1b9828197c99e386b5090d}{operator\mbox{[}$\,$\mbox{]}} (unsigned int index)
 \item 
-bool \hyperlink{classneuroc_1_1_dataset_abdf6b94279a7214f0c67d92563ea8a01}{Push\-Back\-Input} (std\-::initializer\-\_\-list$<$ double $>$ input\-List)
+bool \hyperlink{classneuroc_1_1_dataset_a2e39158b15c4c75b1cd471b0c704d5b9}{Push\-Back\-Data} (std\-::vector$<$ double $>$ data\-To\-Push)
 \item 
-std\-::vector$<$ double $>$ \hyperlink{classneuroc_1_1_dataset_a69ded99bf2879a71ae8734a4ae7519be}{Get\-Input} (unsigned int index)
+\hyperlink{classneuroc_1_1_dataset}{Dataset} \hyperlink{classneuroc_1_1_dataset_a38b4f7abc368ea88f7ff19aacea22578}{Split} (unsigned int index)
 \item 
-bool \hyperlink{classneuroc_1_1_dataset_a63152318ab651c1022f695780cf22a7a}{Set\-Input} (unsigned int index, std\-::vector$<$ double $>$ data)
+void \hyperlink{classneuroc_1_1_dataset_adc6f41be9dd1fd537869fba1254d828d}{Clear} ()
 \item 
-unsigned int \hyperlink{classneuroc_1_1_dataset_ab81cbb4ca81442ade12eca43981d105b}{Return\-Number\-Of\-Inputs} ()
+bool \hyperlink{classneuroc_1_1_dataset_a619a95b24052ee00ad4746b3221d4ede}{Divide\-By} (double divisor)
 \item 
-bool \hyperlink{classneuroc_1_1_dataset_a87614de72546b8201b953b950f623b4a}{Push\-Back\-Target} (std\-::vector$<$ double $>$ data\-To\-Push)
+std\-::vector$<$ double $>$ \hyperlink{classneuroc_1_1_dataset_a261749c693828feb6dae1789b1ff3d3b}{Get\-Data} (unsigned int index)
 \item 
-bool \hyperlink{classneuroc_1_1_dataset_af82c1ebd21a48f05712fc835a4d8152b}{Push\-Back\-Target} (std\-::initializer\-\_\-list$<$ double $>$ target\-List)
+bool \hyperlink{classneuroc_1_1_dataset_ab8e9e39eb91f6c13a3231d8f9794ccc5}{Set\-Data} (unsigned int index, std\-::vector$<$ double $>$ data)
 \item 
-std\-::vector$<$ double $>$ \hyperlink{classneuroc_1_1_dataset_a7e910db95ee24bc49c562a47a2905490}{Get\-Target} (unsigned int index)
+unsigned int \hyperlink{classneuroc_1_1_dataset_a65b3e8dc12f70648643932bd1795a22c}{Return\-Number\-Of\-Data} ()
 \item 
-bool \hyperlink{classneuroc_1_1_dataset_abcf67825453ff308f23c1e9c10d16138}{Set\-Target} (unsigned int index, std\-::vector$<$ double $>$ data)
+void \hyperlink{classneuroc_1_1_dataset_ae445ab50a7b2ad7c1dd1a7fc7cf93179}{Print\-Data} (unsigned int index)
 \item 
-unsigned int \hyperlink{classneuroc_1_1_dataset_a9d27f7fd797555dd9dce53c9fe3e4a18}{Return\-Number\-Of\-Targets} ()
+std\-::string \hyperlink{classneuroc_1_1_dataset_a258929c257389b017e721c82756bc1bb}{Return\-String\-C\-S\-V} ()
 \item 
-bool \hyperlink{classneuroc_1_1_dataset_a6478598af89c87c39ae08ac7b9c246f8}{Check\-Integrity} ()
+bool \hyperlink{classneuroc_1_1_dataset_abc992728bee80f18ee0411ed87350c4a}{Load\-From\-C\-S\-V} (std\-::string file\-Path)
 \item 
-\hypertarget{classneuroc_1_1_dataset_a6fe9fd040ea840c87c7102061f65b056}{void {\bfseries Print\-Input} (unsigned int index)}\label{classneuroc_1_1_dataset_a6fe9fd040ea840c87c7102061f65b056}
-
-\item 
-\hypertarget{classneuroc_1_1_dataset_ac350113c98f59ccbe7c7cee7cebe9899}{void {\bfseries Print\-Target} (unsigned int index)}\label{classneuroc_1_1_dataset_ac350113c98f59ccbe7c7cee7cebe9899}
-
-\item 
-\hypertarget{classneuroc_1_1_dataset_a3890881470f70c73fbd563ace6c2682b}{std\-::string {\bfseries Return\-String\-X\-M\-L} ()}\label{classneuroc_1_1_dataset_a3890881470f70c73fbd563ace6c2682b}
-
-\item 
-\hypertarget{classneuroc_1_1_dataset_a258929c257389b017e721c82756bc1bb}{std\-::string {\bfseries Return\-String\-C\-S\-V} ()}\label{classneuroc_1_1_dataset_a258929c257389b017e721c82756bc1bb}
-
+bool \hyperlink{classneuroc_1_1_dataset_a345b8dd58e822f7dfc5d069eba8b7d92}{Save\-As\-C\-S\-V} (std\-::string file\-Path)
 \end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 This class permits to create complex datasets and use them to feed the network. 
 
-This class provides two containers for Input and Target datas. The \hyperlink{classneuroc_1_1_dataset}{Dataset} can be created using the \hyperlink{classneuroc_1_1_parser}{Parser} directly from a C\-S\-V (Comma-\/\-Separeted Values) file or an X\-M\-L file. During the backpropagation training it loads Input and Output values and use them to feed the \hyperlink{classneuroc_1_1_network}{Network}. 
+This class provides a vector of vector container, usefull for storing data. 
 
 \subsection{Constructor \& Destructor Documentation}
 \hypertarget{classneuroc_1_1_dataset_a58c2264c9b5d1b921f0220e334663773}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Dataset@{Dataset}}
@@ -68,198 +58,184 @@ This class provides two containers for Input and Target datas. The \hyperlink{cl
 \item[{unsigned int}]{dataset\-Dimension}
 \end{DoxyParamCaption}
 )}}\label{classneuroc_1_1_dataset_a58c2264c9b5d1b921f0220e334663773}
-Class constructor. It permits to create directly a multiple hidden layer network
+Class constructor.
 
 
 \begin{DoxyParams}{Parameters}
 {\em dataset\-Dimension} & the dimension of the dataset \\
 \hline
 \end{DoxyParams}
-
+\hypertarget{classneuroc_1_1_dataset_a9d337786be09e336d74fb85c5ba7a176}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Dataset@{Dataset}}
+\index{Dataset@{Dataset}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{Dataset}]{\setlength{\rightskip}{0pt plus 5cm}neuroc\-::\-Dataset\-::\-Dataset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_dataset_a9d337786be09e336d74fb85c5ba7a176}
+Class constructor. \hypertarget{classneuroc_1_1_dataset_ab2adb60669c1b81880c185a5e018089b}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!$\sim$\-Dataset@{$\sim$\-Dataset}}
+\index{$\sim$\-Dataset@{$\sim$\-Dataset}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{$\sim$\-Dataset}]{\setlength{\rightskip}{0pt plus 5cm}neuroc\-::\-Dataset\-::$\sim$\-Dataset (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_dataset_ab2adb60669c1b81880c185a5e018089b}
+Class destructor. 
 
 \subsection{Member Function Documentation}
-\hypertarget{classneuroc_1_1_dataset_a6478598af89c87c39ae08ac7b9c246f8}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Check\-Integrity@{Check\-Integrity}}
-\index{Check\-Integrity@{Check\-Integrity}!neuroc::Dataset@{neuroc\-::\-Dataset}}
-\subsubsection[{Check\-Integrity}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Check\-Integrity (
+\hypertarget{classneuroc_1_1_dataset_adc6f41be9dd1fd537869fba1254d828d}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Clear@{Clear}}
+\index{Clear@{Clear}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{Clear}]{\setlength{\rightskip}{0pt plus 5cm}void neuroc\-::\-Dataset\-::\-Clear (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{classneuroc_1_1_dataset_a6478598af89c87c39ae08ac7b9c246f8}
-It checks if there is the same number of input and target values
+)}}\label{classneuroc_1_1_dataset_adc6f41be9dd1fd537869fba1254d828d}
+It deletes all the elements inside the dataset. \hypertarget{classneuroc_1_1_dataset_a619a95b24052ee00ad4746b3221d4ede}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Divide\-By@{Divide\-By}}
+\index{Divide\-By@{Divide\-By}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{Divide\-By}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Divide\-By (
+\begin{DoxyParamCaption}
+\item[{double}]{divisor}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_dataset_a619a95b24052ee00ad4746b3221d4ede}
+It divides all the value by the divisor specified.
 
-\begin{DoxyReturn}{Returns}
-it returns true if everything is all right, otherwise it returns false 
-\end{DoxyReturn}
-\hypertarget{classneuroc_1_1_dataset_a69ded99bf2879a71ae8734a4ae7519be}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Get\-Input@{Get\-Input}}
-\index{Get\-Input@{Get\-Input}!neuroc::Dataset@{neuroc\-::\-Dataset}}
-\subsubsection[{Get\-Input}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ double $>$ neuroc\-::\-Dataset\-::\-Get\-Input (
+
+\begin{DoxyParams}{Parameters}
+{\em divisor} & \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_dataset_a261749c693828feb6dae1789b1ff3d3b}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Get\-Data@{Get\-Data}}
+\index{Get\-Data@{Get\-Data}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{Get\-Data}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ double $>$ neuroc\-::\-Dataset\-::\-Get\-Data (
 \begin{DoxyParamCaption}
 \item[{unsigned int}]{index}
 \end{DoxyParamCaption}
-)}}\label{classneuroc_1_1_dataset_a69ded99bf2879a71ae8734a4ae7519be}
-It permits to extract a vector of inputs
+)}}\label{classneuroc_1_1_dataset_a261749c693828feb6dae1789b1ff3d3b}
+It permits to extract a vector of data
 
 
 \begin{DoxyParams}{Parameters}
 {\em index} & of the input vector to return \\
 \hline
 \end{DoxyParams}
-\hypertarget{classneuroc_1_1_dataset_a7e910db95ee24bc49c562a47a2905490}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Get\-Target@{Get\-Target}}
-\index{Get\-Target@{Get\-Target}!neuroc::Dataset@{neuroc\-::\-Dataset}}
-\subsubsection[{Get\-Target}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ double $>$ neuroc\-::\-Dataset\-::\-Get\-Target (
+\hypertarget{classneuroc_1_1_dataset_abc992728bee80f18ee0411ed87350c4a}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Load\-From\-C\-S\-V@{Load\-From\-C\-S\-V}}
+\index{Load\-From\-C\-S\-V@{Load\-From\-C\-S\-V}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{Load\-From\-C\-S\-V}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Load\-From\-C\-S\-V (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-Path}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_dataset_abc992728bee80f18ee0411ed87350c4a}
+It loads data from a Comma Separated Value file. The Data are appended in the current dataset.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\-Path} & the path to the file to load \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_dataset_a4ff3b2849a1b9828197c99e386b5090d}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!operator\mbox{[}$\,$\mbox{]}@{operator[]}}
+\index{operator\mbox{[}$\,$\mbox{]}@{operator[]}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{operator[]}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ double $>$ \& neuroc\-::\-Dataset\-::operator\mbox{[}$\,$\mbox{]} (
 \begin{DoxyParamCaption}
 \item[{unsigned int}]{index}
 \end{DoxyParamCaption}
-)}}\label{classneuroc_1_1_dataset_a7e910db95ee24bc49c562a47a2905490}
-It permits to extract a vector of targets
+)}}\label{classneuroc_1_1_dataset_a4ff3b2849a1b9828197c99e386b5090d}
+Operator overload \mbox{[}\mbox{]} it is used to return the reference to the vector stored inside the dataset at a certain position. 
+\begin{DoxyParams}{Parameters}
+{\em index} & the number of the element stored inside the layer \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+it returns a reference to the vector 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_dataset_ae445ab50a7b2ad7c1dd1a7fc7cf93179}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Print\-Data@{Print\-Data}}
+\index{Print\-Data@{Print\-Data}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{Print\-Data}]{\setlength{\rightskip}{0pt plus 5cm}void neuroc\-::\-Dataset\-::\-Print\-Data (
+\begin{DoxyParamCaption}
+\item[{unsigned int}]{index}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_dataset_ae445ab50a7b2ad7c1dd1a7fc7cf93179}
+It prints the data stored inside the \hyperlink{classneuroc_1_1_dataset}{Dataset}
 
 
 \begin{DoxyParams}{Parameters}
-{\em index} & of the target vector to return \\
+{\em index} & of the data vector to print \\
 \hline
 \end{DoxyParams}
-\hypertarget{classneuroc_1_1_dataset_a6dc0e96a90fcd6318985fe5914f1fa36}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Push\-Back\-Input@{Push\-Back\-Input}}
-\index{Push\-Back\-Input@{Push\-Back\-Input}!neuroc::Dataset@{neuroc\-::\-Dataset}}
-\subsubsection[{Push\-Back\-Input}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Push\-Back\-Input (
+\hypertarget{classneuroc_1_1_dataset_a2e39158b15c4c75b1cd471b0c704d5b9}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Push\-Back\-Data@{Push\-Back\-Data}}
+\index{Push\-Back\-Data@{Push\-Back\-Data}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{Push\-Back\-Data}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Push\-Back\-Data (
 \begin{DoxyParamCaption}
 \item[{std\-::vector$<$ double $>$}]{data\-To\-Push}
 \end{DoxyParamCaption}
-)}}\label{classneuroc_1_1_dataset_a6dc0e96a90fcd6318985fe5914f1fa36}
-It permits to push back in the \hyperlink{classneuroc_1_1_dataset}{Dataset} a new set of Input values
+)}}\label{classneuroc_1_1_dataset_a2e39158b15c4c75b1cd471b0c704d5b9}
+It permits to push back in the \hyperlink{classneuroc_1_1_dataset}{Dataset} a new set of data
 
 
 \begin{DoxyParams}{Parameters}
 {\em data\-To\-Push} & the vector of values to push inside the \hyperlink{classneuroc_1_1_dataset}{Dataset} \\
 \hline
 \end{DoxyParams}
-\hypertarget{classneuroc_1_1_dataset_abdf6b94279a7214f0c67d92563ea8a01}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Push\-Back\-Input@{Push\-Back\-Input}}
-\index{Push\-Back\-Input@{Push\-Back\-Input}!neuroc::Dataset@{neuroc\-::\-Dataset}}
-\subsubsection[{Push\-Back\-Input}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Push\-Back\-Input (
-\begin{DoxyParamCaption}
-\item[{std\-::initializer\-\_\-list$<$ double $>$}]{input\-List}
-\end{DoxyParamCaption}
-)}}\label{classneuroc_1_1_dataset_abdf6b94279a7214f0c67d92563ea8a01}
-It permits to push back in the \hyperlink{classneuroc_1_1_dataset}{Dataset} a new set of Input values
-
-
-\begin{DoxyParams}{Parameters}
-{\em data\-To\-Push} & the vector of values to push inside the \hyperlink{classneuroc_1_1_dataset}{Dataset} \\
-\hline
-\end{DoxyParams}
-\hypertarget{classneuroc_1_1_dataset_ae1bb7d512438456bc0bb868e4c03f41f}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Push\-Back\-Input\-And\-Target@{Push\-Back\-Input\-And\-Target}}
-\index{Push\-Back\-Input\-And\-Target@{Push\-Back\-Input\-And\-Target}!neuroc::Dataset@{neuroc\-::\-Dataset}}
-\subsubsection[{Push\-Back\-Input\-And\-Target}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Push\-Back\-Input\-And\-Target (
-\begin{DoxyParamCaption}
-\item[{std\-::initializer\-\_\-list$<$ double $>$}]{input\-List, }
-\item[{std\-::initializer\-\_\-list$<$ double $>$}]{target\-List}
-\end{DoxyParamCaption}
-)}}\label{classneuroc_1_1_dataset_ae1bb7d512438456bc0bb868e4c03f41f}
-It permits to push back directly list of values without use a vector ex\-: my\-Dataset.\-Push\-Back\-Input\-And\-Target(\{0.\-4, 0.\-3, 0.\-2\}, \{0.\-01, 0.\-02\});
-
-
-\begin{DoxyParams}{Parameters}
-{\em input\-List} & the list of values to push in the input container \\
-\hline
-{\em target\-List} & the list of values to push in the target container \\
-\hline
-\end{DoxyParams}
-\hypertarget{classneuroc_1_1_dataset_a8cf8d995f7f3140970e88c1663a6d3b6}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Push\-Back\-Input\-And\-Target@{Push\-Back\-Input\-And\-Target}}
-\index{Push\-Back\-Input\-And\-Target@{Push\-Back\-Input\-And\-Target}!neuroc::Dataset@{neuroc\-::\-Dataset}}
-\subsubsection[{Push\-Back\-Input\-And\-Target}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Push\-Back\-Input\-And\-Target (
-\begin{DoxyParamCaption}
-\item[{std\-::vector$<$ double $>$}]{input\-Data\-To\-Push, }
-\item[{std\-::vector$<$ double $>$}]{target\-Data\-To\-Push}
-\end{DoxyParamCaption}
-)}}\label{classneuroc_1_1_dataset_a8cf8d995f7f3140970e88c1663a6d3b6}
-It permits to push back in the \hyperlink{classneuroc_1_1_dataset}{Dataset} a new set of Input values
-
-
-\begin{DoxyParams}{Parameters}
-{\em data\-To\-Push} & the vector of values to push inside the \hyperlink{classneuroc_1_1_dataset}{Dataset} \\
-\hline
-\end{DoxyParams}
-\hypertarget{classneuroc_1_1_dataset_a87614de72546b8201b953b950f623b4a}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Push\-Back\-Target@{Push\-Back\-Target}}
-\index{Push\-Back\-Target@{Push\-Back\-Target}!neuroc::Dataset@{neuroc\-::\-Dataset}}
-\subsubsection[{Push\-Back\-Target}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Push\-Back\-Target (
-\begin{DoxyParamCaption}
-\item[{std\-::vector$<$ double $>$}]{data\-To\-Push}
-\end{DoxyParamCaption}
-)}}\label{classneuroc_1_1_dataset_a87614de72546b8201b953b950f623b4a}
-It permits to push back in the \hyperlink{classneuroc_1_1_dataset}{Dataset} a new set of Target values
-
-
-\begin{DoxyParams}{Parameters}
-{\em data\-To\-Push} & the vector of values to push inside the \hyperlink{classneuroc_1_1_dataset}{Dataset} \\
-\hline
-\end{DoxyParams}
-\hypertarget{classneuroc_1_1_dataset_af82c1ebd21a48f05712fc835a4d8152b}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Push\-Back\-Target@{Push\-Back\-Target}}
-\index{Push\-Back\-Target@{Push\-Back\-Target}!neuroc::Dataset@{neuroc\-::\-Dataset}}
-\subsubsection[{Push\-Back\-Target}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Push\-Back\-Target (
-\begin{DoxyParamCaption}
-\item[{std\-::initializer\-\_\-list$<$ double $>$}]{target\-List}
-\end{DoxyParamCaption}
-)}}\label{classneuroc_1_1_dataset_af82c1ebd21a48f05712fc835a4d8152b}
-It permits to push back in the \hyperlink{classneuroc_1_1_dataset}{Dataset} a new set of Target values
-
-
-\begin{DoxyParams}{Parameters}
-{\em data\-To\-Push} & the vector of values to push inside the \hyperlink{classneuroc_1_1_dataset}{Dataset} \\
-\hline
-\end{DoxyParams}
-\hypertarget{classneuroc_1_1_dataset_ab81cbb4ca81442ade12eca43981d105b}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Return\-Number\-Of\-Inputs@{Return\-Number\-Of\-Inputs}}
-\index{Return\-Number\-Of\-Inputs@{Return\-Number\-Of\-Inputs}!neuroc::Dataset@{neuroc\-::\-Dataset}}
-\subsubsection[{Return\-Number\-Of\-Inputs}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int neuroc\-::\-Dataset\-::\-Return\-Number\-Of\-Inputs (
+\hypertarget{classneuroc_1_1_dataset_a65b3e8dc12f70648643932bd1795a22c}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Return\-Number\-Of\-Data@{Return\-Number\-Of\-Data}}
+\index{Return\-Number\-Of\-Data@{Return\-Number\-Of\-Data}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{Return\-Number\-Of\-Data}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int neuroc\-::\-Dataset\-::\-Return\-Number\-Of\-Data (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{classneuroc_1_1_dataset_ab81cbb4ca81442ade12eca43981d105b}
-It permits to extract a vector of inputs
+)}}\label{classneuroc_1_1_dataset_a65b3e8dc12f70648643932bd1795a22c}
+It permits to extract a vector of data
 
 
 \begin{DoxyParams}{Parameters}
 {\em index} & of the input vector to return \\
 \hline
 \end{DoxyParams}
-\hypertarget{classneuroc_1_1_dataset_a9d27f7fd797555dd9dce53c9fe3e4a18}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Return\-Number\-Of\-Targets@{Return\-Number\-Of\-Targets}}
-\index{Return\-Number\-Of\-Targets@{Return\-Number\-Of\-Targets}!neuroc::Dataset@{neuroc\-::\-Dataset}}
-\subsubsection[{Return\-Number\-Of\-Targets}]{\setlength{\rightskip}{0pt plus 5cm}unsigned int neuroc\-::\-Dataset\-::\-Return\-Number\-Of\-Targets (
+\hypertarget{classneuroc_1_1_dataset_a258929c257389b017e721c82756bc1bb}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Return\-String\-C\-S\-V@{Return\-String\-C\-S\-V}}
+\index{Return\-String\-C\-S\-V@{Return\-String\-C\-S\-V}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{Return\-String\-C\-S\-V}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string neuroc\-::\-Dataset\-::\-Return\-String\-C\-S\-V (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{classneuroc_1_1_dataset_a9d27f7fd797555dd9dce53c9fe3e4a18}
-It returns the number of targets inside the \hyperlink{classneuroc_1_1_dataset}{Dataset}
+)}}\label{classneuroc_1_1_dataset_a258929c257389b017e721c82756bc1bb}
+It returns a string of data organized in Comma Separated Values. \hypertarget{classneuroc_1_1_dataset_a345b8dd58e822f7dfc5d069eba8b7d92}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Save\-As\-C\-S\-V@{Save\-As\-C\-S\-V}}
+\index{Save\-As\-C\-S\-V@{Save\-As\-C\-S\-V}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{Save\-As\-C\-S\-V}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Save\-As\-C\-S\-V (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-Path}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_dataset_a345b8dd58e822f7dfc5d069eba8b7d92}
+It saves the dataset as C\-S\-V file
 
-\begin{DoxyReturn}{Returns}
-it returns an unsigned integer representing the number of targets 
-\end{DoxyReturn}
-\hypertarget{classneuroc_1_1_dataset_a63152318ab651c1022f695780cf22a7a}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Set\-Input@{Set\-Input}}
-\index{Set\-Input@{Set\-Input}!neuroc::Dataset@{neuroc\-::\-Dataset}}
-\subsubsection[{Set\-Input}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Set\-Input (
+
+\begin{DoxyParams}{Parameters}
+{\em file\-Path} & the path to the file to load \\
+\hline
+\end{DoxyParams}
+\hypertarget{classneuroc_1_1_dataset_ab8e9e39eb91f6c13a3231d8f9794ccc5}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Set\-Data@{Set\-Data}}
+\index{Set\-Data@{Set\-Data}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{Set\-Data}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Set\-Data (
 \begin{DoxyParamCaption}
 \item[{unsigned int}]{index, }
 \item[{std\-::vector$<$ double $>$}]{data}
 \end{DoxyParamCaption}
-)}}\label{classneuroc_1_1_dataset_a63152318ab651c1022f695780cf22a7a}
-It permits to set a vector of input
+)}}\label{classneuroc_1_1_dataset_ab8e9e39eb91f6c13a3231d8f9794ccc5}
+It permits to set a vector of data
 
 
 \begin{DoxyParams}{Parameters}
 {\em index} & of the input vector to set \\
 \hline
 \end{DoxyParams}
-\hypertarget{classneuroc_1_1_dataset_abcf67825453ff308f23c1e9c10d16138}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Set\-Target@{Set\-Target}}
-\index{Set\-Target@{Set\-Target}!neuroc::Dataset@{neuroc\-::\-Dataset}}
-\subsubsection[{Set\-Target}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Dataset\-::\-Set\-Target (
+\hypertarget{classneuroc_1_1_dataset_a38b4f7abc368ea88f7ff19aacea22578}{\index{neuroc\-::\-Dataset@{neuroc\-::\-Dataset}!Split@{Split}}
+\index{Split@{Split}!neuroc::Dataset@{neuroc\-::\-Dataset}}
+\subsubsection[{Split}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Dataset} neuroc\-::\-Dataset\-::\-Split (
 \begin{DoxyParamCaption}
-\item[{unsigned int}]{index, }
-\item[{std\-::vector$<$ double $>$}]{data}
+\item[{unsigned int}]{index}
 \end{DoxyParamCaption}
-)}}\label{classneuroc_1_1_dataset_abcf67825453ff308f23c1e9c10d16138}
-It permits to set a vector of targets
+)}}\label{classneuroc_1_1_dataset_a38b4f7abc368ea88f7ff19aacea22578}
+It splits the dataset in two parts, mantaining in the current object only the first part, and returning as a dataset the second part.
 
 
 \begin{DoxyParams}{Parameters}
-{\em index} & of the target vector to set \\
+{\em index} & the point where apply the split. \\
 \hline
 \end{DoxyParams}
 

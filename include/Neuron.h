@@ -74,6 +74,7 @@ double mValue = 0;  //value obtained after the computation
 double mDerivative = 0;
 double mError = 0;  //error obtained after the error backpropagation 
 double mBias = 0;   //value of the bias connection
+double mJointValue= 0;
 
 std::vector<double> mConnectionsVector;  //container of the connections values
 

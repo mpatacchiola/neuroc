@@ -31,6 +31,8 @@ unsigned int \hyperlink{classneuroc_1_1_network_aba5d3fd26af7841aca5dd0f0a1e92b2
 \item 
 std\-::vector$<$ double $>$ \hyperlink{classneuroc_1_1_network_ae5a25de7431ce99d2ad7b2e6184e9b44}{Compute} (const std\-::vector$<$ double $>$ \&Input\-Vector)
 \item 
+std\-::vector$<$ double $>$ \hyperlink{classneuroc_1_1_network_a0a202ef490107dbe4ec96026f109603f}{Compute\-Derivative} (const std\-::vector$<$ double $>$ \&Input\-Vector)
+\item 
 const std\-::vector$<$ \hyperlink{classneuroc_1_1_layer}{Layer} $>$ \& \hyperlink{classneuroc_1_1_network_ad8c51835a8173d999afec0952a168bea}{Retur\-Reference\-To\-Layers\-Vector} ()
 \item 
 void \hyperlink{classneuroc_1_1_network_a76a944722c388191c986fbd806025456}{Randomize\-Connection\-Matrix} (std\-::function$<$ double(double)$>$ init\-Function)
@@ -96,6 +98,18 @@ Class constructor. It permits to create directly a multiple hidden layer network
 \item[{const std\-::vector$<$ double $>$ \&}]{Input\-Vector}
 \end{DoxyParamCaption}
 )}}\label{classneuroc_1_1_network_ae5a25de7431ce99d2ad7b2e6184e9b44}
+Compute all the neurons of the layer and return a vector containing the values of these neurons
+
+\begin{DoxyReturn}{Returns}
+it returns the vector containing the double, in case of problems it returns an empty vector and print an error 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_network_a0a202ef490107dbe4ec96026f109603f}{\index{neuroc\-::\-Network@{neuroc\-::\-Network}!Compute\-Derivative@{Compute\-Derivative}}
+\index{Compute\-Derivative@{Compute\-Derivative}!neuroc::Network@{neuroc\-::\-Network}}
+\subsubsection[{Compute\-Derivative}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ double $>$ neuroc\-::\-Network\-::\-Compute\-Derivative (
+\begin{DoxyParamCaption}
+\item[{const std\-::vector$<$ double $>$ \&}]{Input\-Vector}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_network_a0a202ef490107dbe4ec96026f109603f}
 Compute all the neurons of the layer and return a vector containing the values of these neurons
 
 \begin{DoxyReturn}{Returns}

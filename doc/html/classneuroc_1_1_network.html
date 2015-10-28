@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>neuroc::Network Class Reference</title>
+<title>My Project: neuroc::Network Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,6 +22,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo_new_white.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
  </tr>
  </tbody>
 </table>
@@ -116,6 +120,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aba5d3fd26af7841aca5dd0f0a1e92b21"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5a25de7431ce99d2ad7b2e6184e9b44"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_network.html#ae5a25de7431ce99d2ad7b2e6184e9b44">Compute</a> (const std::vector&lt; double &gt; &amp;InputVector)</td></tr>
 <tr class="separator:ae5a25de7431ce99d2ad7b2e6184e9b44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a202ef490107dbe4ec96026f109603f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_network.html#a0a202ef490107dbe4ec96026f109603f">ComputeDerivative</a> (const std::vector&lt; double &gt; &amp;InputVector)</td></tr>
+<tr class="separator:a0a202ef490107dbe4ec96026f109603f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad8c51835a8173d999afec0952a168bea"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; <a class="el" href="classneuroc_1_1_layer.html">Layer</a> &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_network.html#ad8c51835a8173d999afec0952a168bea">ReturReferenceToLayersVector</a> ()</td></tr>
 <tr class="separator:ad8c51835a8173d999afec0952a168bea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76a944722c388191c986fbd806025456"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_network.html#a76a944722c388191c986fbd806025456">RandomizeConnectionMatrix</a> (std::function&lt; double(double)&gt; initFunction)</td></tr>
@@ -203,6 +209,24 @@ Public Member Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">std::vector&lt; double &gt; neuroc::Network::Compute </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
+          <td class="paramname"><em>InputVector</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Compute all the neurons of the layer and return a vector containing the values of these neurons</p>
+<dl class="section return"><dt>Returns</dt><dd>it returns the vector containing the double, in case of problems it returns an empty vector and print an error </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0a202ef490107dbe4ec96026f109603f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; double &gt; neuroc::Network::ComputeDerivative </td>
           <td>(</td>
           <td class="paramtype">const std::vector&lt; double &gt; &amp;&#160;</td>
           <td class="paramname"><em>InputVector</em></td><td>)</td>
@@ -464,7 +488,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 25 2015 14:23:30 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 28 2015 17:36:56 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

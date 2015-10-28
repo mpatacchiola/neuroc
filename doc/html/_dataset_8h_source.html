@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>include/Dataset.h Source File</title>
+<title>My Project: include/Dataset.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,6 +22,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo_new_white.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
  </tr>
  </tbody>
 </table>
@@ -108,85 +112,73 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define DATASET_H</span></div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span> <span class="comment">//printing functions</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &lt;initializer_list&gt;</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="namespaceneuroc.html">   28</a></span>&#160;<span class="keyword">namespace </span>neuroc{</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classneuroc_1_1_dataset.html">   40</a></span>&#160;<span class="keyword">class </span><a class="code" href="classneuroc_1_1_dataset.html">Dataset</a> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span> </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">namespace </span>neuroc{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classneuroc_1_1_dataset.html">   38</a></span>&#160;<span class="keyword">class </span><a class="code" href="classneuroc_1_1_dataset.html">Dataset</a> {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<a class="code" href="classneuroc_1_1_dataset.html#a9d337786be09e336d74fb85c5ba7a176">Dataset</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> datasetDimension);</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<a class="code" href="classneuroc_1_1_dataset.html">Dataset</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> datasetDimension);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<a class="code" href="classneuroc_1_1_dataset.html#a9d337786be09e336d74fb85c5ba7a176">Dataset</a>();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<a class="code" href="classneuroc_1_1_dataset.html">Dataset</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<a class="code" href="classneuroc_1_1_dataset.html#ab2adb60669c1b81880c185a5e018089b">~Dataset</a>();</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;~<a class="code" href="classneuroc_1_1_dataset.html">Dataset</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;std::vector&lt;double&gt;&amp; <a class="code" href="classneuroc_1_1_dataset.html#a4ff3b2849a1b9828197c99e386b5090d">operator[]</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index);</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#ae1bb7d512438456bc0bb868e4c03f41f">PushBackInputAndTarget</a>(std::initializer_list&lt;double&gt; inputList, std::initializer_list&lt;double&gt; targetList);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a2e39158b15c4c75b1cd471b0c704d5b9">PushBackData</a>(std::vector&lt;double&gt; dataToPush);</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#ae1bb7d512438456bc0bb868e4c03f41f">PushBackInputAndTarget</a>(std::vector&lt;double&gt; inputDataToPush, std::vector&lt;double&gt; targetDataToPush);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<a class="code" href="classneuroc_1_1_dataset.html">Dataset</a> <a class="code" href="classneuroc_1_1_dataset.html#a38b4f7abc368ea88f7ff19aacea22578">Split</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index);</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a6dc0e96a90fcd6318985fe5914f1fa36">PushBackInput</a>(std::vector&lt;double&gt; dataToPush);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classneuroc_1_1_dataset.html#adc6f41be9dd1fd537869fba1254d828d">Clear</a>();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a6dc0e96a90fcd6318985fe5914f1fa36">PushBackInput</a>(std::initializer_list&lt;double&gt; inputList);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a619a95b24052ee00ad4746b3221d4ede">DivideBy</a>(<span class="keywordtype">double</span> divisor);</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;std::vector&lt;double&gt; <a class="code" href="classneuroc_1_1_dataset.html#a69ded99bf2879a71ae8734a4ae7519be">GetInput</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a63152318ab651c1022f695780cf22a7a">SetInput</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index, std::vector&lt;double&gt; data);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classneuroc_1_1_dataset.html#ab81cbb4ca81442ade12eca43981d105b">ReturnNumberOfInputs</a>();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a87614de72546b8201b953b950f623b4a">PushBackTarget</a>(std::vector&lt;double&gt; dataToPush) ;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a87614de72546b8201b953b950f623b4a">PushBackTarget</a>(std::initializer_list&lt;double&gt; targetList);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;std::vector&lt;double&gt; <a class="code" href="classneuroc_1_1_dataset.html#a261749c693828feb6dae1789b1ff3d3b">GetData</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#ab8e9e39eb91f6c13a3231d8f9794ccc5">SetData</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index, std::vector&lt;double&gt; data);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classneuroc_1_1_dataset.html#a65b3e8dc12f70648643932bd1795a22c">ReturnNumberOfData</a>();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> <a class="code" href="classneuroc_1_1_dataset.html#ae445ab50a7b2ad7c1dd1a7fc7cf93179">PrintData</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;std::string <a class="code" href="classneuroc_1_1_dataset.html#a258929c257389b017e721c82756bc1bb">ReturnStringCSV</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#abc992728bee80f18ee0411ed87350c4a">LoadFromCSV</a>(std::string filePath);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a345b8dd58e822f7dfc5d069eba8b7d92">SaveAsCSV</a>(std::string filePath);</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;std::vector&lt;double&gt; <a class="code" href="classneuroc_1_1_dataset.html#a7e910db95ee24bc49c562a47a2905490">GetTarget</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#abcf67825453ff308f23c1e9c10d16138">SetTarget</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index, std::vector&lt;double&gt; data);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classneuroc_1_1_dataset.html#a9d27f7fd797555dd9dce53c9fe3e4a18">ReturnNumberOfTargets</a>();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;std::vector&lt;std::vector&lt;double&gt;&gt; mDataVector;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keywordtype">bool</span> FileExist (std::string name);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classneuroc_1_1_dataset.html#a6478598af89c87c39ae08ac7b9c246f8">CheckIntegrity</a>();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">void</span> PrintInput(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;} <span class="comment">//namespace</span></div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> PrintTarget(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> index);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;std::string ReturnStringXML();</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;std::string ReturnStringCSV();</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;std::vector&lt;std::vector&lt;double&gt;&gt; nInputsVector;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;std::vector&lt;std::vector&lt;double&gt;&gt; nTargetsVector;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;} <span class="comment">//namespace</span></div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="preprocessor">#endif // DATASET_H</span></div>
-<div class="ttc" id="classneuroc_1_1_dataset_html_a87614de72546b8201b953b950f623b4a"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a87614de72546b8201b953b950f623b4a">neuroc::Dataset::PushBackTarget</a></div><div class="ttdeci">bool PushBackTarget(std::vector&lt; double &gt; dataToPush)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:131</div></div>
-<div class="ttc" id="classneuroc_1_1_dataset_html_a7e910db95ee24bc49c562a47a2905490"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a7e910db95ee24bc49c562a47a2905490">neuroc::Dataset::GetTarget</a></div><div class="ttdeci">std::vector&lt; double &gt; GetTarget(unsigned int index)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:157</div></div>
-<div class="ttc" id="classneuroc_1_1_dataset_html_a69ded99bf2879a71ae8734a4ae7519be"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a69ded99bf2879a71ae8734a4ae7519be">neuroc::Dataset::GetInput</a></div><div class="ttdeci">std::vector&lt; double &gt; GetInput(unsigned int index)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:98</div></div>
-<div class="ttc" id="classneuroc_1_1_dataset_html"><div class="ttname"><a href="classneuroc_1_1_dataset.html">neuroc::Dataset</a></div><div class="ttdoc">This class permits to create complex datasets and use them to feed the network. </div><div class="ttdef"><b>Definition:</b> Dataset.h:40</div></div>
-<div class="ttc" id="classneuroc_1_1_dataset_html_a63152318ab651c1022f695780cf22a7a"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a63152318ab651c1022f695780cf22a7a">neuroc::Dataset::SetInput</a></div><div class="ttdeci">bool SetInput(unsigned int index, std::vector&lt; double &gt; data)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:107</div></div>
-<div class="ttc" id="classneuroc_1_1_dataset_html_a6478598af89c87c39ae08ac7b9c246f8"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a6478598af89c87c39ae08ac7b9c246f8">neuroc::Dataset::CheckIntegrity</a></div><div class="ttdeci">bool CheckIntegrity()</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:190</div></div>
-<div class="ttc" id="classneuroc_1_1_dataset_html_a6dc0e96a90fcd6318985fe5914f1fa36"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a6dc0e96a90fcd6318985fe5914f1fa36">neuroc::Dataset::PushBackInput</a></div><div class="ttdeci">bool PushBackInput(std::vector&lt; double &gt; dataToPush)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:71</div></div>
-<div class="ttc" id="classneuroc_1_1_dataset_html_ae1bb7d512438456bc0bb868e4c03f41f"><div class="ttname"><a href="classneuroc_1_1_dataset.html#ae1bb7d512438456bc0bb868e4c03f41f">neuroc::Dataset::PushBackInputAndTarget</a></div><div class="ttdeci">bool PushBackInputAndTarget(std::initializer_list&lt; double &gt; inputList, std::initializer_list&lt; double &gt; targetList)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:49</div></div>
-<div class="ttc" id="classneuroc_1_1_dataset_html_ab81cbb4ca81442ade12eca43981d105b"><div class="ttname"><a href="classneuroc_1_1_dataset.html#ab81cbb4ca81442ade12eca43981d105b">neuroc::Dataset::ReturnNumberOfInputs</a></div><div class="ttdeci">unsigned int ReturnNumberOfInputs()</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:122</div></div>
-<div class="ttc" id="classneuroc_1_1_dataset_html_a9d27f7fd797555dd9dce53c9fe3e4a18"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a9d27f7fd797555dd9dce53c9fe3e4a18">neuroc::Dataset::ReturnNumberOfTargets</a></div><div class="ttdeci">unsigned int ReturnNumberOfTargets()</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:181</div></div>
-<div class="ttc" id="classneuroc_1_1_dataset_html_abcf67825453ff308f23c1e9c10d16138"><div class="ttname"><a href="classneuroc_1_1_dataset.html#abcf67825453ff308f23c1e9c10d16138">neuroc::Dataset::SetTarget</a></div><div class="ttdeci">bool SetTarget(unsigned int index, std::vector&lt; double &gt; data)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:166</div></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif // DATASET_H</span></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_adc6f41be9dd1fd537869fba1254d828d"><div class="ttname"><a href="classneuroc_1_1_dataset.html#adc6f41be9dd1fd537869fba1254d828d">neuroc::Dataset::Clear</a></div><div class="ttdeci">void Clear()</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:127</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a38b4f7abc368ea88f7ff19aacea22578"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a38b4f7abc368ea88f7ff19aacea22578">neuroc::Dataset::Split</a></div><div class="ttdeci">Dataset Split(unsigned int index)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:95</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html"><div class="ttname"><a href="classneuroc_1_1_dataset.html">neuroc::Dataset</a></div><div class="ttdoc">This class permits to create complex datasets and use them to feed the network. </div><div class="ttdef"><b>Definition:</b> Dataset.h:38</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a345b8dd58e822f7dfc5d069eba8b7d92"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a345b8dd58e822f7dfc5d069eba8b7d92">neuroc::Dataset::SaveAsCSV</a></div><div class="ttdeci">bool SaveAsCSV(std::string filePath)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:243</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_abc992728bee80f18ee0411ed87350c4a"><div class="ttname"><a href="classneuroc_1_1_dataset.html#abc992728bee80f18ee0411ed87350c4a">neuroc::Dataset::LoadFromCSV</a></div><div class="ttdeci">bool LoadFromCSV(std::string filePath)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:212</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_ab8e9e39eb91f6c13a3231d8f9794ccc5"><div class="ttname"><a href="classneuroc_1_1_dataset.html#ab8e9e39eb91f6c13a3231d8f9794ccc5">neuroc::Dataset::SetData</a></div><div class="ttdeci">bool SetData(unsigned int index, std::vector&lt; double &gt; data)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:150</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a261749c693828feb6dae1789b1ff3d3b"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a261749c693828feb6dae1789b1ff3d3b">neuroc::Dataset::GetData</a></div><div class="ttdeci">std::vector&lt; double &gt; GetData(unsigned int index)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:136</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a2e39158b15c4c75b1cd471b0c704d5b9"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a2e39158b15c4c75b1cd471b0c704d5b9">neuroc::Dataset::PushBackData</a></div><div class="ttdeci">bool PushBackData(std::vector&lt; double &gt; dataToPush)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:84</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a619a95b24052ee00ad4746b3221d4ede"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a619a95b24052ee00ad4746b3221d4ede">neuroc::Dataset::DivideBy</a></div><div class="ttdeci">bool DivideBy(double divisor)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:58</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_ab2adb60669c1b81880c185a5e018089b"><div class="ttname"><a href="classneuroc_1_1_dataset.html#ab2adb60669c1b81880c185a5e018089b">neuroc::Dataset::~Dataset</a></div><div class="ttdeci">~Dataset()</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:49</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a65b3e8dc12f70648643932bd1795a22c"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a65b3e8dc12f70648643932bd1795a22c">neuroc::Dataset::ReturnNumberOfData</a></div><div class="ttdeci">unsigned int ReturnNumberOfData()</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:165</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_ae445ab50a7b2ad7c1dd1a7fc7cf93179"><div class="ttname"><a href="classneuroc_1_1_dataset.html#ae445ab50a7b2ad7c1dd1a7fc7cf93179">neuroc::Dataset::PrintData</a></div><div class="ttdeci">void PrintData(unsigned int index)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:175</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a4ff3b2849a1b9828197c99e386b5090d"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a4ff3b2849a1b9828197c99e386b5090d">neuroc::Dataset::operator[]</a></div><div class="ttdeci">std::vector&lt; double &gt; &amp; operator[](unsigned int index)</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:74</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a9d337786be09e336d74fb85c5ba7a176"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a9d337786be09e336d74fb85c5ba7a176">neuroc::Dataset::Dataset</a></div><div class="ttdeci">Dataset()</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:33</div></div>
+<div class="ttc" id="classneuroc_1_1_dataset_html_a258929c257389b017e721c82756bc1bb"><div class="ttname"><a href="classneuroc_1_1_dataset.html#a258929c257389b017e721c82756bc1bb">neuroc::Dataset::ReturnStringCSV</a></div><div class="ttdeci">std::string ReturnStringCSV()</div><div class="ttdef"><b>Definition:</b> Dataset.cpp:192</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 25 2015 14:23:30 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 28 2015 17:36:56 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

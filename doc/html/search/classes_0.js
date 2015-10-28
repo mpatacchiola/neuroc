@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dataset',['Dataset',['../classneuroc_1_1_dataset.html',1,'neuroc']]]
+  ['backpropagationlearning',['BackpropagationLearning',['../classneuroc_1_1_backpropagation_learning.html',1,'neuroc']]]
 ];

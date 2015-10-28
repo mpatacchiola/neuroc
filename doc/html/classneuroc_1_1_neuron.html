@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>neuroc::Neuron Class Reference</title>
+<title>My Project: neuroc::Neuron Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,6 +22,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectlogo"><img alt="Logo" src="logo_new_white.png"/></td>
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">My Project
+   </div>
+  </td>
  </tr>
  </tbody>
 </table>
@@ -100,8 +104,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a5daa71d6894902abd4d176fb98b2a1a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#a5daa71d6894902abd4d176fb98b2a1a3">Neuron</a> (const <a class="el" href="classneuroc_1_1_neuron.html">Neuron</a> &amp;rNeuron)</td></tr>
 <tr class="separator:a5daa71d6894902abd4d176fb98b2a1a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afca9457b9302079c19680fc3d75d080a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#afca9457b9302079c19680fc3d75d080a">Neuron</a> (const std::vector&lt; double &gt; &amp;connectionsVector, std::function&lt; double(std::vector&lt; double &gt;, std::vector&lt; double &gt;)&gt; weightFunction, std::function&lt; double(double, double)&gt; joinFunction, std::function&lt; double(double)&gt; transferFunction, double biasWeight=0)</td></tr>
-<tr class="separator:afca9457b9302079c19680fc3d75d080a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d47b91447450bc164ac3b953bf4a02f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#a2d47b91447450bc164ac3b953bf4a02f">Neuron</a> (const std::vector&lt; double &gt; &amp;connectionsVector, std::function&lt; double(std::vector&lt; double &gt;, std::vector&lt; double &gt;)&gt; weightFunction, std::function&lt; double(double, double)&gt; jointFunction, std::function&lt; double(double)&gt; transferFunction, std::function&lt; double(double)&gt; derivativeFunction, double biasWeight=0)</td></tr>
+<tr class="separator:a2d47b91447450bc164ac3b953bf4a02f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a50f9501ff50f8cba29509adf982d276e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classneuroc_1_1_neuron.html">Neuron</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#a50f9501ff50f8cba29509adf982d276e">operator=</a> (const <a class="el" href="classneuroc_1_1_neuron.html">Neuron</a> &amp;rNeuron)</td></tr>
 <tr class="separator:a50f9501ff50f8cba29509adf982d276e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aebf0a0ac505ed3d030a2317f7e8db166"><td class="memItemLeft" align="right" valign="top">const double &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#aebf0a0ac505ed3d030a2317f7e8db166">operator[]</a> (const unsigned int index) const </td></tr>
@@ -110,16 +114,22 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a015376f3e8345e7d831298d4342eef3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeb1a05ddba04af38d8ab9fd88d74ba69"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#aeb1a05ddba04af38d8ab9fd88d74ba69">Compute</a> (std::vector&lt; double &gt; inputVector)</td></tr>
 <tr class="separator:aeb1a05ddba04af38d8ab9fd88d74ba69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abaed7c93f8aae60f91a353ec55663df3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#abaed7c93f8aae60f91a353ec55663df3">ComputeDerivative</a> (std::vector&lt; double &gt; inputVector)</td></tr>
+<tr class="separator:abaed7c93f8aae60f91a353ec55663df3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9fbb34828b715886d122765d9889f000"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#a9fbb34828b715886d122765d9889f000">RandomizeConnectionVector</a> (std::function&lt; double(double)&gt; initFunction)</td></tr>
 <tr class="separator:a9fbb34828b715886d122765d9889f000"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66bfce757756e313b9d206340f559657"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#a66bfce757756e313b9d206340f559657">SetConnectionVector</a> (const std::vector&lt; double &gt; &amp;connectionVector)</td></tr>
 <tr class="separator:a66bfce757756e313b9d206340f559657"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7a231655df819faf9490d3dbe0c8abb6"><td class="memItemLeft" align="right" valign="top">const std::vector&lt; double &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#a7a231655df819faf9490d3dbe0c8abb6">GetConnectionVector</a> () const </td></tr>
-<tr class="separator:a7a231655df819faf9490d3dbe0c8abb6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a77bb1df2e0592310626845388b97f86a"><td class="memItemLeft" align="right" valign="top">std::vector&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#a77bb1df2e0592310626845388b97f86a">GetConnectionVector</a> () const </td></tr>
+<tr class="separator:a77bb1df2e0592310626845388b97f86a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9372e181e5ee1c8fc28bc4f859c1f537"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#a9372e181e5ee1c8fc28bc4f859c1f537">SetValue</a> (double value)</td></tr>
 <tr class="separator:a9372e181e5ee1c8fc28bc4f859c1f537"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aba0b60c841fd2a6d9c509863766d6977"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#aba0b60c841fd2a6d9c509863766d6977">GetValue</a> ()</td></tr>
 <tr class="separator:aba0b60c841fd2a6d9c509863766d6977"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a41af3259f06c9dbc3e27c8d5a4f92507"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#a41af3259f06c9dbc3e27c8d5a4f92507">SetDerivative</a> (double value)</td></tr>
+<tr class="separator:a41af3259f06c9dbc3e27c8d5a4f92507"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae56745018fc3c056fafe41856c3fa6f3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#ae56745018fc3c056fafe41856c3fa6f3">GetDerivative</a> ()</td></tr>
+<tr class="separator:ae56745018fc3c056fafe41856c3fa6f3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a594dc169c67e35cb00bcd14a7521c20c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#a594dc169c67e35cb00bcd14a7521c20c">SetError</a> (double value)</td></tr>
 <tr class="separator:a594dc169c67e35cb00bcd14a7521c20c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8cee80076705f1f349aaf0feafe2d8f1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuroc_1_1_neuron.html#a8cee80076705f1f349aaf0feafe2d8f1">GetError</a> ()</td></tr>
@@ -157,7 +167,7 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="afca9457b9302079c19680fc3d75d080a"></a>
+<a class="anchor" id="a2d47b91447450bc164ac3b953bf4a02f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -177,13 +187,19 @@ Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::function&lt; double(double, double)&gt;&#160;</td>
-          <td class="paramname"><em>joinFunction</em>, </td>
+          <td class="paramname"><em>jointFunction</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::function&lt; double(double)&gt;&#160;</td>
           <td class="paramname"><em>transferFunction</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::function&lt; double(double)&gt;&#160;</td>
+          <td class="paramname"><em>derivativeFunction</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -227,6 +243,24 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="abaed7c93f8aae60f91a353ec55663df3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double neuroc::Neuron::ComputeDerivative </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; double &gt;&#160;</td>
+          <td class="paramname"><em>inputVector</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Return the value of the neuron but instead using the Transfer Function it uses the Derivative function specified in the creation step.</p>
+<dl class="section return"><dt>Returns</dt><dd>it returns the value of the computation </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a60af8c8e64f908cc036694df4ae0489a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -244,12 +278,12 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7a231655df819faf9490d3dbe0c8abb6"></a>
+<a class="anchor" id="a77bb1df2e0592310626845388b97f86a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const std::vector&lt; double &gt; &amp; neuroc::Neuron::GetConnectionVector </td>
+          <td class="memname">std::vector&lt; double &gt; neuroc::Neuron::GetConnectionVector </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -258,6 +292,23 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Returning a vector containing the values of the neuron connections The vector start with the first incoming connection and it ends with the last incoming connection If the <a class="el" href="classneuroc_1_1_neuron.html" title="This is the lowest class and it represents the Neuron object. ">Neuron</a> has a Bias Unit then the first connection of the neuron is the Bias incoming connection </p>
 <dl class="section return"><dt>Returns</dt><dd>it returns a vector of values </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ae56745018fc3c056fafe41856c3fa6f3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double neuroc::Neuron::GetDerivative </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Get the value of the neuron</p>
+<dl class="section return"><dt>Returns</dt><dd>it returns the current value of the neuron </dd></dl>
 
 </div>
 </div>
@@ -427,6 +478,29 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a41af3259f06c9dbc3e27c8d5a4f92507"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void neuroc::Neuron::SetDerivative </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Set the value of the neuron</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">value</td><td>the value to set, it is used for input neurons </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a594dc169c67e35cb00bcd14a7521c20c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -497,7 +571,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Oct 25 2015 14:23:30 by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Oct 28 2015 17:36:56 for My Project by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

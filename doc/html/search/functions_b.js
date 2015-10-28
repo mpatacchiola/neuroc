@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['percentageprobability',['PercentageProbability',['../namespace_random_functions.html#ae21250aea3088912780a1076997705a4',1,'RandomFunctions']]],
-  ['print',['Print',['../class_layer.html#a21b74e87accce3dad35331fd81048b6b',1,'Layer::Print()'],['../class_network.html#a6b7c41ddbfbb95e345194f69c527c5eb',1,'Network::Print()'],['../class_neuron.html#a8ec9e10ab930126918685eafb176ebf4',1,'Neuron::Print()']]],
-  ['pushbackinput',['PushBackInput',['../class_dataset.html#abdbd78b795d4466da2b9435793d18977',1,'Dataset::PushBackInput(std::vector&lt; T &gt; dataToPush)'],['../class_dataset.html#add6309542e511497b33667d7244e6993',1,'Dataset::PushBackInput(std::initializer_list&lt; T &gt; inputList)']]],
-  ['pushbackinputandtarget',['PushBackInputAndTarget',['../class_dataset.html#a6be5cd1a0217450a47895ec191becb8d',1,'Dataset::PushBackInputAndTarget(std::initializer_list&lt; T &gt; inputList, std::initializer_list&lt; T &gt; targetList)'],['../class_dataset.html#af3cf63ef5a12c9c84dd7230ca4c0e4f3',1,'Dataset::PushBackInputAndTarget(std::vector&lt; T &gt; inputDataToPush, std::vector&lt; T &gt; targetDataToPush)']]],
-  ['pushbacktarget',['PushBackTarget',['../class_dataset.html#af395132a97084aad5113ab16885f4ad2',1,'Dataset::PushBackTarget(std::vector&lt; T &gt; dataToPush)'],['../class_dataset.html#a5f9e4e1d76d2100dcf5985f67790d5bb',1,'Dataset::PushBackTarget(std::initializer_list&lt; T &gt; targetList)']]]
+  ['powervector',['PowerVector',['../classneuroc_1_1_backpropagation_learning.html#a3f7bb531a58a64b79ae81b0952f97a95',1,'neuroc::BackpropagationLearning']]],
+  ['print',['Print',['../classneuroc_1_1_layer.html#a30ffd9156bc08a96474d48a3ec661cd9',1,'neuroc::Layer::Print()'],['../classneuroc_1_1_network.html#a6eb9f5cd7f58ca995b4b86996aa7f9c5',1,'neuroc::Network::Print()'],['../classneuroc_1_1_neuron.html#ae23265025b8d02844e1d874138fe5fcc',1,'neuroc::Neuron::Print()']]],
+  ['printdata',['PrintData',['../classneuroc_1_1_dataset.html#ae445ab50a7b2ad7c1dd1a7fc7cf93179',1,'neuroc::Dataset']]],
+  ['pushbackdata',['PushBackData',['../classneuroc_1_1_dataset.html#a2e39158b15c4c75b1cd471b0c704d5b9',1,'neuroc::Dataset']]]
 ];

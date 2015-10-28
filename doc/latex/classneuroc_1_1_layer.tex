@@ -27,17 +27,28 @@ const unsigned int \hyperlink{classneuroc_1_1_layer_aa80735d22f8f35c5ec35e059677
 \item 
 std\-::vector$<$ double $>$ \hyperlink{classneuroc_1_1_layer_a4d879665e9fd0738fea6a5200c70296a}{Compute} (std\-::vector$<$ double $>$ input\-Vector)
 \item 
+std\-::vector$<$ double $>$ \hyperlink{classneuroc_1_1_layer_afdb93accd5a1cd5bb7e611fe2048a890}{Compute\-Derivative} (std\-::vector$<$ double $>$ input\-Vector)
+\item 
 void \hyperlink{classneuroc_1_1_layer_ac00e3384d6e22bf87b4359c43cb4461e}{Randomize\-Connection\-Matrix} (std\-::function$<$ double(double)$>$ init\-Function)
-\item 
-std\-::vector$<$ double $>$ \hyperlink{classneuroc_1_1_layer_a14fd8d60709fbe79059574b090f9531a}{Get\-Value\-Vector} ()
-\item 
-bool \hyperlink{classneuroc_1_1_layer_ada5237f8e9211d3dc308fa2e083b2b44}{Set\-Bias\-Vector} (std\-::vector$<$ double $>$ bias\-Vector)
 \item 
 bool \hyperlink{classneuroc_1_1_layer_a8e232dadedf86bfa7dafa106e97ade05}{Set\-Value\-Vector} (std\-::vector$<$ double $>$ value\-Vector)
 \item 
+std\-::vector$<$ double $>$ \hyperlink{classneuroc_1_1_layer_a14fd8d60709fbe79059574b090f9531a}{Get\-Value\-Vector} ()
+\item 
+std\-::vector$<$ double $>$ \hyperlink{classneuroc_1_1_layer_ab413f32620308964d8cc2ba480b460e2}{Get\-Derivative\-Vector} ()
+\item 
+bool \hyperlink{classneuroc_1_1_layer_ada5237f8e9211d3dc308fa2e083b2b44}{Set\-Bias\-Vector} (std\-::vector$<$ double $>$ bias\-Vector)
+\item 
+std\-::vector$<$ double $>$ \hyperlink{classneuroc_1_1_layer_aaa40443732765acc4ac8ea6a8441c471}{Get\-Bias\-Vector} ()
+\item 
 bool \hyperlink{classneuroc_1_1_layer_a8e60b80bc457e7f82dc24fffc94fb9f0}{Set\-Error\-Vector} (std\-::vector$<$ double $>$ error\-Vector)
 \item 
+\hypertarget{classneuroc_1_1_layer_a722af6edd652f0f5f099b30d459542e5}{std\-::vector$<$ double $>$ {\bfseries Get\-Error\-Vector} ()}\label{classneuroc_1_1_layer_a722af6edd652f0f5f099b30d459542e5}
+
+\item 
 unsigned int \hyperlink{classneuroc_1_1_layer_af2e9d4a30544bf754a06e0e2b98fe60f}{Return\-Number\-Of\-Neurons} ()
+\item 
+bool \hyperlink{classneuroc_1_1_layer_af78c06c9368bc4076d3031f5d78ae141}{Set\-Connection\-Matrix} (std\-::vector$<$ std\-::vector$<$ double $>$ $>$)
 \item 
 std\-::vector$<$ std\-::vector\\*
 $<$ double $>$ $>$ \hyperlink{classneuroc_1_1_layer_ab8653bbed4c2b26ec18b00be1dde8000}{Get\-Connection\-Matrix} ()
@@ -110,6 +121,30 @@ Compute all the neurons of the layer and return a vector containing the values o
 \begin{DoxyReturn}{Returns}
 it returns the vector containing the double, in case of problems it returns an empty vector and print an error 
 \end{DoxyReturn}
+\hypertarget{classneuroc_1_1_layer_afdb93accd5a1cd5bb7e611fe2048a890}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Compute\-Derivative@{Compute\-Derivative}}
+\index{Compute\-Derivative@{Compute\-Derivative}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Compute\-Derivative}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ double $>$ neuroc\-::\-Layer\-::\-Compute\-Derivative (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ double $>$}]{input\-Vector}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_afdb93accd5a1cd5bb7e611fe2048a890}
+Compute the derivative value for all the neurons of the layer and return a vector containing the derivative values of these neurons
+
+\begin{DoxyReturn}{Returns}
+it returns the vector containing the derivative values of the layer 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_layer_aaa40443732765acc4ac8ea6a8441c471}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Get\-Bias\-Vector@{Get\-Bias\-Vector}}
+\index{Get\-Bias\-Vector@{Get\-Bias\-Vector}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Get\-Bias\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ double $>$ neuroc\-::\-Layer\-::\-Get\-Bias\-Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_aaa40443732765acc4ac8ea6a8441c471}
+Get the values of all the bias inside the layer
+
+\begin{DoxyReturn}{Returns}
+it returns a vector with the bias values 
+\end{DoxyReturn}
 \hypertarget{classneuroc_1_1_layer_ab8653bbed4c2b26ec18b00be1dde8000}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Get\-Connection\-Matrix@{Get\-Connection\-Matrix}}
 \index{Get\-Connection\-Matrix@{Get\-Connection\-Matrix}!neuroc::Layer@{neuroc\-::\-Layer}}
 \subsubsection[{Get\-Connection\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ std\-::vector$<$ double $>$ $>$ neuroc\-::\-Layer\-::\-Get\-Connection\-Matrix (
@@ -120,6 +155,18 @@ it returns the vector containing the double, in case of problems it returns an e
 Returning a vector of vectors Matrix containing neurons connections The vector start with the first incoming connection of the first neuron and it ends with the last incoming connection of the last neuron If the \hyperlink{classneuroc_1_1_layer}{Layer} has a Bias Unit then the first connection of the neurons is the Bias incoming connection \begin{DoxyReturn}{Returns}
 it returns a vector of double or float 
 \end{DoxyReturn}
+\hypertarget{classneuroc_1_1_layer_ab413f32620308964d8cc2ba480b460e2}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Get\-Derivative\-Vector@{Get\-Derivative\-Vector}}
+\index{Get\-Derivative\-Vector@{Get\-Derivative\-Vector}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Get\-Derivative\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ double $>$ neuroc\-::\-Layer\-::\-Get\-Derivative\-Vector (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_ab413f32620308964d8cc2ba480b460e2}
+Get the derivative values of all the neurons inside the layer
+
+\begin{DoxyReturn}{Returns}
+it returns true if it is all right, otherwise false 
+\end{DoxyReturn}
 \hypertarget{classneuroc_1_1_layer_a14fd8d60709fbe79059574b090f9531a}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Get\-Value\-Vector@{Get\-Value\-Vector}}
 \index{Get\-Value\-Vector@{Get\-Value\-Vector}!neuroc::Layer@{neuroc\-::\-Layer}}
 \subsubsection[{Get\-Value\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ double $>$ neuroc\-::\-Layer\-::\-Get\-Value\-Vector (
@@ -129,11 +176,6 @@ it returns a vector of double or float
 )}}\label{classneuroc_1_1_layer_a14fd8d60709fbe79059574b090f9531a}
 Get the values of all the neurons inside the layer
 
-
-\begin{DoxyParams}{Parameters}
-{\em input\-Values} & vector of doubles of the same size of the layer. Every double is given as input to the neurons inside the layer. \\
-\hline
-\end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 it returns true if it is all right, otherwise false 
 \end{DoxyReturn}
@@ -158,13 +200,13 @@ Overload of the assignment operator
 \item[{unsigned int}]{index}
 \end{DoxyParamCaption}
 )}}\label{classneuroc_1_1_layer_ae82161250ed86f8965d239449c87d734}
-Operator overload \mbox{[}\mbox{]} it is used to return the smart pointer reference to the neuron stored inside the layer It is possible to access the methods of the single neuron using the deferencing operator -\/$>$ Example\-: input\-\_\-layer-\/$>$\hyperlink{classneuroc_1_1_layer_a4d879665e9fd0738fea6a5200c70296a}{Compute()}; // It calls the \hyperlink{classneuroc_1_1_layer_a4d879665e9fd0738fea6a5200c70296a}{Compute()} method of the neuron returned 
+Operator overload \mbox{[}\mbox{]} it is used to return the reference to the neuron stored inside the layer It is possible to access the methods of the single neuron. Example\-: input\-\_\-layer\mbox{[}2\mbox{]}.\hyperlink{classneuroc_1_1_layer_a4d879665e9fd0738fea6a5200c70296a}{Compute()}; // It calls the \hyperlink{classneuroc_1_1_layer_a4d879665e9fd0738fea6a5200c70296a}{Compute()} method of the neuron returned 
 \begin{DoxyParams}{Parameters}
 {\em index} & the number of the element stored inside the layer \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-it returns a const reference to the neuron 
+it returns a reference to the neuron 
 \end{DoxyReturn}
 \hypertarget{classneuroc_1_1_layer_a30ffd9156bc08a96474d48a3ec661cd9}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Print@{Print}}
 \index{Print@{Print}!neuroc::Layer@{neuroc\-::\-Layer}}
@@ -196,7 +238,7 @@ bool it returns true if everything is all right, otherwise false.
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}}}\label{classneuroc_1_1_layer_af2e9d4a30544bf754a06e0e2b98fe60f}
+)}}\label{classneuroc_1_1_layer_af2e9d4a30544bf754a06e0e2b98fe60f}
 It returns the number of neuron contained inside the layer
 
 \begin{DoxyReturn}{Returns}
@@ -218,6 +260,18 @@ Set the values of all the bias inside the layer
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
 it returns true if it is all right, otherwise false 
+\end{DoxyReturn}
+\hypertarget{classneuroc_1_1_layer_af78c06c9368bc4076d3031f5d78ae141}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Set\-Connection\-Matrix@{Set\-Connection\-Matrix}}
+\index{Set\-Connection\-Matrix@{Set\-Connection\-Matrix}!neuroc::Layer@{neuroc\-::\-Layer}}
+\subsubsection[{Set\-Connection\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}bool neuroc\-::\-Layer\-::\-Set\-Connection\-Matrix (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ std\-::vector$<$ double $>$ $>$}]{connection\-Matrix}
+\end{DoxyParamCaption}
+)}}\label{classneuroc_1_1_layer_af78c06c9368bc4076d3031f5d78ae141}
+It sets the connection vector for each neuron inside the layer.
+
+\begin{DoxyReturn}{Returns}
+it returns true if everything is correct 
 \end{DoxyReturn}
 \hypertarget{classneuroc_1_1_layer_a8e60b80bc457e7f82dc24fffc94fb9f0}{\index{neuroc\-::\-Layer@{neuroc\-::\-Layer}!Set\-Error\-Vector@{Set\-Error\-Vector}}
 \index{Set\-Error\-Vector@{Set\-Error\-Vector}!neuroc::Layer@{neuroc\-::\-Layer}}

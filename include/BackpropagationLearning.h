@@ -40,28 +40,33 @@ public:
 BackpropagationLearning();
 ~BackpropagationLearning();
 
-Network StartLearning(Network net, Dataset& inputDataset, Dataset& targetDataset, unsigned int cycles, bool print=true);
+Network StartOnlineLearning(Network net, Dataset& inputDataset, Dataset& targetDataset, unsigned int cycles, bool print=true);
+void StartTest(Network& net, Dataset& inputDataset, Dataset& targetDataset, bool print=true);
 
 void SetLearningRate(double value);
 double GetLearningRate();
-
-void Forward(std::vector<double> inputVector);
-void ErrorBackpropagation(std::vector<double> targetDataset);
-void UpdateWheights(std::vector<double> inputVector);
 
 
 private:
 
 Network mNet;
+double mLearningRate;
 double learningRate;
+
+void Forward(std::vector<double> inputVector);
+double ErrorBackpropagation(std::vector<double> targetDataset);
+void UpdateWheights(std::vector<double> inputVector);
 
 std::vector<std::vector<double>> TransposeMatrix( std::vector<std::vector<double>> matrix);
 std::vector<double> HadamardProduct(std::vector<double> firstVector, std::vector<double> secondVector);
 std::vector<double> MatrixVectorMultiplication(std::vector<std::vector<double>> matrix, std::vector<double> inputVector);
 std::vector<std::vector<double>> MatrixScalarMultiplication(std::vector<std::vector<double>> matrix, double scalar);
+std::vector<std::vector<double>> MatrixMatrixAddition(std::vector<std::vector<double>> firstMatrix, std::vector<std::vector<double>> secondMatrix);
+std::vector<double> PowerVector(std::vector<double> firstVector, double power);
+std::vector<double> VectorScalarMultiplication(std::vector<double> firstVector, double scalar);
 std::vector<double> SubtractVectors(std::vector<double> firstVector, std::vector<double> secondVector);
 double DotProduct(std::vector<double> firstVector, std::vector<double> secondVector);
-
+std::vector<std::vector<double>> OuterProduct(std::vector<double> firstVector, std::vector<double> secondVector);
 
 };  // Class BackpropagationLearning
 

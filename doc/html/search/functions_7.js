@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['operator_3c',['operator&lt;',['../classneuroc_1_1_network.html#a09f195224bd528d21e026cf9d834523f',1,'neuroc::Network']]],
-  ['operator_3d',['operator=',['../classneuroc_1_1_layer.html#aa198f0235496dadff15a8b80bfa564d6',1,'neuroc::Layer::operator=()'],['../classneuroc_1_1_network.html#a813b0bb15781045d0a2837481f30ec34',1,'neuroc::Network::operator=()'],['../classneuroc_1_1_neuron.html#a50f9501ff50f8cba29509adf982d276e',1,'neuroc::Neuron::operator=()']]],
-  ['operator_3e',['operator&gt;',['../classneuroc_1_1_network.html#a0bcb5cb5df5a91f8937fda63ead9d8e1',1,'neuroc::Network']]],
-  ['operator_5b_5d',['operator[]',['../classneuroc_1_1_layer.html#ae82161250ed86f8965d239449c87d734',1,'neuroc::Layer::operator[]()'],['../classneuroc_1_1_network.html#a55d58a4d38bbd0117a2c1a10cd9b9860',1,'neuroc::Network::operator[]()'],['../classneuroc_1_1_neuron.html#aebf0a0ac505ed3d030a2317f7e8db166',1,'neuroc::Neuron::operator[]()']]]
+  ['print',['Print',['../classneuroc_1_1_layer.html#a30ffd9156bc08a96474d48a3ec661cd9',1,'neuroc::Layer::Print()'],['../classneuroc_1_1_network.html#a6eb9f5cd7f58ca995b4b86996aa7f9c5',1,'neuroc::Network::Print()'],['../classneuroc_1_1_neuron.html#ae23265025b8d02844e1d874138fe5fcc',1,'neuroc::Neuron::Print()']]],
+  ['printdata',['PrintData',['../classneuroc_1_1_dataset.html#ae445ab50a7b2ad7c1dd1a7fc7cf93179',1,'neuroc::Dataset']]],
+  ['pushbackdata',['PushBackData',['../classneuroc_1_1_dataset.html#a2e39158b15c4c75b1cd471b0c704d5b9',1,'neuroc::Dataset']]]
 ];

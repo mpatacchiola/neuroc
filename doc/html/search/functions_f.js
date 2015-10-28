@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['unit',['Unit',['../namespace_init_functions.html#afe89dff533fa5a64df3f80c7d59de8d0',1,'InitFunctions']]]
+  ['updatewheights',['UpdateWheights',['../classneuroc_1_1_backpropagation_learning.html#a5fbfaf7eb4ac9088e890b9f053030363',1,'neuroc::BackpropagationLearning']]]
 ];
