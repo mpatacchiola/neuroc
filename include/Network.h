@@ -65,9 +65,6 @@ unsigned int Size();
 std::vector<double> Compute(const std::vector<double>& InputVector);
 std::vector<double> ComputeDerivative(const std::vector<double>& InputVector);
 
-const std::vector<Layer>& ReturReferenceToLayersVector() ;
-
-
 void RandomizeConnectionMatrix(std::function<double(double)> initFunction);
 
 int ReturnNumberOfLayers();

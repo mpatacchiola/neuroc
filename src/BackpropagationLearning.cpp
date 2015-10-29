@@ -18,7 +18,8 @@
 */
 
 #include "BackpropagationLearning.h"
-#include <math.h>       /* pow */
+#include <math.h>       // pow
+#include <chrono> //timer
 
 namespace neuroc{
 
@@ -47,9 +48,16 @@ Network BackpropagationLearning::StartOnlineLearning(Network net, Dataset& input
 
  mNet = net;
 
+ //Defining the chrono variables
+ std::chrono::time_point<std::chrono::system_clock> start, end;
+ start = std::chrono::system_clock::now();
+
   for(unsigned int epoch=0; epoch<cycles; epoch++){
 
-   if(print==true) std::cout << "=== LEARNING CYCLE: " << epoch  <<  " ===" << std::endl;
+   if(print==true){ 
+    std::cout << "=====================" << std::endl;
+    std::cout << "EPOCH: " << epoch << std::endl;
+   }
 
    //Check if the two dataset have the same size
    if(inputDataset.ReturnNumberOfData() != targetDataset.ReturnNumberOfData()){
@@ -86,16 +94,29 @@ Network BackpropagationLearning::StartOnlineLearning(Network net, Dataset& input
      std::cout << "UpdateWheights phase... " << std::endl;
     #endif
     UpdateWheights(inputDataset[i_set]);
- 
-
-
  }//main cycle
 
- if(print==true) std::cout << "ERROR: " << global_error / inputDataset.ReturnNumberOfData() << std::endl;
- if(print==true) std::cout << std::endl;
+ //Epoch Statistics
+ if(print==true){
+  std::cout << "COST: " << global_error << std::endl;
+ }
+
 
  }//epoch cycle
 
+ //Final statistics
+ if(print==true){
+  std::cout << "=====================" << std::endl;
+  end = std::chrono::system_clock::now();
+  std::chrono::duration<double> elapsed_seconds = end-start;
+  std::cout << "EPOCHS: " << cycles << std::endl;
+  std::cout << "LEARNING RATE: " << mLearningRate << std::endl;
+  std::cout << "LAYERS: " << mNet.ReturnNumberOfLayers() << std::endl;
+  std::cout << "NEURONS: " << mNet.ReturnNumberOfNeurons() << std::endl;
+  std::cout << "TIME: "   << elapsed_seconds.count() << "s" << std::endl;
+  std::cout << "=====================" << std::endl;
+  std::cout << std::endl;
+ }
  return mNet;
 }
 
@@ -111,11 +132,16 @@ void BackpropagationLearning::StartTest(Network& net, Dataset& inputDataset, Dat
     std::cerr << "Neuroc Error: BackpropagationLearning the input dataset and the target dataset have different size" << std::endl;
     return;
    }
-   
+
+    //Defining the chrono variables
+    std::chrono::time_point<std::chrono::system_clock> start, end;
+    start = std::chrono::system_clock::now();
+
    //Main Cycle, for all data in dataset
    double global_performance = 0;
    for(unsigned int i_set=0; i_set<inputDataset.ReturnNumberOfData(); i_set++){
-    std::cout << "==== TEST: " << i_set << " ====" << std::endl;
+    std::cout << "=====================" << std::endl;
+    std::cout << "TEST: " << i_set+1 << std::endl;
     std::vector<double> input_vector = inputDataset[i_set];
     std::vector<double> output_vector = net.Compute(input_vector);
     std::vector<double> target_vector = targetDataset[i_set];
@@ -151,10 +177,18 @@ void BackpropagationLearning::StartTest(Network& net, Dataset& inputDataset, Dat
    std::cout << std::endl;  
    }
 
-  global_performance = global_performance / inputDataset.ReturnNumberOfData();
+  double dataset_size = inputDataset.ReturnNumberOfData();
+  global_performance = global_performance / dataset_size;
   global_performance *= 100;
-  std::cout << "=== PERFORMANCE: " << global_performance << "% ===" << std::endl;
-  
+  std::cout << "=====================" << std::endl;
+  std::cout << "TOT DATA: " << dataset_size << std::endl;
+  std::cout << "PERFORMANCE: " << global_performance << "%" << std::endl;
+  end = std::chrono::system_clock::now();
+  std::chrono::duration<double> elapsed_seconds = end-start;
+  std::cout << "TIME: " << elapsed_seconds.count() << "s" << std::endl;
+  std::cout << "=====================" << std::endl;
+  std::cout << std::endl;
+
 }
 
 /**
@@ -187,6 +221,8 @@ void BackpropagationLearning::Forward(std::vector<double> inputVector){
 
 /**
 * Error Backpropagation
+* It returns the RMSD (Root Mean Square Deviation)
+* 
 *
 * @param inputVector
 **/
@@ -225,13 +261,16 @@ double BackpropagationLearning::ErrorBackpropagation(std::vector<double> targetV
   }//layer cycle
 
   std::vector<double> error_vector = mNet[tot_layers].GetErrorVector();
-  error_vector = PowerVector(error_vector, 2.0);
-  error_vector = VectorScalarMultiplication(error_vector, 0.5);
+  //error_vector = PowerVector(error_vector, 2.0);
+  //error_vector = VectorScalarMultiplication(error_vector, 0.5);
   double accumulator = 0;
   for(auto it=error_vector.begin(); it!=error_vector.end(); ++it){
+   *it = pow(*it, 2.0);
+   //*it = *it / 2.0;
    accumulator += *it;
   }
 
+ accumulator = accumulator / 2;
  return accumulator;
 }
 

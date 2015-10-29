@@ -178,16 +178,6 @@ return mLayersVector[mLayersVector.size()-1].GetDerivativeVector();
 }
 
 /**
-* It returns a reference to the vector that contain the neurons
-* 
-* @return a const reference to the vector
-*/
-const std::vector<Layer>& Network::ReturReferenceToLayersVector() {
-return mLayersVector;
-}
-
-
-/**
 * Randomize all the connections of the neurons inside the layer
 * It is possible to specify a minimum and maximum range for the random generator.
 *
