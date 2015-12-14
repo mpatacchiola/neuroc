@@ -20,6 +20,7 @@
 #ifndef TRANSFERFUNCTIONS_H
 #define TRANSFERFUNCTIONS_H
 
+#include <Eigen/Dense>
 
 /**
  *
@@ -42,17 +43,17 @@ namespace neuroc{
 namespace TransferFunctions{
 
 
-double Linear(double input);
-double PositiveLinear(double input);
-double SaturatedLinear(double input);
-double Sigmoid(double input);
-double FastSigmoid(double input);
-double SigmoidDerivative(double input);
-double Tanh(double input);	
-double TanhDerivative(double input);
-double RadialBasis(double input);
-double MultiQuadratic(double input);
-double HardLimit(double input);
+Eigen::VectorXd Linear(Eigen::VectorXd);
+Eigen::VectorXd PositiveLinear(Eigen::VectorXd);
+Eigen::VectorXd SaturatedLinear(Eigen::VectorXd);
+Eigen::VectorXd Sigmoid(Eigen::VectorXd);
+Eigen::VectorXd FastSigmoid(Eigen::VectorXd);
+Eigen::VectorXd SigmoidDerivative(Eigen::VectorXd);
+Eigen::VectorXd Tanh(Eigen::VectorXd);	
+Eigen::VectorXd TanhDerivative(Eigen::VectorXd);
+Eigen::VectorXd RadialBasis(Eigen::VectorXd);
+Eigen::VectorXd MultiQuadratic(Eigen::VectorXd);
+Eigen::VectorXd HardLimit(Eigen::VectorXd);
 
 
 }

@@ -20,14 +20,10 @@
 #ifndef NETWORK_H
 #define NETWORK_H
 
-#include "Neuron.h"
-#include "Layer.h"
+#include "DenseLayer.h"
 #include "Dataset.h"
-#include <memory>  // shared_ptr
-#include <vector>
 #include <iostream> //printing functions
-#include <fstream> //save in XML
-#include <sstream>
+#include <Eigen/Dense>
 
 using namespace std;
 
@@ -48,42 +44,34 @@ Network();
 
 Network(const Network &rNetwork);
 
-Network(std::initializer_list<Layer> layersList);
+Network(std::initializer_list<DenseLayer> layersList);
 
 ~Network();
 
 Network operator=(const Network &rNetwork);
 
-Layer& operator[](unsigned int index);
+DenseLayer& operator[](unsigned int index);
 
-bool operator < (const Network& rhs) const;
-
-bool operator > (const Network& rhs) const;
 
 unsigned int Size();
 
-std::vector<double> Compute(const std::vector<double>& InputVector);
-std::vector<double> ComputeDerivative(const std::vector<double>& InputVector);
+Eigen::VectorXd Compute(Eigen::VectorXd InputVector);
+Eigen::VectorXd ComputeDerivative(Eigen::VectorXd InputVector);
+double ComputeMeanSquaredError(neuroc::Dataset, neuroc::Dataset);
 
-void RandomizeConnectionMatrix(std::function<double(double)> initFunction);
+double Test(neuroc::Dataset, neuroc::Dataset);
 
 int ReturnNumberOfLayers();
 
 unsigned int ReturnNumberOfNeurons();
-
-double GetUserValue();
-
-
-void SetUserValue(double value);
 
 void Print();
 
 
 
 private:
+ std::vector<DenseLayer> mLayersVector;
 
- std::vector<Layer> mLayersVector;
- double mUserValue =0;  //a generic value
 
 };
 

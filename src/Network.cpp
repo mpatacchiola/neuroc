@@ -18,7 +18,7 @@
 */
 
 #include "Network.h"
-
+#include <chrono>
 
 namespace neuroc{
 
@@ -39,7 +39,6 @@ Network::Network()
 Network::Network(const Network &rNetwork)
 {
 mLayersVector = rNetwork.mLayersVector;
-mUserValue = rNetwork.mUserValue;
 }
 
 
@@ -50,7 +49,7 @@ mUserValue = rNetwork.mUserValue;
 * ex: {myFirstHiddenLayer, mySecondHiddenLayer, myOutputLayer} Three Layers of Neurons
 *
 */
-Network::Network(std::initializer_list<Layer> layersList) {
+Network::Network(std::initializer_list<DenseLayer> layersList) {
 mLayersVector.reserve(layersList.size());
 for ( auto it=layersList.begin(); it!=layersList.end(); ++it) {
 mLayersVector.push_back(*it);
@@ -71,7 +70,6 @@ Network Network::operator=(const Network &rNetwork)
 {  		
 if (this == &rNetwork) return *this;  // check for self-assignment 
 mLayersVector = rNetwork.mLayersVector;
-mUserValue = rNetwork.mUserValue;
 return *this;
 }
 
@@ -82,28 +80,11 @@ return *this;
 * @param index the number of the element stored inside the Network
 * @return it returns a const reference to the Layer
 **/
-Layer& Network::operator[]( unsigned int index){
+DenseLayer& Network::operator[]( unsigned int index){
 if (index >= mLayersVector.size()) throw std::domain_error("Error: Out of Range index.");
 return mLayersVector[index];
 }
 
-/**
-* Operator overload < it is used to permit sorting on internal container
-* @param rhs another Network to compare
-**/
-bool Network::operator < (const Network& rhs) const
-{
-return (mUserValue < rhs.mUserValue);
-}
-
-/**
-* Operator overload > it is used to permit sorting on internal container
-* @param rhs another Network to compare
-**/
-bool Network::operator > (const Network& rhs) const
-{
-return (mUserValue > rhs.mUserValue);
-}
 
 /**
 * It gives the size of the connections container
@@ -119,9 +100,9 @@ return mLayersVector.size();
 *
 * @return it returns the vector containing the double, in case of problems it returns an empty vector and print an error
 **/
-std::vector<double> Network::Compute(const std::vector<double>& InputVector) {
+Eigen::VectorXd Network::Compute(Eigen::VectorXd InputVector) {
 
-std::vector<double> void_vector;
+Eigen::VectorXd void_vector;
 
 if(mLayersVector.size()==0){
 std::cerr << "Neuroc Error: Network Computation is not possible if the network is empty" << std::endl;
@@ -131,26 +112,14 @@ if(InputVector.size()==0){
 std::cerr << "Neuroc Error: Network Computation is not possible if the input vector is empty" << std::endl;
 return void_vector;
 }
-if(InputVector.size() != mLayersVector[0][0].GetConnectionVector().size()){
-std::cerr << "Neuroc Error: Network Computation is not possible if the input vector size is different from the input size of the first layer" << std::endl;
-return void_vector;
+
+//Compute all the Layers
+for (unsigned int i=0; i<mLayersVector.size(); i++ ) {
+ InputVector = mLayersVector[i].Compute(InputVector);
 }
 
-//1- Set the values of the input layer
-mLayersVector[0].Compute(InputVector);
-
-
-
-//2- Compute all the hidden Layer
-
-for (unsigned int i=1; i<mLayersVector.size(); i++ ) {
-mLayersVector[i].Compute(mLayersVector[i-1].GetValueVector());
-}
-
-
-
-//3- Return the result of the Output Layer
-return mLayersVector[mLayersVector.size()-1].GetValueVector();
+//Return the result of the Output Layer
+return mLayersVector[mLayersVector.size()-1].GetOutputVector();
 }
 
 /**
@@ -158,40 +127,99 @@ return mLayersVector[mLayersVector.size()-1].GetValueVector();
 *
 * @return it returns the vector containing the double, in case of problems it returns an empty vector and print an error
 **/
-std::vector<double> Network::ComputeDerivative(const std::vector<double>& InputVector) {
+Eigen::VectorXd Network::ComputeDerivative(Eigen::VectorXd InputVector) {
 
-//1- Set the values of the input layer
-mLayersVector[0].ComputeDerivative(InputVector);
+Eigen::VectorXd void_vector;
 
-#ifdef DEBUG 
- std::cout << "Network Computation... " << std::endl;
-#endif
-
-//2- Compute all the hidden Layer
-
-for (unsigned int i=1; i<mLayersVector.size(); i++ ) {
-mLayersVector[i].ComputeDerivative(mLayersVector[i-1].GetValueVector());
+if(mLayersVector.size()==0){
+std::cerr << "Neuroc Error: Network Computation is not possible if the network is empty" << std::endl;
+return void_vector;
+}
+if(InputVector.size()==0){
+std::cerr << "Neuroc Error: Network Computation is not possible if the input vector is empty" << std::endl;
+return void_vector;
 }
 
-//3- Return the result of the Output Layer
+//Compute all the Layers
+for (unsigned int i=0; i<mLayersVector.size(); i++ ) {
+ InputVector = mLayersVector[i].ComputeDerivative(InputVector);
+}
+
+//Return the result of the Output Layer
 return mLayersVector[mLayersVector.size()-1].GetDerivativeVector();
 }
 
 /**
-* Randomize all the connections of the neurons inside the layer
-* It is possible to specify a minimum and maximum range for the random generator.
+* It computes the Mean Squared Error of the network given an input dataset and a target dataset
 *
-* @param minRange the minimum range for the random generator
-* @param maxRange the maximum range for the random generator
-* @return bool it returns true if everything is all right, otherwise false.
-*/
-void Network::RandomizeConnectionMatrix(std::function<double(double)> initFunction) {
+* @return it returns the Mean Squared Error
+**/
+double Network::ComputeMeanSquaredError(neuroc::Dataset inputDataset, neuroc::Dataset targetDataset){
+ double MSE = 0; //Mean Squared Error
+ double dataset_size = inputDataset.ReturnNumberOfElements();
+ double target_size = targetDataset.ReturnNumberOfElements();
 
-for (unsigned int i=0; i<mLayersVector.size(); i++) {
-mLayersVector[i].RandomizeConnectionMatrix(initFunction);
-}
+ if(dataset_size != target_size){
+  std::cerr << "Error: The input dataset and the target dataset have different dimensions." << std::endl;
+  return 0;
+ }
+
+ for(unsigned int i=0; i<dataset_size; i++){
+  Eigen::VectorXd output_evector = Compute(inputDataset.GetData(i));
+  //This difference is the distance between the output vector and the target
+  Eigen::VectorXd distance_evector = targetDataset.GetData(i) - output_evector;
+  //Adding to the performance counter the norm of the distance vector
+  MSE += distance_evector.squaredNorm(); 
+ }
+
+ MSE = MSE / dataset_size;
+ return MSE;
 }
 
+/**
+* It test the network printing the output vector and the target vector
+*
+* @return it returns the Mean Squared Error
+**/
+double Network::Test(neuroc::Dataset inputDataset, neuroc::Dataset targetDataset){
+
+ double MSE = 0; //Mean Squared Error
+ double dataset_size = inputDataset.ReturnNumberOfElements();
+ double target_size = targetDataset.ReturnNumberOfElements();
+
+//Defining the chrono variables
+ std::chrono::time_point<std::chrono::system_clock> start, end;
+ start = std::chrono::system_clock::now();
+
+ if(dataset_size != target_size){
+  std::cerr << "Error: The input dataset and the target dataset have different dimensions." << std::endl;
+  return MSE;
+ }
+
+ for(unsigned int i=0; i<dataset_size; i++){
+  std::cout << "=====================" << std::endl;
+  std::cout << "TRIAL: " << i+1 << std::endl;
+  Eigen::VectorXd output_evector = Compute(inputDataset.GetData(i));
+  std::cout << "Target Vector: " << std::endl;
+  std::cout << targetDataset.GetData(i) << std::endl;
+  std::cout << "Output Vector: " << std::endl;
+  std::cout << output_evector << std::endl;
+  //This difference is the distance between the output vector and the target
+  Eigen::VectorXd distance_evector = targetDataset.GetData(i) - output_evector;
+  //Adding to the performance counter the norm of the distance vector
+  MSE += distance_evector.squaredNorm(); 
+ }
+
+ MSE = MSE / dataset_size;
+ end = std::chrono::system_clock::now();
+ std::chrono::duration<double> elapsed_seconds = end-start;
+ std::cout << "=====================" << std::endl;
+ std::cout << "SIZE: " << dataset_size << std::endl;
+ std::cout << "MSE: " << MSE << std::endl;
+ std::cout << "TIME: "   << elapsed_seconds.count() << "s" << std::endl;
+ std::cout << "=====================" << std::endl;
+ return MSE;
+}
 
 /**
 * It returns the number of layer contained inside the Newtork
@@ -216,24 +244,6 @@ total_number += mLayersVector[i].ReturnNumberOfNeurons();
 return total_number;
 }
 
-/**
-* It returns the generic user value
-*
-* @return it returns the user value
-**/
-double Network::GetUserValue() {
-return mUserValue;
-}
-
-/**
-* It sets the generic user value
-*
-* @param value the value to set
-**/
-void Network::SetUserValue(double value){
-mUserValue = value;
-}
-
 
 /**
 * Print information about all the neurons contained inside the Layer
@@ -243,6 +253,7 @@ void Network::Print() {
 for (unsigned int i = 0; i < mLayersVector.size(); i++) {
 std::cout << "Layer[" << i << "]" << std::endl;
 mLayersVector[i].Print();
+std::cout  << std::endl;
 }
 }
 

@@ -17,6 +17,7 @@
 
 CC=g++
 CFLAGS=-Wall -std=c++11 -fPIC
+INCLUDE=-Iinclude -I/usr/include/eigen3
 
 compile:
 	@echo
@@ -26,24 +27,23 @@ compile:
 	mkdir -p ./bin #check if the folder exist then create it
 	mkdir -p ./bin/obj
 	mkdir -p ./bin/lib
-	g++ $(CFLAGS) -Iinclude -c ./src/Neuron.cpp -o ./bin/obj/Neuron.o
-	g++ $(CFLAGS) -Iinclude -c ./src/Layer.cpp -o ./bin/obj/Layer.o
-	g++ $(CFLAGS) -Iinclude -c ./src/Network.cpp -o ./bin/obj/Network.o
-	g++ $(CFLAGS) -Iinclude -c ./src/Dataset.cpp -o ./bin/obj/Dataset.o
-	g++ $(CFLAGS) -Iinclude -c ./src/InitFunctions.cpp -o ./bin/obj/InitFunctions.o
-	g++ $(CFLAGS) -Iinclude -c ./src/WeightFunctions.cpp -o ./bin/obj/WeightFunctions.o
-	g++ $(CFLAGS) -Iinclude -c ./src/JointFunctions.cpp -o ./bin/obj/JointFunctions.o
-	g++ $(CFLAGS) -Iinclude -c ./src/TransferFunctions.cpp -o ./bin/obj/TransferFunctions.o
-	g++ $(CFLAGS) -Iinclude -c ./src/RandomFunctions.cpp -o ./bin/obj/RandomFunctions.o
-	g++ $(CFLAGS) -Iinclude -c ./src/BackpropagationLearning.cpp -o ./bin/obj/BackpropagationLearning.o
+	g++ $(CFLAGS) $(INCLUDE) -c ./src/DenseLayer.cpp -o ./bin/obj/DenseLayer.o
+	g++ $(CFLAGS) $(INCLUDE) -c ./src/Network.cpp -o ./bin/obj/Network.o
+	g++ $(CFLAGS) $(INCLUDE) -c ./src/BackpropagationLearning.cpp -o ./bin/obj/BackpropagationLearning.o
+	g++ $(CFLAGS) $(INCLUDE) -c ./src/Dataset.cpp -o ./bin/obj/Dataset.o
+	g++ $(CFLAGS) $(INCLUDE) -c ./src/WeightFunctions.cpp -o ./bin/obj/WeightFunctions.o
+	g++ $(CFLAGS) $(INCLUDE) -c ./src/JoinFunctions.cpp -o ./bin/obj/JoinFunctions.o
+	g++ $(CFLAGS) $(INCLUDE) -c ./src/TransferFunctions.cpp -o ./bin/obj/TransferFunctions.o
+
+
 
 	@echo
 	@echo "=== Creating the Shared Library ==="
-	g++ -fPIC -shared -Wl,-soname,libneuroc.so.1 -o ./bin/lib/libneuroc.so.1.0 ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Dataset.o ./bin/obj/InitFunctions.o ./bin/obj/WeightFunctions.o ./bin/obj/JointFunctions.o ./bin/obj/TransferFunctions.o ./bin/obj/RandomFunctions.o ./bin/obj/BackpropagationLearning.o
+	g++ -fPIC -shared -Wl,-soname,libneuroc.so.1 -o ./bin/lib/libneuroc.so.1.0 ./bin/obj/DenseLayer.o ./bin/obj/Network.o ./bin/obj/BackpropagationLearning.o ./bin/obj/Dataset.o ./bin/obj/TransferFunctions.o ./bin/obj/JoinFunctions.o ./bin/obj/WeightFunctions.o
 
 	@echo
 	@echo "=== Creating the Static Library ==="
-	ar rcs ./bin/lib/libneuroc.a ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Dataset.o ./bin/obj/InitFunctions.o ./bin/obj/WeightFunctions.o ./bin/obj/JointFunctions.o ./bin/obj/TransferFunctions.o ./bin/obj/RandomFunctions.o ./bin/obj/BackpropagationLearning.o
+	ar rcs ./bin/lib/libneuroc.a ./bin/obj/DenseLayer.o ./bin/obj/Network.o ./bin/obj/BackpropagationLearning.o ./bin/obj/Dataset.o ./bin/obj/TransferFunctions.o ./bin/obj/JoinFunctions.o ./bin/obj/WeightFunctions.o
 	@echo
 
 install:
@@ -66,14 +66,14 @@ install:
 clean:
 	@echo
 	@echo "=== Cleaning unnecessary files  ==="
-	rm ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Dataset.o ./bin/obj/InitFunctions.o ./bin/obj/WeightFunctions.o ./bin/obj/JointFunctions.o ./bin/obj/TransferFunctions.o ./bin/obj/RandomFunctions.o ./bin/obj/BackpropagationLearning.o
+	rm ./bin/obj/DenseLayer.o ./bin/obj/Network.o ./bin/obj/BackpropagationLearning.o ./bin/obj/Dataset.o ./bin/obj/TransferFunctions.o ./bin/obj/JoinFunctions.o ./bin/obj/WeightFunctions.o
 	@echo
 
 remove:
 	@echo
 	@echo "=== Removing files in the system folders ==="
 	rm -r /usr/local/include/neuroc
-	rm ./bin/obj/Neuron.o ./bin/obj/Layer.o ./bin/obj/Network.o ./bin/obj/Dataset.o ./bin/obj/InitFunctions.o ./bin/obj/WeightFunctions.o ./bin/obj/JointFunctions.o ./bin/obj/TransferFunctions.o ./bin/obj/RandomFunctions.o ./bin/obj/BackpropagationLearning.o
+	rm ./bin/obj/DenseLayer.o ./bin/obj/Network.o ./bin/obj/BackpropagationLearning.o ./bin/obj/Dataset.o ./bin/obj/TransferFunctions.o ./bin/obj/JoinFunctions.o ./bin/obj/WeightFunctions.o
 	rm ./bin/lib/libneuroc.a 
 	rm ./bin/lib/libneuroc.so.1.0
 	rm /usr/local/lib/libneuroc.so.1 

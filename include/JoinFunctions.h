@@ -17,9 +17,10 @@
  *
 */
 
-#ifndef JOINTFUNCTIONS_H
-#define JOINTFUNCTIONS_H
+#ifndef JOINFUNCTIONS_H
+#define JOINFUNCTIONS_H
 
+#include <Eigen/Dense>
 
 namespace neuroc{
 /**
@@ -28,12 +29,12 @@ namespace neuroc{
  * It contains functions used by the neuron in the second computational step
  * All the functions of this namespace must take two values and return a single value
  */
-namespace JointFunctions{
+namespace JoinFunctions{
 
-double Sum(double weightFunctionOutput, double biasWeight);
-double Multiplication(double weightFunctionOutput, double biasWeight);
+Eigen::VectorXd Sum(Eigen::VectorXd, Eigen::VectorXd);
+Eigen::VectorXd Product(Eigen::VectorXd, Eigen::VectorXd);
 
 }
 }
 
-#endif // JOINTFUNCTIONS_H
+#endif // JOINFUNCTIONS_H

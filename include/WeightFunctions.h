@@ -20,6 +20,7 @@
 #ifndef WEIGHTFUNCTIONS_H
 #define WEIGHTFUNCTIONS_H
 
+#include <Eigen/Dense>
 
 /**
  *
@@ -41,9 +42,9 @@ namespace neuroc{
  */
 namespace WeightFunctions{
 
-double DotProduct(std::vector<double> firstVector, std::vector<double> secondVector);
-double EuclideanDistance(const std::vector<double>& firstVector, const std::vector<double>& secondVector);
-double AbsoluteDistance(const std::vector<double>& firstVector, const std::vector<double>& secondVector);
+Eigen::VectorXd DotProduct(Eigen::MatrixXd weightMatrix, Eigen::VectorXd inputVector);
+Eigen::VectorXd EuclideanDistance(Eigen::MatrixXd weightMatrix, Eigen::VectorXd inputVector);
+Eigen::VectorXd AbsoluteDistance(Eigen::MatrixXd weightMatrix, Eigen::VectorXd inputVector);
 
 } //namespace
 

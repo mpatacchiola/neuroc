@@ -22,6 +22,8 @@
 
 #include <vector>
 #include <iostream> 
+#include <Eigen/StdVector>
+#include <Eigen/Dense>
 
 
 namespace neuroc{
@@ -45,31 +47,31 @@ Dataset();
 
 ~Dataset();
 
-std::vector<double>& operator[](unsigned int index);
+Eigen::VectorXd& operator[](unsigned int index);
 
-bool PushBackData(std::vector<double> dataToPush);
+bool PushBackData(Eigen::VectorXd dataToPush);
 
 Dataset Split(unsigned int index);
 
 void Clear();
 
 bool DivideBy(double divisor);
+bool MultiplyBy(double multiplier);
 
-std::vector<double> GetData(unsigned int index);
-bool SetData(unsigned int index, std::vector<double> data);
+Eigen::VectorXd GetData(unsigned int index);
+bool SetData(unsigned int index, Eigen::VectorXd data);
 
-unsigned int ReturnNumberOfData();
+unsigned int ReturnNumberOfElements();
 
 void PrintData(unsigned int index);
-
-std::string ReturnStringCSV();
 bool LoadFromCSV(std::string filePath);
 bool SaveAsCSV(std::string filePath);
 
 private:
 
-std::vector<std::vector<double>> mDataVector;
+//std::vector<std::vector<double>> mDataVector;
 bool FileExist (std::string name);
+std::vector<Eigen::VectorXd,Eigen::aligned_allocator<Eigen::VectorXd> > mDataVector;
 
 
 };

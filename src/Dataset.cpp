@@ -58,9 +58,27 @@ Dataset::~Dataset() {
 bool Dataset::DivideBy(double divisor){
  if(divisor == 0) return false;
  for(auto it_set=mDataVector.begin(); it_set!=mDataVector.end(); ++it_set) {
-  for(auto it_data=it_set->begin(); it_data!=it_set->end(); ++it_data) {
-   *it_data /= divisor;
-  }
+  (*it_set) = (*it_set) / divisor; //using the eigen vector properties for the division
+  //for(unsigned int i=0; i<it_set->size(); i++){
+   //double evector_value = (*it_set)[i];
+   //(*it_set)[i] = evector_value / divisor;
+  //}
+ }
+ return true;
+}
+
+/**
+* It multiplies all the value by the multiplier specified.
+*
+* @param multiplier
+**/
+bool Dataset::MultiplyBy(double multiplier){
+ for(auto it_set=mDataVector.begin(); it_set!=mDataVector.end(); ++it_set) {
+  (*it_set) = (*it_set) * multiplier;
+  //for(unsigned int i=0; i<it_set->size(); i++){
+  // double evector_value = (*it_set)[i];
+   //(*it_set)[i] = evector_value * multiplier;
+  //}
  }
  return true;
 }
@@ -71,7 +89,7 @@ bool Dataset::DivideBy(double divisor){
 * @param index the number of the element stored inside the layer
 * @return it returns a reference to the vector
 **/
-std::vector<double>& Dataset::operator[](unsigned int index) {
+Eigen::VectorXd& Dataset::operator[](unsigned int index) {
  if (index >= mDataVector.size()) throw std::domain_error("Error: Out of Range index.");
  return mDataVector[index];
 }
@@ -81,7 +99,7 @@ std::vector<double>& Dataset::operator[](unsigned int index) {
 *
 * @param dataToPush the vector of values to push inside the Dataset
 **/
-bool Dataset::PushBackData(std::vector<double> dataToPush) {
+bool Dataset::PushBackData(Eigen::VectorXd dataToPush) {
  mDataVector.push_back(dataToPush);
  return true;
 }
@@ -94,6 +112,7 @@ bool Dataset::PushBackData(std::vector<double> dataToPush) {
 **/
 Dataset Dataset::Split(unsigned int index){
  Dataset dataset_to_return;
+
  if(mDataVector.size()==0){
   std::cerr << "Error: Dataset empty." << std::endl;
   return dataset_to_return;
@@ -106,17 +125,18 @@ Dataset Dataset::Split(unsigned int index){
   return dataset_to_return;
  }
 
- for(auto it=mDataVector.begin(); it!=mDataVector.end(); ++it){
-  auto it_start_split = std::next(it->begin(), index);
-  std::vector<double> vector_to_give;
-  vector_to_give.reserve(size_to_give);
-  for(auto it_split=it_start_split; it_split!=it->end(); ++it_split){
-   vector_to_give.push_back(*it_split); //it assigns the element to a new vector
-  }
-  it->erase(it_start_split, it->end()); //erase the element in the vector
+ //Cycling the whole dataset and splitting the
+ //single eigen-vectors in two subvectors, one to
+ //return and one to have.
+ for(unsigned int i=0; i<mDataVector.size(); i++){
+  Eigen::VectorXd vector_to_give(size_to_give);
+  Eigen::VectorXd vector_to_have(index);
+  vector_to_give = mDataVector[i].tail(size_to_give);
+  vector_to_have = mDataVector[i].head(index);
   dataset_to_return.PushBackData(vector_to_give);
+  mDataVector[i] = vector_to_have;
  }
-
+ 
  return dataset_to_return;
 }
 
@@ -133,10 +153,10 @@ void Dataset::Clear(){
 *
 * @param index of the input vector to return
 **/
-std::vector<double> Dataset::GetData(unsigned int index) {
+Eigen::VectorXd Dataset::GetData(unsigned int index) {
  if(index > mDataVector.size()){
   std::cerr << "Error: Dataset out of range." << std::endl;
-  std::vector<double> void_vector;
+  Eigen::VectorXd void_vector;
   return void_vector;
  }
  return mDataVector[index];
@@ -147,7 +167,7 @@ std::vector<double> Dataset::GetData(unsigned int index) {
 *
 * @param index of the input vector to set
 **/
-bool Dataset::SetData(unsigned int index, std::vector<double> data) {
+bool Dataset::SetData(unsigned int index, Eigen::VectorXd data) {
  try {
   mDataVector[index] = data;
   return true;
@@ -162,7 +182,7 @@ bool Dataset::SetData(unsigned int index, std::vector<double> data) {
 *
 * @param index of the input vector to return
 **/
-unsigned int Dataset::ReturnNumberOfData() {
+unsigned int Dataset::ReturnNumberOfElements() {
  return mDataVector.size();
 }
 
@@ -177,9 +197,9 @@ void Dataset::PrintData(unsigned int index){
   std::cerr << "Error: Dataset out of range." << std::endl;
   return;
  }
- for(auto it_data=mDataVector[index].begin(); it_data!=mDataVector[index].end(); ++it_data) {
-  if(it_data!=mDataVector[index].end() - 1) std::cout << *it_data << ",";
-  else std::cout << *it_data;
+ for(unsigned int i=0; i<mDataVector[index].size(); i++) {
+  if(i!=mDataVector[index].size() - 1) std::cout << mDataVector[index][i] << ",";
+  else std::cout << mDataVector[index][i];
  }
  std::cout << std::endl;
 }
@@ -189,18 +209,18 @@ void Dataset::PrintData(unsigned int index){
 * Separated Values.
 *
 **/
-std::string Dataset::ReturnStringCSV() {
- std::ostringstream string_stream;
- for(unsigned int i=0; i<mDataVector.size(); i++) {
-  std::vector<double> temp_vector_input(mDataVector[i]);
-  for(unsigned int j=0; j<temp_vector_input.size(); j++) {
-   string_stream << temp_vector_input[j] << ",";
-  }
-  string_stream << '\n';
- }
-
- return string_stream.str();
-}
+//std::string Dataset::ReturnStringCSV() {
+// std::ostringstream string_stream;
+// for(unsigned int i=0; i<mDataVector.size(); i++) {
+//  std::vector<double> temp_vector_input(mDataVector[i]);
+//  for(unsigned int j=0; j<temp_vector_input.size(); j++) {
+//   string_stream << temp_vector_input[j] << ",";
+//  }
+//  string_stream << '\n';
+// }
+//
+// return string_stream.str();
+//}
 
 
 /**
@@ -220,13 +240,20 @@ bool Dataset::LoadFromCSV(std::string filePath){
  while(std::getline(train_file, token)) {
   //remove white space
   token.erase(std::remove_if(token.begin(), token.end(), isspace), token.end());
-  std::vector<double> data_vector;
   std::stringstream ss(token);
+  std::vector<double> temp_vector;
   unsigned int i;
-  //push the values into the temp vector
+  //push the values into the std::vector
   while(ss >> i){
-   data_vector.push_back(i);
+   temp_vector.push_back((double)i);
+   //data_vector << (double)i;
    if(ss.peek()== ',') ss.ignore();
+  }
+  //assigning the data to the eigen-vector
+  //Eigen::VectorXd data_vector = Eigen::VectorXd::Zero(temp_vector.size());
+  Eigen::VectorXd data_vector(temp_vector.size());
+  for(unsigned int j=0; j<temp_vector.size(); j++){
+   data_vector[j] = temp_vector[j];
   }
   //push the temp vector inside the dataset
   mDataVector.push_back(data_vector);
@@ -247,9 +274,9 @@ bool Dataset::SaveAsCSV(std::string filePath) {
   return false;
  }
  for(auto it_set=mDataVector.begin(); it_set!=mDataVector.end(); ++it_set) {
-  for(auto it_data=it_set->begin(); it_data!=it_set->end(); ++it_data) {
-  if(it_data!=it_set->end() - 1) file_stream << *it_data << ",";
-  else file_stream << *it_data;
+  for(auto i=0; i<it_set->size(); i++) {
+   if(i!=it_set->size() - 1) file_stream << i << ",";
+   else file_stream << i;
   }
   file_stream << '\n';
  }

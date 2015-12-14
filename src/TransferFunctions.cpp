@@ -7,7 +7,7 @@
 #include <random>
 #include <iostream>
 #include <functional>
-#include<TransferFunctions.h>
+#include <TransferFunctions.h>
 
 namespace neuroc{
 
@@ -19,14 +19,20 @@ namespace TransferFunctions{
 * @param input value
 * @return the output of the function
 */
-double Linear(double input) {
-return input;
+Eigen::VectorXd Linear(Eigen::VectorXd inputVector) {
+return inputVector;
 }	
 
-
-double PositiveLinear(double input) {
-if(input<0.0) return -input;
-else return input;
+/**
+* If the value is less than zero then it is switched to -value
+* @param input value
+* @return the output of the function
+*/
+Eigen::VectorXd PositiveLinear(Eigen::VectorXd inputVector) {
+ for(int i=0; i<inputVector.size(); i++){
+  if(inputVector[i]<0.0) inputVector[i]=-inputVector[i];
+ }
+ return inputVector;
 }
 
 /**
@@ -37,10 +43,12 @@ else return input;
 * @param input value
 * @return the output of the function
 */
-double SaturatedLinear(double input) {
-if(input > 1) return 1;
-else if (input < -1) return -1;
-else return input;	
+Eigen::VectorXd SaturatedLinear(Eigen::VectorXd inputVector) {
+ for(int i=0; i<inputVector.size(); i++){
+  if(inputVector[i] > 1) inputVector[i] = 1;
+  else if (inputVector[i] < -1) inputVector[i] = -1;
+ }
+ return inputVector;	
 }
 
 /**
@@ -49,11 +57,14 @@ else return input;
 * @param input value
 * @return the output of the function
 */
-double Sigmoid(double input) {
-double divisor = 1.0 + std::exp(-input);
-double result =  1.0 / divisor;
-if( std::isnan(result) == true ) return 0; //protection against large negative number
-return result;
+Eigen::VectorXd Sigmoid(Eigen::VectorXd inputVector) {
+ for(int i=0; i<inputVector.size(); i++){
+  double divisor = 1.0 + std::exp(-inputVector[i]);
+  double result =  1.0 / divisor;
+  if( std::isnan(result) == true ) inputVector[i] = 0; //protection against large negative number
+  else inputVector[i] = result;
+ }
+ return inputVector;
 }
 
 /**
@@ -65,27 +76,39 @@ return result;
 * @param input value
 * @return the output of the function
 */
-double FastSigmoid(double input) {
-return input / (1.0 + std::abs(input));
+Eigen::VectorXd FastSigmoid(Eigen::VectorXd inputVector) {
+ for(int i=0; i<inputVector.size(); i++){
+  inputVector[i] = inputVector[i] / (1.0 + std::abs(inputVector[i]));
+ }
+ return inputVector;
 }
 
-double SigmoidDerivative(double input) {
+Eigen::VectorXd SigmoidDerivative(Eigen::VectorXd inputVector) {
 //dy/dx = f(x)' = f(x) * (1 - f(x))
 //double result = (1.0 / (1.0 + std::exp(-input))) * (1.0 - (1.0 / (1.0 + std::exp(-input))));
 //if( std::isnan(result) == true ) return 0; //protection against large negative number
-double result = (std::exp(-input))/ std::pow( (1+std::exp(-input)), 2);
-//if( std::isnan(result) == true ) return 0; //protection against large negative number
-return result;
+ for(int i=0; i<inputVector.size(); i++){
+  double result = (std::exp(-inputVector[i]))/ std::pow( (1+std::exp(-inputVector[i])), 2);
+  if( std::isnan(result) == true ) inputVector[i] = 0; //protection against large negative number
+  else inputVector[i] = result;
+ }
+ return inputVector;
 }
 
-double Tanh(double input) {
-return tanh(input);
+Eigen::VectorXd Tanh(Eigen::VectorXd inputVector) {
+ for(int i=0; i<inputVector.size(); i++){
+  inputVector[i] = tanh(inputVector[i]);
+ }
+ return inputVector;
 }	
 
-double TanhDerivative(double input) {
-double result = (1.0-std::tanh(input)) * (1.0+std::tanh(input));
-if( std::isnan(result) == true ) return 0; //protection against large negative number
-return result;
+Eigen::VectorXd TanhDerivative(Eigen::VectorXd inputVector) {
+ for(int i=0; i<inputVector.size(); i++){
+  double result = (1.0-std::tanh(inputVector[i])) * (1.0+std::tanh(inputVector[i]));
+  if( std::isnan(result) == true ) inputVector[i] = 0; //protection against large negative number
+  else inputVector[i] = result;
+ }
+ return inputVector; 
 }
 
 /**
@@ -93,18 +116,24 @@ return result;
 * @param input value
 * @return the output of the function
 */
-double RadialBasis(double input) {		
-return exp( -std::pow(input, 2) );
+Eigen::VectorXd RadialBasis(Eigen::VectorXd inputVector) {
+ for(int i=0; i<inputVector.size(); i++){		
+  inputVector[i] = exp( -std::pow(inputVector[i], 2) );
+ }
+ return inputVector;
 }
 
 /**
 * used in Radial Basis Neurons
-* @param input value
+* @param inputVector value
 * @return the output of the function
 */
-double MultiQuadratic(double input) {
-double t1 = 1 + std::pow(input, 2);		
-return std::sqrt(t1);
+Eigen::VectorXd MultiQuadratic(Eigen::VectorXd inputVector) {
+ for(int i=0; i<inputVector.size(); i++){
+  double t1 = 1 + std::pow(inputVector[i], 2);		
+  inputVector[i] = std::sqrt(t1);
+ }
+ return inputVector;
 }
 
 
@@ -115,9 +144,12 @@ return std::sqrt(t1);
 * @param input value
 * @return the output of the function
 */
-double HardLimit(double input) {
-if(input > 0) return 1;
-else return 0;	
+Eigen::VectorXd HardLimit(Eigen::VectorXd inputVector) {
+ for(int i=0; i<inputVector.size(); i++){
+  if(inputVector[i] > 0) inputVector[i] = 1;
+  else inputVector[i] = 0;
+ }
+ return inputVector;	
 }
 
 
