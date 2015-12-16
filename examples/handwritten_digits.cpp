@@ -50,17 +50,27 @@
 */
 
 #include <iostream>
-#include<vector>
-#include<neuroc/Neuron.h>
-#include<neuroc/Layer.h>
+//#include<vector>
+//#include<neuroc/Neuron.h>
+//#include<neuroc/Layer.h>
+//#include<neuroc/Network.h>
+//#include<neuroc/Dataset.h>
+//#include<neuroc/InitFunctions.h>
+//#include<neuroc/WeightFunctions.h>
+//#include<neuroc/JointFunctions.h>
+//#include<neuroc/TransferFunctions.h>
+//#include<neuroc/BackpropagationLearning.h>
+//#include<neuroc/InitFunctions.h>
+
+#include <iostream>
+#include<neuroc/DenseLayer.h>
 #include<neuroc/Network.h>
-#include<neuroc/Dataset.h>
-#include<neuroc/InitFunctions.h>
-#include<neuroc/WeightFunctions.h>
-#include<neuroc/JointFunctions.h>
-#include<neuroc/TransferFunctions.h>
 #include<neuroc/BackpropagationLearning.h>
-#include<neuroc/InitFunctions.h>
+#include<neuroc/Dataset.h>
+#include<neuroc/WeightFunctions.h>
+#include<neuroc/JoinFunctions.h>
+#include<neuroc/TransferFunctions.h>
+#include<Eigen/Dense>
 
 int main()
 {
@@ -80,25 +90,10 @@ int main()
  myInputDataset.DivideBy(100);
  myTargetDataset.DivideBy(10);
 
- //Creating the connection vector for
- //the input neurons and the neuron
- //prototype.
- std::vector<double> input_connection_vector(16);
- neuroc::Neuron input_neuron_prototype(input_connection_vector, neuroc::WeightFunctions::DotProduct, neuroc::JointFunctions::Sum, neuroc::TransferFunctions::Sigmoid, neuroc::TransferFunctions::SigmoidDerivative, 1.0 );
+ neuroc::DenseLayer my_layer(16, 10, neuroc::WeightFunctions::DotProduct, neuroc::JoinFunctions::Sum, neuroc::TransferFunctions::Sigmoid, neuroc::TransferFunctions::SigmoidDerivative);
+ neuroc::DenseLayer my_output_layer(10, 1, neuroc::WeightFunctions::DotProduct, neuroc::JoinFunctions::Sum, neuroc::TransferFunctions::Sigmoid, neuroc::TransferFunctions::SigmoidDerivative);
 
- std::vector<double> output_connection_Vector(32);
- neuroc::Neuron output_neuron_prototype(output_connection_Vector, neuroc::WeightFunctions::DotProduct, neuroc::JointFunctions::Sum, neuroc::TransferFunctions::Sigmoid, neuroc::TransferFunctions::SigmoidDerivative, 1.0 );
-
- //Creating the two layers.
- neuroc::Layer hidden_layer(input_neuron_prototype, 32);
- neuroc::Layer output_layer(output_neuron_prototype, 1);
-
- //Network instantiation
- neuroc::Network myNetwork({hidden_layer, output_layer});
-
- //Randomizing the connections
- //between -1 and +1
- myNetwork.RandomizeConnectionMatrix(neuroc::InitFunctions::Unit);
+ neuroc::Network myNetwork({my_layer, my_output_layer});
 
  //Creating the backpropagation learning
  //object for teaching the network.
@@ -106,7 +101,7 @@ int main()
  myBack.SetLearningRate(0.35);
 
  //Starting the learning
- myNetwork = myBack.StartOnlineLearning(myNetwork, myInputDataset, myTargetDataset, 100, true);
+ myBack.StartOnlineLearning(&myNetwork, myInputDataset, myTargetDataset, 500, true);
 
  //Loading the test dataset from file
  neuroc::Dataset myTestInputDataset;
@@ -117,8 +112,10 @@ int main()
 
  //Starting the test using the last
  //dataset created.
- myBack.StartTest(myNetwork, myTestInputDataset, myTestTargetDataset );
+ myNetwork.Test(myTestInputDataset, myTestTargetDataset );
 }
+
+
 
 
 

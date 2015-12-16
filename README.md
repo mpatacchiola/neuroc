@@ -2,12 +2,12 @@
 Neuroc: Lightweight and highly optimized C++ library for Neural Networks
 ------------------------------------------------------------------------
 
-Welcome in the Neuroc repository! Neuroc is a modular library based on the idea of smart blocks that permits to create different kind of artificial neural networks. The heart of the library is the neuron class, an object made of different functions. The modular approach allow the user to highly customize the networks. The architecture is inspired by the *Matlab Neural Networks Toolbox*, if you are interested you can find other details about neuroc design [here](ARCHITECTURE.md). Let's look now at the main features of Neuroc:
+Welcome in the Neuroc repository! Neuroc is a modular library based on the idea of smart blocks that permits to create different kind of artificial neural networks. The heart of the library is the layer class, implemented using a modular approach that allow the user to highly customize the network. The architecture is inspired by the *Matlab Neural Networks Toolbox*, if you are interested you can find other details about neuroc design [here](ARCHITECTURE.md). Let's look now at the main features of Neuroc:
 
 - Modular and expandible
 - Safe memory management
 - Object Oriented approach
-- Zero external dependences (self-contained library)
+- The only external dependecy is Eigen3
 - All you can eat network architectures
 - Customizable Transfer Function, Weight Initialization 
 - Open source (GNU v.2 license)
@@ -17,10 +17,10 @@ Neuroc uses the class std::function introduced in C++11 to build high customizab
 Prerequisites
 --------------
 
-To install the library you must have "make" and "g++" already installed on your system.
-You can install them from a Unix system running the following commands from the terminal:
+To install the library you must have "make" and "g++" already installed on your system. The only external dependency required is the "Eigen" library, a powerful tool for linear algebra.
+From a Unix system you can install everything running the following commands in the terminal:
 
- `sudo apt-get install g++ build-essential`
+ `sudo apt-get install g++ build-essential libeigen3-dev`
 
 
 Installation
@@ -44,7 +44,7 @@ Using the library in your own code
 After the installation neuroc was copied on your system, inside the folder */usr/local/lib* you can see the shared library libneuroc.so and the static library libneuroc.a. The header files were copied in */usr/local/include*, you need them in order to use the library.
 To use the shared library it is also necessary to link it to your project. In g++ this is very easy, here is an example:
 
-`g++ -std=c++11 -fPIC -I/usr/local/include/neuroc -L/usr/local/lib -Wl,--no-as-needed mycode.cpp -o mycode -lneuroc`
+`g++ -std=c++11 -fPIC -I/usr/local/include/neuroc -I/usr/include/eigen3 -L/usr/local/lib -Wl,--no-as-needed mycode.cpp -o mycode -lneuroc`
 
 This command will compile the imaginary file mycode.cpp and will produce an executable file called mycode in your project directory.
 To check if the shared library is linked to your executable, you can run the Unix command ldd.
@@ -60,7 +60,7 @@ Examples
 ---------
 
 Neuroc permits to create different kind of network. Every object is a container where you can push other objects or data.
-The class network is a container of Layers, the class Layers is a container of Neurons and the class Dataset is a container of input/target values. Some examples are present in the folder *neuroc/examples*.
+The class network is a container of Layers, and the class Dataset is a container of Eigen vectors. Some examples are present in the folder *neuroc/examples*.
 
 
 Documentation

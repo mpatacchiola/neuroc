@@ -23,10 +23,11 @@
 #include<neuroc/Dataset.h>
 #include<neuroc/InitFunctions.h>
 #include<neuroc/WeightFunctions.h>
-#include<neuroc/JointFunctions.h>
+#include<neuroc/JoinFunctions.h>
 #include<neuroc/TransferFunctions.h>
 #include<neuroc/BackpropagationLearning.h>
 #include<neuroc/InitFunctions.h>
+#include<Eigen/Dense>
 
 int main()
 {
@@ -35,39 +36,46 @@ int main()
  //necessary for building the neurons. Here I
  //declare two vectors with a certain number
  //of zero inside.
- std::vector<double> connectionVector(2);
- std::vector<double> connectionVectorOutput(4);
+ //std::vector<double> connectionVector(2);
+ //std::vector<double> connectionVectorOutput(4);
 
  //I create the two neuron prototype, one for
  //the neurons in the hidden layer and the
  //other for the neuron in the output layer.
- neuroc::Neuron neuronPrototype(connectionVector, neuroc::WeightFunctions::DotProduct, neuroc::JointFunctions::Sum, neuroc::TransferFunctions::Sigmoid, neuroc::TransferFunctions::SigmoidDerivative, 0.35 );
- neuroc::Neuron neuronPrototypeOutput(connectionVectorOutput, neuroc::WeightFunctions::DotProduct, neuroc::JointFunctions::Sum, neuroc::TransferFunctions::Sigmoid, neuroc::TransferFunctions::SigmoidDerivative, 0.35 );
+ //neuroc::Neuron neuronPrototype(connectionVector, neuroc::WeightFunctions::DotProduct, neuroc::JointFunctions::Sum, neuroc::TransferFunctions::Sigmoid, neuroc::TransferFunctions::SigmoidDerivative, 0.35 );
+ //neuroc::Neuron neuronPrototypeOutput(connectionVectorOutput, neuroc::WeightFunctions::DotProduct, neuroc::JointFunctions::Sum, neuroc::TransferFunctions::Sigmoid, neuroc::TransferFunctions::SigmoidDerivative, 0.35 );
 
- //Creating the two layer, the neuron prototype
- //and the number of neurons must be specified
- //during the declaration of the object.
- neuroc::Layer HiddenLayer(neuronPrototype, 4);
- neuroc::Layer OutputLayer(neuronPrototypeOutput, 1);
+neuroc::DenseLayer my_layer(2, 10, neuroc::WeightFunctions::DotProduct, neuroc::JoinFunctions::Sum, neuroc::TransferFunctions::Sigmoid, neuroc::TransferFunctions::SigmoidDerivative);
+ neuroc::DenseLayer my_output_layer(10, 1, neuroc::WeightFunctions::DotProduct, neuroc::JoinFunctions::Sum, neuroc::TransferFunctions::Sigmoid, neuroc::TransferFunctions::SigmoidDerivative);
 
  //Creating the network. It is composed of the
  //two layers created in the previous part.
- neuroc::Network myNet({HiddenLayer, OutputLayer});
- myNet.RandomizeConnectionMatrix(neuroc::InitFunctions::Unit);
+ neuroc::Network my_network({my_layer, my_output_layer});
 
  //Creating the XOR datasets. One dataset is
  //for the input values and the other for 
  //the target values.
- neuroc::Dataset myInputDataset;
- neuroc::Dataset myTargetDataset;
- myInputDataset.PushBackData({1,1});
- myTargetDataset.PushBackData({0});
- myInputDataset.PushBackData({1,0});
- myTargetDataset.PushBackData({1});
- myInputDataset.PushBackData({0,1});
- myTargetDataset.PushBackData({1});
- myInputDataset.PushBackData({0,0});
- myTargetDataset.PushBackData({0});
+ neuroc::Dataset input_dataset;
+ Eigen::VectorXd input_vector(2);
+ input_vector << 1, 1;
+ input_dataset.PushBackData(input_vector);
+ input_vector << 1.0, 0.0;
+ input_dataset.PushBackData(input_vector);
+ input_vector << 0.0, 1.0;
+ input_dataset.PushBackData(input_vector);
+ input_vector << 0.0, 0.0;
+ input_dataset.PushBackData(input_vector);
+
+ neuroc::Dataset target_dataset;
+ Eigen::VectorXd target_vector(1);
+ target_vector << 0.0;
+ target_dataset.PushBackData(target_vector);
+ target_vector << 1.0;
+ target_dataset.PushBackData(target_vector);
+ target_vector << 1.0;
+ target_dataset.PushBackData(target_vector);
+ target_vector << 0.0;
+ target_dataset.PushBackData(target_vector);
 
  //Creating the Backpropagation object and
  //setting the learing rate.
@@ -75,10 +83,10 @@ int main()
  myBack.SetLearningRate(0.5);
 
  //Starting Online Learing.
- myNet = myBack.StartOnlineLearning(myNet, myInputDataset, myTargetDataset, 50000, true);
+ myBack.StartOnlineLearning(&my_network, input_dataset, target_dataset, 80000, true);
 
  //Starting the test of the network.
- myBack.StartTest(myNet, myInputDataset, myTargetDataset, true);
+ my_network.Test(input_dataset, target_dataset);
 
  return 0;
 }

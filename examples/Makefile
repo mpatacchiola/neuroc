@@ -5,7 +5,7 @@
 
 
 CC=g++
-CFLAGS=-Wall -std=c++11 -O3 -fexceptions -I/usr/local/include/neuroc
+CFLAGS=-Wall -std=c++11 -O3 -fexceptions -I/usr/local/include/neuroc -I/usr/include/eigen3
 
 #to compress the files for the handwritten digit example: tar -jcvf handwritten_dataset.tar pendigits.tes pendigits.tra
 #to uncompress the files: -jxvf handwritten_dataset.tar -C ./build/exec/
